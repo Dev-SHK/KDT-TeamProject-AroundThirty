@@ -8,7 +8,6 @@ import static com.aroundThirty.Resource.Resource.*;
 public class TopPanel extends JPanel {
     JPanel centerPan = new JPanel();
 
-
     public TopPanel() {
         JPanel LoPanel = new JPanel();
         LoPanel.add(locationCombo);
@@ -26,12 +25,13 @@ public class TopPanel extends JPanel {
         gridPan.setBackground(color);
         locationCombo.setPreferredSize(new Dimension(100, 30));
         genderCombo.setPreferredSize(new Dimension(100, 30));
-        JButton switchPet = new JButton("Switch Pet");
+        switchPet.setBorderPainted(false);
         switchPet.getPreferredSize();
         gridPan.add(switchPet);
-        JButton login = new JButton("LOGIN");
-        login.getPreferredSize();
-        gridPan.add(login);
+        loginMain.setFont(fontCourier);
+        loginMain.getPreferredSize();
+        loginMain.setBorderPainted(false);
+        gridPan.add(loginMain);
 
         centerPan.add(gridPan);
         centerPan.setBackground(color);
@@ -39,6 +39,7 @@ public class TopPanel extends JPanel {
         this.setBackground(color);
         this.add(BorderLayout.CENTER, centerPan);
     }
+
 
     public static void main(String[] args) {
         new TopPanel().setVisible(true);
