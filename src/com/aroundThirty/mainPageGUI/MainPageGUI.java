@@ -58,6 +58,7 @@ public class MainPageGUI extends MyJFrame {
                 container.add(BorderLayout.CENTER, new MainMenuPage());
                 revalidate();
                 repaint();
+                // main
             }
         });
 
