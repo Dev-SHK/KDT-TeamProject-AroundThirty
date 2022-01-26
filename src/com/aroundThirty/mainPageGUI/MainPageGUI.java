@@ -24,6 +24,7 @@ public class MainPageGUI extends MyJFrame {
         container.add(BorderLayout.WEST, new LeftPanel());
         container.add(BorderLayout.EAST, new RightPanel());
         container.setBackground(color);
+
     }
 
     @Override
