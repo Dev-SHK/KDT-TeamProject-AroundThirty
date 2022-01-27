@@ -4,6 +4,7 @@ import com.aroundThirty.boardPage.*;
 import com.aroundThirty.myframe.MyJFrame;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 import static com.aroundThirty.Resource.Resource.*;
 
 public class MainPageGUI extends MyJFrame {
+    public static CardLayout layout;
     public static Container container;
     public static CenterPanel cp;
     public static LeftPanel lp;
@@ -22,6 +24,7 @@ public class MainPageGUI extends MyJFrame {
         super("MainPage", 1920, 1080);
         super.setTitle("MainPage");
         super.setBackground(color);
+//        getContentPane().setLayout(pages);
     }
 
     @Override
@@ -33,6 +36,7 @@ public class MainPageGUI extends MyJFrame {
         rp = new RightPanel();
         bp = new BottomPanel();
         tp = new TopPanel();
+        jPanel = cp;
         container.add(BorderLayout.CENTER, cp);
         container.add(BorderLayout.NORTH, tp);
         container.add(BorderLayout.SOUTH, bp);
@@ -40,7 +44,6 @@ public class MainPageGUI extends MyJFrame {
         container.add(BorderLayout.EAST, rp);
         container.setBackground(color);
     }
-
 
     @Override
     protected void actionEvent() {
@@ -54,19 +57,20 @@ public class MainPageGUI extends MyJFrame {
         mainMenuBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(cp);
-                container.add(BorderLayout.CENTER, new MainMenuPage());
+                container.remove(jPanel);
+                container.add(BorderLayout.CENTER, mmp);
+                jPanel = mmp;
                 revalidate();
                 repaint();
-                // main
             }
         });
 
         noticeBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(cp);
-                container.add(BorderLayout.CENTER, new NoticePage());
+                container.remove(jPanel);
+                container.add(BorderLayout.CENTER, np);
+                jPanel = np;
                 revalidate();
                 repaint();
             }
@@ -75,8 +79,9 @@ public class MainPageGUI extends MyJFrame {
         discoverBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(cp);
-                container.add(BorderLayout.CENTER, new DiscoveryPage());
+                container.remove(jPanel);
+                container.add(BorderLayout.CENTER, dp);
+                jPanel = dp;
                 revalidate();
                 repaint();
             }
@@ -85,8 +90,9 @@ public class MainPageGUI extends MyJFrame {
         missBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(cp);
-                container.add(BorderLayout.CENTER, new MissPage());
+                container.remove(jPanel);
+                container.add(BorderLayout.CENTER, mp);
+                jPanel = mp;
                 revalidate();
                 repaint();
             }
@@ -95,8 +101,9 @@ public class MainPageGUI extends MyJFrame {
         protectBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(cp);
-                container.add(BorderLayout.CENTER, new ProtectPage());
+                container.remove(jPanel);
+                container.add(BorderLayout.CENTER, pp);
+                jPanel = pp;
                 revalidate();
                 repaint();
             }
@@ -105,8 +112,9 @@ public class MainPageGUI extends MyJFrame {
         newFamBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(cp);
-                container.add(BorderLayout.CENTER, new NewFamPage());
+                container.remove(jPanel);
+                container.add(BorderLayout.CENTER, nfp);
+                jPanel = nfp;
                 revalidate();
                 repaint();
             }
@@ -117,7 +125,6 @@ public class MainPageGUI extends MyJFrame {
             public void actionPerformed(ActionEvent e) {
             }
         });
-
     }
 
     public static void main(String[] args) {

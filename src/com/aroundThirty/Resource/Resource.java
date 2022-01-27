@@ -42,7 +42,7 @@ public class Resource {
     public static NewFamPage nfp = new NewFamPage();
     public static NoticePage np = new NoticePage();
     public static ProtectPage pp = new ProtectPage();
-
+    public static JPanel jPanel;
 
     static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
         Image img = icon.getImage();  //ImageIcon을 Image로 변환.

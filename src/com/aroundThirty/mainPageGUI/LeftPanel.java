@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import static com.aroundThirty.Resource.Resource.*;
+import static com.aroundThirty.mainPageGUI.MainPageGUI.layout;
 
 
 public class LeftPanel extends JPanel {
@@ -11,6 +12,7 @@ public class LeftPanel extends JPanel {
 
     public LeftPanel() {
         add(BorderLayout.WEST, centerPan);
+
         JPanel mainPan = new JPanel();
         mainPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         mainPan.setBackground(color01);
@@ -18,6 +20,7 @@ public class LeftPanel extends JPanel {
         mainMenuBTN.setFont(fontNanum);
         mainMenuBTN.setBorderPainted(false);
         mainPan.add(mainMenuBTN);
+
         JPanel noticePan = new JPanel();
         noticePan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         noticePan.setBackground(color01);
@@ -25,6 +28,7 @@ public class LeftPanel extends JPanel {
         noticeBTN.setFont(fontNanum);
         noticeBTN.setBorderPainted(false);
         noticePan.add(noticeBTN);
+
         JPanel discoveryPan = new JPanel();
         discoveryPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         discoveryPan.setBackground(color01);
@@ -32,6 +36,7 @@ public class LeftPanel extends JPanel {
         discoverBTN.setFont(fontNanum);
         discoverBTN.setBorderPainted(false);
         discoveryPan.add(discoverBTN);
+
         JPanel missingPan = new JPanel();
         missingPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         missingPan.setBackground(color01);
@@ -39,6 +44,7 @@ public class LeftPanel extends JPanel {
         missBTN.setFont(fontNanum);
         missBTN.setBorderPainted(false);
         missingPan.add(missBTN);
+
         JPanel protectPan = new JPanel();
         protectPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         protectPan.setBackground(color01);
@@ -46,6 +52,7 @@ public class LeftPanel extends JPanel {
         protectBTN.setFont(fontNanum);
         protectBTN.setBorderPainted(false);
         protectPan.add(protectBTN);
+
         JPanel findPan = new JPanel();
         findPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         findPan.setBackground(color01);
