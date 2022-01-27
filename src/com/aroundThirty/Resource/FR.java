@@ -1,13 +1,11 @@
 package com.aroundThirty.Resource;
 
 import com.aroundThirty.boardPage.*;
-import com.aroundThirty.mainPageGUI.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
-public class Resource {
+public class FR {
 
     public static String[] location = {"서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"};
     public static JComboBox<String> locationCombo = new JComboBox<>(location);

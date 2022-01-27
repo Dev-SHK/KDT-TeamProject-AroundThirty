@@ -3,7 +3,7 @@ package com.aroundThirty.boardPage;
 import javax.swing.*;
 import java.awt.*;
 
-import static com.aroundThirty.Resource.Resource.*;
+import static com.aroundThirty.Resource.FR.*;
 
 public class LoginPage extends JFrame {
 
@@ -14,11 +14,11 @@ public class LoginPage extends JFrame {
         add(BorderLayout.CENTER, centerPan);
 
         JPanel rowPan01 = new JPanel();
-        rowPan01.add(new JLabel("ID"));
+        rowPan01.add(new JLabel("NICKNAME"));
         rowPan01.add(new JTextField(20));
         rowPan01.setBackground(color);
         JPanel rowPan02 = new JPanel();
-        rowPan02.add(new JLabel("PW"));
+        rowPan02.add(new JLabel("PASSWORD"));
         rowPan02.add(new JTextField(20));
         rowPan02.setBackground(color);
 

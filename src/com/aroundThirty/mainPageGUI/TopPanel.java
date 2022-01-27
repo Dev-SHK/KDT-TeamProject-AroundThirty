@@ -3,7 +3,7 @@ package com.aroundThirty.mainPageGUI;
 import javax.swing.*;
 import java.awt.*;
 
-import static com.aroundThirty.Resource.Resource.*;
+import static com.aroundThirty.Resource.FR.*;
 
 public class TopPanel extends JPanel {
     JPanel centerPan = new JPanel();
