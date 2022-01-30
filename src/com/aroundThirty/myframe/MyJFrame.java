@@ -23,3 +23,4 @@ public abstract class MyJFrame extends JFrame {
 
     protected abstract void actionEvent();
 }
+

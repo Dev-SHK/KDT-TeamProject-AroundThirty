@@ -10,5 +10,4 @@ public class NoticePage extends JPanel {
         JButton btn = new JButton("test");
         this.add(btn);
     }
-
 }

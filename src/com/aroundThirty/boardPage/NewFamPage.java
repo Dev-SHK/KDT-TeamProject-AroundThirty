@@ -10,5 +10,4 @@ public class NewFamPage extends JPanel {
         JButton btn = new JButton("test");
         this.add(btn);
     }
-
 }

@@ -3,6 +3,7 @@ package com.aroundThirty.mainPageGUI;
 import com.aroundThirty.boardPage.*;
 import com.aroundThirty.myframe.MyJFrame;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,19 +11,18 @@ import java.awt.event.ActionListener;
 import static com.aroundThirty.Resource.FR.*;
 
 public class MainPageGUI extends MyJFrame {
-    public static CardLayout layout;
     public static Container container;
     public static CenterPanel cp;
     public static LeftPanel lp;
     public static RightPanel rp;
     public static BottomPanel bp;
     public static TopPanel tp;
+    JFrame frame = new JFrame();
 
     public MainPageGUI() {
-        super("MainPage", 1920, 1080);
+        super("MainPage", 1440, 900);
         super.setTitle("MainPage");
         super.setBackground(color);
-//        getContentPane().setLayout(pages);
     }
 
     @Override
@@ -39,8 +39,10 @@ public class MainPageGUI extends MyJFrame {
         container.add(BorderLayout.NORTH, tp);
         container.add(BorderLayout.SOUTH, bp);
         container.add(BorderLayout.WEST, lp);
-        container.add(BorderLayout.EAST, rp);
+//        container.add(BorderLayout.EAST, rp);
         container.setBackground(color);
+//        JScrollPane scrollBar = new JScrollPane();
+//        cp.add(scrollBar.getVerticalScrollBar());
     }
 
     @Override
@@ -56,8 +58,8 @@ public class MainPageGUI extends MyJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 container.remove(jPanel);
-                container.add(BorderLayout.CENTER, mmp);
-                jPanel = mmp;
+                container.add(BorderLayout.CENTER, cp);
+                jPanel = cp;
                 revalidate();
                 repaint();
             }
@@ -121,6 +123,13 @@ public class MainPageGUI extends MyJFrame {
         loginPopup.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            }
+        });
+
+        searchBTN.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SearchPage();
             }
         });
     }

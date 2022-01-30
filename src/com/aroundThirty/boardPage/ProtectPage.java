@@ -10,5 +10,4 @@ public class ProtectPage extends JPanel {
         JButton btn = new JButton("test");
         this.add(btn);
     }
-
 }

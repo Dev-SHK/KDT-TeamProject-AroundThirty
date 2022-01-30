@@ -32,5 +32,4 @@ public class BottomPanel extends JPanel {
         this.setBackground(color);
         this.add(BorderLayout.CENTER, centerPan);
     }
-
 }

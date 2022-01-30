@@ -13,12 +13,13 @@ public class LoginPage extends JFrame {
         setSize(640, 480);
         add(BorderLayout.CENTER, centerPan);
 
-        JPanel rowPan01 = new JPanel();
-        rowPan01.add(new JLabel("NICKNAME"));
+
+        JPanel rowPan01 = new JPanel(); // ID, PW 라벨과 텍스트필드를 그룹으로 묶어서 관리!
+        rowPan01.add(new JLabel("I\tD"));
         rowPan01.add(new JTextField(20));
         rowPan01.setBackground(color);
         JPanel rowPan02 = new JPanel();
-        rowPan02.add(new JLabel("PASSWORD"));
+        rowPan02.add(new JLabel("PW"));
         rowPan02.add(new JTextField(20));
         rowPan02.setBackground(color);
 

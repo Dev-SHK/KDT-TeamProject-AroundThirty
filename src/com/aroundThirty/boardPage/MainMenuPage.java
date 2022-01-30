@@ -9,6 +9,5 @@ public class MainMenuPage extends JPanel {
         this.setBackground(Color.BLUE);
         JButton btn = new JButton("test");
         this.add(btn);
-
     }
 }
