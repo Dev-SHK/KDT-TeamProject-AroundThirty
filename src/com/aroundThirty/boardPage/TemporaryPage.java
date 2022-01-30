@@ -3,10 +3,10 @@ package com.aroundThirty.boardPage;
 import javax.swing.*;
 import java.awt.*;
 
-public class ProtectPage extends JPanel {
+public class TemporaryPage extends JPanel {
 
 
-    public ProtectPage() {
+    public TemporaryPage() {
         this.setBackground(Color.lightGray);
         JButton btn = new JButton("test");
         this.add(btn);
