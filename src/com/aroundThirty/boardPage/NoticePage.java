@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class NoticePage extends JPanel {
 
+
     public NoticePage() {
         this.setBackground(Color.CYAN);
         JButton btn = new JButton("test");

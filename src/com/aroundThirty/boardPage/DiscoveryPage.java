@@ -23,7 +23,6 @@ public class DiscoveryPage extends JPanel {
         }
     }
 
-
     class RoundedButton extends JButton {
         public RoundedButton() {
             super();

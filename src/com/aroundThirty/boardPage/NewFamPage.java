@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class NewFamPage extends JPanel {
 
+
     public NewFamPage() {
         this.setBackground(Color.green);
         JButton btn = new JButton("test");

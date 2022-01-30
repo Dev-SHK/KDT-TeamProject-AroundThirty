@@ -13,7 +13,6 @@ public class LoginPage extends JFrame {
         setSize(640, 480);
         add(BorderLayout.CENTER, centerPan);
 
-
         JPanel rowPan01 = new JPanel(); // ID, PW 라벨과 텍스트필드를 그룹으로 묶어서 관리!
         rowPan01.add(new JLabel("I\tD"));
         rowPan01.add(new JTextField(20));

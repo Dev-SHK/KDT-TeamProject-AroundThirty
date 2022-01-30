@@ -135,6 +135,7 @@ public class MainPageGUI extends MyJFrame {
     }
 
     public static void main(String[] args) {
+
         new MainPageGUI().setVisible(true);
     }
 }

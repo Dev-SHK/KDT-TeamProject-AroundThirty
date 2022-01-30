@@ -72,5 +72,4 @@ public class LeftPanel extends JPanel {
     public static void main(String[] args) {
         new LeftPanel().setVisible(true);
     }
-
 }

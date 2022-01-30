@@ -104,5 +104,4 @@ public class FR {
         ImageIcon imgSize = new ImageIcon(imgScale);
         return imgSize;
     }
-
 }

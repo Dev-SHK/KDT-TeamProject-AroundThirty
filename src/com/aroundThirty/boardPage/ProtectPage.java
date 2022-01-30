@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class ProtectPage extends JPanel {
 
+
     public ProtectPage() {
         this.setBackground(Color.lightGray);
         JButton btn = new JButton("test");

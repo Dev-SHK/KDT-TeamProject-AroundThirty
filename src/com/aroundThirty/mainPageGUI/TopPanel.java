@@ -36,5 +36,4 @@ public class TopPanel extends JPanel {
     public static void main(String[] args) {
         new TopPanel().setVisible(true);
     }
-
 }

@@ -79,5 +79,4 @@ public class CenterPanel extends JPanel {
             super.paintComponent(g);
         }
     }
-
 }

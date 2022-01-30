@@ -29,5 +29,4 @@ public class RoundJTextField extends JTextField {
         }
         return shape.contains(x, y);
     }
-
 }
