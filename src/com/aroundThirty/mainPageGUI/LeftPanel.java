@@ -26,41 +26,41 @@ public class LeftPanel extends JPanel {
         noticeBTN.setFont(fontNanum);
         noticeBTN.setBorderPainted(false);
 
-        JPanel discoveryPan = new JPanel();
-        discoveryPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
-        discoveryPan.setBackground(color01);
-        discoveryPan.add(discoverBTN);
-        discoverBTN.setFont(fontNanum);
-        discoverBTN.setBorderPainted(false);
+        JPanel reportPan = new JPanel();
+        reportPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        reportPan.setBackground(color01);
+        reportPan.add(reportBTN);
+        reportBTN.setFont(fontNanum);
+        reportBTN.setBorderPainted(false);
 
         JPanel missingPan = new JPanel();
         missingPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         missingPan.setBackground(color01);
-        missingPan.add(missBTN);
-        missBTN.setFont(fontNanum);
-        missBTN.setBorderPainted(false);
+        missingPan.add(missingBTN);
+        missingBTN.setFont(fontNanum);
+        missingBTN.setBorderPainted(false);
 
-        JPanel protectPan = new JPanel();
-        protectPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
-        protectPan.setBackground(color01);
-        protectPan.add(protectBTN);
-        protectBTN.setFont(fontNanum);
-        protectBTN.setBorderPainted(false);
+        JPanel tempPan = new JPanel();
+        tempPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        tempPan.setBackground(color01);
+        tempPan.add(tempBTN);
+        tempBTN.setFont(fontNanum);
+        tempBTN.setBorderPainted(false);
 
-        JPanel findPan = new JPanel();
-        findPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
-        findPan.setBackground(color01);
-        findPan.add(newFamBTN);
-        newFamBTN.setFont(fontNanum);
-        newFamBTN.setBorderPainted(false);
+        JPanel adoptPan = new JPanel();
+        adoptPan.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        adoptPan.setBackground(color01);
+        adoptPan.add(adoptBTN);
+        adoptBTN.setFont(fontNanum);
+        adoptBTN.setBorderPainted(false);
 
         JPanel gridPan = new JPanel(new GridLayout(6, 1));
         gridPan.add(mainPan);
         gridPan.add(noticePan);
-        gridPan.add(discoveryPan);
+        gridPan.add(reportPan);
         gridPan.add(missingPan);
-        gridPan.add(protectPan);
-        gridPan.add(findPan);
+        gridPan.add(tempPan);
+        gridPan.add(adoptPan);
         gridPan.setBackground(color01);
 
         centerPan.add(gridPan);

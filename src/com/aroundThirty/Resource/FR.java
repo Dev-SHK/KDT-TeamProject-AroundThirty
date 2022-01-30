@@ -85,17 +85,17 @@ public class FR {
     public static final JButton searchBTN = new JButton(imageSetSize(searchImgIcon, 40, 40));
     public static final JButton mainMenuBTN = new JButton("메인메뉴");
     public static final JButton noticeBTN = new JButton("공지사항");
-    public static final JButton discoverBTN = new JButton("발견했어요");
-    public static final JButton missBTN = new JButton("잃어버렸어요");
-    public static final JButton protectBTN = new JButton("보호중이에요");
-    public static final JButton newFamBTN = new JButton("새 가족을 찾아요");
+    public static final JButton reportBTN = new JButton("발견했어요");
+    public static final JButton missingBTN = new JButton("잃어버렸어요");
+    public static final JButton tempBTN = new JButton("보호중이에요");
+    public static final JButton adoptBTN = new JButton("새 가족을 찾아요");
     public static final JButton searchPageBTN = new JButton("검색");
 
-    public static ReportPage dp = new ReportPage();
+    public static ReportPage rep = new ReportPage();
     public static MissingPage mp = new MissingPage();
-    public static AdoptPage nfp = new AdoptPage();
+    public static AdoptPage ap = new AdoptPage();
     public static NoticePage np = new NoticePage();
-    public static TemporaryPage pp = new TemporaryPage();
+    public static TemporaryPage tep = new TemporaryPage();
     public static JPanel jPanel;
 
     static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {

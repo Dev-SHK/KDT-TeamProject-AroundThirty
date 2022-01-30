@@ -76,18 +76,18 @@ public class MainPageGUI extends MyJFrame {
             }
         });
 
-        discoverBTN.addActionListener(new ActionListener() {
+        reportBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 container.remove(jPanel);
-                container.add(BorderLayout.CENTER, dp);
-                jPanel = dp;
+                container.add(BorderLayout.CENTER, rep);
+                jPanel = rep;
                 revalidate();
                 repaint();
             }
         });
 
-        missBTN.addActionListener(new ActionListener() {
+        missingBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 container.remove(jPanel);
@@ -98,23 +98,23 @@ public class MainPageGUI extends MyJFrame {
             }
         });
 
-        protectBTN.addActionListener(new ActionListener() {
+        tempBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 container.remove(jPanel);
-                container.add(BorderLayout.CENTER, pp);
-                jPanel = pp;
+                container.add(BorderLayout.CENTER, tep);
+                jPanel = tep;
                 revalidate();
                 repaint();
             }
         });
 
-        newFamBTN.addActionListener(new ActionListener() {
+        adoptBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 container.remove(jPanel);
-                container.add(BorderLayout.CENTER, nfp);
-                jPanel = nfp;
+                container.add(BorderLayout.CENTER, ap);
+                jPanel = ap;
                 revalidate();
                 repaint();
             }

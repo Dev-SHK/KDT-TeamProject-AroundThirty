@@ -17,7 +17,7 @@ public class CenterPanel extends JPanel {
         for (int i = 0; i < 8; i++) {
             add(new RoundedButton("유기동물 사진" + i));
         }
-        add(scroll.getVerticalScrollBar());
+//        add(scroll.getVerticalScrollBar());
     }
 
     class RoundedButton extends JButton {
