@@ -91,11 +91,11 @@ public class FR {
     public static final JButton newFamBTN = new JButton("새 가족을 찾아요");
     public static final JButton searchPageBTN = new JButton("검색");
 
-    public static DiscoveryPage dp = new DiscoveryPage();
-    public static MissPage mp = new MissPage();
-    public static NewFamPage nfp = new NewFamPage();
+    public static ReportPage dp = new ReportPage();
+    public static MissingPage mp = new MissingPage();
+    public static AdoptPage nfp = new AdoptPage();
     public static NoticePage np = new NoticePage();
-    public static ProtectPage pp = new ProtectPage();
+    public static TemporaryPage pp = new TemporaryPage();
     public static JPanel jPanel;
 
     static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {

@@ -3,9 +3,9 @@ package com.aroundThirty.boardPage;
 import javax.swing.*;
 import java.awt.*;
 
-public class MissPage extends JPanel {
+public class MissingPage extends JPanel {
 
-    public MissPage() {
+    public MissingPage() {
         this.setBackground(Color.ORANGE);
         JButton btn = new JButton("test");
         this.add(btn);

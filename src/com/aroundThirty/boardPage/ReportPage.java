@@ -13,9 +13,9 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class DiscoveryPage extends JPanel {
+public class ReportPage extends JPanel {
 
-    public DiscoveryPage() {
+    public ReportPage() {
         setLayout(new GridLayout(2, 8, 50, 20));
 
         for (int i = 0; i < 8; i++) {
