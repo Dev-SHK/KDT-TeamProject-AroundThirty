@@ -12,9 +12,10 @@ public class CenterPanel extends JPanel {
     public CenterPanel() {
         gridPan = new JPanel(new GridLayout(4, 8, 40, 15));
 
-        for (int i = 0; i < 100; i++) {
-            add(new RoundedButton("유기동물 사진" + i));
+        for (int i = 0; i < 16; i++) {
+            add(new RoundedButton("유기동물 사진 - 메인" + i));
         }
+        setPreferredSize(new Dimension(300, 1500));
         setLayout(gridPan.getLayout());
     }
 
