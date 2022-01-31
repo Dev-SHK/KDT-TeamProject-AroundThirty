@@ -7,17 +7,15 @@ import javax.swing.*;
 import static com.aroundThirty.Resource.FR.*;
 
 public class CenterPanel extends JPanel {
-    JPanel centerPan;
-    JScrollPane scroll;
+    JPanel gridPan;
 
     public CenterPanel() {
-        centerPan = new JPanel(new GridLayout(2, 8, 40, 15));
-        setLayout(centerPan.getLayout());
+        gridPan = new JPanel(new GridLayout(4, 8, 40, 15));
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 100; i++) {
             add(new RoundedButton("유기동물 사진" + i));
         }
-//        add(scroll.getVerticalScrollBar());
+        setLayout(gridPan.getLayout());
     }
 
     class RoundedButton extends JButton {
