@@ -40,11 +40,10 @@ public class MainPageGUI extends MyJFrame {
         container.add(BorderLayout.WEST, lp);
 //        container.add(BorderLayout.EAST, rp);
         container.setBackground(color);
-        JScrollPane scrollPane = new JScrollPane(jPanel);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        jPanel.getPreferredSize();
-        container.add(scrollPane);
+//        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        jPanel.getPreferredSize();
+//        container.add(scrollPane);
 
         Dimension frameSize = getSize();
         Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -88,6 +87,13 @@ public class MainPageGUI extends MyJFrame {
             public void actionPerformed(ActionEvent e) {
                 container.remove(jPanel);
                 container.add(BorderLayout.CENTER, rep);
+//                jPanel.add(new Label("TEST"));
+                rep.setBackground(Color.green);
+                JScrollPane scrollPane = new JScrollPane(rep);
+                container.add(scrollPane);
+                scrollPane.setViewportView(rep);
+                scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+                scrollPane.getVerticalScrollBar().setUnitIncrement(15); // 스크롤 속도 설정
                 jPanel = rep;
                 revalidate();
                 repaint();
