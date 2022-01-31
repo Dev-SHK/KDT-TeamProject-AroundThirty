@@ -33,7 +33,7 @@ public class TopPanel extends JPanel {
         this.add(centerPan);
     }
 
-    public static void main(String[] args) {
-        new TopPanel().setVisible(true);
-    }
+//    public static void main(String[] args) {
+//        new TopPanel().setVisible(true);
+//    }
 }

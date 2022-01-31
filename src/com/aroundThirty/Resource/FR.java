@@ -70,7 +70,7 @@ public class FR {
     public static Color color = new Color(246, 208, 180, 255);
     public static Color color01 = new Color(255, 250, 200, 255);
     public static Font fontCourier = new Font("Courier New", Font.PLAIN, 20);
-    public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 25);
+    public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 20);
 
     public static String catImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/ImgFiles/CatIcon.png";
     public static String searchImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/free-icon-rounded-magnifying-glass-13267.png";

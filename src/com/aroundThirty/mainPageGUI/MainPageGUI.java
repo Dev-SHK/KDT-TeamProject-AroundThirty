@@ -17,7 +17,6 @@ public class MainPageGUI extends MyJFrame {
     public static RightPanel rp;
     public static BottomPanel bp;
     public static TopPanel tp;
-    JFrame frame = new JFrame();
 
     public MainPageGUI() {
         super("MainPage", 1440, 900);
@@ -41,8 +40,16 @@ public class MainPageGUI extends MyJFrame {
         container.add(BorderLayout.WEST, lp);
 //        container.add(BorderLayout.EAST, rp);
         container.setBackground(color);
-//        JScrollPane scrollBar = new JScrollPane();
-//        cp.add(scrollBar.getVerticalScrollBar());
+        JScrollPane scrollPane = new JScrollPane(jPanel);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        jPanel.getPreferredSize();
+        container.add(scrollPane);
+
+        Dimension frameSize = getSize();
+        Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((windowSize.width - frameSize.width) / 2,
+                (windowSize.height - frameSize.height) / 2); //화면 중앙에 띄우기
     }
 
     @Override
