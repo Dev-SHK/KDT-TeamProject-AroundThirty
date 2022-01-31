@@ -89,7 +89,6 @@ public class FR {
     public static final JButton missingBTN = new JButton("잃어버렸어요");
     public static final JButton tempBTN = new JButton("보호중이에요");
     public static final JButton adoptBTN = new JButton("새 가족을 찾아요");
-    public static final JButton searchPageBTN = new JButton("검색");
 
     public static ReportPage rep = new ReportPage();
     public static MissingPage mp = new MissingPage();
