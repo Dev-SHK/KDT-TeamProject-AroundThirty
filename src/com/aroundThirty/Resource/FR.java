@@ -69,26 +69,31 @@ public class FR {
 
     public static Color color = new Color(246, 208, 180, 255);
     public static Color color01 = new Color(255, 250, 200, 255);
-    public static Font fontCourier = new Font("Courier New", Font.PLAIN, 20);
+    public static Font fontCourier = new Font("Courier New", Font.PLAIN, 25);
     public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 20);
 
     public static String catImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/ImgFiles/CatIcon.png";
+    public static String dogImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/Dog.png";
     public static String searchImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/free-icon-rounded-magnifying-glass-13267.png";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
+    public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
     public static ImageIcon searchImgIcon = new ImageIcon(searchImgPath);
 
     public static final JButton loginMain = new JButton("LOGIN");
     public static final JButton loginPopup = new JButton("LOGIN");
     public static final JButton signUp = new JButton("회원가입");
-    public static final JButton switchPet = new JButton(imageSetSize(catImgIcon, 50, 50));
-    public static final JButton searchBTN = new JButton(imageSetSize(searchImgIcon, 40, 40));
+    public static final JButton catBTN = new JButton(imageSetSize(catImgIcon, 50, 50));
+    public static final JButton dogBTN = new JButton(imageSetSize(dogImgIcon, 50, 50));
+    public static final JButton searchBTN = new JButton(imageSetSize(searchImgIcon, 25, 25));
     public static final JButton mainMenuBTN = new JButton("메인메뉴");
     public static final JButton noticeBTN = new JButton("공지사항");
     public static final JButton reportBTN = new JButton("발견했어요");
     public static final JButton missingBTN = new JButton("잃어버렸어요");
     public static final JButton tempBTN = new JButton("보호중이에요");
     public static final JButton adoptBTN = new JButton("새 가족을 찾아요");
+    public static final JButton writing = new JButton("새 글 작성");
+
 
     public static ReportPage rep = new ReportPage();
     public static MissingPage mp = new MissingPage();
