@@ -10,15 +10,13 @@ import static com.aroundThirty.Resource.FR.*;
 public class TopPanel extends JPanel {
 
     public TopPanel() {
-        JPanel centerPan = new JPanel(new GridBagLayout());
+        setLayout(new BorderLayout());
 
-        JPanel LoPanel = new JPanel();
-        LoPanel.add(locationCombo);
-        LoPanel.setBackground(color);
+        JPanel groupPan = new JPanel();
+        groupPan.add(locationCombo);
+        groupPan.setBackground(color);
 
-        JPanel LdPanel = new JPanel();
-        LdPanel.add(seoulCombo);
-        LdPanel.setBackground(color);
+        groupPan.add(seoulCombo);
 //        "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"
         locationCombo.addActionListener(new ActionListener() {
             @Override
@@ -132,43 +130,27 @@ public class TopPanel extends JPanel {
             }
         });
 
-        JPanel GePanel = new JPanel();
-        GePanel.add(genderCombo);
-        GePanel.setBackground(color);
+        groupPan.add(genderCombo);
+        groupPan.add(kindCombo);
 
-        JPanel kindPanel = new JPanel();
-        kindPanel.add(kindCombo);
-        kindPanel.setBackground(color);
-
+        groupPan.add(searchBTN);
         searchBTN.setBorderPainted(false);
         searchBTN.getPreferredSize();
 
         loginMain.setFont(fontCourier);
         loginMain.getPreferredSize();
         loginMain.setBorderPainted(false);
+        groupPan.add(loginMain);
 
-        switchPet.setBorderPainted(false);
-        switchPet.getPreferredSize();
+        catBTN.setBorderPainted(false);
+        catBTN.getPreferredSize();
+        groupPan.add(catBTN);
+        add(groupPan, BorderLayout.EAST);
 
-        JPanel gridPan = new JPanel(new GridBagLayout());
-        gridPan.add(LoPanel);
-        gridPan.add(LdPanel);
-        gridPan.add(kindPanel);
-        gridPan.add(GePanel);
-        gridPan.add(searchBTN);
-        gridPan.add(loginMain);
-        gridPan.add(switchPet);
-        gridPan.setBackground(color);
-
-        centerPan.add(gridPan);
-        centerPan.setBackground(color);
+        dogBTN.setBorderPainted(false);
+        dogBTN.getPreferredSize();
+        add(dogBTN, BorderLayout.WEST);
 
         this.setBackground(color);
-        this.add(centerPan);
-
     }
-
-//    public static void main(String[] args) {
-//        new TopPanel().setVisible(true);
-//    }
 }

@@ -1,6 +1,8 @@
 package com.aroundThirty.mainPageGUI;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 
@@ -8,12 +10,32 @@ import static com.aroundThirty.Resource.FR.*;
 
 public class CenterPanel extends JPanel {
     JPanel gridPan;
+    RoundedButton rbtn;
+    Color btnColor = new Color(100,100,100, 70);
+
 
     public CenterPanel() {
         gridPan = new JPanel(new GridLayout(4, 8, 40, 15));
 
-        for (int i = 0; i < 16; i++) {
-            add(new RoundedButton("유기동물 사진 - 메인" + i));
+        int i;
+        for (i = 0; i < 16; i++) {
+            add(rbtn = new RoundedButton("유기동물 사진 - 메인" + i));
+            int finalI = i;
+            rbtn.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    RoundedButton roundedButton = (RoundedButton) e.getSource();
+                    roundedButton.setForeground(btnColor);
+                    roundedButton.setText("마우스 오버 테스트");
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e){
+                    RoundedButton roundedButton = (RoundedButton) e.getSource();
+                    roundedButton.setText("유기동물 사진 - 메인" + finalI);
+
+                }
+            });
         }
         setPreferredSize(new Dimension(300, 1500));
         setLayout(gridPan.getLayout());
