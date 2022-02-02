@@ -16,17 +16,17 @@ public class ReportPage extends JPanel {
 
 
     public ReportPage() {
-        List<ReportDto> list = ReportDao.reportSelectAll();
-        for(ReportDto reportDto : list) {
-            data = reportDto;
-        }
-        int row = list.size() / 4;
-        centerPan = new JPanel(new GridLayout(row, 4, 40, 0));  // container의 center에 ReportPage를 넣고 center패널을 하나더 만듦?
-        setPreferredSize(new Dimension(300,1500));  // 컨텐츠(?)의 크기 지정
-        setLayout(centerPan.getLayout()); // centerPan의 레이아웃을 가져옴
-        for (int i = 0; i < list.size(); i++) {
-            add(new RoundedButton("제보 사진" + i + "\n" + new Label(data.report_Place))); // 레이아웃에 맞게 버튼 정렬
-        }
+//        List<ReportDto> list = ReportDao.reportSelectAll();
+//        for(ReportDto reportDto : list) {
+//            data = reportDto;
+//        }
+//        int row = list.size() / 4;
+//        centerPan = new JPanel(new GridLayout(row, 4, 40, 0));  // container의 center에 ReportPage를 넣고 center패널을 하나더 만듦?
+//        setPreferredSize(new Dimension(300,1500));  // 컨텐츠(?)의 크기 지정
+//        setLayout(centerPan.getLayout()); // centerPan의 레이아웃을 가져옴
+//        for (int i = 0; i < list.size(); i++) {
+//            add(new RoundedButton("제보 사진" + i + "\n" + new Label(data.report_Place))); // 레이아웃에 맞게 버튼 정렬
+//        }
 //        scroll = new JScrollPane(this);   // scroll(JScrollPane)안에 centerPan 구현
 //        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);    // 상하 스크롤에 대한 정책을 설정한다. (스크롤바가 항상 보이도록 설정)
 //        scroll.setViewportView(centerPan); //

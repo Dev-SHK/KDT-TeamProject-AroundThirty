@@ -1,4 +1,4 @@
-package com.aroundThirty.mainPageGUI;
+package com.aroundThirty.model;
 
 import javax.swing.*;
 import java.awt.*;
