@@ -40,11 +40,6 @@ public class MainPageGUI extends MyJFrame {
         container.add(BorderLayout.WEST, lp);
 //        container.add(BorderLayout.EAST, rp);
         container.setBackground(color);
-        scrollPane = new JScrollPane(cp);
-        container.add(scrollPane);
-        scrollPane.setViewportView(cp);
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(15);
         writing.setEnabled(false);
 
         Dimension frameSize = getSize();
@@ -53,6 +48,7 @@ public class MainPageGUI extends MyJFrame {
                 (windowSize.height - frameSize.height) / 2); //화면 중앙에 띄우기
     }
 
+    // controller로 이동할 이벤트
     @Override
     protected void actionEvent() {
         loginMain.addActionListener(new ActionListener() {
@@ -70,13 +66,8 @@ public class MainPageGUI extends MyJFrame {
         mainMenuBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(scrollPane);
+                container.remove(jPanel);
                 container.add(BorderLayout.CENTER, cp);
-                scrollPane = new JScrollPane(cp);
-                container.add(scrollPane);
-                scrollPane.setViewportView(cp);
-                scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.getVerticalScrollBar().setUnitIncrement(15);
                 jPanel = cp;
                 revalidate();
                 repaint();
@@ -87,13 +78,8 @@ public class MainPageGUI extends MyJFrame {
         noticeBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(scrollPane);
+                container.remove(jPanel);
                 container.add(BorderLayout.CENTER, np);
-                scrollPane = new JScrollPane(np);
-                container.add(scrollPane);
-                scrollPane.setViewportView(np);
-                scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.getVerticalScrollBar().setUnitIncrement(15);
                 jPanel = np;
                 revalidate();
                 repaint();
@@ -104,13 +90,8 @@ public class MainPageGUI extends MyJFrame {
         reportBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(scrollPane);
+                container.remove(jPanel);
                 container.add(BorderLayout.CENTER, rep);
-                scrollPane = new JScrollPane(rep);
-                container.add(scrollPane);
-                scrollPane.setViewportView(rep);
-                scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.getVerticalScrollBar().setUnitIncrement(15);
                 jPanel = rep;
                 revalidate();
                 repaint();
@@ -121,13 +102,8 @@ public class MainPageGUI extends MyJFrame {
         missingBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(scrollPane);
+                container.remove(jPanel);
                 container.add(BorderLayout.CENTER, mp);
-                scrollPane = new JScrollPane(mp);
-                container.add(scrollPane);
-                scrollPane.setViewportView(mp);
-                scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.getVerticalScrollBar().setUnitIncrement(15);
                 jPanel = mp;
                 revalidate();
                 repaint();
@@ -138,13 +114,8 @@ public class MainPageGUI extends MyJFrame {
         tempBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(scrollPane);
+                container.remove(jPanel);
                 container.add(BorderLayout.CENTER, tep);
-                scrollPane = new JScrollPane(tep);
-                container.add(scrollPane);
-                scrollPane.setViewportView(tep);
-                scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.getVerticalScrollBar().setUnitIncrement(15);
                 jPanel = tep;
                 revalidate();
                 repaint();
@@ -155,13 +126,8 @@ public class MainPageGUI extends MyJFrame {
         adoptBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(scrollPane);
+                container.remove(jPanel);
                 container.add(BorderLayout.CENTER, ap);
-                scrollPane = new JScrollPane(ap);
-                container.add(scrollPane);
-                scrollPane.setViewportView(ap);
-                scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.getVerticalScrollBar().setUnitIncrement(15);
                 jPanel = ap;
                 revalidate();
                 repaint();

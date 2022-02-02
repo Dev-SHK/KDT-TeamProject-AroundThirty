@@ -6,26 +6,24 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 
-import static com.aroundThirty.Resource.FR.*;
-
 public class CenterPanel extends JPanel {
-    JPanel gridPan;
+    JPanel mainPanel;
     RoundedButton rbtn;
-    Color btnColor = new Color(100,100,100, 70);
+    JScrollPane scrollPane;
 
 
     public CenterPanel() {
-        gridPan = new JPanel(new GridLayout(4, 8, 40, 15));
+        mainPanel = new JPanel(new GridLayout(4, 8, 40, 15));
+        scrollPane = new JScrollPane(mainPanel);
 
         int i;
         for (i = 0; i < 16; i++) {
-            add(rbtn = new RoundedButton("유기동물 사진 - 메인" + i));
+            mainPanel.add(rbtn = new RoundedButton("유기동물 사진 - 메인" + i));
             int finalI = i;
             rbtn.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     RoundedButton roundedButton = (RoundedButton) e.getSource();
-                    roundedButton.setForeground(btnColor);
                     roundedButton.setText("마우스 오버 테스트");
                 }
 
@@ -37,8 +35,12 @@ public class CenterPanel extends JPanel {
                 }
             });
         }
-        setPreferredSize(new Dimension(300, 1500));
-        setLayout(gridPan.getLayout());
+        setLayout(new BorderLayout());
+        add(scrollPane);
+        scrollPane.setViewportView(mainPanel);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        mainPanel.setPreferredSize(new Dimension(300, 1500));
+        scrollPane.getVerticalScrollBar().setUnitIncrement(15);
     }
 
     class RoundedButton extends JButton {
