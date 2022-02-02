@@ -6,6 +6,7 @@ import java.awt.*;
 public class MissingPage extends JPanel {
     JPanel gridPan;
 
+
     public MissingPage() {
         gridPan = new JPanel(new GridLayout(4, 8, 40, 15));
 
