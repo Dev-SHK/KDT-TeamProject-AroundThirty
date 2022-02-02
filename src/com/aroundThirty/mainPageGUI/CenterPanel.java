@@ -13,6 +13,7 @@ public class CenterPanel extends JPanel {
     RoundedButton rbtn;
     Color btnColor = new Color(100,100,100, 70);
 
+
     public CenterPanel() {
         gridPan = new JPanel(new GridLayout(4, 8, 40, 15));
 

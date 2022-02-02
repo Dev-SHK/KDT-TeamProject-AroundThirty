@@ -72,7 +72,7 @@ public class ReportPage extends JPanel {
             Color c = new Color(255, 247, 242); // 배경색 결정
             Color o = new Color(247, 99, 12); // 글자색 결정
             double width = getWidth();
-            double height = getHeight() / 1.1;
+            double height = getHeight() / 1.5;
             Graphics2D graphics = (Graphics2D) g;
             graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             if (getModel().isArmed()) {

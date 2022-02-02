@@ -152,6 +152,5 @@ public class TopPanel extends JPanel {
         add(dogBTN, BorderLayout.WEST);
 
         this.setBackground(color);
-
     }
 }

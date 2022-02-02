@@ -2,7 +2,6 @@ package com.aroundThirty.mainPageGUI;
 
 import com.aroundThirty.boardPage.*;
 import com.aroundThirty.myframe.MyJFrame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -62,9 +61,9 @@ public class MainPageGUI extends MyJFrame {
                 if (new LoginPage().isVisible()) {
                     loginMain.setEnabled(false);
                 }
-                if (!(new LoginPage().isDisplayable())){
-                    loginMain.setEnabled(true);
-                }
+//                if (!(new LoginPage().isVisible())){
+//                    loginMain.setEnabled(true);
+//                }
             }
         });
 

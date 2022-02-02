@@ -12,6 +12,5 @@ public class BottomPanel extends JPanel {
         setLayout(new BorderLayout());
         writing.setBorderPainted(false);
         add(writing, BorderLayout.EAST);
-
     }
 }
