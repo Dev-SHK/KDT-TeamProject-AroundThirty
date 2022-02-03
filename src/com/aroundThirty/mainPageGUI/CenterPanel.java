@@ -38,6 +38,7 @@ public class CenterPanel extends JPanel {
         setLayout(new BorderLayout());
         add(scrollPane);
         scrollPane.setViewportView(mainPanel);
+        scrollPane.setBorder(null);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         mainPanel.setPreferredSize(new Dimension(300, 1500));
         scrollPane.getVerticalScrollBar().setUnitIncrement(15);
