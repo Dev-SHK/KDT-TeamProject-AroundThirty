@@ -9,10 +9,12 @@ import static com.aroundThirty.Resource.FR.*;
 
 public class TopPanel extends JPanel {
 
+    JPanel groupPan;
+
     public TopPanel() {
         setLayout(new BorderLayout());
 
-        JPanel groupPan = new JPanel();
+        groupPan = new JPanel();
         groupPan.add(locationCombo);
         groupPan.setBackground(color);
 
@@ -141,6 +143,10 @@ public class TopPanel extends JPanel {
         loginMain.getPreferredSize();
         loginMain.setBorderPainted(false);
         groupPan.add(loginMain);
+
+        logoutMain.setFont(fontCourier);
+        logoutMain.getPreferredSize();
+        logoutMain.setBorderPainted(false);
 
         catBTN.setBorderPainted(false);
         catBTN.getPreferredSize();
