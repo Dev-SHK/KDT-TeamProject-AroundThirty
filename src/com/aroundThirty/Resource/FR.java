@@ -71,6 +71,7 @@ public class FR {
     public static Color color01 = new Color(255, 250, 200, 255);
     public static Font fontCourier = new Font("Courier New", Font.PLAIN, 25);
     public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 20);
+    public static Font fontAppGothic = new Font("AppleGothic", Font.PLAIN, 12);
 
     public static String catImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/ImgFiles/CatIcon.png";
     public static String dogImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/Dog.png";
@@ -80,7 +81,8 @@ public class FR {
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
     public static ImageIcon searchImgIcon = new ImageIcon(searchImgPath);
 
-    public static final JButton loginMain = new JButton("LOGIN");
+    public static JButton loginMain = new JButton("LOGIN");
+    public static final JButton logoutMain = new JButton("LOGOUT");
     public static final JButton loginPopup = new JButton("LOGIN");
     public static final JButton signUp = new JButton("회원가입");
     public static final JButton catBTN = new JButton(imageSetSize(catImgIcon, 50, 50));
@@ -93,6 +95,8 @@ public class FR {
     public static final JButton tempBTN = new JButton("보호중이에요");
     public static final JButton adoptBTN = new JButton("새 가족을 찾아요");
     public static final JButton writing = new JButton("새 글 작성");
+    public static final JTextField idTxtFld = new JTextField(20);
+    public static final JPasswordField pwTxtFld = new JPasswordField(20);
 
 
     public static ReportPage rep = new ReportPage();
@@ -100,7 +104,10 @@ public class FR {
     public static AdoptPage ap = new AdoptPage();
     public static NoticePage np = new NoticePage();
     public static TemporaryPage tep = new TemporaryPage();
-    public static JPanel jPanel;
+    public static LoginPage loginPage;
+    public static SignUpPage signUpPage;
+
+    public static JPanel switchCenterPanel;
 
     static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
         Image img = icon.getImage();  //ImageIcon을 Image로 변환.

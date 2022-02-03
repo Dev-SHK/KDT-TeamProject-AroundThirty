@@ -17,7 +17,6 @@ public class MainPageGUI extends MyJFrame {
     public static RightPanel rp;
     public static BottomPanel bp;
     public static TopPanel tp;
-    JScrollPane scrollPane;
 
     public MainPageGUI() {
         super("MainPage", 1440, 900);
@@ -34,7 +33,7 @@ public class MainPageGUI extends MyJFrame {
         rp = new RightPanel();
         bp = new BottomPanel();
         tp = new TopPanel();
-        jPanel = cp;
+        switchCenterPanel = cp;
         container.add(BorderLayout.CENTER, cp);
         container.add(BorderLayout.NORTH, tp);
         container.add(BorderLayout.SOUTH, bp);
@@ -55,21 +54,16 @@ public class MainPageGUI extends MyJFrame {
         loginMain.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (new LoginPage().isVisible()) {
-                    loginMain.setEnabled(false);
-                }
-//                if (!(new LoginPage().isVisible())){
-//                    loginMain.setEnabled(true);
-//                }
+                loginPage = new LoginPage();
             }
         });
 
         mainMenuBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(jPanel);
+                container.remove(switchCenterPanel);
                 container.add(BorderLayout.CENTER, cp);
-                jPanel = cp;
+                switchCenterPanel = cp;
                 revalidate();
                 repaint();
                 writing.setEnabled(false);
@@ -79,9 +73,9 @@ public class MainPageGUI extends MyJFrame {
         noticeBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(jPanel);
+                container.remove(switchCenterPanel);
                 container.add(BorderLayout.CENTER, np);
-                jPanel = np;
+                switchCenterPanel = np;
                 revalidate();
                 repaint();
                 writing.setEnabled(false);
@@ -91,9 +85,9 @@ public class MainPageGUI extends MyJFrame {
         reportBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(jPanel);
+                container.remove(switchCenterPanel);
                 container.add(BorderLayout.CENTER, rep);
-                jPanel = rep;
+                switchCenterPanel = rep;
                 revalidate();
                 repaint();
                 writing.setEnabled(true);
@@ -103,9 +97,9 @@ public class MainPageGUI extends MyJFrame {
         missingBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(jPanel);
+                container.remove(switchCenterPanel);
                 container.add(BorderLayout.CENTER, mp);
-                jPanel = mp;
+                switchCenterPanel = mp;
                 revalidate();
                 repaint();
                 writing.setEnabled(true);
@@ -115,9 +109,9 @@ public class MainPageGUI extends MyJFrame {
         tempBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(jPanel);
+                container.remove(switchCenterPanel);
                 container.add(BorderLayout.CENTER, tep);
-                jPanel = tep;
+                switchCenterPanel = tep;
                 revalidate();
                 repaint();
                 writing.setEnabled(true);
@@ -127,9 +121,9 @@ public class MainPageGUI extends MyJFrame {
         adoptBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                container.remove(jPanel);
+                container.remove(switchCenterPanel);
                 container.add(BorderLayout.CENTER, ap);
-                jPanel = ap;
+                switchCenterPanel = ap;
                 revalidate();
                 repaint();
                 writing.setEnabled(true);
@@ -139,6 +133,28 @@ public class MainPageGUI extends MyJFrame {
         loginPopup.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String id = idTxtFld.getText().trim();
+                String pw = pwTxtFld.getText().trim();
+
+                if (id.equals("admin") && pw.equals("0000")) {
+                    int confirm = JOptionPane.showConfirmDialog(null, "로그인 할까요?", "로그인", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "로그인 되었어요 :)", "로그인 성공!!", JOptionPane.INFORMATION_MESSAGE);
+                        loginPage.dispose();
+                        tp.groupPan.remove(loginMain);
+                        tp.groupPan.add(logoutMain, 5);
+                        tp.revalidate();
+                        tp.repaint();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "취소되었어요", "로그인 취소", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else if (id.length() == 0 || pw.length() == 0) {
+                    JOptionPane.showMessageDialog(null, "ID와 비밀번호를 입력 해주세요.", "로그인 오류", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "ID 또는 비밀번호가 맞지 않아요 ㅠㅠ", "로그인 실패", JOptionPane.ERROR_MESSAGE);
+                    idTxtFld.setText("");
+                    pwTxtFld.setText("");
+                }
             }
         });
 
@@ -151,7 +167,23 @@ public class MainPageGUI extends MyJFrame {
         signUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new SignUpPage();
+                signUpPage = new SignUpPage();
+            }
+        });
+
+        logoutMain.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(null, "로그아웃 하시나요?", "로그아웃 확인", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null, "로그아웃 되었어요.", "로그아웃 완료!!", JOptionPane.INFORMATION_MESSAGE);
+                    tp.groupPan.remove(logoutMain);
+                    tp.groupPan.add(loginMain, 5);
+                    tp.revalidate();
+                    tp.repaint();
+                } else {
+                    JOptionPane.showMessageDialog(null, "취소되었어요.", "로그아웃 취소", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
     }
