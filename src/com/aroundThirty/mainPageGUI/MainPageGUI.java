@@ -2,6 +2,7 @@ package com.aroundThirty.mainPageGUI;
 
 import com.aroundThirty.boardPage.*;
 import com.aroundThirty.myframe.MyJFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -144,6 +145,13 @@ public class MainPageGUI extends MyJFrame {
         searchBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            }
+        });
+
+        signUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SignUpPage();
             }
         });
     }
