@@ -69,6 +69,7 @@ public class FR {
 
     public static Color color = new Color(246, 208, 180, 255);
     public static Color color01 = new Color(255, 250, 200, 255);
+    public static Color colortrans = new Color(255, 255, 255, 0);
     public static Font fontCourier = new Font("Courier New", Font.PLAIN, 25);
     public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 20);
     public static Font fontAppGothic = new Font("AppleGothic", Font.PLAIN, 12);
@@ -76,10 +77,12 @@ public class FR {
     public static String catImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/ImgFiles/CatIcon.png";
     public static String dogImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/Dog.png";
     public static String searchImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/free-icon-rounded-magnifying-glass-13267.png";
+    public static String bgImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/bg-dog.png";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
     public static ImageIcon searchImgIcon = new ImageIcon(searchImgPath);
+    public static ImageIcon bgImg = new ImageIcon(bgImgPath);
 
     public static JButton loginMain = new JButton("LOGIN");
     public static final JButton logoutMain = new JButton("LOGOUT");
