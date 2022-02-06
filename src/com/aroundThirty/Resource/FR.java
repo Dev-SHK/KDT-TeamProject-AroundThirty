@@ -1,6 +1,7 @@
 package com.aroundThirty.Resource;
 
 import com.aroundThirty.boardPage.*;
+import com.aroundThirty.mainPageGUI.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -69,7 +70,6 @@ public class FR {
 
     public static Color color = new Color(246, 208, 180, 255);
     public static Color color01 = new Color(255, 250, 200, 255);
-    public static Color colortrans = new Color(255, 255, 255, 0);
     public static Font fontCourier = new Font("Courier New", Font.PLAIN, 25);
     public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 20);
     public static Font fontAppGothic = new Font("AppleGothic", Font.PLAIN, 12);
@@ -91,12 +91,6 @@ public class FR {
     public static final JButton catBTN = new JButton(imageSetSize(catImgIcon, 50, 50));
     public static final JButton dogBTN = new JButton(imageSetSize(dogImgIcon, 50, 50));
     public static final JButton searchBTN = new JButton(imageSetSize(searchImgIcon, 25, 25));
-    public static final JButton mainMenuBTN = new JButton("메인메뉴");
-    public static final JButton noticeBTN = new JButton("공지사항");
-    public static final JButton reportBTN = new JButton("발견했어요");
-    public static final JButton missingBTN = new JButton("잃어버렸어요");
-    public static final JButton tempBTN = new JButton("보호중이에요");
-    public static final JButton adoptBTN = new JButton("새 가족을 찾아요");
     public static final JButton writing = new JButton("새 글 작성");
     public static final JTextField idTxtFld = new JTextField(20);
     public static final JPasswordField pwTxtFld = new JPasswordField(20);
@@ -105,12 +99,15 @@ public class FR {
     public static ReportPage rep = new ReportPage();
     public static MissingPage mp = new MissingPage();
     public static AdoptPage ap = new AdoptPage();
-    public static NoticePage np = new NoticePage();
     public static TemporaryPage tep = new TemporaryPage();
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
 
-    public static JPanel switchCenterPanel;
+    public static CenterPanel cp;
+    public static LeftPanel lp;
+    public static RightPanel rp;
+    public static RightTopPanel rtp;
+    public static BottomPanel bp;
 
     static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
         Image img = icon.getImage();  //ImageIcon을 Image로 변환.

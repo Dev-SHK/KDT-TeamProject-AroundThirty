@@ -36,7 +36,7 @@ public class AdoptReplyDao {
                 String replyModifyDt = rs.getString(4);
                 String userId = rs.getString(5);
                 int postNo = rs.getInt(6);
-                list.add(new ReplyDto(detail,replyCreateDt,replyModifyDt,userId, no, postNo));
+                list.add(new ReplyDto(detail, replyCreateDt, replyModifyDt, userId, no, postNo));
 
             }
         } catch (SQLException e) {

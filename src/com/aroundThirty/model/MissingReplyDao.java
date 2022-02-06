@@ -57,7 +57,7 @@ public class MissingReplyDao {
             pstmt = conn.prepareStatement(SQL_MISSING_REPLY_DELETE);
             pstmt.setInt(1, replyDto.getNo());
             int cnt = pstmt.executeUpdate();
-            if (cnt == 0){
+            if (cnt == 0) {
                 System.out.println("삭제 실패");
             }
         } catch (SQLException e) {
