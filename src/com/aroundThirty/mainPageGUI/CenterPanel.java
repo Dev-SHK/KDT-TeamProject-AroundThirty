@@ -12,10 +12,8 @@ import static com.aroundThirty.Resource.FR.*;
 public class CenterPanel extends JPanel {
     JPanel centerPan;
     JPanel mainPanel;
-    JButton rbtn;
     GridLayout gridLayout;
     JScrollPane scrollPane;
-    Boolean click;
 
     public CenterPanel() {
         scrollPane = new JScrollPane();
@@ -55,19 +53,9 @@ public class CenterPanel extends JPanel {
 
                 }
             });
-            rp = new RightPanel();
-            rbtn.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (click) {
-                        rp.setVisible(true);
-                        click = false;
-                    } else {
-                        rp.setVisible(false);
-                        click = true;
-                    }
-                }
-            });
+
+            onClick();
+
         }
         JPanel buttonPane = new JPanel();
         JButton btn1 = new JButton("1");
@@ -95,6 +83,7 @@ public class CenterPanel extends JPanel {
                     mainPanel.add(rbtn = new JButton("Page 02 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                onClick();
                 revalidate();
                 repaint();
             }
@@ -110,6 +99,7 @@ public class CenterPanel extends JPanel {
                     mainPanel.add(rbtn = new JButton("Page 03 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                onClick();
                 revalidate();
                 repaint();
             }
@@ -125,6 +115,7 @@ public class CenterPanel extends JPanel {
                     mainPanel.add(rbtn = new JButton("Page 04 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                onClick();
                 revalidate();
                 repaint();
             }
@@ -140,6 +131,7 @@ public class CenterPanel extends JPanel {
                     mainPanel.add(rbtn = new JButton("Page 05 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                onClick();
                 revalidate();
                 repaint();
             }
@@ -155,6 +147,7 @@ public class CenterPanel extends JPanel {
                     mainPanel.add(rbtn = new JButton("Page 06 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                onClick();
                 revalidate();
                 repaint();
             }
@@ -170,6 +163,7 @@ public class CenterPanel extends JPanel {
                     mainPanel.add(rbtn = new JButton("Page 07 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                onClick();
                 revalidate();
                 repaint();
             }
@@ -185,6 +179,7 @@ public class CenterPanel extends JPanel {
                     mainPanel.add(rbtn = new JButton("Page 08 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                onClick();
                 revalidate();
                 repaint();
             }
@@ -200,6 +195,7 @@ public class CenterPanel extends JPanel {
                     mainPanel.add(rbtn = new JButton("Page 09 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                onClick();
                 revalidate();
                 repaint();
             }

@@ -53,6 +53,7 @@ public class ReportPage extends JPanel {
 
                 }
             });
+            onClick();
         }
         JPanel buttonPane = new JPanel();
         JButton btn1 = new JButton("1");

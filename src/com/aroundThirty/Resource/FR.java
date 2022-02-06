@@ -5,6 +5,8 @@ import com.aroundThirty.mainPageGUI.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FR {
 
@@ -95,6 +97,8 @@ public class FR {
     public static final JButton writing = new JButton("새 글 작성");
     public static final JTextField idTxtFld = new JTextField(20);
     public static final JPasswordField pwTxtFld = new JPasswordField(20);
+    public static JButton rbtn = new JButton();
+    public static Boolean click = true;
 
 
     public static ReportPage rep = new ReportPage();
@@ -115,5 +119,21 @@ public class FR {
         Image imgScale = img.getScaledInstance(i, j, java.awt.Image.SCALE_SMOOTH);
         ImageIcon imgSize = new ImageIcon(imgScale);
         return imgSize;
+    }
+
+    public static void onClick() {
+        rp = new RightPanel();
+        rbtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (click) {
+                    rp.setVisible(true);
+                    click = false;
+                } else {
+                    rp.setVisible(false);
+                    click = true;
+                }
+            }
+        });
     }
 }
