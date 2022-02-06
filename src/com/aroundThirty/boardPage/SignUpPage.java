@@ -27,12 +27,12 @@ public class SignUpPage extends JFrame {
     private JTextField email;
     private JTextField phone;
 
-   private boolean SignUpPage = false;
+    private boolean SignUpPage = false;
 
     UserDao dao = new UserDao();
 
     public SignUpPage() {
-        setSize(640, 480);
+        setSize(480, 640);
         setVisible(true);
 
 
@@ -131,47 +131,41 @@ public class SignUpPage extends JFrame {
                 "^\\d{3}-\\d{3,4}-\\d{4}$"*/    // 폰번호 정규식
 
 
-
-                 if (id.getText().trim().length() == 0 || id.getText().trim().equals("아이디")) {
-                        JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요.", "아이디 입력", JOptionPane.WARNING_MESSAGE);
-                        id.grabFocus();
-                        return;
-                    } else if(label.equals(label2)) {
-                     System.out.println("test");
+                if (id.getText().trim().length() == 0 || id.getText().trim().equals("아이디")) {
+                    JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요.", "아이디 입력", JOptionPane.WARNING_MESSAGE);
+                    id.grabFocus();
+                    return;
+                } else if (label.equals(label2)) {
+                    System.out.println("test");
 
                 }
 
-                 if (password.getText().trim().length() == 0) {
-                        JOptionPane.showMessageDialog(null, "비밀번호를 입력해 주세요.", "비밀번호 입력", JOptionPane.WARNING_MESSAGE);
-                        password.grabFocus();
-                        return;
-                    }
+                if (password.getText().trim().length() == 0) {
+                    JOptionPane.showMessageDialog(null, "비밀번호를 입력해 주세요.", "비밀번호 입력", JOptionPane.WARNING_MESSAGE);
+                    password.grabFocus();
+                    return;
+                }
 
-                    if (name.getText().trim().length() == 0 || name.getText().trim().equals("이름")) {
-                        JOptionPane.showMessageDialog(null, "이름을 입력해 주세요.", "이름 입력", JOptionPane.WARNING_MESSAGE);
-                        name.grabFocus();
-                        return;
-                    }
+                if (name.getText().trim().length() == 0 || name.getText().trim().equals("이름")) {
+                    JOptionPane.showMessageDialog(null, "이름을 입력해 주세요.", "이름 입력", JOptionPane.WARNING_MESSAGE);
+                    name.grabFocus();
+                    return;
+                }
 
-                    if (email.getText().trim().length() == 0 || email.getText().trim().equals("이름")) {
-                        JOptionPane.showMessageDialog(null, "e-mail 을 입력해 주세요.", "e-mail 입력", JOptionPane.WARNING_MESSAGE);
-                        email.grabFocus();
-                        return;
-                    }
+                if (email.getText().trim().length() == 0 || email.getText().trim().equals("이름")) {
+                    JOptionPane.showMessageDialog(null, "e-mail 을 입력해 주세요.", "e-mail 입력", JOptionPane.WARNING_MESSAGE);
+                    email.grabFocus();
+                    return;
+                }
 
-                    if (phone.getText().trim().length() == 0 || phone.getText().trim().equals("이름")) {
-                        JOptionPane.showMessageDialog(null, "휴대폰 을 입력해 주세요.", "휴대폰 입력", JOptionPane.WARNING_MESSAGE);
-                        phone.grabFocus();
-                        return;
-                    }
-
-
+                if (phone.getText().trim().length() == 0 || phone.getText().trim().equals("이름")) {
+                    JOptionPane.showMessageDialog(null, "휴대폰 을 입력해 주세요.", "휴대폰 입력", JOptionPane.WARNING_MESSAGE);
+                    phone.grabFocus();
+                    return;
+                }
 
 
-
-
-
-               SignUpPage = true;
+                SignUpPage = true;
 
                 JOptionPane.showMessageDialog(null, "회원가입이 완료 되었습니다!", "귀엽개 앙킁하냥", JOptionPane.INFORMATION_MESSAGE);
                 dispose();

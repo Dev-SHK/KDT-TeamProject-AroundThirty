@@ -12,7 +12,7 @@ public class AdoptDto {
     public String thumbnail_Img = null; // 동물 사진
 
     // show
-    public AdoptDto(int no,String user_ID, String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Datetime, String post_Modify_Datetime) {
+    public AdoptDto(int no, String user_ID, String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Datetime, String post_Modify_Datetime) {
         this.no = no;
         this.user_ID = user_ID;
         this.adopt_Place = adopt_Place;
@@ -104,6 +104,6 @@ public class AdoptDto {
 
     @Override
     public String toString() {
-        return no + " " + user_ID + " " + adopt_Place + " " + kind_Adopt + " "  + phone_Num + " " + detail + " " + post_Create_Datetime + " " + post_Modify_Datetime;
+        return no + " " + user_ID + " " + adopt_Place + " " + kind_Adopt + " " + phone_Num + " " + detail + " " + post_Create_Datetime + " " + post_Modify_Datetime;
     }
 }

@@ -19,7 +19,7 @@ public class PostedReportViewPage extends MyJFrame {
     JPanel nEastPanel = new JPanel();
     JPanel cNorthPanel = new JPanel();
     JPanel cCenterPanel = new JPanel(new BorderLayout());
-    JPanel cRNorthPanel = new JPanel(new GridLayout(6,2,0,10));
+    JPanel cRNorthPanel = new JPanel(new GridLayout(6, 2, 0, 10));
     JPanel cLNorthPanel = new JPanel();
     JPanel cRCenterPanel = new JPanel();
     JPanel cLCenterPanel = new JPanel();
@@ -45,7 +45,7 @@ public class PostedReportViewPage extends MyJFrame {
 
     String imgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";    // 이미지 주소를 받음
     ImageIcon imgIcon = new ImageIcon(imgPath); // 이미지를 담음
-    JLabel imgLabel = new JLabel(imageSetSize(imgIcon,250,250));    // 이미지 추가
+    JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 250, 250));    // 이미지 추가
 
     JScrollPane scrollPane = new JScrollPane(centerPanel);
 
@@ -65,10 +65,10 @@ public class PostedReportViewPage extends MyJFrame {
         centerPanel.add(BorderLayout.CENTER, cCenterPanel);
         cNorthPanel.add(BorderLayout.WEST, cLNorthPanel);
         cNorthPanel.add(BorderLayout.EAST, cRNorthPanel);
-        cCenterPanel.add(BorderLayout.WEST,cLCenterPanel);
-        cCenterPanel.add(BorderLayout.EAST,cRCenterPanel);
-        cCenterPanel.add(BorderLayout.CENTER,cCCenterPanel);
-        cCCenterPanel.add(BorderLayout.NORTH,reportDetail);
+        cCenterPanel.add(BorderLayout.WEST, cLCenterPanel);
+        cCenterPanel.add(BorderLayout.EAST, cRCenterPanel);
+        cCenterPanel.add(BorderLayout.CENTER, cCCenterPanel);
+        cCCenterPanel.add(BorderLayout.NORTH, reportDetail);
 
         // 패널에 라벨 및 버튼 추가
         nEastPanel.add(modifyBtn);
@@ -156,16 +156,16 @@ public class PostedReportViewPage extends MyJFrame {
         deleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?","게시글 삭제", JOptionPane.YES_NO_OPTION);
+                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", "게시글 삭제", JOptionPane.YES_NO_OPTION);
                 // 게시글 삭제 여부를 사용자에게 묻는 이벤트
-                if(result == JOptionPane.CLOSED_OPTION){    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
+                if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
 
-                }else if(result == JOptionPane.YES_OPTION){ // 사용자가 게시글 삭제를 한 경우
-                    JOptionPane.showMessageDialog(null,"게시글이 삭제되었습니다.","알림",JOptionPane.PLAIN_MESSAGE);
+                } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
+                    JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", "알림", JOptionPane.PLAIN_MESSAGE);
                     dispose();
                     deleteBtn.removeActionListener(this);   // actionPerformed를 종료 한다.
                     // 삭제 쿼리 돌려야함
-                }else { //사용자가 No를 선택한 경우
+                } else { //사용자가 No를 선택한 경우
                     dispose();
                     deleteBtn.removeActionListener(this);   // actionPerformed를 종료 한다.
                 }

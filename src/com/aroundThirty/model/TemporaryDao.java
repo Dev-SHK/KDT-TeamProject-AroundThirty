@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
     public static final String SQL_TEMPORARY_SELECT = "SELECT * FROM TEMPORARY";
     public static final String SQL_TEMPORARY_INSERT = "INSERT INTO TEMPORARY(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Datetime, thumbnail_Img, user_ID) VALUES (?,?,?,?,?,?,?,?)";

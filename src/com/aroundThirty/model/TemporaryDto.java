@@ -135,7 +135,7 @@ public class TemporaryDto { // DataTable(엑셀)의 필드값 생성자
     }
 
     public String toString() {
-        return no + " " + user_ID + " " + tmp_Date + " " + tmp_Place + " "  + kind_Tmp + " " + phone_Num + " " + detail + " " + post_Create_Datetime + " " + thumbnail_Img + " " + post_Modify_Datetime;
+        return no + " " + user_ID + " " + tmp_Date + " " + tmp_Place + " " + kind_Tmp + " " + phone_Num + " " + detail + " " + post_Create_Datetime + " " + thumbnail_Img + " " + post_Modify_Datetime;
     }
 
 }

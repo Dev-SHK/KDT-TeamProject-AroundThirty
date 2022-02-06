@@ -12,7 +12,7 @@ public class AdoptDao {
     public static final String SQL_ADOPT_UPDATE = "UPDATE ADOPT SET adopt_Place=?, kind_Adopt=?, phone_Num=?, detail=?, post_Modify_Datetime=?, thumbnail_Img=? WHERE NO=?";
     public static final String SQL_ADOPT_DELETE = "DELETE FROM ADOPT WHERE NO=?";
     public static final String SQL_ADOPT_SELECT_ONE = "SELECT * FROM ADOPT WHERE NO=?";
- 
+
 
     public static Statement stmt = null;
     public static PreparedStatement pstmt = null;
@@ -36,8 +36,8 @@ public class AdoptDao {
                 String User_ID = rs.getString(8);
                 // String thumbnail_Img = rs.getString(9);
 
-                list.add(new AdoptDto(no,adopt_Place, kind_Adopt,phone_Num,detail,
-                        post_Create_Datetime,post_Modify_Datetime,User_ID));
+                list.add(new AdoptDto(no, adopt_Place, kind_Adopt, phone_Num, detail,
+                        post_Create_Datetime, post_Modify_Datetime, User_ID));
 
             }
         } catch (SQLException e) {
@@ -146,6 +146,7 @@ public class AdoptDao {
             }
         }
     }
+
     public static void adoptDelete(AdoptDto adoptDto) {
         conn = JdbcUtil.getConnection();
         try {
