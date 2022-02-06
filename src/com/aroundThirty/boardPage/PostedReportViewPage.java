@@ -88,7 +88,7 @@ public class PostedReportViewPage extends MyJFrame {
         cRNorthPanel.add(modifyDtVal);
 
         cCCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));   // 안쪽 여백 추가
-        LineBorder line = new LineBorder(color, 5, true);   // 이미지 테두리선과 곡선에 대한 값 저장
+        LineBorder line = new LineBorder(pastelYellow, 5, true);   // 이미지 테두리선과 곡선에 대한 값 저장
         imgLabel.setBorder(line);   // 저장된 테두리와 곡선 추가
 
         // 폰트 설정
@@ -107,18 +107,18 @@ public class PostedReportViewPage extends MyJFrame {
         modifyDtVal.setFont(fontNanum);
 
         // 패널 색상
-        reportDetail.setBackground(color01);
-        northPanel.setBackground(color);
-        centerPanel.setBackground(color01);
-        southPanel.setBackground(color);
-        nEastPanel.setBackground(color);
-        cCenterPanel.setBackground(color01);
-        cNorthPanel.setBackground(color01);
-        cRNorthPanel.setBackground(color01);
-        cLNorthPanel.setBackground(color01);
-        cCCenterPanel.setBackground(color);
-        cRCenterPanel.setBackground(color);
-        cLCenterPanel.setBackground(color);
+        reportDetail.setBackground(pastelPink);
+        northPanel.setBackground(pastelYellow);
+        centerPanel.setBackground(pastelPink);
+        southPanel.setBackground(pastelYellow);
+        nEastPanel.setBackground(pastelYellow);
+        cCenterPanel.setBackground(pastelPink);
+        cNorthPanel.setBackground(pastelPink);
+        cRNorthPanel.setBackground(pastelPink);
+        cLNorthPanel.setBackground(pastelPink);
+        cCCenterPanel.setBackground(pastelYellow);
+        cRCenterPanel.setBackground(pastelYellow);
+        cLCenterPanel.setBackground(pastelYellow);
 
         Dimension frameSize = getSize();
         Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();

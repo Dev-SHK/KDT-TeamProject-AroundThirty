@@ -12,8 +12,8 @@ public class RightTopPanel extends JPanel {
         mainPanel = new JPanel();
         mainPanel.add(writing);
 
-        setBackground(color);
-        mainPanel.setBackground(color);
+        setBackground(pastelGreen);
+        mainPanel.setBackground(pastelGreen);
         setLayout(new BorderLayout());
         add(BorderLayout.EAST, mainPanel);
         writing.setBorderPainted(false);

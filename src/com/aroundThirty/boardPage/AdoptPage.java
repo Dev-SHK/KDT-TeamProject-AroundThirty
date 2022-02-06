@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static com.aroundThirty.Resource.FR.*;
+
 public class AdoptPage extends JPanel {
     JPanel centerPan;
     JPanel mainPanel;
@@ -188,6 +190,8 @@ public class AdoptPage extends JPanel {
             }
         });
         buttonPane.add(btn9);
+
+        buttonPane.setBackground(pastelYellow);
 
         scrollPane.add(mainPanel);
         scrollPane.setViewportView(mainPanel);
