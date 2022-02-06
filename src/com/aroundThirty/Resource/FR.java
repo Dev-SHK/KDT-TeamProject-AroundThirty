@@ -68,8 +68,9 @@ public class FR {
     public static String[] dogAndCat = {"강아지", "고양이"};
     public static JComboBox<String> kindCombo = new JComboBox<>(dogAndCat);
 
-    public static Color color = new Color(246, 208, 180, 255);
-    public static Color color01 = new Color(255, 250, 200, 255);
+    public static Color pastelPink = new Color(246, 208, 180, 255);
+    public static Color pastelYellow = new Color(255, 250, 200, 255);
+    public static Color pastelGreen = new Color(229, 250, 164, 255);
     public static Font fontCourier = new Font("Courier New", Font.PLAIN, 25);
     public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 20);
     public static Font fontAppGothic = new Font("AppleGothic", Font.PLAIN, 12);

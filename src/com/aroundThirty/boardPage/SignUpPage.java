@@ -41,7 +41,7 @@ public class SignUpPage extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
-        contentPane.setBackground(color);
+        contentPane.setBackground(pastelYellow);
 
         lblJoin = new JLabel("회원가입");
         Font f1 = new Font("궁서체", Font.BOLD, 20);

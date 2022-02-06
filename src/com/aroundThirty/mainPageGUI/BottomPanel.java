@@ -9,16 +9,23 @@ import static com.aroundThirty.Resource.FR.*;
 
 public class BottomPanel extends JPanel {
 
-    JPanel groupPan;
+    JPanel groupPanRight;
+    JPanel groupPanLeft;
 
     public BottomPanel() {
         setLayout(new BorderLayout());
 
-        groupPan = new JPanel();
-        groupPan.add(locationCombo);
-        groupPan.setBackground(Color.WHITE);
+        groupPanRight = new JPanel();
+        groupPanLeft = new JPanel();
 
-        groupPan.add(seoulCombo);
+        dogBTN.setBorderPainted(false);
+        dogBTN.getPreferredSize();
+        groupPanLeft.add(dogBTN);
+
+        groupPanLeft.add(locationCombo);
+        groupPanLeft.setBackground(Color.WHITE);
+
+        groupPanLeft.add(seoulCombo);
 //        "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"
         locationCombo.addActionListener(new ActionListener() {
             @Override
@@ -132,30 +139,26 @@ public class BottomPanel extends JPanel {
             }
         });
 
-        groupPan.add(genderCombo);
-        groupPan.add(kindCombo);
+        groupPanLeft.add(genderCombo);
+        groupPanLeft.add(kindCombo);
 
-        groupPan.add(searchBTN);
+        groupPanLeft.add(searchBTN);
         searchBTN.setBorderPainted(false);
         searchBTN.getPreferredSize();
 
         loginMain.setFont(fontCourier);
         loginMain.getPreferredSize();
         loginMain.setBorderPainted(false);
-        groupPan.add(loginMain);
-
-        logoutMain.setFont(fontCourier);
-        logoutMain.getPreferredSize();
-        logoutMain.setBorderPainted(false);
+        groupPanRight.add(loginMain);
 
         catBTN.setBorderPainted(false);
         catBTN.getPreferredSize();
-        groupPan.add(catBTN);
-        add(groupPan, BorderLayout.EAST);
+        groupPanRight.add(catBTN);
 
-        dogBTN.setBorderPainted(false);
-        dogBTN.getPreferredSize();
-        add(dogBTN, BorderLayout.WEST);
+        groupPanRight.setBackground(Color.WHITE);
+
+        add(groupPanLeft, BorderLayout.WEST);
+        add(groupPanRight, BorderLayout.EAST);
 
         this.setBackground(Color.WHITE);
     }

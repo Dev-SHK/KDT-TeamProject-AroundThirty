@@ -16,7 +16,7 @@ public class MainPageGUI extends MyJFrame {
     public MainPageGUI() {
         super("MainPage", 1440, 900);
         super.setTitle("MainPage");
-        super.setBackground(color);
+        super.setBackground(pastelYellow);
         super.setResizable(false);
     }
 
@@ -30,9 +30,9 @@ public class MainPageGUI extends MyJFrame {
         container.add(BorderLayout.SOUTH, bp);
         container.add(BorderLayout.WEST, lp);
         container.add(BorderLayout.EAST, rp);
-        container.setBackground(color);
+        container.setBackground(pastelYellow);
         writing.setEnabled(false);
-        setBackground(color);
+        setBackground(pastelYellow);
 
         Dimension frameSize = getSize();
         Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -61,8 +61,8 @@ public class MainPageGUI extends MyJFrame {
                     if (confirm == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "로그인 되었어요 :)", "로그인 성공!!", JOptionPane.INFORMATION_MESSAGE);
                         loginPage.dispose();
-                        bp.groupPan.remove(loginMain);
-                        bp.groupPan.add(logoutMain, 5);
+                        bp.groupPanRight.remove(loginMain);
+                        bp.groupPanRight.add(logoutMain, 5);
                         bp.revalidate();
                         bp.repaint();
                     } else {
@@ -97,8 +97,8 @@ public class MainPageGUI extends MyJFrame {
                 int confirm = JOptionPane.showConfirmDialog(null, "로그아웃 하시나요?", "로그아웃 확인", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     JOptionPane.showMessageDialog(null, "로그아웃 되었어요.", "로그아웃 완료!!", JOptionPane.INFORMATION_MESSAGE);
-                    bp.groupPan.remove(logoutMain);
-                    bp.groupPan.add(loginMain, 5);
+                    bp.groupPanRight.remove(logoutMain);
+                    bp.groupPanRight.add(loginMain, 5);
                     bp.revalidate();
                     bp.repaint();
                 } else {

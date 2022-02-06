@@ -21,19 +21,20 @@ public class RightPanel extends JPanel {
         jLabel = new JLabel("test");
         cenPan.add(jLabel);
         cenPan.add(jTextArea);
+        cenPan.setBackground(pastelYellow);
         rtp = new RightTopPanel();
 
         groupPan = new JPanel(new BorderLayout());
-        groupPan.add(BorderLayout.NORTH, rtp);
+        groupPan.add(BorderLayout.SOUTH, rtp);
         groupPan.add(BorderLayout.CENTER, cenPan);
-        groupPan.setBackground(color);
+        groupPan.setBackground(pastelYellow);
 
         mainPan = new JPanel();
-        mainPan.setBackground(color);
+        mainPan.setBackground(pastelYellow);
         mainPan.add(groupPan);
 
         add(mainPan, BorderLayout.CENTER);
-        setBackground(color);
+        setBackground(pastelYellow);
 
 
     }

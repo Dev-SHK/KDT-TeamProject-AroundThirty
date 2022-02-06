@@ -11,6 +11,13 @@ public class LeftPanel extends JPanel {
     JPanel centerPan;
 
     public LeftPanel() {
+
+        Insets insets = UIManager.getInsets("TabbedPane.contentBorderInsets");
+        insets.bottom = -1;
+        insets.left = -1;
+        insets.right = -1;
+        UIManager.put("TabbedPane.contentBorderInsets", insets);
+
         tabbedPane = new JTabbedPane();
         cp = new CenterPanel();
 
@@ -20,14 +27,14 @@ public class LeftPanel extends JPanel {
         tabbedPane.addTab("보호중이에요", tep);
         tabbedPane.addTab("새 가족을 찾아요", ap);
         tabbedPane.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
-        tabbedPane.setOpaque(false);
-        tabbedPane.setBackground(color);
+        tabbedPane.setOpaque(true);
+        tabbedPane.setBackground(pastelYellow);
         tabbedPane.setPreferredSize(new Dimension(840, 780));
 
         centerPan = new JPanel();
         centerPan.add(tabbedPane);
-        centerPan.setBackground(color);
+        centerPan.setBackground(pastelYellow);
         add(centerPan, BorderLayout.CENTER);
-        setBackground(color);
+        setBackground(pastelYellow);
     }
 }
