@@ -15,6 +15,7 @@ public class CenterPanel extends JPanel {
     JButton rbtn;
     GridLayout gridLayout;
     JScrollPane scrollPane;
+    Boolean click;
 
     public CenterPanel() {
         scrollPane = new JScrollPane();
@@ -23,6 +24,7 @@ public class CenterPanel extends JPanel {
         centerPan = new JPanel();
         gridLayout.setVgap(30);
         gridLayout.setHgap(30);
+        click = true;
 
         String[] data1 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
         String[] data2 = {"13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
@@ -51,6 +53,19 @@ public class CenterPanel extends JPanel {
                     JButton jButton = (JButton) e.getSource();
                     jButton.setText("유기동물 사진 - 메인" + finalI);
 
+                }
+            });
+            rp = new RightPanel();
+            rbtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (click) {
+                        rp.setVisible(true);
+                        click = false;
+                    } else {
+                        rp.setVisible(false);
+                        click = true;
+                    }
                 }
             });
         }
