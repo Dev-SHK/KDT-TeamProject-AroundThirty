@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import javax.swing.border.EmptyBorder;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+
 
 import static com.aroundThirty.Resource.FR.*;
 
@@ -44,7 +43,7 @@ public class SignUpPage extends JFrame {
         contentPane.setBackground(pastelYellow);
 
         lblJoin = new JLabel("회원가입");
-        Font f1 = new Font("궁서체", Font.BOLD, 20);
+        Font f1 = new Font("나눔고딕체", Font.BOLD, 20);
         lblJoin.setFont(f1);
         lblJoin.setBounds(159, 41, 101, 20);
         contentPane.add(lblJoin);
@@ -117,10 +116,6 @@ public class SignUpPage extends JFrame {
                 String lblPhone = phone.getText();
 
                 String label2 = "asd";
-                /*String lblPW2 = new String(password.getText());
-                String lblName2 = name.getText();
-                String lblEmail2 = email.getText();
-                String lblPhone2 = phone.getText();*/
 
 
 
@@ -132,7 +127,7 @@ public class SignUpPage extends JFrame {
 
 
                 if (id.getText().trim().length() == 0 || id.getText().trim().equals("아이디")) {
-                    JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요.", "아이디 입력", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
                     id.grabFocus();
                     return;
                 } else if (label.equals(label2)) {
@@ -141,25 +136,25 @@ public class SignUpPage extends JFrame {
                 }
 
                 if (password.getText().trim().length() == 0) {
-                    JOptionPane.showMessageDialog(null, "비밀번호를 입력해 주세요.", "비밀번호 입력", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "비밀번호를 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
                     password.grabFocus();
                     return;
                 }
 
                 if (name.getText().trim().length() == 0 || name.getText().trim().equals("이름")) {
-                    JOptionPane.showMessageDialog(null, "이름을 입력해 주세요.", "이름 입력", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "이름을 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
                     name.grabFocus();
                     return;
                 }
 
                 if (email.getText().trim().length() == 0 || email.getText().trim().equals("이름")) {
-                    JOptionPane.showMessageDialog(null, "e-mail 을 입력해 주세요.", "e-mail 입력", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "e-mail 을 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
                     email.grabFocus();
                     return;
                 }
 
                 if (phone.getText().trim().length() == 0 || phone.getText().trim().equals("이름")) {
-                    JOptionPane.showMessageDialog(null, "휴대폰 을 입력해 주세요.", "휴대폰 입력", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "휴대폰 을 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
                     phone.grabFocus();
                     return;
                 }

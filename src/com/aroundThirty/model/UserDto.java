@@ -6,7 +6,7 @@ public class UserDto {
     private String user_PW = null; // 계정 정보
     private String user_Name = null; // 이름
     private String user_Gender = null; // 성별
-    private String user_Num = null; // 성별
+    private String user_Num = null; // 전화번호
     private String user_Email = null; // 이메일
     private String user_Athority = null; // 권한
     private int no = 0; // Primary Key
