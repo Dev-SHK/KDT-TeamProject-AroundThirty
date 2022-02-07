@@ -97,9 +97,13 @@ public class FR {
     public static final JButton writing = new JButton("새 글 작성");
     public static final JTextField idTxtFld = new JTextField(20);
     public static final JPasswordField pwTxtFld = new JPasswordField(20);
+    public static final JButton modifyBtn = new JButton("수정");
+    public static final JButton deleteBtn = new JButton("삭제");
+    public static final JButton postBtn = new JButton("완료");
+    public static final JButton test = new JButton("test"); // 임시 버튼
     public static JButton rbtn = new JButton();
     public static Boolean click = true;
-
+    public static CardLayout cardLayout = new CardLayout();
 
     public static ReportPage rep = new ReportPage();
     public static MissingPage mp = new MissingPage();
@@ -111,29 +115,12 @@ public class FR {
     public static CenterPanel cp;
     public static LeftPanel lp;
     public static RightPanel rp;
-    public static RightTopPanel rtp;
     public static BottomPanel bp;
 
-    static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
+    public static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
         Image img = icon.getImage();  //ImageIcon을 Image로 변환.
         Image imgScale = img.getScaledInstance(i, j, java.awt.Image.SCALE_SMOOTH);
         ImageIcon imgSize = new ImageIcon(imgScale);
         return imgSize;
-    }
-
-    public static void onClick() {
-        rp = new RightPanel();
-        rbtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (click) {
-                    rp.setVisible(true);
-                    click = false;
-                } else {
-                    rp.setVisible(false);
-                    click = true;
-                }
-            }
-        });
     }
 }
