@@ -1,4 +1,6 @@
-package com.aroundThirty.boardPage;
+package com.aroundThirty.View;
+
+import com.aroundThirty.Controller.EventController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,17 +10,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static com.aroundThirty.Resource.FR.*;
-import static com.aroundThirty.mainPageGUI.MainPageGUI.*;
 
 
-public class TemporaryPage extends JPanel {
+public class MissingPage extends JPanel {
     JPanel centerPan;
     JPanel mainPanel;
     JButton rbtn;
     GridLayout gridLayout;
     JScrollPane scrollPane;
 
-    public TemporaryPage() {
+    public MissingPage() {
         scrollPane = new JScrollPane();
         gridLayout = new GridLayout(2, 3);
         mainPanel = new JPanel(gridLayout);
@@ -38,7 +39,7 @@ public class TemporaryPage extends JPanel {
 
         int i;
         for (i = 0; i < data1.length; i++) {
-            mainPanel.add(rbtn = new JButton("임보동물 사진 - 메인" + i));
+            mainPanel.add(rbtn = new JButton("실종동물 사진 - 메인" + i));
             int finalI = i;
             rbtn.setPreferredSize(new Dimension(200, 300));
             rbtn.addMouseListener(new MouseAdapter() {
@@ -51,11 +52,11 @@ public class TemporaryPage extends JPanel {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     JButton jButton = (JButton) e.getSource();
-                    jButton.setText("임보동물 사진 - 메인" + finalI);
+                    jButton.setText("실종동물 사진 - 메인" + finalI);
 
                 }
             });
-            onClick();
+            EventController.onClick();
         }
         JPanel buttonPane = new JPanel();
         JButton btn1 = new JButton("1");
@@ -64,9 +65,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data1.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 01 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 01 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -80,9 +83,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data2.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 02 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 02 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -95,9 +100,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data3.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 03 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 03 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -110,9 +117,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data4.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 04 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 04 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -125,9 +134,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data5.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 05 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 05 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -140,9 +151,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data6.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 06 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 06 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -155,9 +168,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data7.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 07 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 07 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -170,9 +185,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data8.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 08 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 08 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -185,9 +202,11 @@ public class TemporaryPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data9.length; i++) {
-                    mainPanel.add(rbtn = new JButton("임보동물 Page 09 " + i));
+                    mainPanel.add(rbtn = new JButton("실종동물 Page 09 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }

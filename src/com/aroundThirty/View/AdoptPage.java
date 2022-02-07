@@ -1,4 +1,6 @@
-package com.aroundThirty.boardPage;
+package com.aroundThirty.View;
+
+import com.aroundThirty.Controller.EventController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static com.aroundThirty.Resource.FR.*;
-import static com.aroundThirty.mainPageGUI.MainPageGUI.*;
 
 public class AdoptPage extends JPanel {
     JPanel centerPan;
@@ -54,7 +55,7 @@ public class AdoptPage extends JPanel {
 
                 }
             });
-            onClick();
+            EventController.onClick();
         }
         JPanel buttonPane = new JPanel();
         JButton btn1 = new JButton("1");
@@ -66,6 +67,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 01 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -82,6 +85,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 02 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -97,6 +102,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 03 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -112,6 +119,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 04 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -127,6 +136,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 05 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -142,6 +153,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 06 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -157,6 +170,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 07 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -172,6 +187,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 08 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -187,6 +204,8 @@ public class AdoptPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("입양동물 Page 09 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
+
                 revalidate();
                 repaint();
             }

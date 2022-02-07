@@ -1,12 +1,10 @@
 package com.aroundThirty.Resource;
 
-import com.aroundThirty.boardPage.*;
-import com.aroundThirty.mainPageGUI.*;
+import com.aroundThirty.Controller.EventController;
+import com.aroundThirty.View.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class FR {
 
@@ -116,6 +114,8 @@ public class FR {
     public static LeftPanel lp;
     public static RightPanel rp;
     public static BottomPanel bp;
+    public static EventController eventController;
+
 
     public static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
         Image img = icon.getImage();  //ImageIcon을 Image로 변환.

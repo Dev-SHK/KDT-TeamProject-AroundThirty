@@ -1,4 +1,4 @@
-package com.aroundThirty.boardPage;
+package com.aroundThirty.View;
 
 import javax.swing.*;
 import java.awt.*;

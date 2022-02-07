@@ -1,47 +1,27 @@
-package com.aroundThirty.mainPageGUI;
+package com.aroundThirty.Controller;
 
-import com.aroundThirty.boardPage.*;
+import com.aroundThirty.View.LoginPage;
+import com.aroundThirty.View.SignUpPage;
+import com.aroundThirty.View.RightPanel;
 import com.aroundThirty.myframe.MyJFrame;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static com.aroundThirty.Resource.FR.*;
+import static com.aroundThirty.Resource.FR.click;
 
-public class MainPageGUI extends MyJFrame {
-    public static Container container;
+public class EventController extends MyJFrame {
+    public EventController() {
 
-    public MainPageGUI() {
-        super("MainPage", 1440, 900);
-        super.setTitle("MainPage");
-        super.setBackground(pastelYellow);
-        super.setResizable(true);
     }
 
     @Override
     protected void displayLayer() {
-        lp = new LeftPanel();
-        rp = new RightPanel();
-        container = getContentPane();
-        bp = new BottomPanel();
 
-        container.add(BorderLayout.SOUTH, bp);
-        container.add(BorderLayout.WEST, lp);
-        container.add(BorderLayout.EAST, rp);
-        container.setBackground(pastelYellow);
-        writing.setEnabled(false);
-        setBackground(pastelYellow);
-
-        Dimension frameSize = getSize();
-        Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation((windowSize.width - frameSize.width) / 2,
-                (windowSize.height - frameSize.height) / 2); //화면 중앙에 띄우기
     }
 
-    // controller로 이동할 이벤트
-    @Override
     protected void actionEvent() {
         loginMain.addActionListener(new ActionListener() {
             @Override
@@ -49,7 +29,6 @@ public class MainPageGUI extends MyJFrame {
                 loginPage = new LoginPage();
             }
         });
-
         loginPopup.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -106,22 +85,14 @@ public class MainPageGUI extends MyJFrame {
                 }
             }
         });
-//        rbtn.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.out.println("눌림?");
-//                rp.add(RightPanel.detail_ScrollPane);
-//                rp.revalidate();
-//                rp.repaint();
-//            }
-//        });
+
         modifyBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 String act = e.getActionCommand();
 
-                if (act.equals("수정")) {
+                if (act.equals("수정")){
                     cardLayout.next(RightPanel.nEWestPanel);
                     cardLayout.next(RightPanel.cNTPanel);
                     cardLayout.next(RightPanel.cCCenterPanel_Card);
@@ -133,16 +104,16 @@ public class MainPageGUI extends MyJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String act = e.getActionCommand();
-                if (act.equals("완료")) {
-                    int result = JOptionPane.showConfirmDialog(null, "게시글을 수정 하시겠습니까?", "게시글 수정", JOptionPane.YES_NO_OPTION);
-                    if (result == JOptionPane.CLOSED_OPTION) {
+                if (act.equals("완료")){
+                    int result = JOptionPane.showConfirmDialog(null, "게시글을 수정 하시겠습니까?","게시글 수정", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.CLOSED_OPTION){
 
                     } else if (result == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "수정되었습니다.", "알림", JOptionPane.PLAIN_MESSAGE);
+                        JOptionPane.showMessageDialog(null,"수정되었습니다.","알림",JOptionPane.PLAIN_MESSAGE);
                         cardLayout.next(RightPanel.nEWestPanel);
                         cardLayout.next(RightPanel.cNTPanel);
                         cardLayout.next(RightPanel.cCCenterPanel_Card);
-                    } else if (result == JOptionPane.NO_OPTION) {
+                    } else if (result == JOptionPane.NO_OPTION){
 
                     }
                 }
@@ -159,25 +130,21 @@ public class MainPageGUI extends MyJFrame {
         deleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", "게시글 삭제", JOptionPane.YES_NO_OPTION);
+                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?","게시글 삭제", JOptionPane.YES_NO_OPTION);
                 // 게시글 삭제 여부를 사용자에게 묻는 이벤트
-                if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
-                } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
-                    JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", "알림", JOptionPane.PLAIN_MESSAGE);
+                if(result == JOptionPane.CLOSED_OPTION){    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
+                }else if(result == JOptionPane.YES_OPTION){ // 사용자가 게시글 삭제를 한 경우
+                    JOptionPane.showMessageDialog(null,"게시글이 삭제되었습니다.","알림",JOptionPane.PLAIN_MESSAGE);
                     rp.setVisible(false);
-
                     click = true;
                     rp.revalidate();
                     rp.repaint();
                     // 삭제 쿼리 돌려야함
-                } else { //사용자가 No를 선택한 경우
-
+                }else { //사용자가 No를 선택한 경우
                 }
             }
         });
-
     }
-
     public static void onClick() {
         rp = new RightPanel();
         rbtn.addActionListener(new ActionListener() {
@@ -190,14 +157,7 @@ public class MainPageGUI extends MyJFrame {
                     rp.setVisible(false);
                     click = true;
                 }
-
-
             }
         });
-    }
-
-    public static void main(String[] args) {
-
-        new MainPageGUI().setVisible(true);
     }
 }

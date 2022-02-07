@@ -1,4 +1,6 @@
-package com.aroundThirty.boardPage;
+package com.aroundThirty.View;
+
+import com.aroundThirty.Controller.EventController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,23 +10,22 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static com.aroundThirty.Resource.FR.*;
-import static com.aroundThirty.mainPageGUI.MainPageGUI.*;
 
 
-public class MissingPage extends JPanel {
+public class CenterPanel extends JPanel {
     JPanel centerPan;
     JPanel mainPanel;
-    JButton rbtn;
     GridLayout gridLayout;
     JScrollPane scrollPane;
 
-    public MissingPage() {
+    public CenterPanel() {
         scrollPane = new JScrollPane();
         gridLayout = new GridLayout(2, 3);
         mainPanel = new JPanel(gridLayout);
         centerPan = new JPanel();
         gridLayout.setVgap(30);
         gridLayout.setHgap(30);
+        click = true;
 
         String[] data1 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
         String[] data2 = {"13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
@@ -38,7 +39,7 @@ public class MissingPage extends JPanel {
 
         int i;
         for (i = 0; i < data1.length; i++) {
-            mainPanel.add(rbtn = new JButton("실종동물 사진 - 메인" + i));
+            mainPanel.add(rbtn = new JButton("유기동물 사진 - 메인" + i));
             int finalI = i;
             rbtn.setPreferredSize(new Dimension(200, 300));
             rbtn.addMouseListener(new MouseAdapter() {
@@ -51,11 +52,13 @@ public class MissingPage extends JPanel {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     JButton jButton = (JButton) e.getSource();
-                    jButton.setText("실종동물 사진 - 메인" + finalI);
+                    jButton.setText("유기동물 사진 - 메인" + finalI);
 
                 }
             });
-            onClick();
+
+            EventController.onClick();
+
         }
         JPanel buttonPane = new JPanel();
         JButton btn1 = new JButton("1");
@@ -64,9 +67,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data1.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 01 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 01 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
@@ -80,9 +84,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data2.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 02 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 02 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
@@ -95,9 +100,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data3.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 03 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 03 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
@@ -110,9 +116,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data4.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 04 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 04 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
@@ -125,9 +132,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data5.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 05 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 05 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
@@ -140,9 +148,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data6.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 06 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 06 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
@@ -155,9 +164,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data7.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 07 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 07 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
@@ -170,9 +180,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data8.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 08 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 08 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
@@ -185,9 +196,10 @@ public class MissingPage extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 mainPanel.removeAll();
                 for (int i = 0; i < data9.length; i++) {
-                    mainPanel.add(rbtn = new JButton("실종동물 Page 09 " + i));
+                    mainPanel.add(rbtn = new JButton("Page 09 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                EventController.onClick();
                 revalidate();
                 repaint();
             }
