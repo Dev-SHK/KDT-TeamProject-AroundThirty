@@ -28,8 +28,6 @@ public class RightPanel extends JPanel {
     JScrollPane detail_ScrollPane = new JScrollPane(centerPanel);
 
 
-
-
     JLabel reportDt = new JLabel("제보일자 및 시간 :");
     JLabel reportDt_Card = new JLabel("제보일자 및 시간 :");
     JLabel reportDtVal = new JLabel("2022 / 01 / 01 17:34");    // DB 연결 해야함
@@ -60,8 +58,6 @@ public class RightPanel extends JPanel {
     String imgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";    // 이미지 주소를 받음
     ImageIcon imgIcon = new ImageIcon(imgPath); // 이미지를 담음
     JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 150, 150));    // 이미지 추가
-
-
 
 
     public RightPanel() {
