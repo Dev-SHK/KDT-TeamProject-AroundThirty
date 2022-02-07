@@ -1,6 +1,6 @@
 package com.aroundThirty.View;
 
-import com.aroundThirty.Controller.EventController;
+import com.aroundThirty.Controller.MainController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,7 +56,7 @@ public class ReportPage extends JPanel {
 
                 }
             });
-            EventController.onClick();
+            MainController.onClick();
         }
         JPanel buttonPane = new JPanel();
         JButton btn1 = new JButton("1");
@@ -68,6 +68,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 01 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -84,6 +86,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 02 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -99,6 +103,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 03 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -114,6 +120,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 04 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -129,6 +137,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 05 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -144,6 +154,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 06 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -159,6 +171,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 07 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -174,6 +188,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 08 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }
@@ -189,6 +205,8 @@ public class ReportPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("제보동물 Page 09 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
+                MainController.onClick();
+
                 revalidate();
                 repaint();
             }

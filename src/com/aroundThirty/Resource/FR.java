@@ -1,6 +1,5 @@
 package com.aroundThirty.Resource;
 
-import com.aroundThirty.Controller.EventController;
 import com.aroundThirty.View.*;
 
 import javax.swing.*;
@@ -114,7 +113,6 @@ public class FR {
     public static LeftPanel lp;
     public static RightPanel rp;
     public static BottomPanel bp;
-    public static EventController eventController;
 
 
     public static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
