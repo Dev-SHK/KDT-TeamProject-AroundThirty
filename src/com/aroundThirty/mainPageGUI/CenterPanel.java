@@ -8,6 +8,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static com.aroundThirty.Resource.FR.*;
+import static com.aroundThirty.mainPageGUI.MainPageGUI.*;
+
 
 public class CenterPanel extends JPanel {
     JPanel centerPan;
