@@ -203,4 +203,7 @@ public class RightPanel extends JPanel {
         ImageIcon imgSize = new ImageIcon(imgScale);
         return imgSize;
     }
+
+
+
 }
