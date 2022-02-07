@@ -1,4 +1,6 @@
-package com.aroundThirty.boardPage;
+package com.aroundThirty.View;
+
+import com.aroundThirty.Controller.EventController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static com.aroundThirty.Resource.FR.*;
-import static com.aroundThirty.mainPageGUI.MainPageGUI.*;
 
 
 public class ReportPage extends JPanel {
@@ -55,7 +56,7 @@ public class ReportPage extends JPanel {
 
                 }
             });
-            onClick();
+            EventController.onClick();
         }
         JPanel buttonPane = new JPanel();
         JButton btn1 = new JButton("1");

@@ -1,4 +1,4 @@
-package com.aroundThirty.mainPageGUI;
+package com.aroundThirty.View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,8 +9,8 @@ import static com.aroundThirty.Resource.FR.*;
 
 public class BottomPanel extends JPanel {
 
-    JPanel groupPanRight;
-    JPanel groupPanLeft;
+    public static JPanel groupPanRight;
+    public static JPanel groupPanLeft;
 
     public BottomPanel() {
         setLayout(new BorderLayout());
