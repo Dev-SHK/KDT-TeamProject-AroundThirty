@@ -117,7 +117,7 @@ public class UserDao {
         try {
             pstmt = conn.prepareStatement(SQL_USER_SELECT_BY_ID);
             pstmt.setString(1, userDto.getUser_ID());
-        rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
             while (rs.next()) {
                 int no = rs.getInt(1);
                 String User_ID = rs.getString(2);

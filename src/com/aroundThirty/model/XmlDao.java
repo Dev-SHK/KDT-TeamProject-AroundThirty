@@ -21,7 +21,7 @@ public class XmlDao {
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(SQL_XML_SELECT);
-            while(rs.next()) {
+            while (rs.next()) {
                 String age = rs.getString(1);
                 String colorCd = rs.getString(2);
                 String filename = rs.getString(3);
@@ -35,16 +35,16 @@ public class XmlDao {
                 String specialMark = rs.getString(11);
                 String weight = rs.getString(12);
 
-                list.add(new XmlDto(age,colorCd,filename,happenDt,happenPlace,kindCd,neuterYn,
-                        orgNm,processState,sexCd,specialMark,weight));
+                list.add(new XmlDto(age, colorCd, filename, happenDt, happenPlace, kindCd, neuterYn,
+                        orgNm, processState, sexCd, specialMark, weight));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            try{
-                if(rs != null) rs.close();
-                if(stmt != null) stmt.close();
-            }catch (SQLException e){
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }

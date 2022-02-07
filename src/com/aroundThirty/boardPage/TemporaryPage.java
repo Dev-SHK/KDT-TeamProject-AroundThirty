@@ -2,78 +2,210 @@ package com.aroundThirty.boardPage;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import static com.aroundThirty.Resource.FR.*;
 
 public class TemporaryPage extends JPanel {
-    JPanel gridPan;
+    JPanel centerPan;
+    JPanel mainPanel;
+    JButton rbtn;
+    GridLayout gridLayout;
+    JScrollPane scrollPane;
 
     public TemporaryPage() {
-        gridPan = new JPanel(new GridLayout(4, 8, 40, 15));
+        scrollPane = new JScrollPane();
+        gridLayout = new GridLayout(2, 3);
+        mainPanel = new JPanel(gridLayout);
+        centerPan = new JPanel();
+        gridLayout.setVgap(30);
+        gridLayout.setHgap(30);
 
-        for (int i = 0; i < 16; i++) {
-            add(new RoundedButton("유기동물 사진 - 보호" + i));
+        String[] data1 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        String[] data2 = {"13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
+        String[] data3 = {"25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"};
+        String[] data4 = {"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"};
+        String[] data5 = {"49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60"};
+        String[] data6 = {"61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72"};
+        String[] data7 = {"73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84"};
+        String[] data8 = {"85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96"};
+        String[] data9 = {"97", "98", "99", "100"};
+
+        int i;
+        for (i = 0; i < data1.length; i++) {
+            mainPanel.add(rbtn = new JButton("임보동물 사진 - 메인" + i));
+            int finalI = i;
+            rbtn.setPreferredSize(new Dimension(200, 300));
+            rbtn.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    JButton jButton = (JButton) e.getSource();
+                    jButton.setText("마우스 오버 테스트");
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    JButton jButton = (JButton) e.getSource();
+                    jButton.setText("임보동물 사진 - 메인" + finalI);
+
+                }
+            });
+            onClick();
         }
-        setPreferredSize(new Dimension(300, 1500));
-        setLayout(gridPan.getLayout());
-        setBackground(Color.CYAN);
-    }
-
-    class RoundedButton extends JButton {
-
-        public RoundedButton() {
-            super();
-            decorate();
-        }
-
-        public RoundedButton(String text) {
-            super(text);
-            decorate();
-        }
-
-        public RoundedButton(Action action) {
-            super(action);
-            decorate();
-        }
-
-        public RoundedButton(Icon icon) {
-            super(icon);
-            decorate();
-        }
-
-        public RoundedButton(String text, Icon icon) {
-            super(text, icon);
-            decorate();
-        }
-
-        protected void decorate() {
-            setBorderPainted(true);
-            setOpaque(true);
-        }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            Color c = new Color(255, 247, 242); // 배경색 결정
-            Color o = new Color(247, 99, 12); // 글자색 결정
-            double width = getWidth();
-            double height = getHeight() / 1.5;
-            Graphics2D graphics = (Graphics2D) g;
-            graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            if (getModel().isArmed()) {
-                graphics.setColor(c.darker());
-            } else if (getModel().isRollover()) {
-                graphics.setColor(c.brighter());
-            } else {
-                graphics.setColor(c);
+        JPanel buttonPane = new JPanel();
+        JButton btn1 = new JButton("1");
+        btn1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data1.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 01 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
             }
-            graphics.fillRoundRect(0, 0, (int) width, (int) height, 100, 100);
-            FontMetrics fontMetrics = graphics.getFontMetrics();
-            Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds();
-            double textX = (width - stringBounds.width) / 2;
-            double textY = (height - stringBounds.height) / 2 + fontMetrics.getAscent();
-            graphics.setColor(o);
-            graphics.setFont(getFont());
-            graphics.drawString(getText(), (int) textX, (int) textY);
-            graphics.dispose();
-            super.paintComponent(g);
-        }
+        });
+        buttonPane.add(btn1);
+
+
+        JButton btn2 = new JButton("2");
+        btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data2.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 02 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
+            }
+        });
+        buttonPane.add(btn2);
+
+        JButton btn3 = new JButton("3");
+        btn3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data3.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 03 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
+            }
+        });
+        buttonPane.add(btn3);
+
+        JButton btn4 = new JButton("4");
+        btn4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data4.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 04 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
+            }
+        });
+        buttonPane.add(btn4);
+
+        JButton btn5 = new JButton("5");
+        btn5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data5.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 05 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
+            }
+        });
+        buttonPane.add(btn5);
+
+        JButton btn6 = new JButton("6");
+        btn6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data6.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 06 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
+            }
+        });
+        buttonPane.add(btn6);
+
+        JButton btn7 = new JButton("7");
+        btn7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data7.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 07 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
+            }
+        });
+        buttonPane.add(btn7);
+
+        JButton btn8 = new JButton("8");
+        btn8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data8.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 08 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
+            }
+        });
+        buttonPane.add(btn8);
+
+        JButton btn9 = new JButton("9");
+        btn9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainPanel.removeAll();
+                for (int i = 0; i < data9.length; i++) {
+                    mainPanel.add(rbtn = new JButton("임보동물 Page 09 " + i));
+                }
+                rbtn.setPreferredSize(new Dimension(200, 300));
+                revalidate();
+                repaint();
+            }
+        });
+        buttonPane.add(btn9);
+
+        buttonPane.setBackground(pastelYellow);
+
+        scrollPane.add(mainPanel);
+        scrollPane.setViewportView(mainPanel);
+        scrollPane.setBorder(null);
+        scrollPane.setOpaque(false);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        mainPanel.setPreferredSize(new Dimension(300, 1500));
+        mainPanel.getPreferredSize();
+        mainPanel.setBackground(pastelYellow);
+        scrollPane.getHorizontalScrollBar().setUnitIncrement(20);
+        setLayout(new BorderLayout());
+
+        add(scrollPane, BorderLayout.CENTER);
+        add(buttonPane, BorderLayout.SOUTH);
     }
 }

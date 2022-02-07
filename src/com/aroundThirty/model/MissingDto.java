@@ -136,6 +136,6 @@ public class MissingDto {
 
     @Override
     public String toString() {
-        return  missing_Datetime + " " + missing_Place + " "  + kind_Missing + " "  + phone_Num + detail + " "  + post_Create_Datetime + " "  + post_Modify_Datetime + " "  + thumbnail_Img + " "  + user_ID + " "  + no;
+        return missing_Datetime + " " + missing_Place + " " + kind_Missing + " " + phone_Num + detail + " " + post_Create_Datetime + " " + post_Modify_Datetime + " " + thumbnail_Img + " " + user_ID + " " + no;
     }
 }

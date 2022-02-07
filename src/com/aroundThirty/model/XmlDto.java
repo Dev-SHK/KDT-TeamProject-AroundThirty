@@ -15,7 +15,7 @@ public class XmlDto {
     public String weight = null; // 유기동물 몸무게
 
     // SelectAll
-    public XmlDto(String age, String colorCd,String fileName,int happenDt,String happenPlace, String kindCd, String neuterYn, String orgNm, String processState,String sexCd,String specialMark,String weight) {
+    public XmlDto(String age, String colorCd, String fileName, int happenDt, String happenPlace, String kindCd, String neuterYn, String orgNm, String processState, String sexCd, String specialMark, String weight) {
         this.age = age;
         this.colorCd = colorCd;
         this.fileName = fileName;

@@ -130,7 +130,7 @@ public class ReportDao {
                 String post_Modify_Datetime = rs.getString(8);
                 String thumbnail_Img = rs.getString(9);
                 String User_ID = rs.getString(10);
-                list.add(new ReportDto(report_Datetime, report_Place,kind_Report,phone_Num,detail,post_Create_Datetime,post_Modify_Datetime,thumbnail_Img,User_ID,no));
+                list.add(new ReportDto(report_Datetime, report_Place, kind_Report, phone_Num, detail, post_Create_Datetime, post_Modify_Datetime, thumbnail_Img, User_ID, no));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -164,7 +164,7 @@ public class ReportDao {
                 String post_Modify_Datetime = rs.getString(8);
                 String thumbnail_Img = rs.getString(9);
                 String User_ID = rs.getString(10);
-                apdto = new ReportDto(report_Datetime, report_Place,kind_Report,phone_Num,detail,post_Create_Datetime,post_Modify_Datetime,thumbnail_Img,User_ID,no);
+                apdto = new ReportDto(report_Datetime, report_Place, kind_Report, phone_Num, detail, post_Create_Datetime, post_Modify_Datetime, thumbnail_Img, User_ID, no);
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -12,35 +12,27 @@ import static com.aroundThirty.Resource.FR.*;
 
 public class MainPageGUI extends MyJFrame {
     public static Container container;
-    public static CenterPanel cp;
-    public static LeftPanel lp;
-    public static RightPanel rp;
-    public static BottomPanel bp;
-    public static TopPanel tp;
 
     public MainPageGUI() {
         super("MainPage", 1440, 900);
         super.setTitle("MainPage");
-        super.setBackground(color);
+        super.setBackground(pastelYellow);
+        super.setResizable(false);
     }
 
     @Override
     protected void displayLayer() {
-        container = getContentPane();
-        cp = new CenterPanel();
-        tp = new TopPanel();
         lp = new LeftPanel();
         rp = new RightPanel();
+        container = getContentPane();
         bp = new BottomPanel();
-        tp = new TopPanel();
-        switchCenterPanel = cp;
-        container.add(BorderLayout.CENTER, cp);
-        container.add(BorderLayout.NORTH, tp);
+
         container.add(BorderLayout.SOUTH, bp);
         container.add(BorderLayout.WEST, lp);
-//        container.add(BorderLayout.EAST, rp);
-        container.setBackground(color);
+        container.add(BorderLayout.EAST, rp);
+        container.setBackground(pastelYellow);
         writing.setEnabled(false);
+        setBackground(pastelYellow);
 
         Dimension frameSize = getSize();
         Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -58,78 +50,6 @@ public class MainPageGUI extends MyJFrame {
             }
         });
 
-        mainMenuBTN.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                container.remove(switchCenterPanel);
-                container.add(BorderLayout.CENTER, cp);
-                switchCenterPanel = cp;
-                revalidate();
-                repaint();
-                writing.setEnabled(false);
-            }
-        });
-
-        noticeBTN.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                container.remove(switchCenterPanel);
-                container.add(BorderLayout.CENTER, np);
-                switchCenterPanel = np;
-                revalidate();
-                repaint();
-                writing.setEnabled(false);
-            }
-        });
-
-        reportBTN.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                container.remove(switchCenterPanel);
-                container.add(BorderLayout.CENTER, rep);
-                switchCenterPanel = rep;
-                revalidate();
-                repaint();
-                writing.setEnabled(true);
-            }
-        });
-
-        missingBTN.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                container.remove(switchCenterPanel);
-                container.add(BorderLayout.CENTER, mp);
-                switchCenterPanel = mp;
-                revalidate();
-                repaint();
-                writing.setEnabled(true);
-            }
-        });
-
-        tempBTN.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                container.remove(switchCenterPanel);
-                container.add(BorderLayout.CENTER, tep);
-                switchCenterPanel = tep;
-                revalidate();
-                repaint();
-                writing.setEnabled(true);
-            }
-        });
-
-        adoptBTN.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                container.remove(switchCenterPanel);
-                container.add(BorderLayout.CENTER, ap);
-                switchCenterPanel = ap;
-                revalidate();
-                repaint();
-                writing.setEnabled(true);
-            }
-        });
-
         loginPopup.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -141,10 +61,10 @@ public class MainPageGUI extends MyJFrame {
                     if (confirm == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "로그인 되었어요 :)", "로그인 성공!!", JOptionPane.INFORMATION_MESSAGE);
                         loginPage.dispose();
-                        tp.groupPan.remove(loginMain);
-                        tp.groupPan.add(logoutMain, 5);
-                        tp.revalidate();
-                        tp.repaint();
+                        bp.groupPanRight.remove(loginMain);
+                        bp.groupPanRight.add(logoutMain, 5);
+                        bp.revalidate();
+                        bp.repaint();
                     } else {
                         JOptionPane.showMessageDialog(null, "취소되었어요", "로그인 취소", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -177,10 +97,10 @@ public class MainPageGUI extends MyJFrame {
                 int confirm = JOptionPane.showConfirmDialog(null, "로그아웃 하시나요?", "로그아웃 확인", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     JOptionPane.showMessageDialog(null, "로그아웃 되었어요.", "로그아웃 완료!!", JOptionPane.INFORMATION_MESSAGE);
-                    tp.groupPan.remove(logoutMain);
-                    tp.groupPan.add(loginMain, 5);
-                    tp.revalidate();
-                    tp.repaint();
+                    bp.groupPanRight.remove(logoutMain);
+                    bp.groupPanRight.add(loginMain, 5);
+                    bp.revalidate();
+                    bp.repaint();
                 } else {
                     JOptionPane.showMessageDialog(null, "취소되었어요.", "로그아웃 취소", JOptionPane.INFORMATION_MESSAGE);
                 }
