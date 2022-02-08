@@ -8,7 +8,6 @@ import static com.aroundThirty.Resource.FR.*;
 
 public class RightPanel extends JPanel {
     static JPanel centerPanel = new JPanel(new BorderLayout());
-    JPanel northPanel = new JPanel(new BorderLayout());
     JPanel southPanel = new JPanel();
     JPanel nEastPanel = new JPanel();
     public static JPanel nEWestPanel = new JPanel(cardLayout);
@@ -53,23 +52,24 @@ public class RightPanel extends JPanel {
     JTextArea reportDetail = new JTextArea("reportDetail"); // DB 연결 해야함
     JTextArea reportDetailTxt = new JTextArea("reportDetail"); // DB 연결 해야함
 
-    String imgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";    // 이미지 주소를 받음
+    String imgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/KakaoTalk_Photo_2022-02-07-17-06-30.jpeg";    // 이미지 주소를 받음
     ImageIcon imgIcon = new ImageIcon(imgPath); // 이미지를 담음
     JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 150, 150));    // 이미지 추가
 
 
     public RightPanel() {
-        setPreferredSize(new Dimension(500, 0));
+        rtp = new RightTopPanel();
+        setPreferredSize(new Dimension(550, 0));
 
         // Frame에 패널 추가
         setLayout(new BorderLayout());
-        add(BorderLayout.NORTH, northPanel);
+        add(BorderLayout.NORTH, rtp);
         add(BorderLayout.CENTER, centerPanel);
         add(BorderLayout.SOUTH, southPanel);
         add(detail_ScrollPane);
 
         // 패널 구성
-        northPanel.add(BorderLayout.EAST, nEastPanel);
+//        northPanel.add(BorderLayout.EAST, nEastPanel);
         nEastPanel.add(nEWestPanel);
         nEastPanel.add(nEEastPanel);
         centerPanel.add(BorderLayout.NORTH, cNorthPanel);
@@ -84,8 +84,6 @@ public class RightPanel extends JPanel {
         cCCenterPanel.add(BorderLayout.NORTH, cCCenterPanel_Card);
 
         // 패널에 라벨 및 버튼 추가
-        nEWestPanel.add("수정", modifyBtn);
-        nEEastPanel.add(deleteBtn);
         cLNorthPanel.add(imgLabel);
         cRNorthPanel.add(reportDt);
         cRNorthPanel.add(reportDtVal);
@@ -102,7 +100,6 @@ public class RightPanel extends JPanel {
         cCCenterPanel_Card.add(reportDetail);
 
         // 패널에 라벨 및 버튼 추가 card 2
-        nEWestPanel.add("완료", postBtn);
         cRNorthPanel_Card.add(reportDt_Card);
         cRNorthPanel_Card.add(reportDtTxt);
         cRNorthPanel_Card.add(reportPlace_Card);
@@ -134,35 +131,34 @@ public class RightPanel extends JPanel {
         imgLabel.setBorder(line);   // 저장된 테두리와 곡선 추가
 
         // 폰트 설정
-        reportDetail.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportDetailTxt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportDt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportDt_Card.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportDtVal.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportDtTxt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportPlace.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportPlace_Card.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportPlaceVal.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportPlaceTxt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportKind.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportKind_Card.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportKindVal.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportKindTxt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportNum.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportNum_Card.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportNumVal.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        reportNumTxt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        postDt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        postDt_Card.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        postDtVal.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        postDtTxt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        modifyDt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        modifyDt_Card.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        modifyDtVal.setFont(new Font("나눔고딕", Font.PLAIN, 15));
-        modifyDtTxt.setFont(new Font("나눔고딕", Font.PLAIN, 15));
+        reportDetail.setFont(fontNanum);
+        reportDetailTxt.setFont(fontNanum);
+        reportDt.setFont(fontNanum);
+        reportDt_Card.setFont(fontNanum);
+        reportDtVal.setFont(fontNanum);
+        reportDtTxt.setFont(fontNanum);
+        reportPlace.setFont(fontNanum);
+        reportPlace_Card.setFont(fontNanum);
+        reportPlaceVal.setFont(fontNanum);
+        reportPlaceTxt.setFont(fontNanum);
+        reportKind.setFont(fontNanum);
+        reportKind_Card.setFont(fontNanum);
+        reportKindVal.setFont(fontNanum);
+        reportKindTxt.setFont(fontNanum);
+        reportNum.setFont(fontNanum);
+        reportNum_Card.setFont(fontNanum);
+        reportNumVal.setFont(fontNanum);
+        reportNumTxt.setFont(fontNanum);
+        postDt.setFont(fontNanum);
+        postDt_Card.setFont(fontNanum);
+        postDtVal.setFont(fontNanum);
+        postDtTxt.setFont(fontNanum);
+        modifyDt.setFont(fontNanum);
+        modifyDt_Card.setFont(fontNanum);
+        modifyDtVal.setFont(fontNanum);
+        modifyDtTxt.setFont(fontNanum);
 
         // 패널 색상
-        nEEastPanel.setBackground(pastelPink);
         cRNorthPanel_Card.setBackground(pastelYellow);
         reportDetail.setBackground(pastelPink);
         reportDtVal.setBackground(pastelYellow);
@@ -171,9 +167,9 @@ public class RightPanel extends JPanel {
         reportNumVal.setBackground(pastelYellow);
         postDtVal.setBackground(pastelYellow);
         modifyDtVal.setBackground(pastelYellow);
-        northPanel.setBackground(pastelPink);
+//        northPanel.setBackground(pastelPink);
         centerPanel.setBackground(pastelYellow);
-        southPanel.setBackground(pastelPink);
+        southPanel.setBackground(pastelYellow);
         nEastPanel.setBackground(pastelPink);
         cCenterPanel.setBackground(pastelYellow);
         cNorthPanel.setBackground(pastelYellow);
@@ -184,26 +180,10 @@ public class RightPanel extends JPanel {
         cLCenterPanel.setBackground(pastelPink);
         cCCenterPanel_Card.setBackground(pastelPink);
 
-        Dimension frameSize = getSize();
-        Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation((windowSize.width - frameSize.width) / 2,
-                (windowSize.height - frameSize.height) / 2); //화면 중앙에 띄우기
-        setVisible(true);
-
         detail_ScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);    // 상하 스크롤에 대한 정책을 설정한다. (스크롤바가 항상 보이도록 설정)
-        centerPanel.setPreferredSize(new Dimension(300, 1000)); // centerPanel의 크기 지정
+        centerPanel.setPreferredSize(new Dimension(300, 800)); // centerPanel의 크기 지정
         detail_ScrollPane.getVerticalScrollBar().setUnitIncrement(15); // 스크롤 속도 지정
         detail_ScrollPane.setViewportView(centerPanel); // 데이터가 화면을 넘어가도 깨지지 않도록 수정 대신 넘어간 데이터가 안보일 수 있음
+//        detail_ScrollPane.setBorder(null);
     }
-
-
-    static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
-        Image img = icon.getImage();  //ImageIcon을 Image로 변환.
-        Image imgScale = img.getScaledInstance(i, j, java.awt.Image.SCALE_SMOOTH);
-        ImageIcon imgSize = new ImageIcon(imgScale);
-        return imgSize;
-    }
-
-
-
 }

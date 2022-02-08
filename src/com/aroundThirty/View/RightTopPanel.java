@@ -6,16 +6,27 @@ import java.awt.*;
 import static com.aroundThirty.Resource.FR.*;
 
 public class RightTopPanel extends JPanel {
-    JPanel mainPanel;
+    JPanel switchPanel;
+    JPanel westPanel;
+    JPanel groupPanel;
 
     public RightTopPanel() {
-        mainPanel = new JPanel();
-        mainPanel.add(writing);
+        switchPanel = new JPanel(cardLayout);
+        groupPanel = new JPanel();
+        westPanel = new JPanel();
+        westPanel.add(addFile);
+        switchPanel.add("수정", modifyBtn);
+        switchPanel.add("완료", postBtn);
+        groupPanel.add(switchPanel);
+        groupPanel.add(deleteBtn);
 
         setBackground(pastelGreen);
-        mainPanel.setBackground(pastelGreen);
+        switchPanel.setBackground(pastelGreen);
+        westPanel.setBackground(pastelGreen);
+        groupPanel.setBackground(pastelGreen);
         setLayout(new BorderLayout());
-        add(BorderLayout.EAST, mainPanel);
-        writing.setBorderPainted(false);
+        add(BorderLayout.EAST, groupPanel);
+        add(BorderLayout.WEST, westPanel);
+//        addFile.setBorderPainted(false);
     }
 }
