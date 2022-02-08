@@ -1,20 +1,18 @@
 package com.aroundThirty.Resource;
 
+import com.aroundThirty.Controller.ReportController;
 import com.aroundThirty.View.*;
-import com.aroundThirty.model.CardDto;
+import com.aroundThirty.model.ReportCardDto;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class FR {
-    public static ArrayList<CardDto> cardDtoList = new ArrayList<>();
+    public static ArrayList<ReportCardDto> reportCardDtoList = new ArrayList<>();
 
     static {
-        for (int i = 0; i < 120; i++) {
-            CardDto cardDto = new CardDto(i, "img" + i, String.format("img%d.jpg", i));
-            cardDtoList.add(cardDto);
-        }
+        new ReportController();
     }
 
     public static String title = "귀엽개 앙큼하냥";
