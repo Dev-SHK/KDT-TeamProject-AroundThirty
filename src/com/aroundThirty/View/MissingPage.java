@@ -68,8 +68,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 01 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }
@@ -86,8 +84,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 02 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }
@@ -103,8 +99,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 03 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }
@@ -120,8 +114,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 04 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }
@@ -137,8 +129,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 05 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }
@@ -154,8 +144,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 06 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }
@@ -171,8 +159,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 07 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }
@@ -188,8 +174,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 08 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }
@@ -205,8 +189,6 @@ public class MissingPage extends JPanel {
                     mainPanel.add(rbtn = new JButton("실종동물 Page 09 " + i));
                 }
                 rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
                 revalidate();
                 repaint();
             }

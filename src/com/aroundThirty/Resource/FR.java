@@ -7,6 +7,8 @@ import java.awt.*;
 
 public class FR {
 
+    public static String title = "귀엽개 앙큼하냥";
+
     public static String[] location = {"서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"};
     public static JComboBox<String> locationCombo = new JComboBox<>(location);
 
@@ -71,18 +73,20 @@ public class FR {
     public static Color pastelYellow = new Color(255, 250, 200, 255);
     public static Color pastelGreen = new Color(229, 250, 164, 255);
     public static Font fontCourier = new Font("Courier New", Font.PLAIN, 25);
-    public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 20);
+    public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 13);
     public static Font fontAppGothic = new Font("AppleGothic", Font.PLAIN, 12);
 
     public static String catImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/ImgFiles/CatIcon.png";
     public static String dogImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/Dog.png";
     public static String searchImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/free-icon-rounded-magnifying-glass-13267.png";
     public static String bgImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/bg-dog.png";
+    public static String rpDetailImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/KakaoTalk_Photo_2022-02-07-17-06-30.jpeg";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
     public static ImageIcon searchImgIcon = new ImageIcon(searchImgPath);
     public static ImageIcon bgImg = new ImageIcon(bgImgPath);
+    public static ImageIcon rpDetailImg = new ImageIcon(rpDetailImgPath);
 
     public static JButton loginMain = new JButton("LOGIN");
     public static final JButton logoutMain = new JButton("LOGOUT");
@@ -91,7 +95,7 @@ public class FR {
     public static final JButton catBTN = new JButton(imageSetSize(catImgIcon, 50, 50));
     public static final JButton dogBTN = new JButton(imageSetSize(dogImgIcon, 50, 50));
     public static final JButton searchBTN = new JButton(imageSetSize(searchImgIcon, 25, 25));
-    public static final JButton writing = new JButton("새 글 작성");
+    public static final JButton addFile = new JButton("파일첨부");
     public static final JTextField idTxtFld = new JTextField(20);
     public static final JPasswordField pwTxtFld = new JPasswordField(20);
     public static final JButton modifyBtn = new JButton("수정");
@@ -106,6 +110,7 @@ public class FR {
     public static MissingPage mp = new MissingPage();
     public static AdoptPage ap = new AdoptPage();
     public static TemporaryPage tep = new TemporaryPage();
+    public static AddFileWindow afw;
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
 
@@ -113,6 +118,35 @@ public class FR {
     public static LeftPanel lp;
     public static RightPanel rp;
     public static BottomPanel bp;
+    public static RightTopPanel rtp;
+    public static SearchData sd;
+
+    public static String dog01ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+    public static ImageIcon dog01ImgIcon = new ImageIcon(dog01ImgPath);
+    public static String dog02ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog02.jpeg";
+    public static ImageIcon dog02ImgIcon = new ImageIcon(dog02ImgPath);
+    public static String dog03ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog03.jpeg";
+    public static ImageIcon dog03ImgIcon = new ImageIcon(dog03ImgPath);
+    public static String dog04ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog04.jpeg";
+    public static ImageIcon dog04ImgIcon = new ImageIcon(dog04ImgPath);
+    public static String dog05ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog05.jpeg";
+    public static ImageIcon dog05ImgIcon = new ImageIcon(dog05ImgPath);
+    public static String dog06ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog06.jpeg";
+    public static ImageIcon dog06ImgIcon = new ImageIcon(dog06ImgPath);
+    public static String dog07ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog07.jpeg";
+    public static ImageIcon dog07ImgIcon = new ImageIcon(dog07ImgPath);
+    public static String dog08ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog08.jpeg";
+    public static ImageIcon dog08ImgIcon = new ImageIcon(dog08ImgPath);
+    public static String dog09ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog09.jpeg";
+    public static ImageIcon dog09ImgIcon = new ImageIcon(dog09ImgPath);
+    public static String dog10ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog10.jpeg";
+    public static ImageIcon dog10ImgIcon = new ImageIcon(dog10ImgPath);
+    public static String dog11ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog11.jpeg";
+    public static ImageIcon dog11ImgIcon = new ImageIcon(dog11ImgPath);
+    public static String dog12ImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog12.jpeg";
+    public static ImageIcon dog12ImgIcon = new ImageIcon(dog12ImgPath);
+
+    public static ImageIcon[] imgArr = {dog01ImgIcon, dog02ImgIcon, dog03ImgIcon, dog04ImgIcon, dog05ImgIcon, dog06ImgIcon, dog07ImgIcon, dog08ImgIcon, dog09ImgIcon, dog10ImgIcon, dog11ImgIcon, dog12ImgIcon};
 
 
     public static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {

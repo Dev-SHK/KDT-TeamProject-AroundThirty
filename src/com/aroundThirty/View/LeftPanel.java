@@ -30,6 +30,7 @@ public class LeftPanel extends JPanel {
         tabbedPane.setOpaque(true);
         tabbedPane.setBackground(pastelYellow);
         tabbedPane.setPreferredSize(new Dimension(840, 780));
+        tabbedPane.setBorder(null);
 
         centerPan = new JPanel();
         centerPan.add(tabbedPane);
