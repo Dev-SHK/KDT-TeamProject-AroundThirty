@@ -1,232 +1,57 @@
 package com.aroundThirty.View;
 
-import com.aroundThirty.Controller.MainController;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import static com.aroundThirty.Resource.FR.*;
 
 
 public class ReportPage extends JPanel {
-    JPanel centerPan;
-    JPanel mainPanel;
-    JButton rbtn;
-    GridLayout gridLayout;
-    JScrollPane scrollPane;
+    private static final long serialVersionUID = 1L;
+    public static ArrayList<JPanel> paneList = new ArrayList<JPanel>();
+    public static ArrayList<JButton> btnList = new ArrayList<JButton>();
+    public static ArrayList<JLabel> lblList = new ArrayList<JLabel>();
+    PagingBtn pagingBtn = new PagingBtn();
+    JPanel centerPanel = new JPanel(new GridLayout(SIZE_ROW, SIZE_COL));    // SIZE_ROW, SIZE_COL로 행열 지정
+    JScrollPane jScrollPane = new JScrollPane(centerPanel);
+
+    static {
+        setDataListPanel(0, 12 + SIZE_ITEM);
+    }
 
     public ReportPage() {
-        scrollPane = new JScrollPane();
-        gridLayout = new GridLayout(2, 3);
-        mainPanel = new JPanel(gridLayout);
-        centerPan = new JPanel();
-        gridLayout.setVgap(30);
-        gridLayout.setHgap(30);
-
-        String[] data1 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
-        String[] data2 = {"13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
-        String[] data3 = {"25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"};
-        String[] data4 = {"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"};
-        String[] data5 = {"49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60"};
-        String[] data6 = {"61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72"};
-        String[] data7 = {"73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84"};
-        String[] data8 = {"85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96"};
-        String[] data9 = {"97", "98", "99", "100"};
-
-        int i;
-        for (i = 0; i < data1.length; i++) {
-            mainPanel.add(rbtn = new JButton("제보동물 사진 - 메인" + i));
-            int finalI = i;
-            rbtn.setPreferredSize(new Dimension(200, 300));
-            rbtn.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    JButton jButton = (JButton) e.getSource();
-                    jButton.setText("마우스 오버 테스트");
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    JButton jButton = (JButton) e.getSource();
-                    jButton.setText("제보동물 사진 - 메인" + finalI);
-
-                }
-            });
-            MainController.onClick();
+        add(BorderLayout.CENTER,jScrollPane);
+        jScrollPane.setPreferredSize(new Dimension(800, 700));
+        jScrollPane.setBorder(null);
+        jScrollPane.setBackground(pastelYellow);
+        for (int i = 0; i < paneList.size(); i++) {
+            centerPanel.add(paneList.get(i));   // panel에 index를 줘서 변수를 주듯 이름을 매김
         }
-        JPanel buttonPane = new JPanel();
-        JButton btn1 = new JButton("1");
-        btn1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data1.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 01 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn1);
-
-
-        JButton btn2 = new JButton("2");
-        btn2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data2.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 02 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn2);
-
-        JButton btn3 = new JButton("3");
-        btn3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data3.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 03 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn3);
-
-        JButton btn4 = new JButton("4");
-        btn4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data4.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 04 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn4);
-
-        JButton btn5 = new JButton("5");
-        btn5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data5.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 05 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn5);
-
-        JButton btn6 = new JButton("6");
-        btn6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data6.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 06 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn6);
-
-        JButton btn7 = new JButton("7");
-        btn7.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data7.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 07 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn7);
-
-        JButton btn8 = new JButton("8");
-        btn8.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data8.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 08 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn8);
-
-        JButton btn9 = new JButton("9");
-        btn9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data9.length; i++) {
-                    mainPanel.add(rbtn = new JButton("제보동물 Page 09 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                MainController.onClick();
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn9);
-
-        buttonPane.setBackground(pastelYellow);
-
-        scrollPane.add(mainPanel);
-        scrollPane.setViewportView(mainPanel);
-        scrollPane.setBorder(null);
-        scrollPane.setOpaque(false);
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-//        mainPanel.setPreferredSize(new Dimension(300, 1500));
-        mainPanel.getPreferredSize();
-        mainPanel.setBackground(pastelYellow);
-        scrollPane.getHorizontalScrollBar().setUnitIncrement(20);
-        setLayout(new BorderLayout());
-
-        add(scrollPane, BorderLayout.CENTER);
-        add(buttonPane, BorderLayout.SOUTH);
+        add(BorderLayout.SOUTH, pagingBtn);
+        setBackground(pastelYellow);
     }
+
+    public static void setDataListPanel(int startIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
+        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
+            JPanel newPane = new JPanel(null);
+            btnList.add(new JButton(cardDtoList.get(dataIdx).getImage())); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+            lblList.add(new JLabel(cardDtoList.get(dataIdx).getTitle()));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+            btnList.get(i).setBounds(0 , 0, 200, 120);   // 위치는 따로 지정 해주지 않고 크기만 지정 해줌
+            lblList.get(i).setBounds(0, 120, 200, 20);  // 위치는 따로 지정 해주지 않고 크기만 지정 해줌
+            newPane.add(btnList.get(i));
+            newPane.add(lblList.get(i));
+            paneList.add(newPane);
+        }
+
+    }
+
+    public static void setDataListPage(int startIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
+        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
+            btnList.get(i).setText(cardDtoList.get(dataIdx).getImage());
+            lblList.get(i).setText(cardDtoList.get(dataIdx).getTitle());
+        }
+
+    }
+
 }

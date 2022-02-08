@@ -1,4 +1,4 @@
-package com.aroundThirty.View;
+package com.aroundThirty.Resource;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

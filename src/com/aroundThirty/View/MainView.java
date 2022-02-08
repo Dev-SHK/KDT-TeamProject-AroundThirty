@@ -1,5 +1,6 @@
 package com.aroundThirty.View;
 
+import com.aroundThirty.Resource.SearchData;
 import com.aroundThirty.myframe.MyJFrame;
 
 import javax.swing.*;

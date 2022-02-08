@@ -39,23 +39,22 @@ public class CenterPanel extends JPanel {
 
         int i;
         for (i = 0; i < data1.length; i++) {
-            mainPanel.add(rbtn = new JButton(imageSetSize(imgArr[i], 100, 100)));
+//            mainPanel.add(rbtn = new JButton(imageSetSize(imgArr[i], 100, 100)));
             int finalI = i;
-            rbtn.setPreferredSize(new Dimension(200, 300));
-//            rbtn.addMouseListener(new MouseAdapter() {
-//                @Override
-//                public void mouseEntered(MouseEvent e) {
-//                    JButton jButton = (JButton) e.getSource();
-//                    jButton.setText("마우스 오버 테스트");
-//                }
-//
-//                @Override
-//                public void mouseExited(MouseEvent e) {
-//                    JButton jButton = (JButton) e.getSource();
-//                    jButton.setText("유기동물 사진 - 메인" + finalI);
-//
-//                }
-//            });
+//            rbtn.setPreferredSize(new Dimension(200, 300));
+            rbtn.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    JButton jButton = (JButton) e.getSource();
+                    jButton.setText("마우스 오버 테스트");
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    JButton jButton = (JButton) e.getSource();
+                    jButton.setText("유기동물 사진 - 메인" + finalI);
+                }
+            });
 
             MainController.onClick();
 

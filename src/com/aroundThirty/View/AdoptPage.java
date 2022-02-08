@@ -37,7 +37,6 @@ public class AdoptPage extends JPanel {
         String[] data9 = {"97", "98", "99", "100"};
 
         int i;
-        imgArr = new ImageIcon[]{};
         for (i = 0; i < data1.length; i++) {
             mainPanel.add(rbtn = new JButton("입양동물 Page 01 " + i));
             int finalI = i;
