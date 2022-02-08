@@ -5,10 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static com.aroundThirty.Resource.FR.*;
+import static com.aroundThirty.Resource.FR.SIZE_ITEM;
 
 
-public class PagingBtn extends JPanel {
+public class MissingPagingBtn extends JPanel {
     private static final long serialVersionUID = 1L;
     public static ArrayList<JButton> btnList = new ArrayList<JButton>();
     static {
@@ -17,7 +17,7 @@ public class PagingBtn extends JPanel {
         }
     }
 
-    public PagingBtn() {
+    public MissingPagingBtn() {
         for(int i=0; i<9; i++) {
             add(btnList.get(i));
 
@@ -28,7 +28,7 @@ public class PagingBtn extends JPanel {
                         // instanceof : 객체타입을 확인하는 연산자로 형변환 가능 여부를 확인하며 true, false 로 반환 주로 상속관계에서 부모객체인지 자식객체인지 확인하는데 사용
                         JButton btn = (JButton)e.getSource();   // e.getsource로 받아온 객체의 속성을 btn에 담는다.
                         int startIndex = SIZE_ITEM * (Integer.parseInt(btn.getText())-1);
-                        ReportPage.setDataListPage(startIndex, startIndex+12);
+                        MissingPage.setDataListPage(startIndex, startIndex+12);
                         btn.removeActionListener(null);
                     }
                 }

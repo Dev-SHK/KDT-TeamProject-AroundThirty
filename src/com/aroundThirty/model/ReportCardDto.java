@@ -1,15 +1,15 @@
 package com.aroundThirty.model;
 
-public class CardDto {
+public class ReportCardDto {
     private int no;
     private String title;
     private String image;
 
-    public CardDto() {
+    public ReportCardDto() {
         this(0, "", "");
     }
 
-    public CardDto(int no, String title, String image) {
+    public ReportCardDto(int no, String title, String image) {
         this.no = no;
         this.title = title;
         this.image = image;
@@ -37,5 +37,10 @@ public class CardDto {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return no + title + image;
     }
 }

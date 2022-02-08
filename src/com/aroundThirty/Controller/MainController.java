@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import static com.aroundThirty.Resource.FR.*;
 
 public class MainController {
+
     public MainController() {
+
     }
 
     public static void onClick() {
@@ -30,6 +32,5 @@ public class MainController {
 
     public static void main(String[] args) {
         new MainView().setVisible(true);
-
     }
 }
