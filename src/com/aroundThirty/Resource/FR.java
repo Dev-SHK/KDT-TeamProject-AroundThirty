@@ -8,13 +8,15 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class FR {
-    public static ArrayList<CardDto> cardDtoList = new ArrayList<CardDto>();
+    public static ArrayList<CardDto> cardDtoList = new ArrayList<>();
+
     static {
-        for(int i=0; i<120; i++) {
-            CardDto cardDto = new CardDto(i, "img"+i, String.format("img%d.jpg", i));
+        for (int i = 0; i < 120; i++) {
+            CardDto cardDto = new CardDto(i, "img" + i, String.format("img%d.jpg", i));
             cardDtoList.add(cardDto);
         }
     }
+
     public static String title = "귀엽개 앙큼하냥";
 
     public static String[] location = {"서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"};
@@ -129,7 +131,33 @@ public class FR {
     public static RightTopPanel rtp;
     public static SearchData sd;
 
-
+//    public static String dog01Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog02Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog03Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog04Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog05Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog06Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog07Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog08Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog09Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog10Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog11Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//    public static String dog12Path = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/dog/dog01.jpeg";
+//
+//    public static ImageIcon dog01ImgIcon = new ImageIcon(dog01Path);
+//    public static ImageIcon dog02ImgIcon = new ImageIcon(dog02Path);
+//    public static ImageIcon dog03ImgIcon = new ImageIcon(dog03Path);
+//    public static ImageIcon dog04ImgIcon = new ImageIcon(dog04Path);
+//    public static ImageIcon dog05ImgIcon = new ImageIcon(dog05Path);
+//    public static ImageIcon dog06ImgIcon = new ImageIcon(dog06Path);
+//    public static ImageIcon dog07ImgIcon = new ImageIcon(dog07Path);
+//    public static ImageIcon dog08ImgIcon = new ImageIcon(dog08Path);
+//    public static ImageIcon dog09ImgIcon = new ImageIcon(dog09Path);
+//    public static ImageIcon dog10ImgIcon = new ImageIcon(dog10Path);
+//    public static ImageIcon dog11ImgIcon = new ImageIcon(dog11Path);
+//    public static ImageIcon dog12ImgIcon = new ImageIcon(dog12Path);
+//
+//    public static ImageIcon[] imgArr = {dog01ImgIcon, dog02ImgIcon, dog03ImgIcon, dog04ImgIcon, dog05ImgIcon, dog06ImgIcon, dog07ImgIcon, dog08ImgIcon, dog09ImgIcon, dog10ImgIcon, dog11ImgIcon, dog12ImgIcon};
 
 
     public static final int SIZE_ROW = 4;
