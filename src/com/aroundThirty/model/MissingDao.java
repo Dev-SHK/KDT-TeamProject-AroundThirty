@@ -8,8 +8,8 @@ import java.util.List;
 
 public class MissingDao {
     public static final String SQL_MISSING_SELECT = "SELECT * FROM MISSING";
-    public static final String SQL_MISSING_INSERT = "INSERT INTO MISSING(report_Datetime, report_Place, kind_Report, phone_Num, detail, post_Create_Datetime, thumbnail_Img, User_ID) VALUES (?,?,?,?,?,?,?,?)";
-    public static final String SQL_MISSING_UPDATE = "UPDATE MISSING SET report_Datetime=?, report_Place=?, kind_Report=?, phone_Num=?, detail=?, post_Modify_Datetime=?, thumbnail_Img=? WHERE NO=?";
+    public static final String SQL_MISSING_INSERT = "INSERT INTO MISSING(report_Date, report_Place, kind_Report, phone_Num, detail, post_Create_Date, thumbnail_Img, User_ID) VALUES (?,?,?,?,?,?,?,?)";
+    public static final String SQL_MISSING_UPDATE = "UPDATE MISSING SET report_Date=?, report_Place=?, kind_Report=?, phone_Num=?, detail=?, post_Modify_Date=?, thumbnail_Img=? WHERE NO=?";
     public static final String SQL_MISSING_DELETE = "DELETE FROM MISSING WHERE NO=?";
     public static final String SQL_MISSING_SELECT_ONE = "SELECT * FROM MISSING WHERE NO=?";
 
@@ -23,12 +23,12 @@ public class MissingDao {
         try {
             conn = JdbcUtil.getConnection();                        // JdbcUtil에 있는 getConnection메소드를 활용해 db와 연결하고 그걸 connection 변수인 conn에 담는다.
             pstmt = conn.prepareStatement(SQL_MISSING_INSERT);      // preparesStatement메소드를 활용하여 쿼리문을 읽어온다.
-            pstmt.setString(1, missingDto.getMissing_Datetime());    // 쿼리문에 순서에 맞게 Index를 선언하고  dto에 저장된 값을 가져와 입력해준다.
+            pstmt.setString(1, missingDto.getMissing_Date());    // 쿼리문에 순서에 맞게 Index를 선언하고  dto에 저장된 값을 가져와 입력해준다.
             pstmt.setString(2, missingDto.getMissing_Place());
             pstmt.setString(3, missingDto.getKind_Missing());
             pstmt.setString(4, missingDto.getPhone_Num());
             pstmt.setString(5, missingDto.getDetail());
-            pstmt.setString(6, missingDto.getPost_Modify_Datetime());
+            pstmt.setString(6, missingDto.getPost_Modify_Date());
             pstmt.setString(7, missingDto.getThumbnail_Img());
             pstmt.setString(8, missingDto.getUser_ID());
             int cnt = pstmt.executeUpdate();                        // insert가 성공할때 마다 카운트하여 cnt변수에 담아준다.
@@ -87,12 +87,12 @@ public class MissingDao {
         conn = JdbcUtil.getConnection(); //DB와 연결하기 위해 JdbcUtil의 getConncection 메소드 소환
         try {
             pstmt = conn.prepareStatement(SQL_MISSING_UPDATE); // prepareStatement에 쿼리를 입력하여 DB를 불러와 Statement pstmt에 담는 구문
-            pstmt.setString(1, missingDto.getMissing_Datetime()); // 제보, 실종등의 날짜와 시간 치환
+            pstmt.setString(1, missingDto.getMissing_Date()); // 제보, 실종등의 날짜와 시간 치환
             pstmt.setString(2, missingDto.getMissing_Place());  // 장소 치환
             pstmt.setString(3, missingDto.getKind_Missing());   // 품종 치환
             pstmt.setString(4, missingDto.getPhone_Num());   //전화번호 치환
             pstmt.setString(5, missingDto.getDetail()); // 본문내용 치환
-            pstmt.setString(6, missingDto.getPost_Modify_Datetime());   // 게시글 수정 일자 및 시간 치환
+            pstmt.setString(6, missingDto.getPost_Modify_Date());   // 게시글 수정 일자 및 시간 치환
             pstmt.setString(6, missingDto.getThumbnail_Img());   // 게시글 수정 일자 및 시간 치환
             pstmt.setInt(7, missingDto.getNo()); // 업데이트할 데이터의 기준값
 
@@ -125,16 +125,16 @@ public class MissingDao {
             rs = stmt.executeQuery(SQL_MISSING_SELECT);
             while (rs.next()) {
                 int no = rs.getInt(1);
-                String missing_Datetime = rs.getString(2);
+                String missing_Date = rs.getString(2);
                 String missing_Place = rs.getString(3);
                 String kind_Missing = rs.getString(4);
                 String phone_Num = rs.getString(5);
                 String detail = rs.getString(6);
-                String post_Create_Datetime = rs.getString(7);
-                String post_Modify_Datetime = rs.getString(8);
+                String post_Create_Date = rs.getString(7);
+                String post_Modify_Date = rs.getString(8);
                 String thumbnail_Img = rs.getString(9);
                 String user_ID = rs.getString(10);
-                list.add(new MissingDto(missing_Datetime, missing_Place, kind_Missing, phone_Num, detail, post_Create_Datetime, post_Modify_Datetime, thumbnail_Img, user_ID, no));
+                list.add(new MissingDto(missing_Date, missing_Place, kind_Missing, phone_Num, detail, post_Create_Date, post_Modify_Date, thumbnail_Img, user_ID, no));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -160,16 +160,16 @@ public class MissingDao {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 int no = rs.getInt(1);
-                String missing_Datetime = rs.getString(2);
+                String missing_Date = rs.getString(2);
                 String missing_Place = rs.getString(3);
                 String kind_Missing = rs.getString(4);
                 String phone_Num = rs.getString(5);
                 String detail = rs.getString(6);
-                String post_Create_Datetime = rs.getString(7);
-                String post_Modify_Datetime = rs.getString(8);
+                String post_Create_Date = rs.getString(7);
+                String post_Modify_Date = rs.getString(8);
                 String thumbnail_Img = rs.getString(9);
                 String user_ID = rs.getString(10);
-                apdto = new MissingDto(missing_Datetime, missing_Place, kind_Missing, phone_Num, detail, post_Create_Datetime, post_Modify_Datetime, thumbnail_Img, user_ID, no);
+                apdto = new MissingDto(missing_Date, missing_Place, kind_Missing, phone_Num, detail, post_Create_Date, post_Modify_Date, thumbnail_Img, user_ID, no);
             }
         } catch (SQLException e) {
             e.printStackTrace();

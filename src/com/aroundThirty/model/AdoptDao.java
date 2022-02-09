@@ -8,8 +8,8 @@ import java.util.List;
 
 public class AdoptDao {
     public static final String SQL_ADOPT_SELECT = "SELECT * FROM ADOPT";
-    public static final String SQL_ADOPT_INSERT = "INSERT INTO ADOPT(adopt_Place, kind_Adopt, phone_Num, detail, post_Create_Datetime, thumbnail_Img, User_ID) VALUES (?,?,?,?,?,?,?)";
-    public static final String SQL_ADOPT_UPDATE = "UPDATE ADOPT SET adopt_Place=?, kind_Adopt=?, phone_Num=?, detail=?, post_Modify_Datetime=?, thumbnail_Img=? WHERE NO=?";
+    public static final String SQL_ADOPT_INSERT = "INSERT INTO ADOPT(adopt_Place, kind_Adopt, phone_Num, detail, post_Create_Date, thumbnail_Img, User_ID) VALUES (?,?,?,?,?,?,?)";
+    public static final String SQL_ADOPT_UPDATE = "UPDATE ADOPT SET adopt_Place=?, kind_Adopt=?, phone_Num=?, detail=?, post_Modify_Date=?, thumbnail_Img=? WHERE NO=?";
     public static final String SQL_ADOPT_DELETE = "DELETE FROM ADOPT WHERE NO=?";
     public static final String SQL_ADOPT_SELECT_ONE = "SELECT * FROM ADOPT WHERE NO=?";
 
@@ -31,13 +31,13 @@ public class AdoptDao {
                 String kind_Adopt = rs.getString(3);
                 String phone_Num = rs.getString(4);
                 String detail = rs.getString(5);
-                String post_Create_Datetime = rs.getString(6);
-                String post_Modify_Datetime = rs.getString(7);
+                String post_Create_Date = rs.getString(6);
+                String post_Modify_Date = rs.getString(7);
                 String User_ID = rs.getString(8);
                 // String thumbnail_Img = rs.getString(9);
 
                 list.add(new AdoptDto(no, adopt_Place, kind_Adopt, phone_Num, detail,
-                        post_Create_Datetime, post_Modify_Datetime, User_ID));
+                        post_Create_Date, post_Modify_Date, User_ID));
 
             }
         } catch (SQLException e) {
@@ -90,7 +90,7 @@ public class AdoptDao {
             pstmt.setString(2, adoptDto.getKind_Adopt());
             pstmt.setString(3, adoptDto.getPhone_Num());
             pstmt.setString(4, adoptDto.getDetail());
-            pstmt.setString(5, adoptDto.getPost_Create_Datetime());
+            pstmt.setString(5, adoptDto.getPost_Create_Date());
             pstmt.setString(6, adoptDto.getThumbnail_Img());
             pstmt.setString(7, adoptDto.getUser_ID());
             int cnt = pstmt.executeUpdate();
@@ -124,7 +124,7 @@ public class AdoptDao {
             pstmt.setString(2, adoptDto.getKind_Adopt());
             pstmt.setString(3, adoptDto.getPhone_Num());
             pstmt.setString(4, adoptDto.getDetail());
-            pstmt.setString(5, adoptDto.getPost_Modify_Datetime());
+            pstmt.setString(5, adoptDto.getPost_Modify_Date());
             pstmt.setString(6, adoptDto.getThumbnail_Img());
             pstmt.setInt(7, adoptDto.getNo());
             int cnt = pstmt.executeUpdate();

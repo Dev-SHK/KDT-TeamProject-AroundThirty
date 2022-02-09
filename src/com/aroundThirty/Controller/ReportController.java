@@ -1,25 +1,35 @@
 package com.aroundThirty.Controller;
 
-import com.aroundThirty.Resource.FR;
 import com.aroundThirty.model.ReportCardDto;
 import com.aroundThirty.model.ReportDao;
 import com.aroundThirty.model.ReportDto;
-import com.aroundThirty.Resource.BR;
+
+import javax.swing.*;
+
+import java.awt.*;
+
+import static com.aroundThirty.Resource.BR.*;
+import static com.aroundThirty.Resource.FR.*;
 
 
 public class ReportController {
-    public ReportController() {
-        BR.reportListAll = ReportDao.reportSelectAll();
-        for(ReportDto reportDto : BR.reportListAll) {
-            BR.reportDto = reportDto;
-        }
+    String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
+    ImageIcon defaultImg = new ImageIcon(defaultImgPath);
 
-        for(int i=0; i<120; i++) {
-            ReportCardDto reportCardDto = new ReportCardDto(i, "image" + i, String.format(BR.reportDto.thumbnail_Img, i));
-            FR.reportCardDtoList.add(reportCardDto);
+
+    public ReportController() {
+        reportListAll = ReportDao.reportSelectAll();
+        for(ReportDto Dto : reportListAll) {
+            reportDto = Dto;
+        }
+        for(int i=0; i<reportListAll.size(); i++) {
+            if (reportListAll.get(i).thumbnail_Img == null){
+                ReportCardDto reportCardDto = new ReportCardDto(defaultImg);
+                reportCardDtoList.add(reportCardDto);
+            }else{
+                ReportCardDto reportCardDto = new ReportCardDto(defaultImg);
+                reportCardDtoList.add(reportCardDto);
+            }
         }
     }
-
-
-
 }

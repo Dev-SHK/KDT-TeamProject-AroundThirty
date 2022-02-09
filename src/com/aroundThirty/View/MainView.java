@@ -1,6 +1,7 @@
 package com.aroundThirty.View;
 
 import com.aroundThirty.Resource.SearchData;
+import com.aroundThirty.model.ReportDto;
 import com.aroundThirty.myframe.MyJFrame;
 
 import javax.swing.*;
@@ -9,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static com.aroundThirty.Resource.FR.*;
+import static com.aroundThirty.Resource.BR.*;
+import static com.aroundThirty.model.ReportDao.*;
 
 public class MainView extends MyJFrame {
     public static Container container;
@@ -132,6 +135,7 @@ public class MainView extends MyJFrame {
                         cardLayout.next(rtp.switchPanel);
                         cardLayout.next(RightPanel.cNTPanel);
                         cardLayout.next(RightPanel.cCCenterPanel_Card);
+                        reportModify(new ReportDto(reportDto.report_Date,reportDto.report_Place,reportDto.kind_Report,reportDto.phone_Num,reportDto.detail,reportDto.post_Modify_Date, reportDto.thumbnail_Img, reportDto.no));
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);

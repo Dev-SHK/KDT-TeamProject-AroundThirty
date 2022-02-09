@@ -88,7 +88,7 @@ public class FR {
     public static String dogImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/Dog.png";
     public static String searchImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/free-icon-rounded-magnifying-glass-13267.png";
     public static String bgImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/bg-dog.png";
-    public static String rpDetailImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/KakaoTalk_Photo_2022-02-07-17-06-30.jpeg";
+    public static String rpDetailImgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);

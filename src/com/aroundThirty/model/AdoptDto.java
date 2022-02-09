@@ -7,20 +7,20 @@ public class AdoptDto {
     public String kind_Adopt = null; // 품종
     public String phone_Num = null; // 전화 번호
     public String detail = null; // 게시글 본문
-    public String post_Create_Datetime = null; // 게시글 작성 날짜 및 시간
-    public String post_Modify_Datetime = null; // 게시글 수정 날짜 및 시간
+    public String post_Create_Date = null; // 게시글 작성 날짜 및 시간
+    public String post_Modify_Date = null; // 게시글 수정 날짜 및 시간
     public String thumbnail_Img = null; // 동물 사진
 
     // show
-    public AdoptDto(int no, String user_ID, String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Datetime, String post_Modify_Datetime) {
+    public AdoptDto(int no, String user_ID, String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date) {
         this.no = no;
         this.user_ID = user_ID;
         this.adopt_Place = adopt_Place;
         this.kind_Adopt = kind_Adopt;
         this.phone_Num = phone_Num;
         this.detail = detail;
-        this.post_Create_Datetime = post_Create_Datetime;
-        this.post_Modify_Datetime = post_Modify_Datetime;
+        this.post_Create_Date = post_Create_Date;
+        this.post_Modify_Date = post_Modify_Date;
         // this.thumbnail_Img = thumbnail_Img;
     }
 
@@ -86,24 +86,24 @@ public class AdoptDto {
         this.detail = detail;
     }
 
-    public String getPost_Create_Datetime() {
-        return post_Create_Datetime;
+    public String getPost_Create_Date() {
+        return post_Create_Date;
     }
 
-    public void setPost_Create_Datetime(String post_Create_Datetime) {
-        this.post_Create_Datetime = post_Create_Datetime;
+    public void setPost_Create_Date(String post_Create_Date) {
+        this.post_Create_Date = post_Create_Date;
     }
 
-    public String getPost_Modify_Datetime() {
-        return post_Modify_Datetime;
+    public String getPost_Modify_Date() {
+        return post_Modify_Date;
     }
 
-    public void setPost_Modify_Datetime(String post_Modify_Datetime) {
-        this.post_Modify_Datetime = post_Modify_Datetime;
+    public void setPost_Modify_Date(String post_Modify_Date) {
+        this.post_Modify_Date = post_Modify_Date;
     }
 
     @Override
     public String toString() {
-        return no + " " + user_ID + " " + adopt_Place + " " + kind_Adopt + " " + phone_Num + " " + detail + " " + post_Create_Datetime + " " + post_Modify_Datetime;
+        return no + " " + user_ID + " " + adopt_Place + " " + kind_Adopt + " " + phone_Num + " " + detail + " " + post_Create_Date + " " + post_Modify_Date;
     }
 }

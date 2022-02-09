@@ -1,18 +1,31 @@
 package com.aroundThirty.model;
 
+import javax.swing.*;
+
 public class ReportCardDto {
     private int no;
     private String title;
     private String image;
+    private ImageIcon defaultImg;
 
-    public ReportCardDto() {
-        this(0, "", "");
-    }
 
-    public ReportCardDto(int no, String title, String image) {
+
+    public ReportCardDto(int no, String title, ImageIcon defaultImg) {
         this.no = no;
         this.title = title;
-        this.image = image;
+        this.defaultImg = defaultImg;
+    }
+
+    public ReportCardDto(ImageIcon defaultImg) {
+        this.defaultImg = defaultImg;
+    }
+
+    public ImageIcon getDefaultImg() {
+        return defaultImg;
+    }
+
+    public void setDefaultImg(ImageIcon defaultImg) {
+        this.defaultImg = defaultImg;
     }
 
     public int getNo() {
