@@ -104,6 +104,6 @@ public class AdoptDto {
 
     @Override
     public String toString() {
-        return no + " " + user_ID + " " + adopt_Place + " " + kind_Adopt + " " + phone_Num + " " + detail + " " + post_Create_Date + " " + post_Modify_Date;
+        return no + " " + user_ID + " " + adopt_Place + " " + kind_Adopt + " " + phone_Num + " " + detail + " " + post_Create_Date + " " + post_Modify_Date + " " + thumbnail_Img;
     }
 }
