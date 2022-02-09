@@ -19,15 +19,16 @@ public class ReportController {
 
     public ReportController() {
         reportListAll = ReportDao.reportSelectAll();
-        for(ReportDto Dto : reportListAll) {
+        for (ReportDto Dto : reportListAll) {
             reportDto = Dto;
         }
-        for(int i=0; i<reportListAll.size(); i++) {
-            if (reportListAll.get(i).thumbnail_Img == null){
+        for (int i = 0; i < reportListAll.size(); i++) {
+            ImageIcon img = new ImageIcon(reportListAll.get(i).thumbnail_Img);
+            if (reportListAll.get(i).thumbnail_Img == null) {
                 ReportCardDto reportCardDto = new ReportCardDto(defaultImg);
                 reportCardDtoList.add(reportCardDto);
-            }else{
-                ReportCardDto reportCardDto = new ReportCardDto(defaultImg);
+            } else {
+                ReportCardDto reportCardDto = new ReportCardDto(img);
                 reportCardDtoList.add(reportCardDto);
             }
         }
