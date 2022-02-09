@@ -35,6 +35,7 @@ public class MissingPage extends JPanel {
         add(BorderLayout.SOUTH, missingPagingBtn);
         setBackground(pastelYellow);
     }
+
     public static void setDataListPanel(int startIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
         for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
             JPanel newPane = new JPanel(null);

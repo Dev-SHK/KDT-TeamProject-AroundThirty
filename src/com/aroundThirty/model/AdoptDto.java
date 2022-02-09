@@ -12,7 +12,7 @@ public class AdoptDto {
     public String thumbnail_Img = null; // 동물 사진
 
     // show
-    public AdoptDto(int no, String user_ID, String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date) {
+    public AdoptDto(int no, String user_ID, String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date, String thumbnail_Img) {
         this.no = no;
         this.user_ID = user_ID;
         this.adopt_Place = adopt_Place;
@@ -21,7 +21,7 @@ public class AdoptDto {
         this.detail = detail;
         this.post_Create_Date = post_Create_Date;
         this.post_Modify_Date = post_Modify_Date;
-        // this.thumbnail_Img = thumbnail_Img;
+        this.thumbnail_Img = thumbnail_Img;
     }
 
     public AdoptDto(int no, String user_ID) {
