@@ -20,7 +20,7 @@ public class AdoptDao {
     public static Connection conn = null;
 
     public static List<AdoptDto> adoptSelectAll() {
-        List<AdoptDto> list = new ArrayList<AdoptDto>();
+        List<AdoptDto> list = new ArrayList<>();
         conn = JdbcUtil.getConnection();
         try {
             stmt = conn.createStatement();
@@ -34,10 +34,10 @@ public class AdoptDao {
                 String post_Create_Date = rs.getString(6);
                 String post_Modify_Date = rs.getString(7);
                 String User_ID = rs.getString(8);
-                // String thumbnail_Img = rs.getString(9);
+                String thumbnail_Img = rs.getString(9);
 
                 list.add(new AdoptDto(no, adopt_Place, kind_Adopt, phone_Num, detail,
-                        post_Create_Date, post_Modify_Date, User_ID));
+                        post_Create_Date, post_Modify_Date, thumbnail_Img, User_ID));
 
             }
         } catch (SQLException e) {

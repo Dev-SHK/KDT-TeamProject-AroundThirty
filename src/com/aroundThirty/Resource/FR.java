@@ -1,7 +1,9 @@
 package com.aroundThirty.Resource;
 
+import com.aroundThirty.Controller.AdoptController;
 import com.aroundThirty.Controller.ReportController;
 import com.aroundThirty.View.*;
+import com.aroundThirty.model.AdoptCardDto;
 import com.aroundThirty.model.ReportCardDto;
 
 import javax.swing.*;
@@ -10,9 +12,11 @@ import java.util.ArrayList;
 
 public class FR {
     public static ArrayList<ReportCardDto> reportCardDtoList = new ArrayList<>();
+    public static ArrayList<AdoptCardDto> adoptCardDtoList = new ArrayList<>();
 
     static {
         new ReportController();
+        new AdoptController();
     }
 
     public static String title = "귀엽개 앙큼하냥";

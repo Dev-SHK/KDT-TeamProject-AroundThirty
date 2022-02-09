@@ -8,11 +8,11 @@ public class JdbcUtil {
     public static Connection getConnection() {
         String protocol = "jdbc:mariadb://";
         String ip = "127.0.0.1";
-        String port = "3307";
-        String db = "solstudy22";
+        String port = "3306";
+        String db = "catndog";
         String url = String.format("%s%s:%s/%s", protocol, ip, port, db);
-        String user = "solstudy22";
-        String password = "1234";
+        String user = "root";
+        String password = "1231!";
 //        System.out.println("url => " + url);
 
         try {
@@ -29,7 +29,7 @@ public class JdbcUtil {
     }
 
     public static void close(Connection conn) {
-        if(conn != null) {
+        if (conn != null) {
             try {
                 conn.close();
             } catch (SQLException e) {
