@@ -9,8 +9,8 @@ import java.util.List;
 
 public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
     public static final String SQL_TEMPORARY_SELECT = "SELECT * FROM TEMPORARY";
-    public static final String SQL_TEMPORARY_INSERT = "INSERT INTO TEMPORARY(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Datetime, thumbnail_Img, user_ID) VALUES (?,?,?,?,?,?,?,?)";
-    public static final String SQL_TEMPORARY_UPDATE = "UPDATE TEMPORARY tmp_Date=?, tmp_Place=?, kind_Tmp=?, phone_Num=?, detail=?, thumbnail_Img=?, post_Modify_Datetime=? WHERE NO=?";
+    public static final String SQL_TEMPORARY_INSERT = "INSERT INTO TEMPORARY(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Date, thumbnail_Img, user_ID) VALUES (?,?,?,?,?,?,?,?)";
+    public static final String SQL_TEMPORARY_UPDATE = "UPDATE TEMPORARY tmp_Date=?, tmp_Place=?, kind_Tmp=?, phone_Num=?, detail=?, thumbnail_Img=?, post_Modify_Date=? WHERE NO=?";
     public static final String SQL_TEMPORARY_DELETE = "DELETE FROM TEMPORARY WHERE NO=?";
     public static final String SQL_TEMPORARY_SELECT_ONE = "SELECT * FROM TEMPORARY WHERE NO=?";
 //    public static final String SQL_TEMPORARY_SELECT_BY_ID = "SELECT * FROM TEMPORARY WHERE user_ID=?"; // userDao로 넘김
@@ -35,13 +35,13 @@ public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
                 String kind_Tmp = rs.getString(4);
                 String phone_Num = rs.getString(5);
                 String detail = rs.getString(6);
-                String post_Create_Datetime = rs.getString(7);
+                String post_Create_Date = rs.getString(7);
                 String thumbnail_Img = rs.getString(8);
-                String post_Modify_Datetime = rs.getString(9);
+                String post_Modify_Date = rs.getString(9);
                 String User_ID = rs.getString(10);
 
                 // 위 while문 안에 있는 변수들을 순서대로 아래에 대입 -> list에 넣어주기
-                list.add(new TemporaryDto(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Datetime, thumbnail_Img, post_Modify_Datetime, User_ID, no));
+                list.add(new TemporaryDto(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Date, thumbnail_Img, post_Modify_Date, User_ID, no));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
             pstmt.setString(3, tmpdto.getKind_Tmp());
             pstmt.setString(4, tmpdto.getPhone_Num());
             pstmt.setString(5, tmpdto.getDetail());
-            pstmt.setString(6, tmpdto.getPost_Create_Datetime());
+            pstmt.setString(6, tmpdto.getPost_Create_Date());
             pstmt.setString(7, tmpdto.getThumbnail_Img());
             pstmt.setString(8, tmpdto.getUserID());
             int cnt = pstmt.executeUpdate();                        // insert가 성공할때 마다 카운트하여 cnt변수에 담아준다.
@@ -161,7 +161,7 @@ public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
             pstmt.setString(4, tmpdto.getPhone_Num());   //전화번호 치환
             pstmt.setString(5, tmpdto.getDetail()); // 본문내용 치환
             pstmt.setString(6, tmpdto.getThumbnail_Img()); // 본문내용 치환
-            pstmt.setString(7, tmpdto.getPost_Modify_Datetime());   // 게시글 수정 일자 및 시간 치환
+            pstmt.setString(7, tmpdto.getPost_Modify_Date());   // 게시글 수정 일자 및 시간 치환
             pstmt.setInt(8, tmpdto.getNo()); // 업데이트할 데이터의 기준값
 
             int cnt = pstmt.executeUpdate(); // 업데이트를 성공 했는지 확인하기 위해 결과값을 인트형으로 받는다.

@@ -8,8 +8,8 @@ import java.util.List;
 
 public class ReportDao {
     public static final String SQL_REPORT_SELECT = "SELECT * FROM REPORT";
-    public static final String SQL_REPORT_INSERT = "INSERT INTO REPORT(report_Datetime, report_Place, kind_Report, phone_Num, detail, post_Create_Datetime,thumbnail_Img, User_ID) VALUES (?,?,?,?,?,?,?,?)";
-    public static final String SQL_REPORT_UPDATE = "UPDATE REPORT SET report_Datetime=?, report_Place=?, kind_Report=?, phone_Num=?, detail=?, post_Modify_Datetime=?, thumbnail_Img=? WHERE NO=?";
+    public static final String SQL_REPORT_INSERT = "INSERT INTO REPORT(report_Date, report_Place, kind_Report, phone_Num, detail, post_Create_Date,thumbnail_Img, User_ID) VALUES (?,?,?,?,?,?,?,?)";
+    public static final String SQL_REPORT_UPDATE = "UPDATE REPORT SET report_Date=?, report_Place=?, kind_Report=?, phone_Num=?, detail=?, post_Modify_Date=?, thumbnail_Img=? WHERE NO=?";
     public static final String SQL_REPORT_DELETE = "DELETE FROM REPORT WHERE NO=?";
     public static final String SQL_REPORT_SELECT_ONE = "SELECT * FROM REPORT WHERE NO=?";
 
@@ -22,12 +22,12 @@ public class ReportDao {
         try {
             conn = JdbcUtil.getConnection();    // JdbcUtil에 있는 getConnection메소드를 활용해 db와 연결하고 그걸 connection 변수인 conn에 담는다.
             pstmt = conn.prepareStatement(SQL_REPORT_INSERT);   // preparesStatement메소드를 활용하여 쿼리문을 읽어온다.
-            pstmt.setString(1, reportDto.getReport_Datetime()); // 쿼리문에 순서에 맞게 Index를 선언하고  dto에 저장된 값을 가져와 입력해준다.
+            pstmt.setString(1, reportDto.getReport_Date()); // 쿼리문에 순서에 맞게 Index를 선언하고  dto에 저장된 값을 가져와 입력해준다.
             pstmt.setString(2, reportDto.getReport_Place());
             pstmt.setString(3, reportDto.getKind_Report());
             pstmt.setString(4, reportDto.getPhone_Num());
             pstmt.setString(5, reportDto.getDetail());
-            pstmt.setString(6, reportDto.getPost_Create_Datetime());
+            pstmt.setString(6, reportDto.getPost_Create_Date());
             pstmt.setString(7, reportDto.getThumbnail_Img());
             pstmt.setString(8, reportDto.getUser_ID());
             int cnt = pstmt.executeUpdate();                        // insert가 성공할때 마다 카운트하여 cnt변수에 담아준다.
@@ -84,12 +84,12 @@ public class ReportDao {
         conn = JdbcUtil.getConnection(); //DB와 연결하기 위해 JdbcUtil의 getConncection 메소드 소환
         try {
             pstmt = conn.prepareStatement(SQL_REPORT_UPDATE); // prepareStatement에 쿼리를 입력하여 DB를 불러와 Statement pstmt에 담는 구문
-            pstmt.setString(1, reportDto.getReport_Datetime()); // 제보, 실종등의 날짜와 시간 치환
+            pstmt.setString(1, reportDto.getReport_Date()); // 제보, 실종등의 날짜와 시간 치환
             pstmt.setString(2, reportDto.getReport_Place());  // 장소 치환
             pstmt.setString(3, reportDto.getKind_Report());   // 품종 치환
             pstmt.setString(4, reportDto.getPhone_Num());   //전화번호 치환
             pstmt.setString(5, reportDto.getDetail()); // 본문내용 치환
-            pstmt.setString(6, reportDto.getPost_Modify_Datetime());   // 게시글 수정 일자 및 시간 치환
+            pstmt.setString(6, reportDto.getPost_Modify_Date());   // 게시글 수정 일자 및 시간 치환
             pstmt.setString(7, reportDto.getThumbnail_Img());   // 게시글 수정 일자 및 시간 치환
             pstmt.setInt(8, reportDto.getNo()); // 업데이트할 데이터의 기준값
 
@@ -121,16 +121,16 @@ public class ReportDao {
             rs = stmt.executeQuery(SQL_REPORT_SELECT);
             while (rs.next()) {
                 int no = rs.getInt(1);
-                String report_Datetime = rs.getString(2);
+                String report_Date = rs.getString(2);
                 String report_Place = rs.getString(3);
                 String kind_Report = rs.getString(4);
                 String phone_Num = rs.getString(5);
                 String detail = rs.getString(6);
-                String post_Create_Datetime = rs.getString(7);
-                String post_Modify_Datetime = rs.getString(8);
+                String post_Create_Date = rs.getString(7);
+                String post_Modify_Date = rs.getString(8);
                 String thumbnail_Img = rs.getString(9);
                 String User_ID = rs.getString(10);
-                list.add(new ReportDto(report_Datetime, report_Place, kind_Report, phone_Num, detail, post_Create_Datetime, post_Modify_Datetime, thumbnail_Img, User_ID, no));
+                list.add(new ReportDto(report_Date, report_Place, kind_Report, phone_Num, detail, post_Create_Date, post_Modify_Date, thumbnail_Img, User_ID, no));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -155,16 +155,16 @@ public class ReportDao {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 int no = rs.getInt(1);
-                String report_Datetime = rs.getString(2);
+                String report_Date = rs.getString(2);
                 String report_Place = rs.getString(3);
                 String kind_Report = rs.getString(4);
                 String phone_Num = rs.getString(5);
                 String detail = rs.getString(6);
-                String post_Create_Datetime = rs.getString(7);
-                String post_Modify_Datetime = rs.getString(8);
+                String post_Create_Date = rs.getString(7);
+                String post_Modify_Date = rs.getString(8);
                 String thumbnail_Img = rs.getString(9);
                 String User_ID = rs.getString(10);
-                apdto = new ReportDto(report_Datetime, report_Place, kind_Report, phone_Num, detail, post_Create_Datetime, post_Modify_Datetime, thumbnail_Img, User_ID, no);
+                apdto = new ReportDto(report_Date, report_Place, kind_Report, phone_Num, detail, post_Create_Date, post_Modify_Date, thumbnail_Img, User_ID, no);
             }
         } catch (SQLException e) {
             e.printStackTrace();

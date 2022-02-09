@@ -6,19 +6,27 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import static com.aroundThirty.Resource.FR.*;
+import static com.aroundThirty.Resource.BR.*;
 
 
 public class ReportPagingBtn extends JPanel {
     private static final long serialVersionUID = 1L;
     public static ArrayList<JButton> btnList = new ArrayList<JButton>();
+    int size = 0;
     static {
         for(int i=1; i<=SIZE_ITEM; i++) {
             btnList.add(new JButton(""+i));
         }
     }
 
+
     public ReportPagingBtn() {
-        for(int i=0; i<9; i++) {
+        if (reportListAll.size()%12 == 0){
+            size = reportListAll.size()/12;
+        } else if (reportListAll.size()%12 != 0){
+            size = (reportListAll.size()/12) + 1;
+        }
+        for(int i=0; i< size; i++) {
             add(btnList.get(i));
 
             btnList.get(i).addActionListener(new ActionListener() {

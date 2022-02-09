@@ -1,10 +1,13 @@
 package com.aroundThirty.View;
 
+import com.aroundThirty.Resource.BR;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
 import static com.aroundThirty.Resource.FR.*;
+import static com.aroundThirty.Resource.BR.*;
 
 public class RightPanel extends JPanel {
     static JPanel centerPanel = new JPanel(new BorderLayout());
@@ -25,34 +28,34 @@ public class RightPanel extends JPanel {
     JScrollPane detail_ScrollPane = new JScrollPane(centerPanel);
 
 
-    JLabel reportDt = new JLabel("제보일자 및 시간 :");
-    JLabel reportDt_Card = new JLabel("제보일자 및 시간 :");
-    JLabel reportDtVal = new JLabel("2022 / 01 / 01 17:34");    // DB 연결 해야함
-    JTextField reportDtTxt = new JTextField("2022 / 01 / 01 17:34");    // DB 연결 해야함
+    JLabel reportDt = new JLabel("제보일자 :");
+    JLabel reportDt_Card = new JLabel("제보일자 :");
+    JLabel reportDtVal = new JLabel(reportDto.report_Date);    // DB 연결 해야함
+    JTextField reportDtTxt = new JTextField(reportDto.report_Date);    // DB 연결 해야함
     JLabel reportPlace = new JLabel("발견 장소 :");
     JLabel reportPlace_Card = new JLabel("발견 장소 :");
-    JTextArea reportPlaceVal = new JTextArea("싱하형 굴다리 밑");  // DB 연결 해야함
-    JTextArea reportPlaceTxt = new JTextArea("우리집");  // DB 연결 해야함
+    JTextArea reportPlaceVal = new JTextArea(reportDto.report_Place);  // DB 연결 해야함
+    JTextArea reportPlaceTxt = new JTextArea(reportDto.report_Place);  // DB 연결 해야함
     JLabel reportKind = new JLabel("품종 :");
     JLabel reportKind_Card = new JLabel("품종 :");
-    JLabel reportKindVal = new JLabel("코카스파니엘");    // DB 연결 해야함
-    JTextField reportKindTxt = new JTextField("코카스파니엘");    // DB 연결 해야함
+    JLabel reportKindVal = new JLabel(reportDto.kind_Report);    // DB 연결 해야함
+    JTextField reportKindTxt = new JTextField(reportDto.kind_Report);    // DB 연결 해야함
     JLabel reportNum = new JLabel("전화번호 :");
     JLabel reportNum_Card = new JLabel("전화번호 :");
-    JLabel reportNumVal = new JLabel("010-9152-6616");  // DB 연결 해야함
-    JTextField reportNumTxt = new JTextField("010-9152-6616");  // DB 연결 해야함
-    JLabel postDt = new JLabel("게시일자 및 시간 :");
-    JLabel postDt_Card = new JLabel("게시일자 및 시간 :");
-    JLabel postDtVal = new JLabel("2022 / 01 / 01 19:17");  // DB 연결 해야함
-    JTextArea postDtTxt = new JTextArea("2022 / 01 / 01 19:17");  // DB 연결 해야함
-    JLabel modifyDt = new JLabel("수정일자 및 시간 :");
-    JLabel modifyDt_Card = new JLabel("수정일자 및 시간 :");
-    JLabel modifyDtVal = new JLabel("2022 / 01 / 02 09:00");    // DB 연결 해야함
-    JTextArea modifyDtTxt = new JTextArea("2022 / 01 / 02 09:00");    // DB 연결 해야함
-    JTextArea reportDetail = new JTextArea("reportDetail"); // DB 연결 해야함
-    JTextArea reportDetailTxt = new JTextArea("reportDetail"); // DB 연결 해야함
+    JLabel reportNumVal = new JLabel(reportDto.phone_Num);  // DB 연결 해야함
+    JTextField reportNumTxt = new JTextField(reportDto.phone_Num);  // DB 연결 해야함
+    JLabel postDt = new JLabel("게시일자 :");
+    JLabel postDt_Card = new JLabel("게시일자 :");
+    JLabel postDtVal = new JLabel(reportDto.post_Create_Date);  // DB 연결 해야함
+    JTextArea postDtTxt = new JTextArea(reportDto.post_Create_Date);  // DB 연결 해야함
+    JLabel modifyDt = new JLabel("수정일자 :");
+    JLabel modifyDt_Card = new JLabel("수정일자 :");
+    JLabel modifyDtVal = new JLabel(reportDto.post_Modify_Date);    // DB 연결 해야함
+    JTextArea modifyDtTxt = new JTextArea(reportDto.post_Modify_Date);    // DB 연결 해야함
+    JTextArea reportDetail = new JTextArea(reportDto.detail); // DB 연결 해야함
+    JTextArea reportDetailTxt = new JTextArea(reportDto.detail); // DB 연결 해야함
 
-    String imgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/KakaoTalk_Photo_2022-02-07-17-06-30.jpeg";    // 이미지 주소를 받음
+    String imgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";    // 이미지 주소를 받음
     ImageIcon imgIcon = new ImageIcon(imgPath); // 이미지를 담음
     JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 150, 150));    // 이미지 추가
 
@@ -116,15 +119,13 @@ public class RightPanel extends JPanel {
 
         // 라벨, 버튼 등 속성
         reportDetail.setEditable(false);
-//        reportDtVal.setEditable(false);
         reportPlaceVal.setEditable(false);
-//        reportKindVal.setEditable(false);
-//        reportNumVal.setEditable(false);
-//        postDtVal.setEditable(false);
-//        modifyDtVal.setEditable(false);
         postDtTxt.setEditable(false);
         modifyDtTxt.setEditable(false);
         reportPlaceVal.setLineWrap(true);
+        reportPlaceTxt.setLineWrap(true);
+
+        reportPlaceTxt.setPreferredSize(new Dimension(150, 20));
         cCCenterPanel_Card.setPreferredSize(new Dimension(250, 500));
         cCCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));   // 안쪽 여백 추가
         LineBorder line = new LineBorder(pastelPink, 5, true);   // 이미지 테두리선과 곡선에 대한 값 저장
