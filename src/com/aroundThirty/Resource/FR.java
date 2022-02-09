@@ -84,10 +84,10 @@ public class FR {
     public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 13);
     public static Font fontAppGothic = new Font("AppleGothic", Font.PLAIN, 12);
 
-    public static String catImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/ImgFiles/CatIcon.png";
-    public static String dogImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/Dog.png";
-    public static String searchImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/free-icon-rounded-magnifying-glass-13267.png";
-    public static String bgImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/bg-dog.png";
+    public static String catImgPath = "src/com/aroundThirty/imgFiles/CatIcon.png";
+    public static String dogImgPath = "src/com/aroundThirty/imgFiles/Dog.png";
+    public static String searchImgPath = "src/com/aroundThirty/imgFiles/free-icon-rounded-magnifying-glass-13267.png";
+    public static String bgImgPath = "src/com/aroundThirty/imgFiles/bg-dog.png";
     public static String rpDetailImgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
