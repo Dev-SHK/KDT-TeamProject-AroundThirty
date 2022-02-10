@@ -80,5 +80,4 @@ public class AddFileWindow extends JFrame {
         } catch (Exception ex) {
         }
     }
-
 }
