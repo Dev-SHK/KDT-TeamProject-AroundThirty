@@ -27,6 +27,5 @@ public class RightTopPanel extends JPanel {
         setLayout(new BorderLayout());
         add(BorderLayout.EAST, groupPanel);
         add(BorderLayout.WEST, westPanel);
-//        addFile.setBorderPainted(false);
     }
 }

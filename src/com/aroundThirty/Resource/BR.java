@@ -21,4 +21,8 @@ public class BR {
 
     public static XmlDto xmlDto;
     public static List<XmlDto> xmlDtoListAll;
+
+    public static ReportCardDto reportCardDto;
+
+    public static int pageNum;
 }

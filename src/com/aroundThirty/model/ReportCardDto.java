@@ -16,8 +16,9 @@ public class ReportCardDto {
         this.defaultImg = defaultImg;
     }
 
-    public ReportCardDto(ImageIcon defaultImg) {
+    public ReportCardDto(ImageIcon defaultImg,int no) {
         this.defaultImg = defaultImg;
+        this.no = no;
     }
 
     public ImageIcon getDefaultImg() {
