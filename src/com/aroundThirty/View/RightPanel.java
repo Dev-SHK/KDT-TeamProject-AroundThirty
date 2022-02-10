@@ -10,11 +10,11 @@ import static com.aroundThirty.Resource.FR.*;
 import static com.aroundThirty.Resource.BR.*;
 
 public class RightPanel extends JPanel {
-    static JPanel centerPanel = new JPanel(new BorderLayout());
+    JPanel centerPanel = new JPanel(new BorderLayout());
     JPanel southPanel = new JPanel();
     JPanel nEastPanel = new JPanel();
-    public static JPanel nEWestPanel = new JPanel(cardLayout);
-    public static JPanel cNTPanel = new JPanel(cardLayout);
+    JPanel nEWestPanel = new JPanel(cardLayout);
+    JPanel cNTPanel = new JPanel(cardLayout);
     JPanel nEEastPanel = new JPanel();
     JPanel cNorthPanel = new JPanel();
     JPanel cCenterPanel = new JPanel(new BorderLayout());
@@ -24,7 +24,7 @@ public class RightPanel extends JPanel {
     JPanel cRCenterPanel = new JPanel();
     JPanel cLCenterPanel = new JPanel();
     JPanel cCCenterPanel = new JPanel(new BorderLayout());
-    public static JPanel cCCenterPanel_Card = new JPanel(cardLayout);
+    JPanel cCCenterPanel_Card = new JPanel(cardLayout);
     JScrollPane detail_ScrollPane = new JScrollPane(centerPanel);
 
 
@@ -55,12 +55,13 @@ public class RightPanel extends JPanel {
     JTextArea reportDetail = new JTextArea(reportDto.detail); // DB 연결 해야함
     JTextArea reportDetailTxt = new JTextArea(reportDto.detail); // DB 연결 해야함
 
-    String imgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";    // 이미지 주소를 받음
+    String imgPath = reportDto.thumbnail_Img;    // 이미지 주소를 받음
     ImageIcon imgIcon = new ImageIcon(imgPath); // 이미지를 담음
     JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 150, 150));    // 이미지 추가
 
 
     public RightPanel() {
+
         rtp = new RightTopPanel();
         setPreferredSize(new Dimension(550, 0));
 
@@ -118,13 +119,18 @@ public class RightPanel extends JPanel {
         cCCenterPanel_Card.add(reportDetailTxt);
 
         // 라벨, 버튼 등 속성
+        reportDt.setPreferredSize(new Dimension(80,40));
+        reportPlace.setPreferredSize(new Dimension(80,40));
+        reportKind.setPreferredSize(new Dimension(80,40));
+        reportNum.setPreferredSize(new Dimension(80,40));
+        postDt.setPreferredSize(new Dimension(80,40));
+        modifyDt.setPreferredSize(new Dimension(80,40));
         reportDetail.setEditable(false);
         reportPlaceVal.setEditable(false);
         postDtTxt.setEditable(false);
         modifyDtTxt.setEditable(false);
         reportPlaceVal.setLineWrap(true);
         reportPlaceTxt.setLineWrap(true);
-
         reportPlaceTxt.setPreferredSize(new Dimension(150, 20));
         cCCenterPanel_Card.setPreferredSize(new Dimension(250, 500));
         cCCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));   // 안쪽 여백 추가
@@ -132,29 +138,29 @@ public class RightPanel extends JPanel {
         imgLabel.setBorder(line);   // 저장된 테두리와 곡선 추가
 
         // 폰트 설정
-        reportDetail.setFont(fontNanum);
+        reportDetail.setFont(new Font("나눔고딕", Font.BOLD, 20));
         reportDetailTxt.setFont(fontNanum);
-        reportDt.setFont(fontNanum);
+        reportDt.setFont(fontNanumBold);
         reportDt_Card.setFont(fontNanum);
         reportDtVal.setFont(fontNanum);
         reportDtTxt.setFont(fontNanum);
-        reportPlace.setFont(fontNanum);
+        reportPlace.setFont(fontNanumBold);
         reportPlace_Card.setFont(fontNanum);
         reportPlaceVal.setFont(fontNanum);
         reportPlaceTxt.setFont(fontNanum);
-        reportKind.setFont(fontNanum);
+        reportKind.setFont(fontNanumBold);
         reportKind_Card.setFont(fontNanum);
         reportKindVal.setFont(fontNanum);
         reportKindTxt.setFont(fontNanum);
-        reportNum.setFont(fontNanum);
+        reportNum.setFont(fontNanumBold);
         reportNum_Card.setFont(fontNanum);
         reportNumVal.setFont(fontNanum);
         reportNumTxt.setFont(fontNanum);
-        postDt.setFont(fontNanum);
+        postDt.setFont(fontNanumBold);
         postDt_Card.setFont(fontNanum);
         postDtVal.setFont(fontNanum);
         postDtTxt.setFont(fontNanum);
-        modifyDt.setFont(fontNanum);
+        modifyDt.setFont(fontNanumBold);
         modifyDt_Card.setFont(fontNanum);
         modifyDtVal.setFont(fontNanum);
         modifyDtTxt.setFont(fontNanum);
@@ -168,7 +174,6 @@ public class RightPanel extends JPanel {
         reportNumVal.setBackground(pastelYellow);
         postDtVal.setBackground(pastelYellow);
         modifyDtVal.setBackground(pastelYellow);
-//        northPanel.setBackground(pastelPink);
         centerPanel.setBackground(pastelYellow);
         southPanel.setBackground(pastelYellow);
         nEastPanel.setBackground(pastelPink);
@@ -185,6 +190,5 @@ public class RightPanel extends JPanel {
         centerPanel.setPreferredSize(new Dimension(300, 800)); // centerPanel의 크기 지정
         detail_ScrollPane.getVerticalScrollBar().setUnitIncrement(15); // 스크롤 속도 지정
         detail_ScrollPane.setViewportView(centerPanel); // 데이터가 화면을 넘어가도 깨지지 않도록 수정 대신 넘어간 데이터가 안보일 수 있음
-//        detail_ScrollPane.setBorder(null);
     }
 }

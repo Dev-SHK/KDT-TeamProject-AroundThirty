@@ -3,6 +3,7 @@ package com.aroundThirty.Controller;
 import com.aroundThirty.model.ReportCardDto;
 import com.aroundThirty.model.ReportDao;
 import com.aroundThirty.model.ReportDto;
+import com.aroundThirty.model.XmlDao;
 
 import javax.swing.*;
 
@@ -22,13 +23,14 @@ public class ReportController {
         for (ReportDto Dto : reportListAll) {
             reportDto = Dto;
         }
+
         for (int i = 0; i < reportListAll.size(); i++) {
             ImageIcon img = new ImageIcon(reportListAll.get(i).thumbnail_Img);
-            if (reportListAll.get(i).thumbnail_Img == null) {
-                ReportCardDto reportCardDto = new ReportCardDto(defaultImg);
+            if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+                reportCardDto = new ReportCardDto(defaultImg, i);
                 reportCardDtoList.add(reportCardDto);
             } else {
-                ReportCardDto reportCardDto = new ReportCardDto(img);
+                reportCardDto = new ReportCardDto(img, i);
                 reportCardDtoList.add(reportCardDto);
             }
         }

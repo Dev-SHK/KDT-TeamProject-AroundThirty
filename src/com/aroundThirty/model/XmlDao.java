@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XmlDao {
-    public static final String SQL_XML_SELECT = "SELECT * FROM CDTABLE";
+    public static final String SQL_XML_SELECT = "SELECT * FROM XML";
 
 
     public static Statement stmt = null;
@@ -16,7 +16,7 @@ public class XmlDao {
     public static Connection conn = null;
 
     public static List<XmlDto> xmlSelectAll() {
-        List<XmlDto> list = new ArrayList<>();
+        List<XmlDto> list = new ArrayList<XmlDto>();
         conn = JdbcUtil.getConnection();
         try {
             stmt = conn.createStatement();
@@ -37,6 +37,7 @@ public class XmlDao {
 
                 list.add(new XmlDto(age, colorCd, filename, happenDt, happenPlace, kindCd, neuterYn,
                         orgNm, processState, sexCd, specialMark, weight));
+                System.out.println(list.size());
             }
         } catch (SQLException e) {
             e.printStackTrace();

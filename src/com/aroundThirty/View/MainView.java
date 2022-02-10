@@ -118,11 +118,11 @@ public class MainView extends MyJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String act = e.getActionCommand();
-
                 if (act.equals("수정")) {
+
                     cardLayout.next(rtp.switchPanel);
-                    cardLayout.next(RightPanel.cNTPanel);
-                    cardLayout.next(RightPanel.cCCenterPanel_Card);
+                    cardLayout.next(rp.cNTPanel);
+                    cardLayout.next(rp.cCCenterPanel_Card);
                 }
             }
         });
@@ -138,14 +138,14 @@ public class MainView extends MyJFrame {
                     } else if (result == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
-                        cardLayout.next(RightPanel.cNTPanel);
-                        cardLayout.next(RightPanel.cCCenterPanel_Card);
+                        cardLayout.next(rp.cNTPanel);
+                        cardLayout.next(rp.cCCenterPanel_Card);
                         reportModify(new ReportDto(reportDto.report_Date,reportDto.report_Place,reportDto.kind_Report,reportDto.phone_Num,reportDto.detail,reportDto.post_Modify_Date, reportDto.thumbnail_Img, reportDto.no));
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
-                        cardLayout.next(RightPanel.cNTPanel);
-                        cardLayout.next(RightPanel.cCCenterPanel_Card);
+                        cardLayout.next(rp.cNTPanel);
+                        cardLayout.next(rp.cCCenterPanel_Card);
                     }
                 }
             }
