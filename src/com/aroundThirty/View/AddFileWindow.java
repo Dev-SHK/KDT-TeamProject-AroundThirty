@@ -1,6 +1,7 @@
 package com.aroundThirty.View;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,16 +12,17 @@ import java.io.FileOutputStream;
 import static com.aroundThirty.Resource.FR.*;
 
 public class AddFileWindow extends JFrame {
-    JTextField jTextField;
-    JButton fileSearch;
+
+    JFileChooser jfc = new JFileChooser();
+    JLabel jlb = new JLabel(" ");
+    JTextField jTextField = new JTextField(30);
+    JButton fileSearch = new JButton("찾기");
 
     public AddFileWindow() {
-        jTextField = new JTextField(30);
-        fileSearch = new JButton("찾기");
-
         setLayout(new FlowLayout());
         add(jTextField);
         add(fileSearch);
+        add(jlb);
 
         setSize(450, 200);
         setVisible(true);
@@ -30,18 +32,18 @@ public class AddFileWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == fileSearch) {
-                    JFileChooser jFileChooser = new JFileChooser();
-                    int ret = jFileChooser.showOpenDialog(fileSearch);
+                    int ret = jfc.showOpenDialog(fileSearch);
 //            if() 취소버튼을 눌렀을 경우 쇼 다열로그 창 뜨기
                     if (ret != JFileChooser.APPROVE_OPTION) { // 사용자가  창을 강제로 닫았거나 취소 버튼을 누른 경우
                         JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다", title,
                                 JOptionPane.WARNING_MESSAGE);
                         return;
-                    }
-                    if (ret == jFileChooser.APPROVE_OPTION) {
-                        File file = jFileChooser.getSelectedFile(); // 선택된 파일 가져오기
+                    } else if (ret == jfc.APPROVE_OPTION) {
+                        File file = jfc.getSelectedFile(); // 선택된 파일 가져오기
                         jTextField.setText(file.getPath());
-                        fileSave(file, "/Users/shk/Downloads/FileDownloadTest", file.getName());
+                        fileSave(file, "/Users/minsookim/Desktop/Green/Proj_1/saved_Imges", file.getName());
+                    } if(jfc.showSaveDialog(fileSearch) == JFileChooser.APPROVE_OPTION) {
+                        jlb.setText("저장 경로 : " + jfc.getSelectedFile().toString());
                     }
                 }
             }
@@ -55,7 +57,6 @@ public class AddFileWindow extends JFrame {
             if (!file_01.exists()) {
                 file_01.mkdir();
             }
-
             // 파일 복사
             String filePath = path + "/" + name;
             System.out.println(filePath);
@@ -78,6 +79,5 @@ public class AddFileWindow extends JFrame {
 
         } catch (Exception ex) {
         }
-
     }
 }
