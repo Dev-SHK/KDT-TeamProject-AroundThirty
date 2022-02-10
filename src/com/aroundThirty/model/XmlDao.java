@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XmlDao {
-    public static final String SQL_XML_SELECT = "SELECT * FROM XML";
+    public static final String SQL_XML_SELECT = "SELECT * FROM CDTABLE";
 
 
     public static Statement stmt = null;
@@ -16,24 +16,24 @@ public class XmlDao {
     public static Connection conn = null;
 
     public static List<XmlDto> xmlSelectAll() {
-        List<XmlDto> list = new ArrayList<XmlDto>();
+        List<XmlDto> list = new ArrayList<>();
         conn = JdbcUtil.getConnection();
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(SQL_XML_SELECT);
             while (rs.next()) {
                 String age = rs.getString(1);
-                String colorCd = rs.getString(2);
-                String filename = rs.getString(3);
-                int happenDt = rs.getInt(4);
-                String happenPlace = rs.getString(5);
-                String kindCd = rs.getString(6);
-                String neuterYn = rs.getString(7);
-                String orgNm = rs.getString(8);
-                String processState = rs.getString(9);
-                String sexCd = rs.getString(10);
-                String specialMark = rs.getString(11);
-                String weight = rs.getString(12);
+                String colorCd = rs.getString(6);
+                String filename = rs.getString(8);
+                String happenDt = rs.getString(9);
+                String happenPlace = rs.getString(10);
+                String kindCd = rs.getString(11);
+                String neuterYn = rs.getString(12);
+                String orgNm = rs.getString(17);
+                String processState = rs.getString(19);
+                String sexCd = rs.getString(20);
+                String specialMark = rs.getString(21);
+                String weight = rs.getString(22);
 
                 list.add(new XmlDto(age, colorCd, filename, happenDt, happenPlace, kindCd, neuterYn,
                         orgNm, processState, sexCd, specialMark, weight));
