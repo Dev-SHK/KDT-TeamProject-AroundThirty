@@ -1,7 +1,7 @@
 package com.aroundThirty.model;
 
 public class XmlDto {
-    public int happenDt = 0; // 발견날짜
+    public String happenDt = null; // 발견날짜
     public String happenPlace = null; // 발견장소
     public String kindCd = null; // 품종(종류 포함)
     public String sexCd = null; // 성별
@@ -15,7 +15,7 @@ public class XmlDto {
     public String weight = null; // 유기동물 몸무게
 
     // SelectAll
-    public XmlDto(String age, String colorCd, String fileName, int happenDt, String happenPlace, String kindCd, String neuterYn, String orgNm, String processState, String sexCd, String specialMark, String weight) {
+    public XmlDto(String age, String colorCd, String fileName, String happenDt, String happenPlace, String kindCd, String neuterYn, String orgNm, String processState, String sexCd, String specialMark, String weight) {
         this.age = age;
         this.colorCd = colorCd;
         this.fileName = fileName;
@@ -31,11 +31,12 @@ public class XmlDto {
     }
 
 
-    public int getHappenDt() {
+
+    public String getHappenDt() {
         return happenDt;
     }
 
-    public void setHappenDt(int happenDt) {
+    public void setHappenDt(String happenDt) {
         this.happenDt = happenDt;
     }
 
@@ -129,6 +130,6 @@ public class XmlDto {
 
     @Override
     public String toString() {
-        return happenDt + happenPlace + kindCd + sexCd + processState + specialMark + fileName + age + colorCd + neuterYn + orgNm + weight;
+        return happenDt + " " + happenPlace + " " + kindCd + " " + sexCd + " " + processState + " " + specialMark + " " + fileName + " " + age + " " + colorCd + " " + neuterYn + " " + orgNm + " " + weight;
     }
 }

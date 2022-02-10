@@ -78,7 +78,7 @@ public class FR {
     public static String[] gender = {"수컷", "암컷"};
     public static JComboBox<String> genderCombo = new JComboBox<>(gender);
 
-    public static String[] dogAndCat = {"강아지", "고양이"};
+    public static String[] dogAndCat = {"개", "고양이"};
     public static JComboBox<String> kindCombo = new JComboBox<>(dogAndCat);
 
     public static Color pastelPink = new Color(253, 224, 206, 255);

@@ -18,4 +18,7 @@ public class BR {
     public static List<AdoptDto> adoptDtoListAll;
 
     public static UserDto userDto;
+
+    public static XmlDto xmlDto;
+    public static List<XmlDto> xmlDtoListAll;
 }

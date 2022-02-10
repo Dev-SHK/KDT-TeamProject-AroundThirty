@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import static com.aroundThirty.Resource.FR.*;
 import static com.aroundThirty.Resource.BR.*;
@@ -82,7 +83,11 @@ public class MainView extends MyJFrame {
         searchBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sd = new SearchData();
+                try {
+                    sd = new SearchData();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
