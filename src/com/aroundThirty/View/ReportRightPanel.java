@@ -9,7 +9,7 @@ import java.awt.*;
 import static com.aroundThirty.Resource.FR.*;
 import static com.aroundThirty.Resource.BR.*;
 
-public class RightPanel extends JPanel {
+public class ReportRightPanel extends JPanel {
     JPanel centerPanel = new JPanel(new BorderLayout());
     JPanel southPanel = new JPanel();
     JPanel nEastPanel = new JPanel();
@@ -60,8 +60,7 @@ public class RightPanel extends JPanel {
     JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 150, 150));    // 이미지 추가
 
 
-    public RightPanel() {
-
+    public ReportRightPanel() {
         rtp = new RightTopPanel();
         setPreferredSize(new Dimension(550, 0));
 
@@ -131,7 +130,8 @@ public class RightPanel extends JPanel {
         modifyDtTxt.setEditable(false);
         reportPlaceVal.setLineWrap(true);
         reportPlaceTxt.setLineWrap(true);
-        reportPlaceTxt.setPreferredSize(new Dimension(150, 20));
+        reportDetail.setLineWrap(true);
+        reportPlaceTxt.setPreferredSize(new Dimension(100, 20));
         cCCenterPanel_Card.setPreferredSize(new Dimension(250, 500));
         cCCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));   // 안쪽 여백 추가
         LineBorder line = new LineBorder(pastelPink, 5, true);   // 이미지 테두리선과 곡선에 대한 값 저장

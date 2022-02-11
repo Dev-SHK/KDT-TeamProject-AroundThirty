@@ -23,13 +23,16 @@ public class MainView extends MyJFrame {
         setBackground(pastelYellow);
         setResizable(true);
         displayLayer();
+
     }
 
     protected void displayLayer() {
         lp = new LeftPanel();
-        rp = new RightPanel();
+        rp = new ReportRightPanel();
         bp = new BottomPanel();
         container = getContentPane();
+
+
 
         container.add(BorderLayout.SOUTH, bp);
         container.add(BorderLayout.WEST, lp);
@@ -119,7 +122,6 @@ public class MainView extends MyJFrame {
             public void actionPerformed(ActionEvent e) {
                 String act = e.getActionCommand();
                 if (act.equals("수정")) {
-
                     cardLayout.next(rtp.switchPanel);
                     cardLayout.next(rp.cNTPanel);
                     cardLayout.next(rp.cCCenterPanel_Card);
@@ -148,12 +150,6 @@ public class MainView extends MyJFrame {
                         cardLayout.next(rp.cCCenterPanel_Card);
                     }
                 }
-            }
-        });
-
-        modifyBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
             }
         });
 

@@ -79,14 +79,9 @@ public class ReportPage extends JPanel {
                         rp.imgPath = reportDto.thumbnail_Img;
                         ImageIcon imgIcon = new ImageIcon(rp.imgPath); // 이미지를 담음
                         rp.imgLabel.setIcon(imgIcon);
-                        rp.revalidate();
-                        rp.repaint();
                         if (click) {
                             rp.setVisible(true);
                             click = false;
-                        } else {
-                            rp.setVisible(false);
-                            click = true;
                         }
                         btn.removeActionListener(null);
                     }
