@@ -123,14 +123,14 @@ public class FR {
     public static MissingPage mp = new MissingPage();
     public static AdoptPage ap = new AdoptPage();
     public static TemporaryPage tep = new TemporaryPage();
-    public static MainView mv = new MainView();
+//    public static MainView mv = new MainView();   // MainController와 중첩되는 소스로 전체적인 이벤트가 두번 실행되는 오류가 발생함
     public static AddFileWindow afw;
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
 
     public static CenterPanel cp;
     public static LeftPanel lp;
-    public static RightPanel rp;
+    public static ReportRightPanel rp;
     public static BottomPanel bp;
     public static RightTopPanel rtp;
     public static SearchData sd;

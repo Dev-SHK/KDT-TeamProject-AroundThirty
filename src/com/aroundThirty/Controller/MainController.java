@@ -14,21 +14,6 @@ public class MainController {
 
     }
 
-    public static void onClick() {
-        rp = new RightPanel();
-        rbtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (click) {
-                    rp.setVisible(true);
-                    click = false;
-                } else {
-                    rp.setVisible(false);
-                    click = true;
-                }
-            }
-        });
-    }
 
     public static void main(String[] args) {
         new MainView().setVisible(true);

@@ -9,13 +9,13 @@ public class BR {
     public static List<ReportDto> reportListAll;
 
     public static MissingDto missingDto;
-    public static List<MissingDto> missingDtoListAll;
+    public static List<MissingDto> missingListAll;
 
     public static TemporaryDto temporaryDto;
-    public static List<TemporaryDto> temporaryDtoListAll;
+    public static List<TemporaryDto> temporaryListAll;
 
     public static AdoptDto adoptDto;
-    public static List<AdoptDto> adoptDtoListAll;
+    public static List<AdoptDto> adoptListAll;
 
     public static UserDto userDto;
 
@@ -23,6 +23,9 @@ public class BR {
     public static List<XmlDto> xmlDtoListAll;
 
     public static ReportCardDto reportCardDto;
+//    public static MissingCardDto missingCardDto;
+    public static AdoptCardDto adoptCardDto;
+//    public static TemporaryCardDto temporaryCardDto;
 
     public static int pageNum;
 }
