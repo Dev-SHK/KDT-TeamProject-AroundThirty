@@ -17,13 +17,14 @@ public class RightTopPanel extends JPanel {
         westPanel.add(addFile);
         switchPanel.add("수정", modifyBtn);
         switchPanel.add("완료", postBtn);
+        groupPanel.add(writeBtn);
         groupPanel.add(switchPanel);
         groupPanel.add(deleteBtn);
 
-        setBackground(pastelGreen);
-        switchPanel.setBackground(pastelGreen);
-        westPanel.setBackground(pastelGreen);
-        groupPanel.setBackground(pastelGreen);
+        setBackground(pastelYellow);
+        switchPanel.setBackground(pastelYellow);
+        westPanel.setBackground(pastelYellow);
+        groupPanel.setBackground(pastelYellow);
         setLayout(new BorderLayout());
         add(BorderLayout.EAST, groupPanel);
         add(BorderLayout.WEST, westPanel);

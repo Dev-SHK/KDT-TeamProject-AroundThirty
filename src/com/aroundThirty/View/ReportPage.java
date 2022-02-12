@@ -81,7 +81,7 @@ public class ReportPage extends JPanel {
                         rp.imgLabel.setIcon(imgIcon);
                         if (click) {
                             rp.setVisible(true);
-                            click = false;
+//                            click = false;
                         }
                         btn.removeActionListener(null);
                     }

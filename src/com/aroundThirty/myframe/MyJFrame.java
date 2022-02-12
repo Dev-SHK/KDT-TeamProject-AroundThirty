@@ -1,6 +1,13 @@
 package com.aroundThirty.myframe;
 
+import com.aroundThirty.View.IntroducePage;
+
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static com.aroundThirty.Resource.FR.*;
 
 public abstract class MyJFrame extends JFrame {
     public MyJFrame() {
@@ -17,6 +24,25 @@ public abstract class MyJFrame extends JFrame {
 
         displayLayer();
         actionEvent();
+    }
+
+    public void createMenu() {
+        JMenuBar mb = new JMenuBar();
+        JMenu fileMenu = new JMenu("File");
+        JMenu helpMenu = new JMenu("Help");
+        JMenuItem aboutMenu = new JMenuItem("About");
+        aboutMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ip = new IntroducePage();
+            }
+        });
+        helpMenu.add(aboutMenu);
+        mb.add(fileMenu);
+        mb.add(helpMenu);
+        this.setJMenuBar(mb);
+        mb.setBorderPainted(false);
+        mb.setBackground(pastelGreen);
     }
 
     protected abstract void displayLayer();

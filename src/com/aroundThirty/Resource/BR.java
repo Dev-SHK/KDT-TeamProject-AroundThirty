@@ -15,7 +15,7 @@ public class BR {
     public static List<TemporaryDto> temporaryListAll;
 
     public static AdoptDto adoptDto;
-    public static List<AdoptDto> adoptListAll;
+    public static List<AdoptDto> adoptDtoListAll;
 
     public static UserDto userDto;
 
