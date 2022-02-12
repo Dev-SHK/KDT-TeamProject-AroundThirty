@@ -21,7 +21,7 @@ public class FR {
 
     public static String title = "귀엽개 앙큼하냥";
 
-    public static String[] location = {"서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"};
+    public static String[] location = {"서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "세종특별자치시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주특별자치도"};
     public static JComboBox<String> locationCombo = new JComboBox<>(location);
 
     public static String[] locationSeoul = {"종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구", "강동구"};
@@ -75,7 +75,7 @@ public class FR {
     public static String[] locationJeju = {"제주시", "서귀포시"};
     public static JComboBox<String> jejuCombo = new JComboBox<>(locationJeju);
 
-    public static String[] gender = {"수컷", "암컷"};
+    public static String[] gender = {"수컷(M)", "암컷(F)"};
     public static JComboBox<String> genderCombo = new JComboBox<>(gender);
 
     public static String[] dogAndCat = {"개", "고양이"};
@@ -113,6 +113,7 @@ public class FR {
     public static final JPasswordField pwTxtFld = new JPasswordField(20);
     public static final JButton modifyBtn = new JButton("수정");
     public static final JButton deleteBtn = new JButton("삭제");
+    public static final JButton writeBtn = new JButton("새 글 작성");
     public static final JButton postBtn = new JButton("완료");
     public static final JButton test = new JButton("test"); // 임시 버튼
     public static JButton rbtn = new JButton();
@@ -134,6 +135,7 @@ public class FR {
     public static BottomPanel bp;
     public static RightTopPanel rtp;
     public static SearchData sd;
+    public static IntroducePage ip;
 
     public static final int SIZE_ROW = 4;
     public static final int SIZE_COL = 3;

@@ -19,19 +19,62 @@ import static com.aroundThirty.model.XmlDao.*;
 
 public class SearchData {
     String searchKind;
+    ArrayList<String> kindArr;
+
+    String searchGender;
+    ArrayList<String> genderArr;
+
+    StringTokenizer tokenizerGetGender;
+    String divideGenderWord;
+
+    String searchLocation;
+    ArrayList<String> locationArr;
+
+    int count;
 
     public SearchData() throws SQLException {
         // "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"
         String getLocation = locationCombo.getSelectedItem().toString();
         String getLocationDetail = seoulCombo.getSelectedItem().toString();
-        String getGender = genderCombo.getSelectedItem().toString();
         String getKind = kindCombo.getSelectedItem().toString();
+        String getGender = genderCombo.getSelectedItem().toString();
+        tokenizerGetGender = new StringTokenizer(getGender, "()");
+        while (tokenizerGetGender.hasMoreTokens()) {
+            String temp = tokenizerGetGender.nextToken();
+            divideGenderWord = tokenizerGetGender.nextToken(); // ComboBox에 있는 Gender를 M 또는 F로 분리
+        }
 
+        kindArr = new ArrayList<>();
+        xmlDtoListAll = XmlDao.xmlSelectAll();
+        for (int i = 0; i < xmlDtoListAll.size(); i++) {
+            searchKind = xmlDtoListAll.get(i).kindCd;
+            kindArr.add(searchKind);
+        }
 
-        if (getLocation.equals("경기") && getLocationDetail.equals("광명시") && getGender.equals("암컷") && getKind.equals("개")) {
-            JOptionPane.showMessageDialog(null, "일치하는 데이터를 찾았어요!", title, JOptionPane.INFORMATION_MESSAGE);
+        genderArr = new ArrayList<>();
+        xmlDtoListAll = XmlDao.xmlSelectAll();
+        for (int i = 0; i < xmlDtoListAll.size(); i++) {
+            searchGender = xmlDtoListAll.get(i).sexCd; // DB에 있는 Gender
+            genderArr.add(searchGender);
+        }
+
+        locationArr = new ArrayList<>();
+        xmlDtoListAll = XmlDao.xmlSelectAll();
+        for (int i = 0; i < xmlDtoListAll.size(); i++) {
+            searchLocation = xmlDtoListAll.get(i).orgNm;
+            locationArr.add(searchLocation);
+        }
+
+        count = 0;
+        for (int i = 0; i < xmlDtoListAll.size(); i++) {
+            if ((locationArr.get(i)).contains(getLocation) && (locationArr.get(i)).contains(getLocationDetail) && (genderArr.get(i)).contains(divideGenderWord) && (kindArr.get(i)).contains(getKind)) {
+                count++;
+            }
+        } // for문 끝
+        if (count > 0) {
+            JOptionPane.showMessageDialog(null, String.format("검색 결과 %d개를 찾았습니다.", count), title, JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "일치하는 데이터가 없어요 ㅠㅠ", title, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "검색결과가 없습니다.", title, JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

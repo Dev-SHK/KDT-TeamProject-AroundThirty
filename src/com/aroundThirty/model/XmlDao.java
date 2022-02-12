@@ -37,7 +37,6 @@ public class XmlDao {
 
                 list.add(new XmlDto(age, colorCd, filename, happenDt, happenPlace, kindCd, neuterYn,
                         orgNm, processState, sexCd, specialMark, weight));
-                System.out.println(list.size());
             }
         } catch (SQLException e) {
             e.printStackTrace();

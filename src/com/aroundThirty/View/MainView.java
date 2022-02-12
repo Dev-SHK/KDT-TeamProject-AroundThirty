@@ -32,14 +32,14 @@ public class MainView extends MyJFrame {
         bp = new BottomPanel();
         container = getContentPane();
 
-
-
         container.add(BorderLayout.SOUTH, bp);
         container.add(BorderLayout.WEST, lp);
         container.add(BorderLayout.EAST, rp);
         container.setBackground(pastelYellow);
 //        newPost.setEnabled(false);
         setBackground(pastelYellow);
+
+        createMenu();
 
         Dimension frameSize = getSize();
         Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -101,6 +101,12 @@ public class MainView extends MyJFrame {
             }
         });
 
+        writeBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+
         logoutMain.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -142,7 +148,7 @@ public class MainView extends MyJFrame {
                         cardLayout.next(rtp.switchPanel);
                         cardLayout.next(rp.cNTPanel);
                         cardLayout.next(rp.cCCenterPanel_Card);
-                        reportModify(new ReportDto(reportDto.report_Date,reportDto.report_Place,reportDto.kind_Report,reportDto.phone_Num,reportDto.detail,reportDto.post_Modify_Date, reportDto.thumbnail_Img, reportDto.no));
+                        reportModify(new ReportDto(reportDto.report_Date, reportDto.report_Place, reportDto.kind_Report, reportDto.phone_Num, reportDto.detail, reportDto.post_Modify_Date, reportDto.thumbnail_Img, reportDto.no));
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
