@@ -9,8 +9,8 @@ import static com.aroundThirty.Resource.FR.*;
 
 public class BottomPanel extends JPanel {
 
-    public static JPanel groupPanRight;
-    public static JPanel groupPanLeft;
+    public JPanel groupPanRight;
+    public JPanel groupPanLeft;
 
     public BottomPanel() {
         setLayout(new BorderLayout());
