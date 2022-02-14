@@ -5,6 +5,8 @@ import com.aroundThirty.model.ReportDto;
 import com.aroundThirty.myframe.MyJFrame;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,12 +31,49 @@ public class MainView extends MyJFrame {
     protected void displayLayer() {
         lp = new LeftPanel();
         rp = new ReportRightPanel();
+        mrp = new MainRightPanel();
         bp = new BottomPanel();
         container = getContentPane();
+        switchPan = mrp;
 
         container.add(BorderLayout.SOUTH, bp);
         container.add(BorderLayout.WEST, lp);
-        container.add(BorderLayout.EAST, rp);
+        container.add(BorderLayout.EAST, mrp);
+        lp.tabbedPane.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
+                switch (tabbedPane.getSelectedIndex()) {
+                    case 0:
+//                        MainView.container.add(BorderLayout.EAST, mrp);
+                        container.remove(switchPan);
+                        container.add(BorderLayout.EAST, mrp);
+                        switchPan = mrp;
+                        revalidate();
+                        repaint();
+                        System.out.println("'메인메뉴' 탭으로 이동함");
+                        break;
+                    case 1:
+//                        MainView.container.add(BorderLayout.EAST, rp);
+                        container.remove(switchPan);
+                        container.add(BorderLayout.EAST, rp);
+                        switchPan = rp;
+                        revalidate();
+                        repaint();
+                        System.out.println("'발견했어요' 탭으로 이동함");
+                        break;
+                    case 2:
+                        System.out.println("'잃어버렸어요' 탭으로 이동함");
+                        break;
+                    case 3:
+                        System.out.println("'보호중이에요' 탭으로 이동함");
+                        break;
+                    case 4:
+                        System.out.println("'새 가족을 찾아요' 탭으로 이동함");
+                        break;
+                }
+            }
+        });
         container.setBackground(pastelYellow);
 //        newPost.setEnabled(false);
         setBackground(pastelYellow);
