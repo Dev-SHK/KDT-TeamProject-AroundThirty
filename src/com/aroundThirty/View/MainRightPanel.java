@@ -19,10 +19,7 @@ public class MainRightPanel extends JPanel {
     JPanel northPan;
     JPanel southPan;
     Image imageDetail;
-    Image thumbnailImg;
     ImageIcon imageDetailIcon;
-    ImageIcon thumbnailImageIcon;
-    JLabel thumbnailImgLabel;
     JLabel imgLabel;
     JLabel happenDtLabel;
     JLabel happenDtDetailLabel;
@@ -41,14 +38,6 @@ public class MainRightPanel extends JPanel {
     JPanel specialMarkPan;
 
     MainRightPanel() {
-        thumbnailImg = null;
-        try {
-            URL url = new URL(xmlDto.getFileName());
-            thumbnailImg = ImageIO.read(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         imageDetail = null;
         try {
             URL url = new URL(xmlDto.getThumbnail_Img());
@@ -56,9 +45,6 @@ public class MainRightPanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        thumbnailImageIcon = new ImageIcon(thumbnailImg);
-        thumbnailImgLabel = new JLabel(imageSetSize(thumbnailImageIcon, 350, 350));
 
         imageDetailIcon = new ImageIcon(imageDetail);
         imgLabel = new JLabel(imageSetSize(imageDetailIcon, 350, 350));
