@@ -23,6 +23,7 @@ public class CenterPanel extends JPanel {
     MainPagingBtn mainPagingBtn = new MainPagingBtn();
     JPanel centerPanel = new JPanel(new GridLayout(SIZE_ROW, SIZE_COL));    // SIZE_ROW, SIZE_COL로 행열 지정
     JScrollPane jScrollPane = new JScrollPane(centerPanel);
+    static ImageIcon thumbnailIcon;
 
     static {
         setDataListPanel(0, 12 + SIZE_ITEM);
@@ -45,7 +46,15 @@ public class CenterPanel extends JPanel {
     public static void setDataListPanel(int startIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
         for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
             JPanel newPane = new JPanel(null);
-            btnList.add(new JButton(imageSetSize(xmlCardDtoList.get(dataIdx).getDefaultImg(), 150, 120)));
+            Image thumbnailImgIcon = null;
+            try {
+                URL url = new URL(xmlDtoListAll.get(dataIdx + 1).getFileName());
+                thumbnailImgIcon = ImageIO.read(url);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            thumbnailIcon = new ImageIcon(thumbnailImgIcon);
+            btnList.add(new JButton(imageSetSize(thumbnailIcon, 150, 120)));
             lblList.add(new JLabel("[" + (xmlCardDtoList.get(dataIdx).getNo() + 1) + "] " + "발견일 : " + xmlDtoListAll.get(dataIdx + 1).getHappenDt()));
             btnList.get(i).setBounds(60, 0, 150, 120);   // 위치는 따로 지정 해주지 않고 크기만 지정 해줌
             lblList.get(i).setBounds(60, 120, 150, 20);  // 위치는 따로 지정 해주지 않고 크기만 지정 해줌
@@ -92,7 +101,15 @@ public class CenterPanel extends JPanel {
     // 증감식을 -- 로 바꿔야함
     public static void setDataListPage(int startIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
         for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
-            btnList.get(i).setIcon(imageSetSize(xmlCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
+            Image thumbnailImgIcon = null;
+            try {
+                URL url = new URL(xmlDtoListAll.get(dataIdx + 1).getFileName());
+                thumbnailImgIcon = ImageIO.read(url);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            thumbnailIcon = new ImageIcon(thumbnailImgIcon);
+            btnList.get(i).setIcon(imageSetSize(thumbnailIcon, 150, 120));
             lblList.get(i).setText("[" + (xmlCardDtoList.get(dataIdx).getNo() + 1) + "] " + "발견일 : " + xmlDtoListAll.get(dataIdx + 1).getHappenDt());
         }
     }
