@@ -78,7 +78,7 @@ public class XmlDao {
                 String sexCd = rs.getString(20);
                 String specialMark = rs.getString(21);
                 String weight = rs.getString(22);
-                int no = rs.getInt(23);
+                int no = rs.getInt(24);
                 xmdto = new XmlDto(age, phone_Num, colorCd, fileName, happenDt, happenPlace, kindCd, neuterYn, orgNm, thumbnail_Img, processState, sexCd, specialMark, weight, no);
 
             }
