@@ -18,9 +18,11 @@ import static com.aroundThirty.Resource.BR.*;
 public class MainRightPanel extends JPanel {
     JPanel northPan;
     JPanel southPan;
-    String imgPath;
-    Image image;
-    ImageIcon imageIcon;
+    Image imageDetail;
+    Image thumbnailImg;
+    ImageIcon imageDetailIcon;
+    ImageIcon thumbnailImageIcon;
+    JLabel thumbnailImgLabel;
     JLabel imgLabel;
     JLabel happenDtLabel;
     JLabel happenDtDetailLabel;
@@ -39,20 +41,31 @@ public class MainRightPanel extends JPanel {
     JPanel specialMarkPan;
 
     MainRightPanel() {
-        image = null;
+        thumbnailImg = null;
         try {
-            URL url = new URL(xmlDto.getThumbnail_Img());
-            image = ImageIO.read(url);
+            URL url = new URL(xmlDto.getFileName());
+            thumbnailImg = ImageIO.read(url);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        imageIcon = new ImageIcon(image);
-        imgLabel = new JLabel(imageSetSize(imageIcon, 450, 450));
+        imageDetail = null;
+        try {
+            URL url = new URL(xmlDto.getThumbnail_Img());
+            imageDetail = ImageIO.read(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        thumbnailImageIcon = new ImageIcon(thumbnailImg);
+        thumbnailImgLabel = new JLabel(imageSetSize(thumbnailImageIcon, 350, 350));
+
+        imageDetailIcon = new ImageIcon(imageDetail);
+        imgLabel = new JLabel(imageSetSize(imageDetailIcon, 350, 350));
 
         northPan = new JPanel();
         northPan.add(imgLabel);
-        northPan.setBackground(Color.RED);
+        northPan.setBackground(pastelGreen);
 
         southPan = new JPanel(new GridLayout(5, 1));
 
@@ -63,7 +76,7 @@ public class MainRightPanel extends JPanel {
         happenDtPan = new JPanel();
         happenDtPan.add(happenDtLabel);
         happenDtPan.add(happenDtDetailLabel);
-        happenDtPan.setBackground(pastelYellow);
+        happenDtPan.setBackground(pastelGreen);
 
         happenPlaceLabel = new JLabel("제보 장소 : ");
         happenPlaceLabel.setPreferredSize(new Dimension(120, 35));
@@ -72,7 +85,7 @@ public class MainRightPanel extends JPanel {
         happenPlacePan = new JPanel();
         happenPlacePan.add(happenPlaceLabel);
         happenPlacePan.add(happenPlaceDetailLabel);
-        happenPlacePan.setBackground(pastelYellow);
+        happenPlacePan.setBackground(pastelGreen);
 
         happenKindLabel = new JLabel("품종 : ");
         happenKindLabel.setPreferredSize(new Dimension(120, 35));
@@ -81,16 +94,16 @@ public class MainRightPanel extends JPanel {
         happenKindPan = new JPanel();
         happenKindPan.add(happenKindLabel);
         happenKindPan.add(happenKindDetailLabel);
-        happenKindPan.setBackground(pastelYellow);
+        happenKindPan.setBackground(pastelGreen);
 
-        phone_NumLabel = new JLabel("보호자 전화번호 : ");
+        phone_NumLabel = new JLabel("임시보호자 전화번호 : ");
         phone_NumLabel.setPreferredSize(new Dimension(120, 35));
         phone_NumDetailLabel = new JLabel(xmlDto.getPhone_Num());
         phone_NumDetailLabel.setPreferredSize(new Dimension(350, 35));
         phone_NumPan = new JPanel();
         phone_NumPan.add(phone_NumLabel);
         phone_NumPan.add(phone_NumDetailLabel);
-        phone_NumPan.setBackground(pastelYellow);
+        phone_NumPan.setBackground(pastelGreen);
 
         specialMarkLabel = new JLabel("특이사항 : ");
         specialMarkLabel.setPreferredSize(new Dimension(120, 35));
@@ -99,7 +112,7 @@ public class MainRightPanel extends JPanel {
         specialMarkPan = new JPanel();
         specialMarkPan.add(specialMarkLabel);
         specialMarkPan.add(specialMarkDetailLabel);
-        specialMarkPan.setBackground(pastelYellow);
+        specialMarkPan.setBackground(pastelGreen);
 
         southPan.add(happenDtPan);
         southPan.add(happenPlacePan);
@@ -110,6 +123,6 @@ public class MainRightPanel extends JPanel {
         add(BorderLayout.CENTER, northPan);
         add(BorderLayout.SOUTH, southPan);
         setPreferredSize(new Dimension(550, 0));
-        setBackground(pastelYellow);
+        setBackground(pastelGreen);
     }
 }

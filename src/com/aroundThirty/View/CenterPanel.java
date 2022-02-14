@@ -67,8 +67,15 @@ public class CenterPanel extends JPanel {
                         mrp.happenKindDetailLabel.setText(xmlDto.getKindCd());
                         mrp.phone_NumDetailLabel.setText(xmlDto.getPhone_Num());
                         mrp.specialMarkDetailLabel.setText(xmlDto.getSpecialMark());
-                        mrp.imgPath = xmlDto.getThumbnail_Img();
-                        ImageIcon imgIcon = new ImageIcon(mrp.imgPath); // 이미지를 담음
+                        Image imageDetail = null;
+                        try {
+                            URL url = new URL(xmlDto.getThumbnail_Img());
+                            imageDetail = ImageIO.read(url);
+                        } catch (IOException ea) {
+                            ea.printStackTrace();
+                        }
+                        ImageIcon imgIcon = new ImageIcon(imageDetail); // 이미지를 담음
+                        mrp.imgLabel.setPreferredSize(new Dimension(450, 450));
                         mrp.imgLabel.setIcon(imgIcon);
                         if (click) {
                             mrp.setVisible(true);
