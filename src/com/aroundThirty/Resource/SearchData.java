@@ -43,23 +43,21 @@ public class SearchData {
             String temp = tokenizerGetGender.nextToken();
             divideGenderWord = tokenizerGetGender.nextToken(); // ComboBox에 있는 Gender를 M 또는 F로 분리
         }
+        xmlDtoListAll = XmlDao.xmlSelectAll();
 
         kindArr = new ArrayList<>();
-        xmlDtoListAll = XmlDao.xmlSelectAll();
         for (int i = 0; i < xmlDtoListAll.size(); i++) {
             searchKind = xmlDtoListAll.get(i).kindCd;
             kindArr.add(searchKind);
         }
 
         genderArr = new ArrayList<>();
-        xmlDtoListAll = XmlDao.xmlSelectAll();
         for (int i = 0; i < xmlDtoListAll.size(); i++) {
             searchGender = xmlDtoListAll.get(i).sexCd; // DB에 있는 Gender
             genderArr.add(searchGender);
         }
 
         locationArr = new ArrayList<>();
-        xmlDtoListAll = XmlDao.xmlSelectAll();
         for (int i = 0; i < xmlDtoListAll.size(); i++) {
             searchLocation = xmlDtoListAll.get(i).orgNm;
             locationArr.add(searchLocation);

@@ -2,21 +2,26 @@ package com.aroundThirty.Resource;
 
 import com.aroundThirty.Controller.AdoptController;
 import com.aroundThirty.Controller.ReportController;
+import com.aroundThirty.Controller.XmlController;
 import com.aroundThirty.View.*;
 import com.aroundThirty.model.AdoptCardDto;
 import com.aroundThirty.model.ReportCardDto;
+import com.aroundThirty.model.XmlCardDto;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class FR {
     public static ArrayList<ReportCardDto> reportCardDtoList = new ArrayList<>();
     public static ArrayList<AdoptCardDto> adoptCardDtoList = new ArrayList<>();
+    public static ArrayList<XmlCardDto> xmlCardDtoList = new ArrayList<>();
 
     static {
         new ReportController();
         new AdoptController();
+        new XmlController();
     }
 
     public static String title = "귀엽개 앙큼하냥";
@@ -119,6 +124,7 @@ public class FR {
     public static JButton rbtn = new JButton();
     public static Boolean click = true;
     public static CardLayout cardLayout = new CardLayout();
+    public static JPanel switchPan;
 
     public static ReportPage rep = new ReportPage();
     public static MissingPage mp = new MissingPage();
@@ -132,10 +138,12 @@ public class FR {
     public static CenterPanel cp;
     public static LeftPanel lp;
     public static ReportRightPanel rp;
+    public static MainRightPanel mrp;
     public static BottomPanel bp;
     public static RightTopPanel rtp;
     public static SearchData sd;
     public static IntroducePage ip;
+    public static MainView mv;
 
     public static final int SIZE_ROW = 4;
     public static final int SIZE_COL = 3;
@@ -148,4 +156,10 @@ public class FR {
         ImageIcon imgSize = new ImageIcon(imgScale);
         return imgSize;
     }
+//    public static BufferedImage urlImageSetSize(BufferedImage icon, int i, int j) {
+//        Image img = icon.  //ImageIcon을 Image로 변환.
+//        Image imgScale = img.getScaledInstance(i, j, java.awt.Image.SCALE_SMOOTH);
+//        ImageIcon imgSize = new ImageIcon(imgScale);
+//        return urlImage;
+//    }
 }

@@ -1,5 +1,7 @@
 package com.aroundThirty.model;
 
+import javax.swing.*;
+
 public class XmlDto {
     public String happenDt = null; // 발견날짜
     public String happenPlace = null; // 발견장소
@@ -13,10 +15,15 @@ public class XmlDto {
     public String neuterYn = null; // 중성화 여부
     public String orgNm = null; // 시, 도 이름
     public String weight = null; // 유기동물 몸무게
+    public String phone_Num = null;
+    public String thumbnail_Img = null; // 동물 이미지
+    public int no = 0; // Primary Key
+
 
     // SelectAll
-    public XmlDto(String age, String colorCd, String fileName, String happenDt, String happenPlace, String kindCd, String neuterYn, String orgNm, String processState, String sexCd, String specialMark, String weight) {
+    public XmlDto(String age, String phone_Num, String colorCd, String fileName, String happenDt, String happenPlace, String kindCd, String neuterYn, String orgNm, String thumbnail_Img, String processState, String sexCd, String specialMark, String weight, int no) {
         this.age = age;
+        this.phone_Num = phone_Num;
         this.colorCd = colorCd;
         this.fileName = fileName;
         this.happenDt = happenDt;
@@ -24,12 +31,17 @@ public class XmlDto {
         this.kindCd = kindCd;
         this.neuterYn = neuterYn;
         this.orgNm = orgNm;
+        this.thumbnail_Img = thumbnail_Img;
         this.processState = processState;
         this.sexCd = sexCd;
         this.specialMark = specialMark;
         this.weight = weight;
+        this.no = no;
     }
 
+    public XmlDto(int no) {
+        this.no = no;
+    }
 
 
     public String getHappenDt() {
@@ -128,8 +140,32 @@ public class XmlDto {
         this.weight = weight;
     }
 
+    public String getThumbnail_Img() {
+        return thumbnail_Img;
+    }
+
+    public void setThumbnail_Img(String thumbnail_Img) {
+        this.thumbnail_Img = thumbnail_Img;
+    }
+
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
+    public String getPhone_Num() {
+        return phone_Num;
+    }
+
+    public void setPhone_Num(String phone_Num) {
+        this.phone_Num = phone_Num;
+    }
+
     @Override
     public String toString() {
-        return happenDt + " " + happenPlace + " " + kindCd + " " + sexCd + " " + processState + " " + specialMark + " " + fileName + " " + age + " " + colorCd + " " + neuterYn + " " + orgNm + " " + weight;
+        return no + " " + happenDt + " " + happenPlace + " " + kindCd + " " + sexCd + " " + processState + " " + specialMark + " " + fileName + " " + age + " " + colorCd + " " + neuterYn + " " + orgNm + " " + weight;
     }
 }

@@ -27,5 +27,7 @@ public class BR {
     public static AdoptCardDto adoptCardDto;
 //    public static TemporaryCardDto temporaryCardDto;
 
+    public static XmlCardDto xmlCardDto;
+
     public static int pageNum;
 }
