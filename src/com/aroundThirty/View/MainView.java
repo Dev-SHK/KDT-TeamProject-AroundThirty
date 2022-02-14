@@ -1,6 +1,7 @@
 package com.aroundThirty.View;
 
 import com.aroundThirty.Resource.SearchData;
+import com.aroundThirty.model.ReportDao;
 import com.aroundThirty.model.ReportDto;
 import com.aroundThirty.myframe.MyJFrame;
 
@@ -39,7 +40,7 @@ public class MainView extends MyJFrame {
         container.add(BorderLayout.SOUTH, bp);
         container.add(BorderLayout.WEST, lp);
         container.add(BorderLayout.EAST, mrp);
-        lp.tabbedPane.addChangeListener(new ChangeListener() {
+        tabbedPane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
@@ -181,13 +182,13 @@ public class MainView extends MyJFrame {
                 if (act.equals("완료")) {
                     int result = JOptionPane.showConfirmDialog(null, "게시글을 수정 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
                     if (result == JOptionPane.CLOSED_OPTION) {
-
                     } else if (result == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
                         cardLayout.next(rp.cNTPanel);
                         cardLayout.next(rp.cCCenterPanel_Card);
-                        reportModify(new ReportDto(reportDto.report_Date, reportDto.report_Place, reportDto.kind_Report, reportDto.phone_Num, reportDto.detail, reportDto.post_Modify_Date, reportDto.thumbnail_Img, reportDto.no));
+
+                        reportModify(new ReportDto(reportDto.report_Date,reportDto.report_Place,reportDto.kind_Report,reportDto.phone_Num,reportDto.detail,reportDto.post_Modify_Date, reportDto.thumbnail_Img, reportDto.getNo()));
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
@@ -201,15 +202,24 @@ public class MainView extends MyJFrame {
         deleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
+                ImageIcon defaultImg = new ImageIcon(defaultImgPath);
                 int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
                 // 게시글 삭제 여부를 사용자에게 묻는 이벤트
                 if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
                 } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
                     JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
+                    // 삭제 후 게시물 이미지가 디폴트 이미지로 변환 되도록 구현 해야함
+                    btnList.get(selectBtnNum).setIcon(imageSetSize(defaultImg, 150, 120));
+                    lblList.get(selectBtnNum).setText("");
+                    ReportDao.reportDelete(new ReportDto(reportDto.getNo()));
                     rp.setVisible(false);
+                    tabbedPane.revalidate();
+                    tabbedPane.repaint();
+//                    btnList.get(selectBtnNum).revalidate();
+//                    btnList.get(selectBtnNum).repaint();
+
                     click = true;
-                    rp.revalidate();
-                    rp.repaint();
                     // 삭제 쿼리 돌려야함
                 } else { //사용자가 No를 선택한 경우
                 }

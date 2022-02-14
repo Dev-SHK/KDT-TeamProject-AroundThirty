@@ -28,7 +28,6 @@ public class ReportPagingBtn extends JPanel {
         }
         for(int i=0; i< size; i++) {
             add(btnList.get(i));
-
             btnList.get(i).addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

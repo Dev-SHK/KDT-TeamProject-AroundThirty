@@ -2,6 +2,7 @@ package com.aroundThirty.Resource;
 
 import com.aroundThirty.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BR {
@@ -29,5 +30,14 @@ public class BR {
 
     public static XmlCardDto xmlCardDto;
 
+    public static ArrayList<ReportCardDto> reportCardDtoList = new ArrayList<>();
+    public static ArrayList<AdoptCardDto> adoptCardDtoList = new ArrayList<>();
+//    public static ArrayList<ReportCardDto> reportCardNoList = new ArrayList<>();
+    public static ArrayList<XmlCardDto> xmlCardDtoList = new ArrayList<>();
+
+
+    public static int selectBtnNum;
     public static int pageNum;
+    public static int pageMinNum;
+    public static int postedPageNum;
 }

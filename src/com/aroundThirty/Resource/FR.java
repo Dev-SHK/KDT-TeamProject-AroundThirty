@@ -14,9 +14,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class FR {
-    public static ArrayList<ReportCardDto> reportCardDtoList = new ArrayList<>();
-    public static ArrayList<AdoptCardDto> adoptCardDtoList = new ArrayList<>();
-    public static ArrayList<XmlCardDto> xmlCardDtoList = new ArrayList<>();
 
     static {
         new ReportController();
@@ -120,8 +117,8 @@ public class FR {
     public static final JButton deleteBtn = new JButton("삭제");
     public static final JButton writeBtn = new JButton("새 글 작성");
     public static final JButton postBtn = new JButton("완료");
-    public static final JButton test = new JButton("test"); // 임시 버튼
-    public static JButton rbtn = new JButton();
+    public static ArrayList<JButton> btnList = new ArrayList<>();
+    public static ArrayList<JLabel> lblList = new ArrayList<>();
     public static Boolean click = true;
     public static CardLayout cardLayout = new CardLayout();
     public static JPanel switchPan;
@@ -143,7 +140,7 @@ public class FR {
     public static RightTopPanel rtp;
     public static SearchData sd;
     public static IntroducePage ip;
-    public static MainView mv;
+    public static JTabbedPane tabbedPane;
 
     public static final int SIZE_ROW = 4;
     public static final int SIZE_COL = 3;
@@ -156,10 +153,4 @@ public class FR {
         ImageIcon imgSize = new ImageIcon(imgScale);
         return imgSize;
     }
-//    public static BufferedImage urlImageSetSize(BufferedImage icon, int i, int j) {
-//        Image img = icon.  //ImageIcon을 Image로 변환.
-//        Image imgScale = img.getScaledInstance(i, j, java.awt.Image.SCALE_SMOOTH);
-//        ImageIcon imgSize = new ImageIcon(imgScale);
-//        return urlImage;
-//    }
 }
