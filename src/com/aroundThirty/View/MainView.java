@@ -46,7 +46,8 @@ public class MainView extends MyJFrame {
             @Override
             public void stateChanged(ChangeEvent e) {
                 JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
-                switch (tabbedPane.getSelectedIndex()) {
+                tapPaneIdx = tabbedPane.getSelectedIndex();
+                switch (tapPaneIdx) {
                     case 0:
 //                        MainView.container.add(BorderLayout.EAST, mrp);
                         container.remove(switchPan);
@@ -109,7 +110,7 @@ public class MainView extends MyJFrame {
                         JOptionPane.showMessageDialog(null, "로그인 되었어요 :)", title, JOptionPane.INFORMATION_MESSAGE);
                         loginPage.dispose();
                         bp.groupPanRight.remove(loginMain);
-                        bp.groupPanRight.add(logoutMain, 0);
+                        bp.groupPanRight.add(logoutMain, 5);
                         bp.revalidate();
                         bp.repaint();
                     } else {
@@ -156,7 +157,7 @@ public class MainView extends MyJFrame {
                 if (confirm == JOptionPane.YES_OPTION) {
                     JOptionPane.showMessageDialog(null, "로그아웃 되었어요.", title, JOptionPane.INFORMATION_MESSAGE);
                     bp.groupPanRight.remove(logoutMain);
-                    bp.groupPanRight.add(loginMain, 0);
+                    bp.groupPanRight.add(loginMain, 5);
                     bp.revalidate();
                     bp.repaint();
                 } else {
@@ -171,10 +172,10 @@ public class MainView extends MyJFrame {
                 String act = e.getActionCommand();
                 if (act.equals("수정")) {
                     cardLayout.next(rtp.switchPanel);
-                    cardLayout.next(rp.cNTPanel);
-                    cardLayout.next(rp.cCCenterPanel_Card);
+                    cardLayout.next(rp.center_North_Top_Panel);
+                    cardLayout.next(rp.center_Center_Center_Panel_Card);
                     addFile.setEnabled(true);
-
+                    BoaderCombo.setEnabled(true);
                 }
             }
         });
@@ -190,8 +191,8 @@ public class MainView extends MyJFrame {
                     } else if (result == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
-                        cardLayout.next(rp.cNTPanel);
-                        cardLayout.next(rp.cCCenterPanel_Card);
+                        cardLayout.next(rp.center_North_Top_Panel);
+                        cardLayout.next(rp.center_Center_Center_Panel_Card);
 
 
                         String mReportDt = rp.reportDtTxt.getText();
@@ -240,15 +241,17 @@ public class MainView extends MyJFrame {
                             rp.setVisible(true);
                         }
                         resetModifyData(listIdx); // 데이터 초기화
-                        ReportPage.setDataListPage(startIndex, startIndex + 12);
+                        ReportPage.setDataListPage(report_StartIndex, report_StartIndex + 12);
                         addFile.setEnabled(false);
+                        BoaderCombo.setEnabled(false);
 
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
-                        cardLayout.next(rp.cNTPanel);
-                        cardLayout.next(rp.cCCenterPanel_Card);
+                        cardLayout.next(rp.center_North_Top_Panel);
+                        cardLayout.next(rp.center_Center_Center_Panel_Card);
                         addFile.setEnabled(false);
+                        BoaderCombo.setEnabled(false);
                     }
                 }
             }
@@ -270,7 +273,7 @@ public class MainView extends MyJFrame {
                     ReportDao.reportDelete(new ReportDto(reportDto.getNo()));
                     rp.setVisible(false);
                     resetDeleteData(); // 데이터 초기화
-                    ReportPage.setDataListPage(startIndex, startIndex + 12);
+                    ReportPage.setDataListPage(report_StartIndex, report_StartIndex + 12);
 //                    tabbedPane.revalidate();
 //                    tabbedPane.repaint();
 
@@ -327,4 +330,19 @@ public class MainView extends MyJFrame {
             }
         }
     }
+
+    // Boader콤보박스에서 선택한 데이터를 가져온다.
+    // 받아온 데이터와 게시판 정보를 비교한다.
+    // 비교하여 일치하는 게시판에 쿼리문을 사용하여 DB에 넣어준다.
+    // 기존 게시판에 있던 게시물은 쿼리문을 사용해 삭제한다.
+//    public void chooseBoader(int num){
+//        switch(num){
+//            case 1 :
+//                if (num == tapPaneIdx){
+//
+//                }
+//                break;
+//            case 2 :
+//        }
+//    }
 }

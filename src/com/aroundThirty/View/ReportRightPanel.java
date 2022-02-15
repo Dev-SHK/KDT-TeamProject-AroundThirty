@@ -12,19 +12,21 @@ import static com.aroundThirty.Resource.BR.*;
 public class ReportRightPanel extends JPanel {
     JPanel centerPanel = new JPanel(new BorderLayout());
     JPanel southPanel = new JPanel();
-    JPanel nEastPanel = new JPanel();
-    JPanel nEWestPanel = new JPanel(cardLayout);
-    JPanel cNTPanel = new JPanel(cardLayout);
-    JPanel nEEastPanel = new JPanel();
-    JPanel cNorthPanel = new JPanel();
-    JPanel cCenterPanel = new JPanel(new BorderLayout());
-    JPanel cRNorthPanel = new JPanel(new GridLayout(6, 2, 0, 10));
-    JPanel cRNorthPanel_Card = new JPanel(new GridLayout(6, 2, 0, 10));
-    JPanel cLNorthPanel = new JPanel();
-    JPanel cRCenterPanel = new JPanel();
-    JPanel cLCenterPanel = new JPanel();
-    JPanel cCCenterPanel = new JPanel(new BorderLayout());
-    JPanel cCCenterPanel_Card = new JPanel(cardLayout);
+    JPanel north_East_Panel = new JPanel();
+    JPanel north_East_West_Panel = new JPanel(cardLayout);
+    JPanel center_North_Top_Panel = new JPanel(cardLayout);
+    JPanel north_East_East_Panel = new JPanel();
+    JPanel center_North_Panel = new JPanel();
+    JPanel center_Center_Panel = new JPanel(new BorderLayout());
+    JPanel center_North_Right_Panel = new JPanel(new GridLayout(6, 2, 0, 10));
+    JPanel center_North_Right_Panel_Card = new JPanel(new GridLayout(6, 2, 0, 10));
+    JPanel center_North_Left_Panel = new JPanel();
+    JPanel center_Center_Right_Panel = new JPanel();
+    JPanel center_Center_Left_Panel = new JPanel();
+    JPanel center_Center_NorthPanel = new JPanel(new BorderLayout());
+    JPanel center_Center_North_West_Panel = new JPanel();
+    JPanel center_Center_Center_Panel = new JPanel(new BorderLayout());
+    JPanel center_Center_Center_Panel_Card = new JPanel(cardLayout);
     JScrollPane detail_ScrollPane = new JScrollPane(centerPanel);
 
 
@@ -72,51 +74,57 @@ public class ReportRightPanel extends JPanel {
         add(detail_ScrollPane);
 
         // 패널 구성
-//        northPanel.add(BorderLayout.EAST, nEastPanel);
-        nEastPanel.add(nEWestPanel);
-        nEastPanel.add(nEEastPanel);
-        centerPanel.add(BorderLayout.NORTH, cNorthPanel);
-        centerPanel.add(BorderLayout.CENTER, cCenterPanel);
-        cNorthPanel.add(BorderLayout.WEST, cLNorthPanel);
-        cNorthPanel.add(BorderLayout.EAST, cNTPanel);
-        cNTPanel.add(cRNorthPanel);
-        cNTPanel.add(cRNorthPanel_Card);
-        cCenterPanel.add(BorderLayout.WEST, cLCenterPanel);
-        cCenterPanel.add(BorderLayout.EAST, cRCenterPanel);
-        cCenterPanel.add(BorderLayout.CENTER, cCCenterPanel);
-        cCCenterPanel.add(BorderLayout.NORTH, cCCenterPanel_Card);
+//        northPanel.add(BorderLayout.EAST, north_East_Panel);
+        north_East_Panel.add(north_East_West_Panel);
+        north_East_Panel.add(north_East_East_Panel);
+        centerPanel.add(BorderLayout.NORTH, center_North_Panel);
+        centerPanel.add(BorderLayout.CENTER, center_Center_Panel);
+        centerPanel.add(BorderLayout.CENTER, center_Center_Panel);
+        center_North_Panel.add(BorderLayout.WEST, center_North_Left_Panel);
+        center_North_Panel.add(BorderLayout.EAST, center_North_Top_Panel);
+        center_North_Top_Panel.add(center_North_Right_Panel);
+        center_North_Top_Panel.add(center_North_Right_Panel_Card);
+        center_Center_Panel.add(BorderLayout.WEST, center_Center_Left_Panel);
+        center_Center_Panel.add(BorderLayout.EAST, center_Center_Right_Panel);
+        center_Center_Panel.add(BorderLayout.CENTER, center_Center_Center_Panel);
+        center_Center_Center_Panel.add(BorderLayout.CENTER, center_Center_Center_Panel_Card);
+        center_Center_Center_Panel.add(BorderLayout.NORTH, center_Center_NorthPanel);
+        center_Center_NorthPanel.add(BorderLayout.WEST,center_Center_North_West_Panel);
+
 
         // 패널에 라벨 및 버튼 추가
-        cLNorthPanel.add(imgLabel);
-        cRNorthPanel.add(reportDt);
-        cRNorthPanel.add(reportDtVal);
-        cRNorthPanel.add(reportPlace);
-        cRNorthPanel.add(reportPlaceVal);
-        cRNorthPanel.add(reportKind);
-        cRNorthPanel.add(reportKindVal);
-        cRNorthPanel.add(reportNum);
-        cRNorthPanel.add(reportNumVal);
-        cRNorthPanel.add(postDt);
-        cRNorthPanel.add(postDtVal);
-        cRNorthPanel.add(modifyDt);
-        cRNorthPanel.add(modifyDtVal);
-        cCCenterPanel_Card.add(reportDetail);
+        center_North_Left_Panel.add(imgLabel);
+        center_North_Right_Panel.add(reportDt);
+        center_North_Right_Panel.add(reportDtVal);
+        center_North_Right_Panel.add(reportPlace);
+        center_North_Right_Panel.add(reportPlaceVal);
+        center_North_Right_Panel.add(reportKind);
+        center_North_Right_Panel.add(reportKindVal);
+        center_North_Right_Panel.add(reportNum);
+        center_North_Right_Panel.add(reportNumVal);
+        center_North_Right_Panel.add(postDt);
+        center_North_Right_Panel.add(postDtVal);
+        center_North_Right_Panel.add(modifyDt);
+        center_North_Right_Panel.add(modifyDtVal);
+        center_Center_Center_Panel_Card.add(reportDetail);
+        center_Center_North_West_Panel.add(BoaderCombo);
+
 
         // 패널에 라벨 및 버튼 추가 card 2
-        cRNorthPanel_Card.add(reportDt_Card);
-        cRNorthPanel_Card.add(reportDtTxt);
-        cRNorthPanel_Card.add(reportPlace_Card);
-        cRNorthPanel_Card.add(reportPlaceTxt);
-        cRNorthPanel_Card.add(reportKind_Card);
-        cRNorthPanel_Card.add(reportKindTxt);
-        cRNorthPanel_Card.add(reportNum_Card);
-        cRNorthPanel_Card.add(reportNumTxt);
-        cRNorthPanel_Card.add(postDt_Card);
-        cRNorthPanel_Card.add(postDtTxt);
-        cRNorthPanel_Card.add(modifyDt_Card);
-        cRNorthPanel_Card.add(modifyDtTxt);
-        cCCenterPanel_Card.add(reportDetailTxt);
-        cCCenterPanel_Card.add(BoaderCombo);
+        center_North_Right_Panel_Card.add(reportDt_Card);
+        center_North_Right_Panel_Card.add(reportDtTxt);
+        center_North_Right_Panel_Card.add(reportPlace_Card);
+        center_North_Right_Panel_Card.add(reportPlaceTxt);
+        center_North_Right_Panel_Card.add(reportKind_Card);
+        center_North_Right_Panel_Card.add(reportKindTxt);
+        center_North_Right_Panel_Card.add(reportNum_Card);
+        center_North_Right_Panel_Card.add(reportNumTxt);
+        center_North_Right_Panel_Card.add(postDt_Card);
+        center_North_Right_Panel_Card.add(postDtTxt);
+        center_North_Right_Panel_Card.add(modifyDt_Card);
+        center_North_Right_Panel_Card.add(modifyDtTxt);
+        center_Center_Center_Panel_Card.add(reportDetailTxt);
+
 
         // 라벨, 버튼 등 속성
         reportDt.setPreferredSize(new Dimension(80,40));
@@ -132,9 +140,10 @@ public class ReportRightPanel extends JPanel {
         reportPlaceVal.setLineWrap(true);
         reportPlaceTxt.setLineWrap(true);
         reportDetail.setLineWrap(true);
+        BoaderCombo.setEnabled(false);
         reportPlaceTxt.setPreferredSize(new Dimension(100, 20));
-        cCCenterPanel_Card.setPreferredSize(new Dimension(250, 500));
-        cCCenterPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));   // 안쪽 여백 추가
+        center_Center_Center_Panel_Card.setPreferredSize(new Dimension(250, 500));
+        center_Center_Center_Panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));   // 안쪽 여백 추가
         LineBorder line = new LineBorder(pastelPink, 5, true);   // 이미지 테두리선과 곡선에 대한 값 저장
         imgLabel.setBorder(line);   // 저장된 테두리와 곡선 추가
 
@@ -167,7 +176,7 @@ public class ReportRightPanel extends JPanel {
         modifyDtTxt.setFont(fontNanum);
 
         // 패널 색상
-        cRNorthPanel_Card.setBackground(pastelYellow);
+        center_North_Right_Panel_Card.setBackground(pastelYellow);
         reportDetail.setBackground(pastelPink);
         reportDtVal.setBackground(pastelYellow);
         reportPlaceVal.setBackground(pastelYellow);
@@ -177,15 +186,17 @@ public class ReportRightPanel extends JPanel {
         modifyDtVal.setBackground(pastelYellow);
         centerPanel.setBackground(pastelYellow);
         southPanel.setBackground(pastelYellow);
-        nEastPanel.setBackground(pastelPink);
-        cCenterPanel.setBackground(pastelYellow);
-        cNorthPanel.setBackground(pastelYellow);
-        cRNorthPanel.setBackground(pastelYellow);
-        cLNorthPanel.setBackground(pastelYellow);
-        cCCenterPanel.setBackground(pastelPink);
-        cRCenterPanel.setBackground(pastelPink);
-        cLCenterPanel.setBackground(pastelPink);
-        cCCenterPanel_Card.setBackground(pastelPink);
+        north_East_Panel.setBackground(pastelPink);
+        center_Center_Panel.setBackground(pastelYellow);
+        center_North_Panel.setBackground(pastelYellow);
+        center_North_Right_Panel.setBackground(pastelYellow);
+        center_North_Left_Panel.setBackground(pastelYellow);
+        center_Center_Center_Panel.setBackground(pastelPink);
+        center_Center_Right_Panel.setBackground(pastelPink);
+        center_Center_Left_Panel.setBackground(pastelPink);
+        center_Center_Center_Panel_Card.setBackground(pastelPink);
+        center_Center_NorthPanel.setBackground(pastelPink);
+        center_Center_North_West_Panel.setBackground(pastelPink);
 
         detail_ScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);    // 상하 스크롤에 대한 정책을 설정한다. (스크롤바가 항상 보이도록 설정)
         centerPanel.setPreferredSize(new Dimension(300, 800)); // centerPanel의 크기 지정

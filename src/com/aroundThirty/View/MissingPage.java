@@ -36,8 +36,8 @@ public class MissingPage extends JPanel {
 //        setBackground(pastelYellow);
 //    }
 //
-//    public static void setDataListPanel(int startIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
-//        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
+//    public static void setDataListPanel(int report_StartIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
+//        for (int i = 0, dataIdx = report_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
 //            JPanel newPane = new JPanel(null);
 //            btnList.add(new JButton(reportCardDtoList.get(dataIdx).getImage())); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
 //            lblList.add(new JLabel(reportCardDtoList.get(dataIdx).getTitle()));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
@@ -51,8 +51,8 @@ public class MissingPage extends JPanel {
 //
 //    }
 //
-//    public static void setDataListPage(int startIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
-//        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
+//    public static void setDataListPage(int report_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
+//        for (int i = 0, dataIdx = report_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
 //            btnList.get(i).setText(reportCardDtoList.get(dataIdx).getImage());
 //            lblList.get(i).setText(reportCardDtoList.get(dataIdx).getTitle());
 //        }

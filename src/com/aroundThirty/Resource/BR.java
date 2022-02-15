@@ -40,4 +40,5 @@ public class BR {
     public static int pageNum;
     public static int postedPageNum;
     public static int listIdx;
+    public static int tapPaneIdx;
 }
