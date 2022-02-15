@@ -1,6 +1,7 @@
 package com.aroundThirty.myframe;
 
 import com.aroundThirty.View.IntroducePage;
+import com.aroundThirty.View.SourcePage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,16 +30,39 @@ public abstract class MyJFrame extends JFrame {
     public void createMenu() {
         JMenuBar mb = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
+        JMenu saveMenu = new JMenu("Save");
+        JMenu openMenu = new JMenu("Open");
+        JMenu settingMenu = new JMenu("Setting");
         JMenu helpMenu = new JMenu("Help");
+        JMenuItem exitMenu = new JMenuItem("Exit");
         JMenuItem aboutMenu = new JMenuItem("About");
+        JMenuItem sourceMenu = new JMenuItem("Source");
         aboutMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ip = new IntroducePage();
             }
         });
+        sourceMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sp = new SourcePage();
+            }
+        });
+        exitMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                System.exit(0);
+            }
+        });
+        fileMenu.add(exitMenu);
+        helpMenu.add(sourceMenu);
         helpMenu.add(aboutMenu);
         mb.add(fileMenu);
+        mb.add(saveMenu);
+        mb.add(openMenu);
+        mb.add(settingMenu);
         mb.add(helpMenu);
         this.setJMenuBar(mb);
         mb.setBorderPainted(false);

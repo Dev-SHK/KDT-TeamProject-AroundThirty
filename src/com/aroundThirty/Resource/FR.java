@@ -92,6 +92,7 @@ public class FR {
     public static Color pastelPink = new Color(253, 224, 206, 255);
     public static Color pastelYellow = new Color(255, 250, 200, 255);
     public static Color pastelGreen = new Color(229, 250, 164, 255);
+    public static Color grayTransparency = new Color(70, 70, 70, 60);
     public static Font fontCourier = new Font("Courier New", Font.PLAIN, 25);
     public static Font fontNanum = new Font("나눔고딕", Font.PLAIN, 13);
     public static Font fontNanumBold = new Font("나눔고딕", Font.BOLD, 15);
@@ -150,6 +151,7 @@ public class FR {
     public static RightTopPanel rtp;
     public static SearchData sd;
     public static IntroducePage ip;
+    public static SourcePage sp;
     public static JTabbedPane tabbedPane;
 
     public static final int SIZE_ROW = 4;
@@ -159,6 +161,7 @@ public class FR {
     public static LocalDate now = LocalDate.now();
     public static String addImgPath;
     public static int startIndex;
+    public static int mpStartIndex;
 
     public static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
         Image img = icon.getImage();  //ImageIcon을 Image로 변환.
