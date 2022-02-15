@@ -15,6 +15,7 @@ public class RightTopPanel extends JPanel {
         groupPanel = new JPanel();
         westPanel = new JPanel();
         westPanel.add(addFile);
+        addFile.setEnabled(false);
         switchPanel.add("수정", modifyBtn);
         switchPanel.add("완료", postBtn);
         groupPanel.add(writeBtn);

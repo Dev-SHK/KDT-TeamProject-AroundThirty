@@ -28,6 +28,7 @@ public class AddFileWindow extends JFrame {
         setVisible(true);
 
 
+
         fileSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,9 +42,10 @@ public class AddFileWindow extends JFrame {
                     } else if (ret == jfc.APPROVE_OPTION) {
                         File file = jfc.getSelectedFile(); // 선택된 파일 가져오기
                         jTextField.setText(file.getPath());
-                        fileSave(file, "/Users/ood12/Desktop/test", file.getName());
-                    } if(jfc.showSaveDialog(fileSearch) == JFileChooser.APPROVE_OPTION) {
-                        jlb.setText("저장 경로 : " + jfc.getSelectedFile().toString());
+                        String filePath = "/Users/ood12/Desktop/test";
+                        fileSave(file, filePath, file.getName());
+                        addImgPath =(filePath + "/" + file.getName());
+                        dispose();
                     }
                 }
             }

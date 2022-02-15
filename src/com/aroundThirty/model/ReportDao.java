@@ -80,7 +80,7 @@ public class ReportDao {
         }
     }
 
-    public static void reportModify(ReportDto reportDto) {
+    public static void  reportModify(ReportDto reportDto) {
         conn = JdbcUtil.getConnection(); //DB와 연결하기 위해 JdbcUtil의 getConncection 메소드 소환
         try {
             pstmt = conn.prepareStatement(SQL_REPORT_UPDATE); // prepareStatement에 쿼리를 입력하여 DB를 불러와 Statement pstmt에 담는 구문
