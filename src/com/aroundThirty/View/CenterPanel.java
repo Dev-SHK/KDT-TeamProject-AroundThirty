@@ -122,8 +122,6 @@ public class CenterPanel extends JPanel {
                     mouseOverPan.setVisible(true);
                     btnList.get(finalDataIdx).revalidate();
                     btnList.get(finalDataIdx).repaint();
-                    System.out.println("마우스 들어감 " + (xmlCardDtoList.get(finalDataIdx).getNo() + 1));
-
                 }
 
                 @Override
@@ -131,8 +129,6 @@ public class CenterPanel extends JPanel {
                     mouseOverPan.setVisible(false);
                     btnList.get(finalDataIdx).revalidate();
                     btnList.get(finalDataIdx).repaint();
-                    System.out.println("마우스 나옴 " + (finalDataIdx + 1));
-
                 }
             });
         }

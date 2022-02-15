@@ -151,6 +151,10 @@ public class BottomPanel extends JPanel {
         loginMain.setBorderPainted(false);
         groupPanRight.add(loginMain);
 
+        logoutMain.setFont(fontCourier);
+        logoutMain.getPreferredSize();
+        logoutMain.setBorderPainted(false);
+
         catBTN.setBorderPainted(false);
         catBTN.getPreferredSize();
         groupPanRight.add(catBTN);
