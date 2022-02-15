@@ -1,7 +1,6 @@
 package com.aroundThirty.View;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,19 +13,35 @@ import static com.aroundThirty.Resource.FR.*;
 public class AddFileWindow extends JFrame {
 
     JFileChooser jfc = new JFileChooser();
-    JLabel jlb = new JLabel(" ");
+    //    JLabel jlb = new JLabel(" ");
     JTextField jTextField = new JTextField(30);
     JButton fileSearch = new JButton("찾기");
+    JButton fileClose = new JButton("닫기");
+    ImageIcon imageIcon;
+    JLabel imgLbl = new JLabel();
+
+    JPanel northPanel = new JPanel();
+    JPanel centerPanel = new JPanel();
+    JPanel southPanel = new JPanel();
+    JPanel southPanel_center = new JPanel();
+    String addImgPath;
 
     public AddFileWindow() {
-        setLayout(new FlowLayout());
-        add(jTextField);
-        add(fileSearch);
-        add(jlb);
+        setLayout(new BorderLayout());
 
-        setSize(450, 200);
+        add(BorderLayout.NORTH, northPanel);
+        northPanel.add(jTextField);
+
+        add(BorderLayout.CENTER, centerPanel);
+        centerPanel.add(BorderLayout.CENTER, imgLbl);
+
+        add(BorderLayout.SOUTH, southPanel);
+        southPanel.add(BorderLayout.CENTER, southPanel_center);
+        southPanel_center.add(fileSearch);
+        southPanel_center.add(fileClose);
+//        add(jlb);
+        setSize(600, 400);
         setVisible(true);
-
 
 
         fileSearch.addActionListener(new ActionListener() {
@@ -42,13 +57,19 @@ public class AddFileWindow extends JFrame {
                     } else if (ret == jfc.APPROVE_OPTION) {
                         File file = jfc.getSelectedFile(); // 선택된 파일 가져오기
                         jTextField.setText(file.getPath());
-                        String filePath = "/Users/ood12/Desktop/test";
+                        String filePath = "/Users/minsookim/Desktop/Green/Proj_1/saved_Imges";
                         fileSave(file, filePath, file.getName());
-                        addImgPath =(filePath + "/" + file.getName());
-                        dispose();
+                        addImgPath = (filePath + "/" + file.getName());
+                        imageIcon = new ImageIcon(addImgPath);
+                        imgLbl.setIcon(imageSetSize(imageIcon, 300, 300));
+                        //   jlb.setText("저장 경로 : " + jfc.getSelectedFile().toString());
                     }
                 }
             }
+//            public void windowClosing(WindowEvent e) {
+//                System.exit(0);
+//            }
+
         });
     }
 
