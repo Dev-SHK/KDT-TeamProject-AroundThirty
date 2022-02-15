@@ -42,8 +42,8 @@ public class ReportPage extends JPanel {
         setBackground(pastelYellow);
     }
 
-    public static void setDataListPanel(int startIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
-        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {  // startIdx(페이지 별 첫번째 게시물의 no)를 SIZE_ITEM(12번) 반복한다.
+    public static void setDataListPanel(int report_StartIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
+        for (int i = 0, dataIdx = report_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {  // startIdx(페이지 별 첫번째 게시물의 no)를 SIZE_ITEM(12번) 반복한다.
             newPane = new JPanel(null); // 버튼과 라벨을 붙일 패널 생성
             if (reportListAll.size() > dataIdx) {   // 데이터의 size가 dataIdx보다 큰 경우에만 통과하는 if문
                 postedPageNum = reportListAll.get(i).no;    //
@@ -105,8 +105,8 @@ public class ReportPage extends JPanel {
     // 어레이리스트로 이미지와를 받아오는 리스트를 만들고 별개로
     // 넘버만 저장하는 리스트를 만들어서 삭제 및 수정시 리스트의 인덱스를 뽑아온다.
 
-    public static void setDataListPage(int startIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
-        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
+    public static void setDataListPage(int report_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
+        for (int i = 0, dataIdx = report_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
             if (reportListAll.size() > dataIdx) {
                 postedPageNum = reportListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
                 btnList.get(i).setIcon(imageSetSize(reportCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));

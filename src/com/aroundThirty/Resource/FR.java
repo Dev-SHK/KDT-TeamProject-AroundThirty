@@ -160,7 +160,7 @@ public class FR {
 
     public static LocalDate now = LocalDate.now();
     public static String addImgPath;
-    public static int startIndex;
+    public static int report_StartIndex;
     public static int mpStartIndex;
 
     public static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
