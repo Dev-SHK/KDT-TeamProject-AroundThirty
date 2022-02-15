@@ -22,8 +22,6 @@ public class ReportPage extends JPanel {
     ReportPagingBtn reportPagingBtn = new ReportPagingBtn();
     JPanel centerPanel = new JPanel(new GridLayout(SIZE_ROW, SIZE_COL));    // SIZE_ROW, SIZE_COL로 행열 지정
     JScrollPane jScrollPane = new JScrollPane(centerPanel);
-    static String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
-    static ImageIcon defaultImg = new ImageIcon(defaultImgPath);
     static JPanel newPane;
 
     static {
@@ -45,10 +43,10 @@ public class ReportPage extends JPanel {
     }
 
     public static void setDataListPanel(int startIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
-        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
-            newPane = new JPanel(null);
-            if (reportListAll.size() > dataIdx) {
-                postedPageNum = reportListAll.get(i).no;
+        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {  // startIdx(페이지 별 첫번째 게시물의 no)를 SIZE_ITEM(12번) 반복한다.
+            newPane = new JPanel(null); // 버튼과 라벨을 붙일 패널 생성
+            if (reportListAll.size() > dataIdx) {   // 데이터의 size가 dataIdx보다 큰 경우에만 통과하는 if문
+                postedPageNum = reportListAll.get(i).no;    //
             }
             if (reportListAll.size() > dataIdx) {
                 btnList.add(new JButton(imageSetSize(reportCardDtoList.get(dataIdx).getDefaultImg(), 150, 120)));
@@ -70,10 +68,10 @@ public class ReportPage extends JPanel {
                     if (e.getSource() instanceof JButton) { // e.getsource로 받아온 객체가 JButton의 상속을 받으면 true 반환
                         // instanceof : 객체타입을 확인하는 연산자로 형변환 가능 여부를 확인하며 true, false 로 반환 주로 상속관계에서 부모객체인지 자식객체인지 확인하는데 사용
                         JButton btn = (JButton) e.getSource();   // e.getsource로 받아온 객체의 속성을 btn에 담는다.
-                        selectBtnNum = reportCardDtoList.get(finali).getNo();
-                        int minNum = (pageNum * 12) + reportCardDtoList.get(finali).getNo();
-                        int postedPageNum = reportListAll.get(minNum).no;
-                        reportDto = ReportDao.reportSelectOne(new ReportDto(postedPageNum));
+                        selectBtnNum = reportCardDtoList.get(finali).getNo();   // 현재 페이지에서 선택한 게시물의 번호를 가져옴(12개 중 선택한 버튼의 idx)
+                        listIdx = (pageNum * 12) + reportCardDtoList.get(finali).getNo();    // ArrayList에서 데이터를 받아올 수 있도록 선택한 게시물의 인덱스를 만들어 줌
+                        int Choose_postedPage_Num = reportListAll.get(listIdx).no;   // 선택한 게시물에 대한 no를 담는 변수
+                        reportDto = ReportDao.reportSelectOne(new ReportDto(Choose_postedPage_Num));
                         rp.reportDtVal.setText(reportDto.report_Date);
                         rp.reportDtTxt.setText(reportDto.report_Date);
                         rp.reportPlaceVal.setText(reportDto.report_Place);
@@ -109,10 +107,8 @@ public class ReportPage extends JPanel {
 
     public static void setDataListPage(int startIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
         for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
-
             if (reportListAll.size() > dataIdx) {
-                pageMinNum = (pageNum * 12) + i;    // 각 페이지의 첫번째 게시글
-                postedPageNum = reportListAll.get(pageMinNum).no;
+                postedPageNum = reportListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
                 btnList.get(i).setIcon(imageSetSize(reportCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
                 lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + reportListAll.get(dataIdx).post_Create_Date);
             } else if (reportListAll.size() <= dataIdx) {

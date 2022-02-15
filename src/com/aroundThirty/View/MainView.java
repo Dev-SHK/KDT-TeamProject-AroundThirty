@@ -1,6 +1,7 @@
 package com.aroundThirty.View;
 
 import com.aroundThirty.Resource.SearchData;
+import com.aroundThirty.model.ReportCardDto;
 import com.aroundThirty.model.ReportDao;
 import com.aroundThirty.model.ReportDto;
 import com.aroundThirty.myframe.MyJFrame;
@@ -12,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import static com.aroundThirty.Resource.FR.*;
 import static com.aroundThirty.Resource.BR.*;
@@ -171,6 +173,8 @@ public class MainView extends MyJFrame {
                     cardLayout.next(rtp.switchPanel);
                     cardLayout.next(rp.cNTPanel);
                     cardLayout.next(rp.cCCenterPanel_Card);
+                    addFile.setEnabled(true);
+
                 }
             }
         });
@@ -182,18 +186,69 @@ public class MainView extends MyJFrame {
                 if (act.equals("완료")) {
                     int result = JOptionPane.showConfirmDialog(null, "게시글을 수정 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
                     if (result == JOptionPane.CLOSED_OPTION) {
+                        addFile.setEnabled(false);
                     } else if (result == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
                         cardLayout.next(rp.cNTPanel);
                         cardLayout.next(rp.cCCenterPanel_Card);
 
-                        reportModify(new ReportDto(reportDto.report_Date,reportDto.report_Place,reportDto.kind_Report,reportDto.phone_Num,reportDto.detail,reportDto.post_Modify_Date, reportDto.thumbnail_Img, reportDto.getNo()));
+
+                        String mReportDt = rp.reportDtTxt.getText();
+                        String mReportPlace = rp.reportPlaceTxt.getText();
+                        String mKind_Report = rp.reportKindTxt.getText();
+                        String mReportNum = rp.reportNumTxt.getText();
+                        String mModifyDt = now.toString();
+                        String mThumbNail;
+                        String mDetail = rp.reportDetailTxt.getText();
+
+                        if (addImgPath == null) {    // 썸네일을 새로 첨부하지 않은 경우에 대한 IF문
+                            mThumbNail = reportDto.getThumbnail_Img();
+                        } else {
+                            mThumbNail = addImgPath;
+                        }
+
+                        reportDto.setReport_Date(mReportDt);
+                        reportDto.setReport_Place(mReportPlace);
+                        reportDto.setKind_Report(mKind_Report);
+                        reportDto.setPhone_Num(mReportNum);
+                        reportDto.setPost_Modify_Date(mModifyDt);
+                        reportDto.setThumbnail_Img(mThumbNail);
+                        reportDto.setDetail(mDetail);
+
+                        rp.postDtVal.setText(reportDto.report_Date);
+                        rp.postDtTxt.setText(reportDto.report_Date);
+                        rp.reportPlaceVal.setText(reportDto.report_Place);
+                        rp.reportPlaceTxt.setText(reportDto.report_Place);
+                        rp.reportKindVal.setText(reportDto.kind_Report);
+                        rp.reportKindTxt.setText(reportDto.kind_Report);
+                        rp.reportNumVal.setText(reportDto.phone_Num);
+                        rp.reportNumTxt.setText(reportDto.phone_Num);
+                        rp.postDtVal.setText(reportDto.post_Create_Date);
+                        rp.postDtTxt.setText(reportDto.post_Create_Date);
+                        rp.modifyDtVal.setText(reportDto.post_Modify_Date);
+                        rp.modifyDtTxt.setText(reportDto.post_Modify_Date);
+                        rp.reportDetail.setText(reportDto.detail);
+                        rp.reportDetailTxt.setText(reportDto.detail);
+                        rp.imgPath = reportDto.thumbnail_Img;
+                        ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
+                        rp.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+
+                        ReportDao.reportModify(new ReportDto(mReportDt, mReportPlace, mKind_Report, mReportNum, mDetail, "2022-02-14", mThumbNail, reportDto.getNo()));
+
+                        if (click) {
+                            rp.setVisible(true);
+                        }
+                        resetModifyData(listIdx); // 데이터 초기화
+                        ReportPage.setDataListPage(startIndex, startIndex + 12);
+                        addFile.setEnabled(false);
+
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(rtp.switchPanel);
                         cardLayout.next(rp.cNTPanel);
                         cardLayout.next(rp.cCCenterPanel_Card);
+                        addFile.setEnabled(false);
                     }
                 }
             }
@@ -210,14 +265,14 @@ public class MainView extends MyJFrame {
                 } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
                     JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
                     // 삭제 후 게시물 이미지가 디폴트 이미지로 변환 되도록 구현 해야함
-                    btnList.get(selectBtnNum).setIcon(imageSetSize(defaultImg, 150, 120));
-                    lblList.get(selectBtnNum).setText("");
+//                    btnList.get(selectBtnNum).setIcon(imageSetSize(defaultImg, 150, 120));
+//                    lblList.get(selectBtnNum).setText("");
                     ReportDao.reportDelete(new ReportDto(reportDto.getNo()));
                     rp.setVisible(false);
-                    tabbedPane.revalidate();
-                    tabbedPane.repaint();
-//                    btnList.get(selectBtnNum).revalidate();
-//                    btnList.get(selectBtnNum).repaint();
+                    resetDeleteData(); // 데이터 초기화
+                    ReportPage.setDataListPage(startIndex, startIndex + 12);
+//                    tabbedPane.revalidate();
+//                    tabbedPane.repaint();
 
                     click = true;
                     // 삭제 쿼리 돌려야함
@@ -232,5 +287,44 @@ public class MainView extends MyJFrame {
                 afw = new AddFileWindow();
             }
         });
+    }
+
+    public void resetModifyData(int Index) {
+        for (int i = 0; i < SIZE_ITEM; i++) {
+            btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+            lblList.get(i).setText("");
+        }
+        reportListAll = ReportDao.reportSelectAll();
+        for (ReportDto Dto : reportListAll) {
+            reportDto = Dto;
+        }
+        ImageIcon thumbnailImg = new ImageIcon(reportListAll.get(Index).thumbnail_Img);
+        if (reportListAll.get(Index).thumbnail_Img.equals("(NULL)")) {
+            reportCardDto = new ReportCardDto(defaultImg, Index);
+            reportCardDtoList.add(Index, reportCardDto);
+        } else {
+            reportCardDto = new ReportCardDto(thumbnailImg, Index);
+            reportCardDtoList.set(Index, reportCardDto);
+        }
+    }
+    public void resetDeleteData() {
+        for (int i = 0; i < SIZE_ITEM; i++) {
+            btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+            lblList.get(i).setText("");
+        }
+        reportListAll = ReportDao.reportSelectAll();
+        for (ReportDto Dto : reportListAll) {
+            reportDto = Dto;
+        }
+        for (int i = 0; i < reportListAll.size(); i++) {
+            ImageIcon img = new ImageIcon(reportListAll.get(i).thumbnail_Img);
+            if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+                reportCardDto = new ReportCardDto(defaultImg, i);
+                reportCardDtoList.set(i,reportCardDto);
+            } else {
+                reportCardDto = new ReportCardDto(img, i);
+                reportCardDtoList.set(i,reportCardDto);
+            }
+        }
     }
 }

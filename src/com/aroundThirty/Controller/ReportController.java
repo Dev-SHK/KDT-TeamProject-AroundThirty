@@ -37,13 +37,4 @@ public class ReportController {
             }
         }
     }
-
-//    public ReportDto createPost(){
-//
-//
-//
-//
-//        return;
-//    }
-
 }

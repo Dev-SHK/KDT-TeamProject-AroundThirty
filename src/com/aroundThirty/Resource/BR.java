@@ -38,6 +38,6 @@ public class BR {
 
     public static int selectBtnNum;
     public static int pageNum;
-    public static int pageMinNum;
     public static int postedPageNum;
+    public static int listIdx;
 }

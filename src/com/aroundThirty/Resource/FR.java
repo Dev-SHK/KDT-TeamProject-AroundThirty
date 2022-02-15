@@ -11,6 +11,7 @@ import com.aroundThirty.model.XmlCardDto;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FR {
@@ -83,6 +84,11 @@ public class FR {
     public static String[] dogAndCat = {"개", "고양이"};
     public static JComboBox<String> kindCombo = new JComboBox<>(dogAndCat);
 
+    public static String[] Boader = {"발견했어요", "잃어버렸어요", "보호중이에요", "새 가족을 찾아요"};
+    public static JComboBox<String> BoaderCombo = new JComboBox<>(Boader);
+
+
+
     public static Color pastelPink = new Color(253, 224, 206, 255);
     public static Color pastelYellow = new Color(255, 250, 200, 255);
     public static Color pastelGreen = new Color(229, 250, 164, 255);
@@ -96,12 +102,16 @@ public class FR {
     public static String searchImgPath = "src/com/aroundThirty/imgFiles/free-icon-rounded-magnifying-glass-13267.png";
     public static String bgImgPath = "src/com/aroundThirty/imgFiles/bg-dog.png";
     public static String rpDetailImgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";
+    public static String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
+
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
     public static ImageIcon searchImgIcon = new ImageIcon(searchImgPath);
     public static ImageIcon bgImg = new ImageIcon(bgImgPath);
     public static ImageIcon rpDetailImg = new ImageIcon(rpDetailImgPath);
+    public static ImageIcon defaultImg = new ImageIcon(defaultImgPath);
+
 
     public static JButton loginMain = new JButton("LOGIN");
     public static final JButton logoutMain = new JButton("LOGOUT");
@@ -146,6 +156,9 @@ public class FR {
     public static final int SIZE_COL = 3;
     public static final int SIZE_ITEM = SIZE_ROW * SIZE_COL;
 
+    public static LocalDate now = LocalDate.now();
+    public static String addImgPath;
+    public static int startIndex;
 
     public static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
         Image img = icon.getImage();  //ImageIcon을 Image로 변환.

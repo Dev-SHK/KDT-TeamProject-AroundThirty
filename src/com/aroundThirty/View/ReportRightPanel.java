@@ -116,6 +116,7 @@ public class ReportRightPanel extends JPanel {
         cRNorthPanel_Card.add(modifyDt_Card);
         cRNorthPanel_Card.add(modifyDtTxt);
         cCCenterPanel_Card.add(reportDetailTxt);
+        cCCenterPanel_Card.add(BoaderCombo);
 
         // 라벨, 버튼 등 속성
         reportDt.setPreferredSize(new Dimension(80,40));
