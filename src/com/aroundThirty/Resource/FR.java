@@ -103,7 +103,7 @@ public class FR {
     public static String bgImgPath = "src/com/aroundThirty/imgFiles/bg-dog.png";
     public static String rpDetailImgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";
     public static String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
-
+    public static String signbgImgPath = "src/com/aroundThirty/imgFiles/회원가입.png";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
@@ -111,7 +111,7 @@ public class FR {
     public static ImageIcon bgImg = new ImageIcon(bgImgPath);
     public static ImageIcon rpDetailImg = new ImageIcon(rpDetailImgPath);
     public static ImageIcon defaultImg = new ImageIcon(defaultImgPath);
-
+    public static ImageIcon signbgImg = new ImageIcon(signbgImgPath);
 
     public static JButton loginMain = new JButton("LOGIN");
     public static final JButton logoutMain = new JButton("LOGOUT");

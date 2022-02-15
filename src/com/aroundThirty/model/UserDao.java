@@ -8,7 +8,7 @@ public class UserDao {
     public static final String SQL_USER_INSERT = "INSERT INTO User_Info(User_ID, User_PW, User_Name, User_Gender, User_Num, User_Email, User_Athority) VALUES (?,?,?,?,?,?,?)";
     public static final String SQL_USER_UPDATE = "UPDATE User_Info SET User_PW=?, User_Name=?, User_Gender=?, User_Num=?, User_Email=? WHERE NO=?";
     public static final String SQL_USER_DELETE = "DELETE FROM User_Info WHERE NO=?";
-    public static final String SQL_USER_SELECT_BY_ID = "SELECT * FROM User_Info WHERE ID=?";
+    public static final String SQL_USER_SELECT_BY_ID = "SELECT * FROM User_Info WHERE USER_ID=?";
 
     public static Statement stmt = null;
     public static PreparedStatement pstmt = null;
@@ -108,6 +108,7 @@ public class UserDao {
                 e.printStackTrace();
             }
         }
+
     }
 
     // R

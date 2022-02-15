@@ -3,11 +3,14 @@ package com.aroundThirty.View;
 import com.aroundThirty.model.XmlDao;
 import com.aroundThirty.model.XmlDto;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.io.Serial;
+import java.net.URL;
 import java.util.ArrayList;
 
 import static com.aroundThirty.Resource.FR.*;

@@ -11,6 +11,10 @@ public class UserDto {
     private String user_Athority = null; // 권한
     private int no = 0; // Primary Key
 
+    public UserDto(String user_ID) {
+        this.user_ID = user_ID;
+    }
+
     public UserDto(String user_ID, String user_PW) {
         this.user_ID = user_ID;
         this.user_PW = user_PW;
