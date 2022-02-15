@@ -38,9 +38,9 @@ public class MainPagingBtn extends JPanel {
                     if (e.getSource() instanceof JButton) { // e.getsource로 받아온 객체가 JButton의 상속을 받으면 true 반환
                         // instanceof : 객체타입을 확인하는 연산자로 형변환 가능 여부를 확인하며 true, false 로 반환 주로 상속관계에서 부모객체인지 자식객체인지 확인하는데 사용
                         JButton btn = (JButton) e.getSource();   // e.getsource로 받아온 객체의 속성을 btn에 담는다.
-                        startIndex = SIZE_ITEM * (Integer.parseInt(btn.getText()) - 1);
+                        mpStartIndex = SIZE_ITEM * (Integer.parseInt(btn.getText()) - 1);
                         pageNum = Integer.parseInt(btn.getText()) - 1;
-                        CenterPanel.setDataListPage(startIndex, startIndex + 12);
+                        CenterPanel.setDataListPage(mpStartIndex, mpStartIndex + 12);
                         btn.removeActionListener(null);
                     }
                 }

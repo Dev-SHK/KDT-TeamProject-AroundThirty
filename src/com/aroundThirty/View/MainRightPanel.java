@@ -36,6 +36,9 @@ public class MainRightPanel extends JPanel {
     JLabel specialMarkLabel;
     JLabel specialMarkDetailLabel;
     JPanel specialMarkPan;
+    JLabel processLabel;
+    JLabel processDetailLabel;
+    JPanel processPan;
 
     MainRightPanel() {
         imageDetail = null;
@@ -53,9 +56,9 @@ public class MainRightPanel extends JPanel {
         northPan.add(imgLabel);
         northPan.setBackground(pastelGreen);
 
-        southPan = new JPanel(new GridLayout(5, 1));
+        southPan = new JPanel(new GridLayout(6, 1));
 
-        happenDtLabel = new JLabel("제보 일자 : ");
+        happenDtLabel = new JLabel("발견 일자 : ");
         happenDtLabel.setPreferredSize(new Dimension(120, 35));
         happenDtDetailLabel = new JLabel(xmlDto.getHappenDt());
         happenDtDetailLabel.setPreferredSize(new Dimension(350, 35));
@@ -64,7 +67,7 @@ public class MainRightPanel extends JPanel {
         happenDtPan.add(happenDtDetailLabel);
         happenDtPan.setBackground(pastelGreen);
 
-        happenPlaceLabel = new JLabel("제보 장소 : ");
+        happenPlaceLabel = new JLabel("보호 장소 : ");
         happenPlaceLabel.setPreferredSize(new Dimension(120, 35));
         happenPlaceDetailLabel = new JLabel(xmlDto.getHappenPlace());
         happenPlaceDetailLabel.setPreferredSize(new Dimension(350, 35));
@@ -91,7 +94,7 @@ public class MainRightPanel extends JPanel {
         phone_NumPan.add(phone_NumDetailLabel);
         phone_NumPan.setBackground(pastelGreen);
 
-        specialMarkLabel = new JLabel("특이사항 : ");
+        specialMarkLabel = new JLabel("특이 사항 : ");
         specialMarkLabel.setPreferredSize(new Dimension(120, 35));
         specialMarkDetailLabel = new JLabel(xmlDto.getSpecialMark());
         specialMarkDetailLabel.setPreferredSize(new Dimension(350, 35));
@@ -100,11 +103,22 @@ public class MainRightPanel extends JPanel {
         specialMarkPan.add(specialMarkDetailLabel);
         specialMarkPan.setBackground(pastelGreen);
 
+        processLabel = new JLabel("현재 상황 : ");
+        processLabel.setPreferredSize(new Dimension(120, 35));
+        processDetailLabel = new JLabel(xmlDto.getProcessState());
+        processDetailLabel.setPreferredSize(new Dimension(350, 35));
+        processPan = new JPanel();
+        processPan.add(processLabel);
+        processPan.add(processDetailLabel);
+        processPan.setBackground(pastelGreen);
+
+
         southPan.add(happenDtPan);
         southPan.add(happenPlacePan);
         southPan.add(happenKindPan);
         southPan.add(phone_NumPan);
         southPan.add(specialMarkPan);
+        southPan.add(processPan);
 
         add(BorderLayout.CENTER, northPan);
         add(BorderLayout.SOUTH, southPan);

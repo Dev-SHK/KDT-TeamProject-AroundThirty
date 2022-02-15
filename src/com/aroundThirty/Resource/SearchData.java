@@ -32,6 +32,8 @@ public class SearchData {
 
     int count;
 
+    ArrayList<String> totalArr;
+
     public SearchData() throws SQLException {
         // "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"
         String getLocation = locationCombo.getSelectedItem().toString();
@@ -64,8 +66,10 @@ public class SearchData {
         }
 
         count = 0;
+        totalArr = new ArrayList<>();
         for (int i = 0; i < xmlDtoListAll.size(); i++) {
             if ((locationArr.get(i)).contains(getLocation) && (locationArr.get(i)).contains(getLocationDetail) && (genderArr.get(i)).contains(divideGenderWord) && (kindArr.get(i)).contains(getKind)) {
+                totalArr.add(locationArr.get(xmlDtoListAll.get(i).no - 1));
                 count++;
             }
         } // for문 끝
