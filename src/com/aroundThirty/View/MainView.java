@@ -109,7 +109,7 @@ public class MainView extends MyJFrame {
                         JOptionPane.showMessageDialog(null, "로그인 되었어요 :)", title, JOptionPane.INFORMATION_MESSAGE);
                         loginPage.dispose();
                         bp.groupPanRight.remove(loginMain);
-                        bp.groupPanRight.add(logoutMain, 5);
+                        bp.groupPanRight.add(logoutMain, 0);
                         bp.revalidate();
                         bp.repaint();
                     } else {
@@ -156,7 +156,7 @@ public class MainView extends MyJFrame {
                 if (confirm == JOptionPane.YES_OPTION) {
                     JOptionPane.showMessageDialog(null, "로그아웃 되었어요.", title, JOptionPane.INFORMATION_MESSAGE);
                     bp.groupPanRight.remove(logoutMain);
-                    bp.groupPanRight.add(loginMain, 5);
+                    bp.groupPanRight.add(loginMain, 0);
                     bp.revalidate();
                     bp.repaint();
                 } else {
