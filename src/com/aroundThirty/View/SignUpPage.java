@@ -10,7 +10,7 @@ import java.lang.String;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
-import java.sql.SQLException;
+
 import javax.swing.border.EmptyBorder;
 
 import static com.aroundThirty.Resource.FR.*;
@@ -178,7 +178,7 @@ public class SignUpPage extends JFrame {
 
 
                 SignUpPage = true;
-                System.out.println(pw.getPassword());
+
                 JOptionPane.showMessageDialog(null, "회원가입이 완료 되었습니다!", "귀엽개 앙킁하냥", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
             }
