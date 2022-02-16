@@ -2,6 +2,7 @@ package com.aroundThirty.Resource;
 
 import com.aroundThirty.Controller.AdoptController;
 import com.aroundThirty.Controller.ReportController;
+import com.aroundThirty.Controller.SearchController;
 import com.aroundThirty.Controller.XmlController;
 import com.aroundThirty.View.*;
 import com.aroundThirty.model.AdoptCardDto;
@@ -20,6 +21,7 @@ public class FR {
         new ReportController();
         new AdoptController();
         new XmlController();
+//        new SearchController();
     }
 
     public static String title = "귀엽개 앙큼하냥";
@@ -87,6 +89,17 @@ public class FR {
     public static String[] Boader = {"발견했어요", "잃어버렸어요", "보호중이에요", "새 가족을 찾아요"};
     public static JComboBox<String> BoaderCombo = new JComboBox<>(Boader);
 
+//    public static String getLocation;
+//    public static String getLocationDetail;
+//    public static String getLocationAll;
+//    public static String getKind;
+//    public static String getGender;
+
+    public static String getLocation;
+    public static String getLocationDetail;
+    public static String getLocationAll;
+    public static String getKind;
+    public static String getGender;
 
 
     public static Color pastelPink = new Color(253, 224, 206, 255);
@@ -104,7 +117,7 @@ public class FR {
     public static String bgImgPath = "src/com/aroundThirty/imgFiles/bg-dog.png";
     public static String rpDetailImgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";
     public static String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
-    public static String signbgImgPath = "src/com/aroundThirty/imgFiles/회원가입.png";
+    public static String signbgImgPath = "src/com/aroundThirty/imgFiles/SignUpImage.png";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
@@ -138,6 +151,7 @@ public class FR {
     public static MissingPage mp = new MissingPage();
     public static AdoptPage ap = new AdoptPage();
     public static TemporaryPage tep = new TemporaryPage();
+    public static SearchPage searchPage = new SearchPage();
 //    public static MainView mv = new MainView();   // MainController와 중첩되는 소스로 전체적인 이벤트가 두번 실행되는 오류가 발생함
     public static AddFileWindow afw;
     public static LoginPage loginPage;
@@ -147,6 +161,7 @@ public class FR {
     public static LeftPanel lp;
     public static ReportRightPanel rp;
     public static MainRightPanel mrp;
+    public static SearchRightPanel searchRightPanel;
     public static BottomPanel bp;
     public static RightTopPanel rtp;
     public static SearchData sd;
@@ -162,6 +177,7 @@ public class FR {
     public static String addImgPath;
     public static int report_StartIndex;
     public static int mpStartIndex;
+    public static int searchStartIndex;
 
     public static ImageIcon imageSetSize(ImageIcon icon, int i, int j) {
         Image img = icon.getImage();  //ImageIcon을 Image로 변환.

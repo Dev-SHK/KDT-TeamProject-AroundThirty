@@ -1,11 +1,14 @@
 package com.aroundThirty.model;
 
 import com.aroundThirty.JdbcUtil;
+import com.aroundThirty.Resource.FR.*;
 
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.aroundThirty.Resource.FR.*;
 
 public class XmlDao {
     public static final String SQL_XML_SELECT = "SELECT * FROM XML";

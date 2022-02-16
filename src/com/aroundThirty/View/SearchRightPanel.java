@@ -1,21 +1,16 @@
 package com.aroundThirty.View;
 
-import com.aroundThirty.Resource.BR;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.text.html.ImageView;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.aroundThirty.Resource.FR.*;
-import static com.aroundThirty.Resource.BR.*;
+import static com.aroundThirty.Resource.BR.xmlDto;
+import static com.aroundThirty.Resource.FR.imageSetSize;
+import static com.aroundThirty.Resource.FR.pastelGreen;
 
-public class MainRightPanel extends JPanel {
+public class SearchRightPanel extends JPanel {
     JPanel northPan;
     JPanel southPan;
 
@@ -55,7 +50,7 @@ public class MainRightPanel extends JPanel {
     JLabel weightDetailLabel;
     JPanel weightPan;
 
-    MainRightPanel() {
+    SearchRightPanel() {
         imageDetail = null;
         try {
             URL url = new URL(xmlDto.getThumbnail_Img());
