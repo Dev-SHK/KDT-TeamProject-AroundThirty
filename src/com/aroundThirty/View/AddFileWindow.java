@@ -57,7 +57,7 @@ public class AddFileWindow extends JFrame {
                     } else if (ret == jfc.APPROVE_OPTION) {
                         File file = jfc.getSelectedFile(); // 선택된 파일 가져오기
                         jTextField.setText(file.getPath());
-                        String filePath = "/Users/shk/Downloads/FileDownloadTest";
+                        String filePath = "/Users/minsookim/Desktop/Green/Proj_1/saved_Imges";
                         fileSave(file, filePath, file.getName());
                         addImgPath = (filePath + "/" + file.getName());
                         imageIcon = new ImageIcon(addImgPath);
@@ -69,8 +69,11 @@ public class AddFileWindow extends JFrame {
 //            public void windowClosing(WindowEvent e) {
 //                System.exit(0);
 //            }
-
         });
+        Dimension frameSize = getSize();
+        Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setLocation((windowSize.width - frameSize.width) / 2,
+                (windowSize.height - frameSize.height) / 2); //화면 중앙에 띄우기
     }
 
     private void fileSave(File file, String path, String name) {
@@ -102,5 +105,7 @@ public class AddFileWindow extends JFrame {
 
         } catch (Exception ex) {
         }
+
     }
+
 }
