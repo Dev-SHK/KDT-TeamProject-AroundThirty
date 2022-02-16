@@ -5,6 +5,8 @@ import com.aroundThirty.model.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.aroundThirty.Resource.FR.*;
+
 public class BR {
     public static ReportDto reportDto;
     public static List<ReportDto> reportListAll;
@@ -41,4 +43,5 @@ public class BR {
     public static int postedPageNum;
     public static int listIdx;
     public static int tapPaneIdx;
+
 }

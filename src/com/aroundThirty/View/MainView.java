@@ -35,6 +35,7 @@ public class MainView extends MyJFrame {
         lp = new LeftPanel();
         rp = new ReportRightPanel();
         mrp = new MainRightPanel();
+        searchRightPanel = new SearchRightPanel();
         bp = new BottomPanel();
         container = getContentPane();
         switchPan = mrp;
@@ -74,6 +75,14 @@ public class MainView extends MyJFrame {
                         break;
                     case 4:
                         System.out.println("'새 가족을 찾아요' 탭으로 이동함");
+                        break;
+                    case 5:
+                        System.out.println("'검색' 탭으로 이동함");
+                        container.remove(switchPan);
+                        container.add(BorderLayout.EAST, searchRightPanel);
+                        switchPan = searchRightPanel;
+                        revalidate();
+                        repaint();
                         break;
                 }
             }
@@ -130,7 +139,11 @@ public class MainView extends MyJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    tabbedPane.remove(searchPage);
                     sd = new SearchData();
+                    tabbedPane.addTab("검색", searchPage);
+                    lp.revalidate();
+                    lp.repaint();
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -310,6 +323,7 @@ public class MainView extends MyJFrame {
             reportCardDtoList.set(Index, reportCardDto);
         }
     }
+
     public void resetDeleteData() {
         for (int i = 0; i < SIZE_ITEM; i++) {
             btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
@@ -323,10 +337,10 @@ public class MainView extends MyJFrame {
             ImageIcon img = new ImageIcon(reportListAll.get(i).thumbnail_Img);
             if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
                 reportCardDto = new ReportCardDto(defaultImg, i);
-                reportCardDtoList.set(i,reportCardDto);
+                reportCardDtoList.set(i, reportCardDto);
             } else {
                 reportCardDto = new ReportCardDto(img, i);
-                reportCardDtoList.set(i,reportCardDto);
+                reportCardDtoList.set(i, reportCardDto);
             }
         }
     }

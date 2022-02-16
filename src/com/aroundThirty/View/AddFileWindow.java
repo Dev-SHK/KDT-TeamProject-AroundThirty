@@ -57,7 +57,7 @@ public class AddFileWindow extends JFrame {
                     } else if (ret == jfc.APPROVE_OPTION) {
                         File file = jfc.getSelectedFile(); // 선택된 파일 가져오기
                         jTextField.setText(file.getPath());
-                        String filePath = "/Users/minsookim/Desktop/Green/Proj_1/saved_Imges";
+                        String filePath = "/Users/shk/Downloads/FileDownloadTest";
                         fileSave(file, filePath, file.getName());
                         addImgPath = (filePath + "/" + file.getName());
                         imageIcon = new ImageIcon(addImgPath);

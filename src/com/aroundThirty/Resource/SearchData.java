@@ -1,6 +1,8 @@
 package com.aroundThirty.Resource;
 
 import com.aroundThirty.JdbcUtil;
+import com.aroundThirty.View.CenterPanel;
+import com.aroundThirty.View.SearchPage;
 import com.aroundThirty.model.XmlDao;
 import com.aroundThirty.model.XmlDto;
 
@@ -32,14 +34,15 @@ public class SearchData {
 
     int count;
 
-    ArrayList<String> totalArr;
+    public static ArrayList<XmlDto> totalArr = new ArrayList<>();
 
     public SearchData() throws SQLException {
         // "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"
-        String getLocation = locationCombo.getSelectedItem().toString();
-        String getLocationDetail = seoulCombo.getSelectedItem().toString();
-        String getKind = kindCombo.getSelectedItem().toString();
-        String getGender = genderCombo.getSelectedItem().toString();
+        getLocation = locationCombo.getSelectedItem().toString();
+        getLocationDetail = seoulCombo.getSelectedItem().toString();
+        getLocationAll = String.format("%s %s", getLocation, getLocationDetail);
+        getKind = kindCombo.getSelectedItem().toString();
+        getGender = genderCombo.getSelectedItem().toString();
         tokenizerGetGender = new StringTokenizer(getGender, "()");
         while (tokenizerGetGender.hasMoreTokens()) {
             String temp = tokenizerGetGender.nextToken();
@@ -47,33 +50,16 @@ public class SearchData {
         }
         xmlDtoListAll = XmlDao.xmlSelectAll();
 
-        kindArr = new ArrayList<>();
-        for (int i = 0; i < xmlDtoListAll.size(); i++) {
-            searchKind = xmlDtoListAll.get(i).kindCd;
-            kindArr.add(searchKind);
-        }
-
-        genderArr = new ArrayList<>();
-        for (int i = 0; i < xmlDtoListAll.size(); i++) {
-            searchGender = xmlDtoListAll.get(i).sexCd; // DB에 있는 Gender
-            genderArr.add(searchGender);
-        }
-
-        locationArr = new ArrayList<>();
-        for (int i = 0; i < xmlDtoListAll.size(); i++) {
-            searchLocation = xmlDtoListAll.get(i).orgNm;
-            locationArr.add(searchLocation);
-        }
-
         count = 0;
-        totalArr = new ArrayList<>();
+        totalArr.clear();
         for (int i = 0; i < xmlDtoListAll.size(); i++) {
-            if ((locationArr.get(i)).contains(getLocation) && (locationArr.get(i)).contains(getLocationDetail) && (genderArr.get(i)).contains(divideGenderWord) && (kindArr.get(i)).contains(getKind)) {
-                totalArr.add(locationArr.get(xmlDtoListAll.get(i).no - 1));
+            if ((xmlDtoListAll.get(i).orgNm).contains(getLocation) && (xmlDtoListAll.get(i).orgNm).contains(getLocationDetail) && (xmlDtoListAll.get(i).sexCd).contains(divideGenderWord) && (xmlDtoListAll.get(i).kindCd).contains(getKind)) {
+                totalArr.add(xmlDtoListAll.get(i));
                 count++;
             }
         } // for문 끝
         if (count > 0) {
+            SearchPage.setDataListPage(totalArr, 0, 12);
             JOptionPane.showMessageDialog(null, String.format("검색 결과 %d개를 찾았습니다.", count), title, JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "검색결과가 없습니다.", title, JOptionPane.INFORMATION_MESSAGE);
