@@ -28,7 +28,7 @@ public class ReportController {
         }
         for (int i = 0; i < reportListAll.size(); i++) {
             ImageIcon img = new ImageIcon(reportListAll.get(i).thumbnail_Img);
-            if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (reportListAll.get(i).thumbnail_Img == null) {
                 reportCardDto = new ReportCardDto(defaultImg, i);
                 reportCardDtoList.add(reportCardDto);
             } else {

@@ -49,8 +49,13 @@ public class TemporaryPage extends JPanel {
                 postedPageNum = temporaryListAll.get(i).no;    //
             }
             if (temporaryListAll.size() > dataIdx) {
-                btnList.add(new JButton(imageSetSize(temporaryCardDtoList.get(dataIdx).getDefaultImg(), 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
-                lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + temporaryListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                if (temporaryListAll.get(dataIdx).getThumbnail_Img() == null){
+                    btnList.add(new JButton(imageSetSize(defaultImg, 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                    lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + temporaryListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                }else{
+                    btnList.add(new JButton(imageSetSize(temporaryCardDtoList.get(dataIdx).getDefaultImg(), 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                    lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + temporaryListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                }
             } else if (temporaryListAll.size() <= dataIdx) {
                 btnList.add(new JButton(imageSetSize(defaultImg, 150, 150)));
                 lblList.add(new JLabel(""));
@@ -87,13 +92,15 @@ public class TemporaryPage extends JPanel {
                         temporary_Right_Panel.temporaryDetail.setText(temporaryDto.detail);
                         temporary_Right_Panel.temporaryDetailTxt.setText(temporaryDto.detail);
                         temporary_Right_Panel.imgPath = temporaryDto.thumbnail_Img;
-                        ImageIcon imgIcon = new ImageIcon(temporary_Right_Panel.imgPath); // 이미지를 담음
-                        temporary_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon,250,250));
+                        if (temporary_Right_Panel.imgPath == null){
+                            temporary_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg,250,250));
+                        }else{
+                            ImageIcon imgIcon = new ImageIcon(temporary_Right_Panel.imgPath); // 이미지를 담음
+                            temporary_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon,250,250));
+                        }
                         if (click) {
                             temporary_Right_Panel.setVisible(true);
                         }
-                        container.revalidate();
-                        container.repaint();
                         btn.removeActionListener(null);
                     }
                 }
@@ -169,9 +176,12 @@ public class TemporaryPage extends JPanel {
                             temporary_Right_Panel.temporaryDetail.setText(temporaryDto.detail);
                             temporary_Right_Panel.temporaryDetailTxt.setText(temporaryDto.detail);
                             temporary_Right_Panel.imgPath = temporaryDto.thumbnail_Img;
-                            ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
-                            temporary_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
-
+                            if (temporary_Right_Panel.imgPath == null){
+                                temporary_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg,250,250));
+                            }else{
+                                ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
+                                temporary_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                            }
                             TemporaryDao.temporaryModity(new TemporaryDto(mtemporaryDt, mtemporaryPlace, mKind_temporary, mtemporaryNum, mDetail, mModifyDt, mThumbNail, temporaryDto.getNo()));
                         } else {
                             temporary_ChooseBoader(boaderIdx);
@@ -224,6 +234,64 @@ public class TemporaryPage extends JPanel {
         temporary_WriteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String act = e.getActionCommand();
+                if (act.equals("새 글 작성")) {
+                    cardLayout.next(temporary_Right_Top_Panel.switchPanel2);
+                    cardLayout.next(temporary_Right_Panel.center_North_Top_Panel);
+                    cardLayout.next(temporary_Right_Panel.center_Center_Center_Panel_Card);
+
+                    temporary_Right_Panel.temporaryDtTxt.setText("");
+                    temporary_Right_Panel.temporaryPlaceTxt.setText("");
+                    temporary_Right_Panel.temporaryKindTxt.setText("");
+                    temporary_Right_Panel.temporaryNumTxt.setText("");
+                    temporary_Right_Panel.postDtTxt.setText("");
+                    temporary_Right_Panel.temporaryDetailTxt.setText("");
+                    temporary_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+
+                    temporary_AddFile.setEnabled(true);
+                    temporary_BoaderCombo.setEnabled(false);
+                    temporary_DeleteBtn.setEnabled(false);
+
+
+                }
+            }
+        });
+
+        temporary_PostBtn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String act = e.getActionCommand();
+                if (act.equals("완료")) {
+                    int confirm = JOptionPane.showConfirmDialog(null, "저장하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "저장되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        cardLayout.next(temporary_Right_Top_Panel.switchPanel2);
+                        cardLayout.next(temporary_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(temporary_Right_Panel.center_Center_Center_Panel_Card);
+
+                        String nTemporaryDt = temporary_Right_Panel.temporaryDtTxt.getText();
+                        String nTemporaryPlace = temporary_Right_Panel.temporaryPlaceTxt.getText();
+                        String nTemporaryKind = temporary_Right_Panel.temporaryKindTxt.getText();
+                        String nTemporaryNum = temporary_Right_Panel.temporaryNumTxt.getText();
+                        String nTemporaryDetail = temporary_Right_Panel.temporaryDetailTxt.getText();
+                        String nTemporaryPost = now.toString();
+                        userDto = new UserDto();
+                        userDto.setUser_ID("ood1208");
+                        UserDto nID = UserDao.userSelectById(userDto);
+                        nID.getUser_ID();
+
+                        TemporaryDao.temporaryInput(new TemporaryDto(nTemporaryDt, nTemporaryPlace, nTemporaryKind, nTemporaryNum, nTemporaryDetail, nTemporaryPost, null, nID.getUser_ID()));
+
+                        temporary_AddFile.setEnabled(false);
+                        temporary_BoaderCombo.setEnabled(false);
+                        temporary_DeleteBtn.setEnabled(true);
+
+                        resetTemporaryModifyData(); // 데이터 초기화
+                        TemporaryPage.setTemporaryDataListPage(temporary_StartIndex, temporary_StartIndex + 12);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "취소되었습니다", title, JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
         });
 
@@ -239,9 +307,15 @@ public class TemporaryPage extends JPanel {
     public static void setTemporaryDataListPage(int temporary_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
         for (int i = 0, dataIdx = temporary_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
             if (temporaryListAll.size() > dataIdx) {
-                postedPageNum = temporaryListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
-                btnList.get(i).setIcon(imageSetSize(temporaryCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
-                lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + temporaryListAll.get(dataIdx).post_Create_Date);
+                if (temporaryListAll.get(dataIdx).getThumbnail_Img() == null){
+                    postedPageNum = temporaryListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
+                    btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+                    lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + temporaryListAll.get(dataIdx).post_Create_Date);
+                }else{
+                    postedPageNum = temporaryListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
+                    btnList.get(i).setIcon(imageSetSize(temporaryCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
+                    lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + temporaryListAll.get(dataIdx).post_Create_Date);
+                }
             } else if (temporaryListAll.size() <= dataIdx) {
                 btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
                 lblList.get(i).setText("");
@@ -264,7 +338,7 @@ public class TemporaryPage extends JPanel {
         }
         for (int i = 0; i < temporaryListAll.size(); i++) {
             ImageIcon thumbnailImg = new ImageIcon(temporaryListAll.get(i).thumbnail_Img);
-            if (temporaryListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (temporaryListAll.get(i).thumbnail_Img == null) {
                 temporaryCardDto = new TemporaryCardDto(defaultImg, i);
                 temporaryCardDtoList.add(temporaryCardDto);
             } else {
@@ -285,7 +359,7 @@ public class TemporaryPage extends JPanel {
         }
         for (int i = 0; i < temporaryListAll.size(); i++) {
             ImageIcon img = new ImageIcon(temporaryListAll.get(i).thumbnail_Img);
-            if (temporaryListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (temporaryListAll.get(i).thumbnail_Img == null) {
                 temporaryCardDto = new TemporaryCardDto(defaultImg, i);
                 temporaryCardDtoList.set(i, temporaryCardDto);
             } else {

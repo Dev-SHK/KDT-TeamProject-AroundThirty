@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import static com.aroundThirty.Resource.FR.*;
 import static com.aroundThirty.Resource.BR.*;
-import static com.aroundThirty.Resource.FR.report_StartIndex;
 
 
 public class ReportPage extends JPanel {
@@ -46,8 +45,13 @@ public class ReportPage extends JPanel {
                 postedPageNum = reportListAll.get(i).no;    //
             }
             if (reportListAll.size() > dataIdx) {
-                btnList.add(new JButton(imageSetSize(reportCardDtoList.get(dataIdx).getDefaultImg(), 150, 120)));
-                lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + reportListAll.get(dataIdx).post_Create_Date));
+                if (reportListAll.get(dataIdx).getThumbnail_Img() == null){
+                    btnList.add(new JButton(imageSetSize(defaultImg, 150, 120)));
+                    lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + reportListAll.get(dataIdx).post_Create_Date));
+                }else {
+                    btnList.add(new JButton(imageSetSize(reportCardDtoList.get(dataIdx).getDefaultImg(), 150, 120)));
+                    lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + reportListAll.get(dataIdx).post_Create_Date));
+                }
             } else if (reportListAll.size() <= dataIdx) {
                 btnList.add(new JButton(imageSetSize(defaultImg, 150, 150)));
                 lblList.add(new JLabel(""));
@@ -84,8 +88,12 @@ public class ReportPage extends JPanel {
                         report_Right_Panel.reportDetail.setText(reportDto.detail);
                         report_Right_Panel.reportDetailTxt.setText(reportDto.detail);
                         report_Right_Panel.imgPath = reportDto.thumbnail_Img;
-                        ImageIcon imgIcon = new ImageIcon(report_Right_Panel.imgPath); // 이미지를 담음
-                        report_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                        if (report_Right_Panel.imgPath == null){
+                            report_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+                        } else {
+                            ImageIcon imgIcon = new ImageIcon(report_Right_Panel.imgPath); // 이미지를 담음
+                            report_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                        }
                         if (click) {
                             report_Right_Panel.setVisible(true);
                         }
@@ -165,9 +173,12 @@ public class ReportPage extends JPanel {
                             report_Right_Panel.reportDetail.setText(reportDto.detail);
                             report_Right_Panel.reportDetailTxt.setText(reportDto.detail);
                             report_Right_Panel.imgPath = reportDto.thumbnail_Img;
-                            ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
-                            report_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
-
+                            if (report_Right_Panel.imgPath == null){
+                                report_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+                            } else{
+                                ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
+                                report_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                            }
                             ReportDao.reportModify(new ReportDto(mReportDt, mReportPlace, mKind_Report, mReportNum, mDetail, "2022-02-14", mThumbNail, reportDto.getNo()));
                         } else {
                             chooseBoader(boaderIdx);
@@ -235,11 +246,10 @@ public class ReportPage extends JPanel {
                     report_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
 
                     report_AddFile.setEnabled(true);
-                    report_BoaderCombo.setEnabled(true);
+                    report_BoaderCombo.setEnabled(false);
                     report_DeleteBtn.setEnabled(false);
 
-                    resetReportModifyData(); // 데이터 초기화
-                    ReportPage.setReportDataListPage(report_StartIndex, report_StartIndex + 12);
+
                 }
             }
         });
@@ -262,24 +272,19 @@ public class ReportPage extends JPanel {
                         String nReportNum = report_Right_Panel.reportNumTxt.getText();
                         String nReportDetail = report_Right_Panel.reportDetailTxt.getText();
                         String nReportPost = now.toString();
-                        String nThumbnailPath;
                         userDto = new UserDto();
                         userDto.setUser_ID("ood1208");
                         UserDto nID = UserDao.userSelectById(userDto);
                         nID.getUser_ID();
 
+                        ReportDao.reportInput(new ReportDto(nReportDt, nReportPlace, nReportKind, nReportNum, nReportDetail, nReportPost, null, nID.getUser_ID()));
 
-                        if (addImgPath == null) {    // 썸네일을 새로 첨부하지 않은 경우에 대한 IF문
-                            nThumbnailPath = missingDto.getThumbnail_Img();
-                        } else {
-                            nThumbnailPath = addImgPath;
-                        }
+                        report_AddFile.setEnabled(false);
+                        report_BoaderCombo.setEnabled(false);
+                        report_DeleteBtn.setEnabled(true);
 
-                        ReportDao.reportInput(new ReportDto(nReportDt, nReportPlace, nReportKind, nReportNum, nReportDetail, nReportPost, nThumbnailPath, nID.getUser_ID()));
-
-                        report_AddFile.setEnabled(true);
-                        report_BoaderCombo.setEnabled(true);
-                        report_DeleteBtn.setEnabled(false);
+                        resetReportModifyData(); // 데이터 초기화
+                        ReportPage.setReportDataListPage(report_StartIndex, report_StartIndex + 12);
                     } else {
                         JOptionPane.showMessageDialog(null, "취소되었습니다", title, JOptionPane.ERROR_MESSAGE);
                     }
@@ -305,9 +310,15 @@ public class ReportPage extends JPanel {
     public static void setReportDataListPage(int report_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
         for (int i = 0, dataIdx = report_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
             if (reportListAll.size() > dataIdx) {
-                postedPageNum = reportListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
-                btnList.get(i).setIcon(imageSetSize(reportCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
-                lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + reportListAll.get(dataIdx).post_Create_Date);
+                if (reportListAll.get(dataIdx).getThumbnail_Img() == null){
+                    postedPageNum = reportListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
+                    btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+                    lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + reportListAll.get(dataIdx).post_Create_Date);
+                }else{
+                    postedPageNum = reportListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
+                    btnList.get(i).setIcon(imageSetSize(reportCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
+                    lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + reportListAll.get(dataIdx).post_Create_Date);
+                }
             } else if (reportListAll.size() <= dataIdx) {
                 btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
                 lblList.get(i).setText("");
@@ -330,7 +341,7 @@ public class ReportPage extends JPanel {
         }
         for (int i = 0; i < reportListAll.size(); i++) {
             ImageIcon thumbnailImg = new ImageIcon(reportListAll.get(i).thumbnail_Img);
-            if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (reportListAll.get(i).thumbnail_Img == null) {
                 reportCardDto = new ReportCardDto(defaultImg, i);
                 reportCardDtoList.add(reportCardDto);
             } else {
@@ -351,7 +362,7 @@ public class ReportPage extends JPanel {
         }
         for (int i = 0; i < reportListAll.size(); i++) {
             ImageIcon img = new ImageIcon(reportListAll.get(i).thumbnail_Img);
-            if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (reportListAll.get(i).thumbnail_Img == null) {
                 reportCardDto = new ReportCardDto(defaultImg, i);
                 reportCardDtoList.set(i, reportCardDto);
             } else {

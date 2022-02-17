@@ -47,8 +47,13 @@ public class AdoptPage extends JPanel {
                 postedPageNum = adoptListAll.get(i).no;    //
             }
             if (adoptListAll.size() > dataIdx) {
-                btnList.add(new JButton(imageSetSize(adoptCardDtoList.get(dataIdx).getDefaultImg(), 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
-                lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + adoptListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                if (adoptListAll.get(dataIdx).getThumbnail_Img() == null){
+                    btnList.add(new JButton(imageSetSize(defaultImg, 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                    lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + adoptListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                }else{
+                    btnList.add(new JButton(imageSetSize(adoptCardDtoList.get(dataIdx).getDefaultImg(), 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                    lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + adoptListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                }
             } else if (adoptListAll.size() <= dataIdx) {
                 btnList.add(new JButton(imageSetSize(defaultImg, 150, 150)));
                 lblList.add(new JLabel(""));
@@ -83,8 +88,12 @@ public class AdoptPage extends JPanel {
                         adopt_Right_Panel.adoptDetail.setText(adoptDto.detail);
                         adopt_Right_Panel.adoptDetailTxt.setText(adoptDto.detail);
                         adopt_Right_Panel.imgPath = adoptDto.thumbnail_Img;
-                        ImageIcon imgIcon = new ImageIcon(adopt_Right_Panel.imgPath); // 이미지를 담음
-                        adopt_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                        if (adopt_Right_Panel.imgPath == null){
+                            adopt_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg,250,250));
+                        }else{
+                            ImageIcon imgIcon = new ImageIcon(adopt_Right_Panel.imgPath); // 이미지를 담음
+                            adopt_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                        }
                         if (click) {
                             adopt_Right_Panel.setVisible(true);
                         }
@@ -156,11 +165,13 @@ public class AdoptPage extends JPanel {
                         adopt_Right_Panel.adoptDetail.setText(adoptDto.detail);
                         adopt_Right_Panel.adoptDetailTxt.setText(adoptDto.detail);
                         adopt_Right_Panel.imgPath = adoptDto.thumbnail_Img;
-                        ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
-                        adopt_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
-
+                        if (adopt_Right_Panel.imgPath == null){
+                            adopt_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+                        }else{
+                            ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
+                            adopt_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                        }
                         AdoptDao.adoptModify(new AdoptDto(madoptPlace, mKind_adopt, madoptNum, mDetail, mModifyDt, mThumbNail, adoptDto.getNo()));
-
 
                         if (click) {
                             adopt_Right_Panel.setVisible(true);
@@ -206,6 +217,60 @@ public class AdoptPage extends JPanel {
         adopt_WriteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String act = e.getActionCommand();
+                if (act.equals("새 글 작성")) {
+                    cardLayout.next(adopt_Right_Top_Panel.switchPanel2);
+                    cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
+                    cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
+
+                    adopt_Right_Panel.adoptPlaceTxt.setText("");
+                    adopt_Right_Panel.adoptKindTxt.setText("");
+                    adopt_Right_Panel.adoptNumTxt.setText("");
+                    adopt_Right_Panel.postDtTxt.setText("");
+                    adopt_Right_Panel.adoptDetailTxt.setText("");
+                    adopt_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+
+                    adopt_AddFile.setEnabled(true);
+                    adopt_DeleteBtn.setEnabled(false);
+
+
+                }
+            }
+        });
+
+        adopt_PostBtn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String act = e.getActionCommand();
+                if (act.equals("완료")) {
+                    int confirm = JOptionPane.showConfirmDialog(null, "저장하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "저장되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        cardLayout.next(adopt_Right_Top_Panel.switchPanel2);
+                        cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
+
+                        String nAdoptPlace = adopt_Right_Panel.adoptPlaceTxt.getText();
+                        String nAdoptKind = adopt_Right_Panel.adoptKindTxt.getText();
+                        String nAdoptNum = adopt_Right_Panel.adoptNumTxt.getText();
+                        String nAdoptDetail = adopt_Right_Panel.adoptDetailTxt.getText();
+                        String nAdoptPost = now.toString();
+                        userDto = new UserDto();
+                        userDto.setUser_ID("ood1208");
+                        UserDto nID = UserDao.userSelectById(userDto);
+                        nID.getUser_ID();
+
+                        AdoptDao.adoptInput(new AdoptDto(nAdoptPlace, nAdoptKind, nAdoptNum, nAdoptDetail, nAdoptPost, null, nID.getUser_ID()));
+
+                        adopt_AddFile.setEnabled(false);
+                        adopt_DeleteBtn.setEnabled(true);
+
+                        resetAdoptModifyData(); // 데이터 초기화
+                        AdoptPage.setAdoptDataListPage(adopt_StartIndex, adopt_StartIndex + 12);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "취소되었습니다", title, JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
         });
 
@@ -221,9 +286,15 @@ public class AdoptPage extends JPanel {
     public static void setAdoptDataListPage(int adopt_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
         for (int i = 0, dataIdx = adopt_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
             if (adoptListAll.size() > dataIdx) {
-                postedPageNum = adoptListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
-                btnList.get(i).setIcon(imageSetSize(adoptCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
-                lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + adoptListAll.get(dataIdx).post_Create_Date);
+                if (adoptListAll.get(dataIdx).getThumbnail_Img() == null){
+                    postedPageNum = adoptListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
+                    btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+                    lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + adoptListAll.get(dataIdx).post_Create_Date);
+                }else{
+                    postedPageNum = adoptListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
+                    btnList.get(i).setIcon(imageSetSize(adoptCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
+                    lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + adoptListAll.get(dataIdx).post_Create_Date);
+                }
             } else if (adoptListAll.size() <= dataIdx) {
                 btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
                 lblList.get(i).setText("");
@@ -246,7 +317,7 @@ public class AdoptPage extends JPanel {
         }
         for (int i = 0; i < adoptListAll.size(); i++) {
             ImageIcon thumbnailImg = new ImageIcon(adoptListAll.get(i).thumbnail_Img);
-            if (adoptListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (adoptListAll.get(i).thumbnail_Img == null) {
                 adoptCardDto = new AdoptCardDto(defaultImg, i);
                 adoptCardDtoList.add(adoptCardDto);
             } else {
@@ -267,7 +338,7 @@ public class AdoptPage extends JPanel {
         }
         for (int i = 0; i < adoptListAll.size(); i++) {
             ImageIcon img = new ImageIcon(adoptListAll.get(i).thumbnail_Img);
-            if (adoptListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (adoptListAll.get(i).thumbnail_Img == null) {
                 adoptCardDto = new AdoptCardDto(defaultImg, i);
                 adoptCardDtoList.set(i, adoptCardDto);
             } else {

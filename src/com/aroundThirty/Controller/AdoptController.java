@@ -23,7 +23,7 @@ public class AdoptController {
         }
         for (int i = 0; i < adoptListAll.size(); i++) {
             ImageIcon img = new ImageIcon(adoptListAll.get(i).thumbnail_Img);
-            if (adoptListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (adoptListAll.get(i).thumbnail_Img == null) {
                 adoptCardDto = new AdoptCardDto(defaultImg, i);
                 adoptCardDtoList.add(adoptCardDto);
             } else {

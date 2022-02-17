@@ -25,7 +25,7 @@ public class MissingController {
         }
         for (int i = 0; i < missingListAll.size(); i++) {
             ImageIcon img = new ImageIcon(missingListAll.get(i).thumbnail_Img);
-            if (missingListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (missingListAll.get(i).thumbnail_Img == null) {
                 missingCardDto = new MissingCardDto(defaultImg, i);
                 missingCardDtoList.add(missingCardDto);
             } else {

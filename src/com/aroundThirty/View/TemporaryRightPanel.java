@@ -54,13 +54,15 @@ public class TemporaryRightPanel extends JPanel {
     JTextArea modifyDtTxt = new JTextArea(temporaryDto.post_Modify_Date);    // DB 연결 해야함
     JTextArea temporaryDetail = new JTextArea(temporaryDto.detail); // DB 연결 해야함
     JTextArea temporaryDetailTxt = new JTextArea(temporaryDto.detail); // DB 연결 해야함
-
     String imgPath = temporaryDto.thumbnail_Img;    // 이미지 주소를 받음
     ImageIcon imgIcon = new ImageIcon(imgPath); // 이미지를 담음
     JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 250, 250));    // 이미지 추가
 
 
     public TemporaryRightPanel() {
+        if (temporaryDto.getThumbnail_Img() == null){
+            imgLabel = new JLabel(imageSetSize(defaultImg,250,250));
+        }
         temporary_Right_Top_Panel = new TemporaryRightTopPanel();
         setPreferredSize(new Dimension(550, 0));
 

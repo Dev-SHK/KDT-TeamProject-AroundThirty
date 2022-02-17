@@ -55,6 +55,9 @@ public class AdoptRightPanel extends JPanel {
 
 
     public AdoptRightPanel() {
+        if (adoptDto.getThumbnail_Img() == null){
+            imgLabel = new JLabel(imageSetSize(defaultImg,250,250));
+        }
         adopt_Right_Top_Panel = new AdoptRightTopPanel();
         setPreferredSize(new Dimension(550, 0));
 

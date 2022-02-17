@@ -54,13 +54,15 @@ public class ReportRightPanel extends JPanel {
     JTextArea modifyDtTxt = new JTextArea(reportDto.post_Modify_Date);    // DB 연결 해야함
     JTextArea reportDetail = new JTextArea(reportDto.detail); // DB 연결 해야함
     JTextArea reportDetailTxt = new JTextArea(reportDto.detail); // DB 연결 해야함
-
     String imgPath = reportDto.thumbnail_Img;    // 이미지 주소를 받음
     ImageIcon imgIcon = new ImageIcon(imgPath); // 이미지를 담음
     JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 250, 250));    // 이미지 추가
 
 
     public ReportRightPanel() {
+        if (reportDto.getThumbnail_Img() == null){
+            imgLabel = new JLabel(imageSetSize(defaultImg, 250, 250));    // 이미지 추가
+        }
         report_Right_Top_Panel = new ReportRightTopPanel();
         setPreferredSize(new Dimension(550, 0));
 
@@ -200,5 +202,7 @@ public class ReportRightPanel extends JPanel {
         centerPanel.setPreferredSize(new Dimension(300, 800)); // centerPanel의 크기 지정
         detail_ScrollPane.getVerticalScrollBar().setUnitIncrement(15); // 스크롤 속도 지정
         detail_ScrollPane.setViewportView(centerPanel); // 데이터가 화면을 넘어가도 깨지지 않도록 수정 대신 넘어간 데이터가 안보일 수 있음
+
+
     }
 }
