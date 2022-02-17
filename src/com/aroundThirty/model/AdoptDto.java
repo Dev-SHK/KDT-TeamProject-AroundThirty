@@ -11,9 +11,8 @@ public class AdoptDto {
     public String post_Modify_Date = null; // 게시글 수정 날짜 및 시간
     public String thumbnail_Img = null; // 동물 사진
 
-    // show
-    public AdoptDto(int no, String user_ID, String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date, String thumbnail_Img) {
-        this.no = no;
+    // Change Input
+    public AdoptDto(String user_ID, String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date, String thumbnail_Img) {
         this.user_ID = user_ID;
         this.adopt_Place = adopt_Place;
         this.kind_Adopt = kind_Adopt;
@@ -24,9 +23,31 @@ public class AdoptDto {
         this.thumbnail_Img = thumbnail_Img;
     }
 
-    public AdoptDto(int no, String user_ID) {
-        this.no = no;
+    // show
+    public AdoptDto( String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date, String thumbnail_Img, String user_ID, int no) {
+        this.adopt_Place = adopt_Place;
+        this.kind_Adopt = kind_Adopt;
+        this.phone_Num = phone_Num;
+        this.detail = detail;
+        this.post_Create_Date = post_Create_Date;
+        this.post_Modify_Date = post_Modify_Date;
+        this.thumbnail_Img = thumbnail_Img;
         this.user_ID = user_ID;
+        this.no = no;
+    }
+
+    public AdoptDto(String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Modify_Date, String thumbnail_Img, int no) {
+        this.adopt_Place = adopt_Place;
+        this.kind_Adopt = kind_Adopt;
+        this.phone_Num = phone_Num;
+        this.detail = detail;
+        this.post_Modify_Date = post_Modify_Date;
+        this.thumbnail_Img = thumbnail_Img;
+        this.no = no;
+    }
+
+    public AdoptDto(int no) {
+        this.no = no;
     }
 
 

@@ -4,10 +4,10 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+import static com.aroundThirty.Resource.BR.temporaryDto;
 import static com.aroundThirty.Resource.FR.*;
-import static com.aroundThirty.Resource.BR.*;
 
-public class ReportRightPanel extends JPanel {
+public class TemporaryRightPanel extends JPanel {
     JPanel centerPanel = new JPanel(new BorderLayout());
     JPanel southPanel = new JPanel();
     JPanel north_East_Panel = new JPanel();
@@ -28,45 +28,45 @@ public class ReportRightPanel extends JPanel {
     JScrollPane detail_ScrollPane = new JScrollPane(centerPanel);
 
 
-    JLabel reportDt = new JLabel("제보일자 :");
-    JLabel reportDt_Card = new JLabel("제보일자 :");
-    JLabel reportDtVal = new JLabel(reportDto.report_Date);    // DB 연결 해야함
-    JTextField reportDtTxt = new JTextField(reportDto.report_Date);    // DB 연결 해야함
-    JLabel reportPlace = new JLabel("발견 장소 :");
-    JLabel reportPlace_Card = new JLabel("발견 장소 :");
-    JTextArea reportPlaceVal = new JTextArea(reportDto.report_Place);  // DB 연결 해야함
-    JTextArea reportPlaceTxt = new JTextArea(reportDto.report_Place);  // DB 연결 해야함
-    JLabel reportKind = new JLabel("품종 :");
-    JLabel reportKind_Card = new JLabel("품종 :");
-    JLabel reportKindVal = new JLabel(reportDto.kind_Report);    // DB 연결 해야함
-    JTextField reportKindTxt = new JTextField(reportDto.kind_Report);    // DB 연결 해야함
-    JLabel reportNum = new JLabel("전화번호 :");
-    JLabel reportNum_Card = new JLabel("전화번호 :");
-    JLabel reportNumVal = new JLabel(reportDto.phone_Num);  // DB 연결 해야함
-    JTextField reportNumTxt = new JTextField(reportDto.phone_Num);  // DB 연결 해야함
+    JLabel temporaryDt = new JLabel("제보일자 :");
+    JLabel temporaryDt_Card = new JLabel("제보일자 :");
+    JLabel temporaryDtVal = new JLabel(temporaryDto.tmp_Date);    // DB 연결 해야함
+    JTextField temporaryDtTxt = new JTextField(temporaryDto.tmp_Date);    // DB 연결 해야함
+    JLabel temporaryPlace = new JLabel("발견 장소 :");
+    JLabel temporaryPlace_Card = new JLabel("발견 장소 :");
+    JTextArea temporaryPlaceVal = new JTextArea(temporaryDto.tmp_Place);  // DB 연결 해야함
+    JTextArea temporaryPlaceTxt = new JTextArea(temporaryDto.tmp_Place);  // DB 연결 해야함
+    JLabel temporaryKind = new JLabel("품종 :");
+    JLabel temporaryKind_Card = new JLabel("품종 :");
+    JLabel temporaryKindVal = new JLabel(temporaryDto.kind_Tmp);    // DB 연결 해야함
+    JTextField temporaryKindTxt = new JTextField(temporaryDto.kind_Tmp);    // DB 연결 해야함
+    JLabel temporaryNum = new JLabel("전화번호 :");
+    JLabel temporaryNum_Card = new JLabel("전화번호 :");
+    JLabel temporaryNumVal = new JLabel(temporaryDto.phone_Num);  // DB 연결 해야함
+    JTextField temporaryNumTxt = new JTextField(temporaryDto.phone_Num);  // DB 연결 해야함
     JLabel postDt = new JLabel("게시일자 :");
     JLabel postDt_Card = new JLabel("게시일자 :");
-    JLabel postDtVal = new JLabel(reportDto.post_Create_Date);  // DB 연결 해야함
-    JTextArea postDtTxt = new JTextArea(reportDto.post_Create_Date);  // DB 연결 해야함
+    JLabel postDtVal = new JLabel(temporaryDto.post_Create_Date);  // DB 연결 해야함
+    JTextArea postDtTxt = new JTextArea(temporaryDto.post_Create_Date);  // DB 연결 해야함
     JLabel modifyDt = new JLabel("수정일자 :");
     JLabel modifyDt_Card = new JLabel("수정일자 :");
-    JLabel modifyDtVal = new JLabel(reportDto.post_Modify_Date);    // DB 연결 해야함
-    JTextArea modifyDtTxt = new JTextArea(reportDto.post_Modify_Date);    // DB 연결 해야함
-    JTextArea reportDetail = new JTextArea(reportDto.detail); // DB 연결 해야함
-    JTextArea reportDetailTxt = new JTextArea(reportDto.detail); // DB 연결 해야함
+    JLabel modifyDtVal = new JLabel(temporaryDto.post_Modify_Date);    // DB 연결 해야함
+    JTextArea modifyDtTxt = new JTextArea(temporaryDto.post_Modify_Date);    // DB 연결 해야함
+    JTextArea temporaryDetail = new JTextArea(temporaryDto.detail); // DB 연결 해야함
+    JTextArea temporaryDetailTxt = new JTextArea(temporaryDto.detail); // DB 연결 해야함
 
-    String imgPath = reportDto.thumbnail_Img;    // 이미지 주소를 받음
+    String imgPath = temporaryDto.thumbnail_Img;    // 이미지 주소를 받음
     ImageIcon imgIcon = new ImageIcon(imgPath); // 이미지를 담음
     JLabel imgLabel = new JLabel(imageSetSize(imgIcon, 250, 250));    // 이미지 추가
 
 
-    public ReportRightPanel() {
-        report_Right_Top_Panel = new ReportRightTopPanel();
+    public TemporaryRightPanel() {
+        temporary_Right_Top_Panel = new TemporaryRightTopPanel();
         setPreferredSize(new Dimension(550, 0));
 
         // Frame에 패널 추가
         setLayout(new BorderLayout());
-        add(BorderLayout.NORTH, report_Right_Top_Panel);
+        add(BorderLayout.NORTH, temporary_Right_Top_Panel);
         add(BorderLayout.CENTER, centerPanel);
         add(BorderLayout.SOUTH, southPanel);
         add(detail_ScrollPane);
@@ -92,78 +92,78 @@ public class ReportRightPanel extends JPanel {
 
         // 패널에 라벨 및 버튼 추가
         center_North_Left_Panel.add(imgLabel);
-        center_North_Right_Panel.add(reportDt);
-        center_North_Right_Panel.add(reportDtVal);
-        center_North_Right_Panel.add(reportPlace);
-        center_North_Right_Panel.add(reportPlaceVal);
-        center_North_Right_Panel.add(reportKind);
-        center_North_Right_Panel.add(reportKindVal);
-        center_North_Right_Panel.add(reportNum);
-        center_North_Right_Panel.add(reportNumVal);
+        center_North_Right_Panel.add(temporaryDt);
+        center_North_Right_Panel.add(temporaryDtVal);
+        center_North_Right_Panel.add(temporaryPlace);
+        center_North_Right_Panel.add(temporaryPlaceVal);
+        center_North_Right_Panel.add(temporaryKind);
+        center_North_Right_Panel.add(temporaryKindVal);
+        center_North_Right_Panel.add(temporaryNum);
+        center_North_Right_Panel.add(temporaryNumVal);
         center_North_Right_Panel.add(postDt);
         center_North_Right_Panel.add(postDtVal);
         center_North_Right_Panel.add(modifyDt);
         center_North_Right_Panel.add(modifyDtVal);
-        center_Center_Center_Panel_Card.add(reportDetail);
-        center_Center_North_West_Panel.add(report_BoaderCombo);
+        center_Center_Center_Panel_Card.add(temporaryDetail);
+        center_Center_North_West_Panel.add(temporary_BoaderCombo);
 
 
         // 패널에 라벨 및 버튼 추가 card 2
-        center_North_Right_Panel_Card.add(reportDt_Card);
-        center_North_Right_Panel_Card.add(reportDtTxt);
-        center_North_Right_Panel_Card.add(reportPlace_Card);
-        center_North_Right_Panel_Card.add(reportPlaceTxt);
-        center_North_Right_Panel_Card.add(reportKind_Card);
-        center_North_Right_Panel_Card.add(reportKindTxt);
-        center_North_Right_Panel_Card.add(reportNum_Card);
-        center_North_Right_Panel_Card.add(reportNumTxt);
+        center_North_Right_Panel_Card.add(temporaryDt_Card);
+        center_North_Right_Panel_Card.add(temporaryDtTxt);
+        center_North_Right_Panel_Card.add(temporaryPlace_Card);
+        center_North_Right_Panel_Card.add(temporaryPlaceTxt);
+        center_North_Right_Panel_Card.add(temporaryKind_Card);
+        center_North_Right_Panel_Card.add(temporaryKindTxt);
+        center_North_Right_Panel_Card.add(temporaryNum_Card);
+        center_North_Right_Panel_Card.add(temporaryNumTxt);
         center_North_Right_Panel_Card.add(postDt_Card);
         center_North_Right_Panel_Card.add(postDtTxt);
         center_North_Right_Panel_Card.add(modifyDt_Card);
         center_North_Right_Panel_Card.add(modifyDtTxt);
-        center_Center_Center_Panel_Card.add(reportDetailTxt);
+        center_Center_Center_Panel_Card.add(temporaryDetailTxt);
 
 
         // 라벨, 버튼 등 속성
-        reportDt.setPreferredSize(new Dimension(80,40));
-        reportPlace.setPreferredSize(new Dimension(80,40));
-        reportKind.setPreferredSize(new Dimension(80,40));
-        reportNum.setPreferredSize(new Dimension(80,40));
+        temporaryDt.setPreferredSize(new Dimension(80,40));
+        temporaryPlace.setPreferredSize(new Dimension(80,40));
+        temporaryKind.setPreferredSize(new Dimension(80,40));
+        temporaryNum.setPreferredSize(new Dimension(80,40));
         postDt.setPreferredSize(new Dimension(80,40));
         modifyDt.setPreferredSize(new Dimension(80,40));
-        reportDetail.setEditable(false);
-        reportPlaceVal.setEditable(false);
+        temporaryDetail.setEditable(false);
+        temporaryPlaceVal.setEditable(false);
         postDtTxt.setEditable(false);
         modifyDtTxt.setEditable(false);
-        reportPlaceVal.setLineWrap(true);
-        reportPlaceTxt.setLineWrap(true);
-        reportDetail.setLineWrap(true);
-        report_BoaderCombo.setEnabled(false);
-        reportPlaceTxt.setPreferredSize(new Dimension(100, 20));
+        temporaryPlaceVal.setLineWrap(true);
+        temporaryPlaceTxt.setLineWrap(true);
+        temporaryDetail.setLineWrap(true);
+        temporary_BoaderCombo.setEnabled(false);
+        temporaryPlaceTxt.setPreferredSize(new Dimension(100, 20));
         center_Center_Center_Panel_Card.setPreferredSize(new Dimension(250, 500));
         center_Center_Center_Panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));   // 안쪽 여백 추가
         LineBorder line = new LineBorder(pastelPink, 5, true);   // 이미지 테두리선과 곡선에 대한 값 저장
         imgLabel.setBorder(line);   // 저장된 테두리와 곡선 추가
 
         // 폰트 설정
-        reportDetail.setFont(new Font("나눔고딕", Font.BOLD, 20));
-        reportDetailTxt.setFont(fontNanum);
-        reportDt.setFont(fontNanumBold);
-        reportDt_Card.setFont(fontNanum);
-        reportDtVal.setFont(fontNanum);
-        reportDtTxt.setFont(fontNanum);
-        reportPlace.setFont(fontNanumBold);
-        reportPlace_Card.setFont(fontNanum);
-        reportPlaceVal.setFont(fontNanum);
-        reportPlaceTxt.setFont(fontNanum);
-        reportKind.setFont(fontNanumBold);
-        reportKind_Card.setFont(fontNanum);
-        reportKindVal.setFont(fontNanum);
-        reportKindTxt.setFont(fontNanum);
-        reportNum.setFont(fontNanumBold);
-        reportNum_Card.setFont(fontNanum);
-        reportNumVal.setFont(fontNanum);
-        reportNumTxt.setFont(fontNanum);
+        temporaryDetail.setFont(new Font("나눔고딕", Font.BOLD, 20));
+        temporaryDetailTxt.setFont(fontNanum);
+        temporaryDt.setFont(fontNanumBold);
+        temporaryDt_Card.setFont(fontNanum);
+        temporaryDtVal.setFont(fontNanum);
+        temporaryDtTxt.setFont(fontNanum);
+        temporaryPlace.setFont(fontNanumBold);
+        temporaryPlace_Card.setFont(fontNanum);
+        temporaryPlaceVal.setFont(fontNanum);
+        temporaryPlaceTxt.setFont(fontNanum);
+        temporaryKind.setFont(fontNanumBold);
+        temporaryKind_Card.setFont(fontNanum);
+        temporaryKindVal.setFont(fontNanum);
+        temporaryKindTxt.setFont(fontNanum);
+        temporaryNum.setFont(fontNanumBold);
+        temporaryNum_Card.setFont(fontNanum);
+        temporaryNumVal.setFont(fontNanum);
+        temporaryNumTxt.setFont(fontNanum);
         postDt.setFont(fontNanumBold);
         postDt_Card.setFont(fontNanum);
         postDtVal.setFont(fontNanum);
@@ -175,11 +175,11 @@ public class ReportRightPanel extends JPanel {
 
         // 패널 색상
         center_North_Right_Panel_Card.setBackground(pastelYellow);
-        reportDetail.setBackground(pastelPink);
-        reportDtVal.setBackground(pastelYellow);
-        reportPlaceVal.setBackground(pastelYellow);
-        reportKindVal.setBackground(pastelYellow);
-        reportNumVal.setBackground(pastelYellow);
+        temporaryDetail.setBackground(pastelPink);
+        temporaryDtVal.setBackground(pastelYellow);
+        temporaryPlaceVal.setBackground(pastelYellow);
+        temporaryKindVal.setBackground(pastelYellow);
+        temporaryNumVal.setBackground(pastelYellow);
         postDtVal.setBackground(pastelYellow);
         modifyDtVal.setBackground(pastelYellow);
         centerPanel.setBackground(pastelYellow);

@@ -1,9 +1,7 @@
 package com.aroundThirty.View;
 
 import com.aroundThirty.Resource.SearchData;
-import com.aroundThirty.model.ReportCardDto;
-import com.aroundThirty.model.ReportDao;
-import com.aroundThirty.model.ReportDto;
+import com.aroundThirty.model.*;
 import com.aroundThirty.myframe.MyJFrame;
 
 import javax.swing.*;
@@ -32,52 +30,63 @@ public class MainView extends MyJFrame {
     }
 
     protected void displayLayer() {
-        lp = new LeftPanel();
-        rp = new ReportRightPanel();
-        mrp = new MainRightPanel();
-        searchRightPanel = new SearchRightPanel();
-        bp = new BottomPanel();
+        left_Panel = new LeftPanel();
+        report_Right_Panel = new ReportRightPanel();
+        missing_Right_Panel = new MissingRightPanel();
+        temporary_Right_Panel = new TemporaryRightPanel();
+        adopt_Right_Panel = new AdoptRightPanel();
+        main_Right_Panel = new MainRightPanel();
+        bottom_Panel = new BottomPanel();
         container = getContentPane();
-        switchPan = mrp;
+        switchPan = main_Right_Panel;
 
-        container.add(BorderLayout.SOUTH, bp);
-        container.add(BorderLayout.WEST, lp);
-        container.add(BorderLayout.EAST, mrp);
-        tabbedPane.addChangeListener(new ChangeListener() {
+        container.add(BorderLayout.SOUTH, bottom_Panel);
+        container.add(BorderLayout.WEST, left_Panel);
+        container.add(BorderLayout.EAST, main_Right_Panel);
+        tabbed_Pane.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
-                tapPaneIdx = tabbedPane.getSelectedIndex();
-                switch (tapPaneIdx) {
+                JTabbedPane tabbed_Pane = (JTabbedPane) e.getSource();
+                tabPaneIdx = tabbed_Pane.getSelectedIndex();
+                switch (tabPaneIdx) {
                     case 0:
-//                        MainView.container.add(BorderLayout.EAST, mrp);
+//                        MainView.container.add(BorderLayout.EAST, main_Right_Panel);
                         container.remove(switchPan);
-                        container.add(BorderLayout.EAST, mrp);
-                        switchPan = mrp;
+                        container.add(BorderLayout.EAST, main_Right_Panel);
+                        switchPan = main_Right_Panel;
                         revalidate();
                         repaint();
-                        System.out.println("'메인메뉴' 탭으로 이동함");
                         break;
                     case 1:
-//                        MainView.container.add(BorderLayout.EAST, rp);
+//                        MainView.container.add(BorderLayout.EAST, report_Right_Panel);
                         container.remove(switchPan);
-                        container.add(BorderLayout.EAST, rp);
-                        switchPan = rp;
+                        container.add(BorderLayout.EAST, report_Right_Panel);
+                        switchPan = report_Right_Panel;
                         revalidate();
                         repaint();
-                        System.out.println("'발견했어요' 탭으로 이동함");
                         break;
                     case 2:
-                        System.out.println("'잃어버렸어요' 탭으로 이동함");
+                        container.remove(switchPan);
+                        container.add(BorderLayout.EAST, missing_Right_Panel);
+                        switchPan = missing_Right_Panel;
+                        revalidate();
+                        repaint();
                         break;
                     case 3:
-                        System.out.println("'보호중이에요' 탭으로 이동함");
+                        container.remove(switchPan);
+                        container.add(BorderLayout.EAST, temporary_Right_Panel);
+                        switchPan = temporary_Right_Panel;
+                        revalidate();
+                        repaint();
                         break;
                     case 4:
-                        System.out.println("'새 가족을 찾아요' 탭으로 이동함");
+                        container.remove(switchPan);
+                        container.add(BorderLayout.EAST, adopt_Right_Panel);
+                        switchPan = adopt_Right_Panel;
+                        revalidate();
+                        repaint();
                         break;
                     case 5:
-                        System.out.println("'검색' 탭으로 이동함");
                         container.remove(switchPan);
                         container.add(BorderLayout.EAST, searchRightPanel);
                         switchPan = searchRightPanel;
@@ -118,10 +127,10 @@ public class MainView extends MyJFrame {
                     if (confirm == JOptionPane.YES_OPTION) {
                         JOptionPane.showMessageDialog(null, "로그인 되었어요 :)", title, JOptionPane.INFORMATION_MESSAGE);
                         loginPage.dispose();
-                        bp.groupPanRight.remove(loginMain);
-                        bp.groupPanRight.add(logoutMain, 0);
-                        bp.revalidate();
-                        bp.repaint();
+                        bottom_Panel.groupPanRight.remove(loginMain);
+                        bottom_Panel.groupPanRight.add(logoutMain, 0);
+                        bottom_Panel.revalidate();
+                        bottom_Panel.repaint();
                     } else {
                         JOptionPane.showMessageDialog(null, "취소되었어요", title, JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -139,11 +148,11 @@ public class MainView extends MyJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    tabbedPane.remove(searchPage);
-                    sd = new SearchData();
-                    tabbedPane.addTab("검색", searchPage);
-                    lp.revalidate();
-                    lp.repaint();
+                    tabbed_Pane.remove(searchPage);
+                    search_Data = new SearchData();
+                    tabbed_Pane.addTab("검색", searchPage);
+                    left_Panel.revalidate();
+                    left_Panel.repaint();
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -157,206 +166,20 @@ public class MainView extends MyJFrame {
             }
         });
 
-        writeBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
-
         logoutMain.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int confirm = JOptionPane.showConfirmDialog(null, "로그아웃 하시나요?", title, JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     JOptionPane.showMessageDialog(null, "로그아웃 되었어요.", title, JOptionPane.INFORMATION_MESSAGE);
-                    bp.groupPanRight.remove(logoutMain);
-                    bp.groupPanRight.add(loginMain, 0);
-                    bp.revalidate();
-                    bp.repaint();
+                    bottom_Panel.groupPanRight.remove(logoutMain);
+                    bottom_Panel.groupPanRight.add(loginMain, 0);
+                    bottom_Panel.revalidate();
+                    bottom_Panel.repaint();
                 } else {
                     JOptionPane.showMessageDialog(null, "취소되었어요.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
-
-        modifyBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String act = e.getActionCommand();
-                if (act.equals("수정")) {
-                    cardLayout.next(rtp.switchPanel);
-                    cardLayout.next(rp.center_North_Top_Panel);
-                    cardLayout.next(rp.center_Center_Center_Panel_Card);
-                    addFile.setEnabled(true);
-                    BoaderCombo.setEnabled(true);
-                }
-            }
-        });
-
-        postBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String act = e.getActionCommand();
-                if (act.equals("완료")) {
-                    int result = JOptionPane.showConfirmDialog(null, "게시글을 수정 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
-                    if (result == JOptionPane.CLOSED_OPTION) {
-                        addFile.setEnabled(false);
-                    } else if (result == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
-                        cardLayout.next(rtp.switchPanel);
-                        cardLayout.next(rp.center_North_Top_Panel);
-                        cardLayout.next(rp.center_Center_Center_Panel_Card);
-
-
-                        String mReportDt = rp.reportDtTxt.getText();
-                        String mReportPlace = rp.reportPlaceTxt.getText();
-                        String mKind_Report = rp.reportKindTxt.getText();
-                        String mReportNum = rp.reportNumTxt.getText();
-                        String mModifyDt = now.toString();
-                        String mThumbNail;
-                        String mDetail = rp.reportDetailTxt.getText();
-
-                        if (addImgPath == null) {    // 썸네일을 새로 첨부하지 않은 경우에 대한 IF문
-                            mThumbNail = reportDto.getThumbnail_Img();
-                        } else {
-                            mThumbNail = addImgPath;
-                        }
-
-                        reportDto.setReport_Date(mReportDt);
-                        reportDto.setReport_Place(mReportPlace);
-                        reportDto.setKind_Report(mKind_Report);
-                        reportDto.setPhone_Num(mReportNum);
-                        reportDto.setPost_Modify_Date(mModifyDt);
-                        reportDto.setThumbnail_Img(mThumbNail);
-                        reportDto.setDetail(mDetail);
-
-                        rp.postDtVal.setText(reportDto.report_Date);
-                        rp.postDtTxt.setText(reportDto.report_Date);
-                        rp.reportPlaceVal.setText(reportDto.report_Place);
-                        rp.reportPlaceTxt.setText(reportDto.report_Place);
-                        rp.reportKindVal.setText(reportDto.kind_Report);
-                        rp.reportKindTxt.setText(reportDto.kind_Report);
-                        rp.reportNumVal.setText(reportDto.phone_Num);
-                        rp.reportNumTxt.setText(reportDto.phone_Num);
-                        rp.postDtVal.setText(reportDto.post_Create_Date);
-                        rp.postDtTxt.setText(reportDto.post_Create_Date);
-                        rp.modifyDtVal.setText(reportDto.post_Modify_Date);
-                        rp.modifyDtTxt.setText(reportDto.post_Modify_Date);
-                        rp.reportDetail.setText(reportDto.detail);
-                        rp.reportDetailTxt.setText(reportDto.detail);
-                        rp.imgPath = reportDto.thumbnail_Img;
-                        ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
-                        rp.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
-
-                        ReportDao.reportModify(new ReportDto(mReportDt, mReportPlace, mKind_Report, mReportNum, mDetail, "2022-02-14", mThumbNail, reportDto.getNo()));
-
-                        if (click) {
-                            rp.setVisible(true);
-                        }
-                        resetModifyData(listIdx); // 데이터 초기화
-                        ReportPage.setDataListPage(report_StartIndex, report_StartIndex + 12);
-                        addFile.setEnabled(false);
-                        BoaderCombo.setEnabled(false);
-
-                    } else if (result == JOptionPane.NO_OPTION) {
-                        JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
-                        cardLayout.next(rtp.switchPanel);
-                        cardLayout.next(rp.center_North_Top_Panel);
-                        cardLayout.next(rp.center_Center_Center_Panel_Card);
-                        addFile.setEnabled(false);
-                        BoaderCombo.setEnabled(false);
-                    }
-                }
-            }
-        });
-
-        deleteBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
-                ImageIcon defaultImg = new ImageIcon(defaultImgPath);
-                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
-                // 게시글 삭제 여부를 사용자에게 묻는 이벤트
-                if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
-                } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
-                    JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
-                    // 삭제 후 게시물 이미지가 디폴트 이미지로 변환 되도록 구현 해야함
-//                    btnList.get(selectBtnNum).setIcon(imageSetSize(defaultImg, 150, 120));
-//                    lblList.get(selectBtnNum).setText("");
-                    ReportDao.reportDelete(new ReportDto(reportDto.getNo()));
-                    rp.setVisible(false);
-                    resetDeleteData(); // 데이터 초기화
-                    ReportPage.setDataListPage(report_StartIndex, report_StartIndex + 12);
-//                    tabbedPane.revalidate();
-//                    tabbedPane.repaint();
-
-                    click = true;
-                    // 삭제 쿼리 돌려야함
-                } else { //사용자가 No를 선택한 경우
-                }
-            }
-        });
-
-        addFile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                afw = new AddFileWindow();
-            }
-        });
     }
-
-    public void resetModifyData(int Index) {
-        for (int i = 0; i < SIZE_ITEM; i++) {
-            btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
-            lblList.get(i).setText("");
-        }
-        reportListAll = ReportDao.reportSelectAll();
-        for (ReportDto Dto : reportListAll) {
-            reportDto = Dto;
-        }
-        ImageIcon thumbnailImg = new ImageIcon(reportListAll.get(Index).thumbnail_Img);
-        if (reportListAll.get(Index).thumbnail_Img.equals("(NULL)")) {
-            reportCardDto = new ReportCardDto(defaultImg, Index);
-            reportCardDtoList.add(Index, reportCardDto);
-        } else {
-            reportCardDto = new ReportCardDto(thumbnailImg, Index);
-            reportCardDtoList.set(Index, reportCardDto);
-        }
-    }
-
-    public void resetDeleteData() {
-        for (int i = 0; i < SIZE_ITEM; i++) {
-            btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
-            lblList.get(i).setText("");
-        }
-        reportListAll = ReportDao.reportSelectAll();
-        for (ReportDto Dto : reportListAll) {
-            reportDto = Dto;
-        }
-        for (int i = 0; i < reportListAll.size(); i++) {
-            ImageIcon img = new ImageIcon(reportListAll.get(i).thumbnail_Img);
-            if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
-                reportCardDto = new ReportCardDto(defaultImg, i);
-                reportCardDtoList.set(i, reportCardDto);
-            } else {
-                reportCardDto = new ReportCardDto(img, i);
-                reportCardDtoList.set(i, reportCardDto);
-            }
-        }
-    }
-
-    // Boader콤보박스에서 선택한 데이터를 가져온다.
-    // 받아온 데이터와 게시판 정보를 비교한다.
-    // 비교하여 일치하는 게시판에 쿼리문을 사용하여 DB에 넣어준다.
-    // 기존 게시판에 있던 게시물은 쿼리문을 사용해 삭제한다.
-//    public void chooseBoader(int num){
-//        switch(num){
-//            case 1 :
-//                if (num == tapPaneIdx){
-//
-//                }
-//                break;
-//            case 2 :
-//        }
-//    }
 }

@@ -7,12 +7,12 @@ public class TemporaryDto { // DataTable(엑셀)의 필드값 생성자
     public String phone_Num = null; // 전화 번호
     public String detail = null;    // 게시글 본문
     public String post_Create_Date = null;  // 게시글 생성 일자.
-    public String thumbnail_Img = null; // 이미지
     public String post_Modify_Date = null;  // 게시글 수정 일자.
+    public String thumbnail_Img = null; // 이미지
     public String user_ID = null;   // 게시글 작성자 아이디
     public int no = 0; // Primary Key
 
-    // show, 게시물 생성 후 보여지는 값들
+    // show
     public TemporaryDto(String tmp_Date, String tmp_Place, String kind_Tmp, String phone_Num, String detail, String post_Create_Date, String thumbnail_Img, String post_Modify_Date, String user_ID, int no) {
         this.tmp_Date = tmp_Date;
         this.tmp_Place = tmp_Place;
@@ -20,13 +20,25 @@ public class TemporaryDto { // DataTable(엑셀)의 필드값 생성자
         this.phone_Num = phone_Num;
         this.detail = detail;
         this.post_Create_Date = post_Create_Date;
-        this.thumbnail_Img = thumbnail_Img;
         this.post_Modify_Date = post_Modify_Date;
+        this.thumbnail_Img = thumbnail_Img;
         this.user_ID = user_ID;
         this.no = no;
     }
+    // Change Insert
+    public TemporaryDto(String tmp_Date, String tmp_Place, String kind_Tmp, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date, String thumbnail_Img,  String user_ID) {
+        this.tmp_Date = tmp_Date;
+        this.tmp_Place = tmp_Place;
+        this.kind_Tmp = kind_Tmp;
+        this.phone_Num = phone_Num;
+        this.detail = detail;
+        this.post_Create_Date = post_Create_Date;
+        this.post_Modify_Date = post_Modify_Date;
+        this.thumbnail_Img = thumbnail_Img;
+        this.user_ID = user_ID;
+    }
 
-    // input, 게시물 생성 시 입력해야할 값들
+    // insert
     public TemporaryDto(String tmp_Date, String tmp_Place, String kind_Tmp, String phone_Num, String detail, String post_Create_Date, String thumbnail_Img, String user_ID) {
         this.tmp_Date = tmp_Date;
         this.tmp_Place = tmp_Place;
@@ -38,18 +50,19 @@ public class TemporaryDto { // DataTable(엑셀)의 필드값 생성자
         this.user_ID = user_ID;
     }
 
-    // Modify, 게시물 수정 시 변경할 수 있는 값들
-    public TemporaryDto(String tmp_Date, String tmp_Place, String kind_Tmp, String phone_Num, String detail, String thumbnail_Img, String post_Modify_Date, int no) {
+    // Modify
+    public TemporaryDto(String tmp_Date, String tmp_Place, String kind_Tmp, String phone_Num, String detail, String post_Modify_Date, String thumbnail_Img, int no) {
         this.tmp_Date = tmp_Date;
         this.tmp_Place = tmp_Place;
         this.kind_Tmp = kind_Tmp;
         this.phone_Num = phone_Num;
         this.detail = detail;
-        this.thumbnail_Img = thumbnail_Img;
         this.post_Modify_Date = post_Modify_Date;
+        this.thumbnail_Img = thumbnail_Img;
         this.no = no;
     }
 
+    // Delete
     public TemporaryDto(int no) {
         this.no = no;
     }
@@ -102,6 +115,14 @@ public class TemporaryDto { // DataTable(엑셀)의 필드값 생성자
         this.post_Create_Date = post_Create_Date;
     }
 
+    public String getPost_Modify_Date() {
+        return post_Modify_Date;
+    }
+
+    public void setPost_Modify_Date(String post_Modify_Date) {
+        this.post_Modify_Date = post_Modify_Date;
+    }
+
     public String getThumbnail_Img() {
         return thumbnail_Img;
     }
@@ -110,13 +131,6 @@ public class TemporaryDto { // DataTable(엑셀)의 필드값 생성자
         this.thumbnail_Img = thumbnail_Img;
     }
 
-    public String getPost_Modify_Date() {
-        return post_Modify_Date;
-    }
-
-    public void setPost_Modify_Date(String post_Modify_Date) {
-        this.post_Modify_Date = post_Modify_Date;
-    }
 
     public String getUserID() {
         return user_ID;
@@ -135,7 +149,7 @@ public class TemporaryDto { // DataTable(엑셀)의 필드값 생성자
     }
 
     public String toString() {
-        return no + " " + user_ID + " " + tmp_Date + " " + tmp_Place + " " + kind_Tmp + " " + phone_Num + " " + detail + " " + post_Create_Date + " " + thumbnail_Img + " " + post_Modify_Date;
+        return no + " " + user_ID + " " + tmp_Date + " " + tmp_Place + " " + kind_Tmp + " " + phone_Num + " " + detail + " " + post_Create_Date + " " + post_Modify_Date +  " " + thumbnail_Img;
     }
 
 }

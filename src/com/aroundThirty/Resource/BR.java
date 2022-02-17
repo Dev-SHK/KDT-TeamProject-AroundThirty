@@ -8,6 +8,12 @@ import java.util.List;
 import static com.aroundThirty.Resource.FR.*;
 
 public class BR {
+    public static ArrayList<ReportCardDto> reportCardDtoList = new ArrayList<>();
+    public static ArrayList<MissingCardDto> missingCardDtoList = new ArrayList<>();
+    public static ArrayList<AdoptCardDto> adoptCardDtoList = new ArrayList<>();
+    public static ArrayList<TemporaryCardDto> temporaryCardDtoList = new ArrayList<>();
+    public static ArrayList<XmlCardDto> xmlCardDtoList = new ArrayList<>();
+
     public static ReportDto reportDto;
     public static List<ReportDto> reportListAll;
 
@@ -18,7 +24,7 @@ public class BR {
     public static List<TemporaryDto> temporaryListAll;
 
     public static AdoptDto adoptDto;
-    public static List<AdoptDto> adoptDtoListAll;
+    public static List<AdoptDto> adoptListAll;
 
     public static UserDto userDto;
 
@@ -26,22 +32,24 @@ public class BR {
     public static List<XmlDto> xmlDtoListAll;
 
     public static ReportCardDto reportCardDto;
-//    public static MissingCardDto missingCardDto;
+    public static MissingCardDto missingCardDto;
     public static AdoptCardDto adoptCardDto;
-//    public static TemporaryCardDto temporaryCardDto;
+    public static TemporaryCardDto temporaryCardDto;
 
     public static XmlCardDto xmlCardDto;
 
-    public static ArrayList<ReportCardDto> reportCardDtoList = new ArrayList<>();
-    public static ArrayList<AdoptCardDto> adoptCardDtoList = new ArrayList<>();
-//    public static ArrayList<ReportCardDto> reportCardNoList = new ArrayList<>();
-    public static ArrayList<XmlCardDto> xmlCardDtoList = new ArrayList<>();
 
 
     public static int selectBtnNum;
     public static int pageNum;
+    public static int report_PageNum;
+    public static int missing_PageNum;
+    public static int temporary_PageNum;
+    public static int adopt_PageNum;
     public static int postedPageNum;
-    public static int listIdx;
-    public static int tapPaneIdx;
-
+    public static int report_Posted_ListIdx;
+    public static int missing_Posted_ListIdx;
+    public static int temporary_Posted_ListIdx;
+    public static int adopt_Posted_ListIdx;
+    public static int tabPaneIdx;
 }

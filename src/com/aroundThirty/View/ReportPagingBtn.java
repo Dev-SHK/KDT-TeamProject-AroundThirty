@@ -35,9 +35,9 @@ public class ReportPagingBtn extends JPanel {
                     if (e.getSource() instanceof JButton) { // e.getsource로 받아온 객체가 JButton의 상속을 받으면 true 반환
                         // instanceof : 객체타입을 확인하는 연산자로 형변환 가능 여부를 확인하며 true, false 로 반환 주로 상속관계에서 부모객체인지 자식객체인지 확인하는데 사용
                         JButton btn = (JButton) e.getSource();   // e.getsource로 받아온 객체의 속성을 btn에 담는다.
-                        pageNum = Integer.parseInt(btn.getText()) - 1; // 하단부 버튼의 텍스트(숫자)를 Idx와 맞추기 위해 -1을 한뒤 가져온다.
-                        report_StartIndex = SIZE_ITEM * pageNum;   // 페이지에 따라 해당페이지 첫번째 데이터 Idx를 확인한다.
-                        rep.setDataListPage(report_StartIndex, report_StartIndex + 12); // ReportPage 클래스의 setDataListPage 메소드 사용
+                        report_PageNum = (Integer.parseInt(btn.getText()) - 1); // 하단부 버튼의 텍스트(숫자)를 Idx와 맞추기 위해 -1을 한뒤 가져온다.
+                        report_StartIndex = SIZE_ITEM * report_PageNum;   // 페이지에 따라 해당페이지 첫번째 데이터 Idx를 확인한다.
+                        report_Page.setReportDataListPage(report_StartIndex, report_StartIndex + 12); // ReportPage 클래스의 setDataListPage 메소드 사용
                         btn.removeActionListener(null);
                     }
                 }
