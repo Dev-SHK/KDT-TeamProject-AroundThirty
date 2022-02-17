@@ -161,6 +161,8 @@ public class FR {
     public static CardLayout cardLayout = new CardLayout();
     public static JPanel switchPan;
 
+    public static MainController mainController;
+
     public static ReportPage report_Page = new ReportPage();
     public static MissingPage missing_Page = new MissingPage();
     public static AdoptPage adopt_Page = new AdoptPage();
@@ -170,7 +172,6 @@ public class FR {
     public static AddFileWindow add_File_Window;
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
-    public static SoundClass soundClass;
 
     public static SearchRightPanel searchRightPanel;
     public static CenterPanel center_Panel;

@@ -1,5 +1,6 @@
 package com.aroundThirty.View;
 
+import com.aroundThirty.Controller.MainController;
 import com.aroundThirty.Resource.SearchData;
 import com.aroundThirty.model.*;
 import com.aroundThirty.myframe.MyJFrame;
@@ -38,8 +39,8 @@ public class MainView extends MyJFrame {
         main_Right_Panel = new MainRightPanel();
         bottom_Panel = new BottomPanel();
         searchRightPanel = new SearchRightPanel();
+        mainController = new MainController();
         container = getContentPane();
-        soundClass = new SoundClass();
         switchPan = main_Right_Panel;
 
         container.add(BorderLayout.SOUTH, bottom_Panel);
@@ -187,14 +188,14 @@ public class MainView extends MyJFrame {
         dogBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                soundClass.Play(dogSoundPath);
+                mainController.Play(dogSoundPath);
             }
         });
 
         catBTN.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                soundClass.Play(catSoundPath);
+                mainController.Play(catSoundPath);
             }
         });
     }
