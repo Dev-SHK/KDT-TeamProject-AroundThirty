@@ -10,10 +10,10 @@ import java.util.List;
 public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
     public static final String SQL_TEMPORARY_SELECT = "SELECT * FROM TEMPORARY";
     public static final String SQL_TEMPORARY_INSERT = "INSERT INTO TEMPORARY(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Date, thumbnail_Img, user_ID) VALUES (?,?,?,?,?,?,?,?)";
+    public static final String SQL_TEMPORARY_CHANGE_INSERT = "INSERT INTO TEMPORARY(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Date, post_Modify_Date, thumbnail_Img, user_ID) VALUES (?,?,?,?,?,?,?,?,?)";
     public static final String SQL_TEMPORARY_UPDATE = "UPDATE TEMPORARY tmp_Date=?, tmp_Place=?, kind_Tmp=?, phone_Num=?, detail=?, thumbnail_Img=?, post_Modify_Date=? WHERE NO=?";
     public static final String SQL_TEMPORARY_DELETE = "DELETE FROM TEMPORARY WHERE NO=?";
     public static final String SQL_TEMPORARY_SELECT_ONE = "SELECT * FROM TEMPORARY WHERE NO=?";
-//    public static final String SQL_TEMPORARY_SELECT_BY_ID = "SELECT * FROM TEMPORARY WHERE user_ID=?"; // userDao로 넘김
 
     public static Statement stmt = null;
     public static PreparedStatement pstmt = null;
@@ -22,7 +22,7 @@ public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
 
 
     // R
-    public static List<TemporaryDto> tmpSelectAll() {
+    public static List<TemporaryDto> temporarySelectAll() {
         List<TemporaryDto> list = new ArrayList<TemporaryDto>();
         conn = JdbcUtil.getConnection();
         try {
@@ -39,9 +39,8 @@ public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
                 String thumbnail_Img = rs.getString(8);
                 String post_Modify_Date = rs.getString(9);
                 String User_ID = rs.getString(10);
-
                 // 위 while문 안에 있는 변수들을 순서대로 아래에 대입 -> list에 넣어주기
-                list.add(new TemporaryDto(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Date, thumbnail_Img, post_Modify_Date, User_ID, no));
+                list.add(new TemporaryDto(tmp_Date, tmp_Place, kind_Tmp, phone_Num, detail, post_Create_Date, post_Modify_Date, thumbnail_Img, User_ID, no));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,17 +57,25 @@ public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
     }
 
     // R
-    public static TemporaryDto temporarySelectOne(TemporaryDto temporaryDto) { // one
+    public static TemporaryDto temporarySelectOne(TemporaryDto tem) { // one
         conn = JdbcUtil.getConnection();
         TemporaryDto tmpdto = null;
         try {
             pstmt = conn.prepareStatement(SQL_TEMPORARY_SELECT_ONE);
-            pstmt.setInt(1, temporaryDto.getNo());
+            pstmt.setInt(1, tem.getNo());
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 int no = rs.getInt(1);
-                String User_ID = rs.getString(2);
-                tmpdto = new TemporaryDto(no);
+                String temporary_Date = rs.getString(2);
+                String temporary_Place = rs.getString(3);
+                String kind_Temporary = rs.getString(4);
+                String phone_Num = rs.getString(5);
+                String detail = rs.getString(6);
+                String post_Create_Date = rs.getString(7);
+                String post_Modify_Date = rs.getString(9);
+                String thumbnail_Img = rs.getString(8);
+                String User_ID = rs.getString(10);
+                tmpdto = new TemporaryDto(temporary_Date, temporary_Place, kind_Temporary, phone_Num, detail, post_Create_Date, post_Modify_Date, thumbnail_Img, User_ID, no);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,6 +106,42 @@ public class TemporaryDao { // select 쪽은 우선 보류(담당: 김영준)
             pstmt.setString(6, tmpdto.getPost_Create_Date());
             pstmt.setString(7, tmpdto.getThumbnail_Img());
             pstmt.setString(8, tmpdto.getUserID());
+            int cnt = pstmt.executeUpdate();                        // insert가 성공할때 마다 카운트하여 cnt변수에 담아준다.
+            if (cnt == 0) {                                         // cnt가 0인 경우 쿼리문이 정상적으로 돌지 않았다는것이기에 "입력실패" 라는 텍스트를 띄워준다.
+                System.out.println(">>> 입력 실패!");
+                conn.rollback();
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception....");                // DB에 접근이 실패하는 경우 출력될 문장
+            try {
+                conn.rollback();                                    // DB접근이 실패하면 커넥션을 다시 초기화(?)하여 정상적인 상태를 유지한다.
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();                   // preparedStatement 객체를 닫아준다.
+                JdbcUtil.close(conn);                               // 커넥션을 닫아준다.
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void temporaryChangeInput(TemporaryDto tmpdto) {
+        try {
+            conn = JdbcUtil.getConnection();    // JdbcUtil에 있는 getConnection메소드를 활용해 db와 연결하고 그걸 connection 변수인 conn에 담는다.
+            pstmt = conn.prepareStatement(SQL_TEMPORARY_CHANGE_INSERT);    // preparesStatement메소드를 활용하여 쿼리문을 읽어온다.
+            pstmt.setString(1, tmpdto.getTmp_Date());    // 쿼리문에 순서에 맞게 Index를 선언하고  dto에 저장된 값을 가져와 입력해준다.
+            pstmt.setString(2, tmpdto.getTmp_Place());
+            pstmt.setString(3, tmpdto.getKind_Tmp());
+            pstmt.setString(4, tmpdto.getPhone_Num());
+            pstmt.setString(5, tmpdto.getDetail());
+            pstmt.setString(6, tmpdto.getPost_Create_Date());
+            pstmt.setString(7, tmpdto.getPost_Modify_Date());
+            pstmt.setString(8, tmpdto.getThumbnail_Img());
+            pstmt.setString(9, tmpdto.getUserID());
             int cnt = pstmt.executeUpdate();                        // insert가 성공할때 마다 카운트하여 cnt변수에 담아준다.
             if (cnt == 0) {                                         // cnt가 0인 경우 쿼리문이 정상적으로 돌지 않았다는것이기에 "입력실패" 라는 텍스트를 띄워준다.
                 System.out.println(">>> 입력 실패!");

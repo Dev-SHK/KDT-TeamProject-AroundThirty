@@ -1,8 +1,6 @@
 package com.aroundThirty.View;
 
-import com.aroundThirty.model.ReportCardDto;
-import com.aroundThirty.model.ReportDao;
-import com.aroundThirty.model.ReportDto;
+import com.aroundThirty.model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +11,7 @@ import java.util.ArrayList;
 
 import static com.aroundThirty.Resource.FR.*;
 import static com.aroundThirty.Resource.BR.*;
+import static com.aroundThirty.Resource.FR.report_StartIndex;
 
 
 public class ReportPage extends JPanel {
@@ -69,34 +68,171 @@ public class ReportPage extends JPanel {
                         // instanceof : 객체타입을 확인하는 연산자로 형변환 가능 여부를 확인하며 true, false 로 반환 주로 상속관계에서 부모객체인지 자식객체인지 확인하는데 사용
                         JButton btn = (JButton) e.getSource();   // e.getsource로 받아온 객체의 속성을 btn에 담는다.
                         selectBtnNum = reportCardDtoList.get(finali).getNo();   // 현재 페이지에서 선택한 게시물의 번호를 가져옴(12개 중 선택한 버튼의 idx)
-                        listIdx = (pageNum * 12) + reportCardDtoList.get(finali).getNo();    // ArrayList에서 데이터를 받아올 수 있도록 선택한 게시물의 인덱스를 만들어 줌
-                        int Choose_postedPage_Num = reportListAll.get(listIdx).no;   // 선택한 게시물에 대한 no를 담는 변수
-                        reportDto = ReportDao.reportSelectOne(new ReportDto(Choose_postedPage_Num));
-                        rp.reportDtVal.setText(reportDto.report_Date);
-                        rp.reportDtTxt.setText(reportDto.report_Date);
-                        rp.reportPlaceVal.setText(reportDto.report_Place);
-                        rp.reportPlaceTxt.setText(reportDto.report_Place);
-                        rp.reportKindVal.setText(reportDto.kind_Report);
-                        rp.reportKindTxt.setText(reportDto.kind_Report);
-                        rp.reportNumVal.setText(reportDto.phone_Num);
-                        rp.reportNumTxt.setText(reportDto.phone_Num);
-                        rp.postDtVal.setText(reportDto.post_Create_Date);
-                        rp.postDtTxt.setText(reportDto.post_Create_Date);
-                        rp.modifyDtVal.setText(reportDto.post_Modify_Date);
-                        rp.modifyDtTxt.setText(reportDto.post_Modify_Date);
-                        rp.reportDetail.setText(reportDto.detail);
-                        rp.reportDetailTxt.setText(reportDto.detail);
-                        rp.imgPath = reportDto.thumbnail_Img;
-                        ImageIcon imgIcon = new ImageIcon(rp.imgPath); // 이미지를 담음
-                        rp.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                        report_Posted_ListIdx = (report_PageNum * 12) + reportCardDtoList.get(finali).getNo();    // ArrayList에서 데이터를 받아올 수 있도록 선택한 게시물의 인덱스를 만들어 줌
+                        int choose_PostedPage_Num = reportListAll.get(report_Posted_ListIdx).no;   // 선택한 게시물에 대한 no를 담는 변수
+                        reportDto = ReportDao.reportSelectOne(new ReportDto(choose_PostedPage_Num));
+                        System.out.println(reportDto.getThumbnail_Img());
+                        report_Right_Panel.reportDtVal.setText(reportDto.report_Date);
+                        report_Right_Panel.reportDtTxt.setText(reportDto.report_Date);
+                        report_Right_Panel.reportPlaceVal.setText(reportDto.report_Place);
+                        report_Right_Panel.reportPlaceTxt.setText(reportDto.report_Place);
+                        report_Right_Panel.reportKindVal.setText(reportDto.kind_Report);
+                        report_Right_Panel.reportKindTxt.setText(reportDto.kind_Report);
+                        report_Right_Panel.reportNumVal.setText(reportDto.phone_Num);
+                        report_Right_Panel.reportNumTxt.setText(reportDto.phone_Num);
+                        report_Right_Panel.postDtVal.setText(reportDto.post_Create_Date);
+                        report_Right_Panel.postDtTxt.setText(reportDto.post_Create_Date);
+                        report_Right_Panel.modifyDtVal.setText(reportDto.post_Modify_Date);
+                        report_Right_Panel.modifyDtTxt.setText(reportDto.post_Modify_Date);
+                        report_Right_Panel.reportDetail.setText(reportDto.detail);
+                        report_Right_Panel.reportDetailTxt.setText(reportDto.detail);
+                        report_Right_Panel.imgPath = reportDto.thumbnail_Img;
+                        ImageIcon imgIcon = new ImageIcon(report_Right_Panel.imgPath); // 이미지를 담음
+                        report_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
                         if (click) {
-                            rp.setVisible(true);
+                            report_Right_Panel.setVisible(true);
                         }
                         btn.removeActionListener(null);
                     }
                 }
             });
         }
+        report_ModifyBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String act = e.getActionCommand();
+                if (act.equals("수정")) {
+                    cardLayout.next(report_Right_Top_Panel.switchPanel);
+                    cardLayout.next(report_Right_Panel.center_North_Top_Panel);
+                    cardLayout.next(report_Right_Panel.center_Center_Center_Panel_Card);
+                    report_AddFile.setEnabled(true);
+                    report_BoaderCombo.setEnabled(true);
+                }
+            }
+        });
+
+        report_PostBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String act = e.getActionCommand();
+                if (act.equals("완료")) {
+                    int result = JOptionPane.showConfirmDialog(null, "게시글을 수정 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.CLOSED_OPTION) {
+                        report_AddFile.setEnabled(false);
+                    } else if (result == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        cardLayout.next(report_Right_Top_Panel.switchPanel);
+                        cardLayout.next(report_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(report_Right_Panel.center_Center_Center_Panel_Card);
+
+                        // BoaderCombo에서 선택한 게시판의 번호를 받아온다.
+                        // (BoaderCombo는 특정 게시판의 게시글을 현재 게시판 외의 게시판으로 옮기기 위해 만든 콤보박스)
+                        int boaderIdx = report_BoaderCombo.getSelectedIndex() + 1;
+
+                        // 사용자가 현재 보고 있는 게시판의 인덱스와, 콤보박스에서 선택한 게시판 인덱스의 일치 여부 확인
+                        if (tabPaneIdx == boaderIdx) {
+                            String mReportDt = report_Right_Panel.reportDtTxt.getText();
+                            String mReportPlace = report_Right_Panel.reportPlaceTxt.getText();
+                            String mKind_Report = report_Right_Panel.reportKindTxt.getText();
+                            String mReportNum = report_Right_Panel.reportNumTxt.getText();
+                            String mModifyDt = now.toString();
+                            String mThumbNail;
+                            String mDetail = report_Right_Panel.reportDetailTxt.getText();
+
+                            if (addImgPath == null) {    // 썸네일을 새로 첨부하지 않은 경우에 대한 IF문
+                                mThumbNail = reportDto.getThumbnail_Img();
+                            } else {
+                                mThumbNail = addImgPath;
+                            }
+
+                            reportDto.setReport_Date(mReportDt);
+                            reportDto.setReport_Place(mReportPlace);
+                            reportDto.setKind_Report(mKind_Report);
+                            reportDto.setPhone_Num(mReportNum);
+                            reportDto.setPost_Modify_Date(mModifyDt);
+                            reportDto.setThumbnail_Img(mThumbNail);
+                            reportDto.setDetail(mDetail);
+
+                            report_Right_Panel.postDtVal.setText(reportDto.report_Date);
+                            report_Right_Panel.postDtTxt.setText(reportDto.report_Date);
+                            report_Right_Panel.reportPlaceVal.setText(reportDto.report_Place);
+                            report_Right_Panel.reportPlaceTxt.setText(reportDto.report_Place);
+                            report_Right_Panel.reportKindVal.setText(reportDto.kind_Report);
+                            report_Right_Panel.reportKindTxt.setText(reportDto.kind_Report);
+                            report_Right_Panel.reportNumVal.setText(reportDto.phone_Num);
+                            report_Right_Panel.reportNumTxt.setText(reportDto.phone_Num);
+                            report_Right_Panel.postDtVal.setText(reportDto.post_Create_Date);
+                            report_Right_Panel.postDtTxt.setText(reportDto.post_Create_Date);
+                            report_Right_Panel.modifyDtVal.setText(reportDto.post_Modify_Date);
+                            report_Right_Panel.modifyDtTxt.setText(reportDto.post_Modify_Date);
+                            report_Right_Panel.reportDetail.setText(reportDto.detail);
+                            report_Right_Panel.reportDetailTxt.setText(reportDto.detail);
+                            report_Right_Panel.imgPath = reportDto.thumbnail_Img;
+                            ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
+                            report_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+
+                            ReportDao.reportModify(new ReportDto(mReportDt, mReportPlace, mKind_Report, mReportNum, mDetail, "2022-02-14", mThumbNail, reportDto.getNo()));
+                        } else {
+                            chooseBoader(boaderIdx);
+                            ReportDao.reportDelete(new ReportDto(reportDto.getNo()));
+                        }
+
+                        if (click) {
+                            report_Right_Panel.setVisible(true);
+                        }
+
+                        resetReportModifyData(); // 데이터 초기화
+                        ReportPage.setReportDataListPage(report_StartIndex, report_StartIndex + 12);
+                        report_AddFile.setEnabled(false);
+                        report_BoaderCombo.setEnabled(false);
+
+                    } else if (result == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        cardLayout.next(report_Right_Top_Panel.switchPanel);
+                        cardLayout.next(report_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(report_Right_Panel.center_Center_Center_Panel_Card);
+                        report_AddFile.setEnabled(false);
+                        report_BoaderCombo.setEnabled(false);
+                    }
+                }
+            }
+        });
+
+        report_DeleteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
+                ImageIcon defaultImg = new ImageIcon(defaultImgPath);
+                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                // 게시글 삭제 여부를 사용자에게 묻는 이벤트
+                if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
+                } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
+                    JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
+                    ReportDao.reportDelete(new ReportDto(reportDto.getNo()));
+                    report_Right_Panel.setVisible(false);
+                    resetDeleteData(); // 데이터 초기화
+                    ReportPage.setReportDataListPage(report_StartIndex, report_StartIndex + 12);
+
+                    click = true;
+                    // 삭제 쿼리 돌려야함
+                } else { //사용자가 No를 선택한 경우
+                }
+            }
+        });
+
+        report_WriteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
+
+        report_AddFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                add_File_Window = new AddFileWindow();
+            }
+        });
+
     }
 
     // 최근 입력 게시물이 먼저 조회 되도록 수정 해야함
@@ -105,7 +241,7 @@ public class ReportPage extends JPanel {
     // 어레이리스트로 이미지와를 받아오는 리스트를 만들고 별개로
     // 넘버만 저장하는 리스트를 만들어서 삭제 및 수정시 리스트의 인덱스를 뽑아온다.
 
-    public static void setDataListPage(int report_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
+    public static void setReportDataListPage(int report_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
         for (int i = 0, dataIdx = report_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
             if (reportListAll.size() > dataIdx) {
                 postedPageNum = reportListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
@@ -115,6 +251,93 @@ public class ReportPage extends JPanel {
                 btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
                 lblList.get(i).setText("");
             }
+        }
+    }
+
+    public static void resetReportModifyData() {
+        for (int i = 0; i < SIZE_ITEM; i++) {
+            btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+            lblList.get(i).setText("");
+        }
+        reportListAll = ReportDao.reportSelectAll();
+        for (ReportDto Dto : reportListAll) {
+            reportDto = Dto;
+        }
+        int reportListIdx = reportCardDtoList.size();
+        for (int i = 0; i < reportListIdx; i++) {
+            reportCardDtoList.remove(0);
+        }
+        for (int i = 0; i < reportListAll.size(); i++) {
+            ImageIcon thumbnailImg = new ImageIcon(reportListAll.get(i).thumbnail_Img);
+            if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+                reportCardDto = new ReportCardDto(defaultImg, i);
+                reportCardDtoList.add(reportCardDto);
+            } else {
+                reportCardDto = new ReportCardDto(thumbnailImg, i);
+                reportCardDtoList.add(reportCardDto);
+            }
+        }
+    }
+
+    public static void resetDeleteData() {
+        for (int i = 0; i < SIZE_ITEM; i++) {
+            btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+            lblList.get(i).setText("");
+        }
+        reportListAll = ReportDao.reportSelectAll();
+        for (ReportDto Dto : reportListAll) {
+            reportDto = Dto;
+        }
+        for (int i = 0; i < reportListAll.size(); i++) {
+            ImageIcon img = new ImageIcon(reportListAll.get(i).thumbnail_Img);
+            if (reportListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+                reportCardDto = new ReportCardDto(defaultImg, i);
+                reportCardDtoList.set(i, reportCardDto);
+            } else {
+                reportCardDto = new ReportCardDto(img, i);
+                reportCardDtoList.set(i, reportCardDto);
+            }
+        }
+    }
+
+    // Boader콤보박스에서 선택한 데이터를 가져온다.
+    // 받아온 데이터와 게시판 정보를 비교한다.
+    // 비교하여 일치하는 게시판에 쿼리문을 사용하여 DB에 넣어준다.
+    // 기존 게시판에 있던 게시물은 쿼리문을 사용해 삭제한다.
+    public static void chooseBoader(int num) {
+        String mReportDt = report_Right_Panel.reportDtTxt.getText();
+        String mReportPlace = report_Right_Panel.reportPlaceTxt.getText();
+        String mKind_Report = report_Right_Panel.reportKindTxt.getText();
+        String mReportNum = report_Right_Panel.reportNumTxt.getText();
+        String mCreateDt = report_Right_Panel.postDtTxt.getText();
+        String mModifyDt = now.toString();
+        String mThumbNail;
+        String mDetail = report_Right_Panel.reportDetailTxt.getText();
+        String mUser_ID = reportDto.user_ID;
+
+
+        if (addImgPath == null) {    // 썸네일을 새로 첨부하지 않은 경우에 대한 IF문
+            mThumbNail = reportDto.getThumbnail_Img();
+        } else {
+            mThumbNail = addImgPath;
+        }
+
+
+        switch (num) {
+            case 2:
+                missingDto = new MissingDto(mReportDt, mReportPlace, mKind_Report, mReportNum, mDetail, mCreateDt, mModifyDt, mThumbNail, mUser_ID);
+
+                MissingDao.missingChangeInput(missingDto);
+                missing_Page.resetMissingModifyData();
+                missing_Page.setMissingDataListPage(missing_StartIndex, missing_StartIndex + 12);
+                break;
+            case 3:
+                temporaryDto = new TemporaryDto(mReportDt, mReportPlace, mKind_Report, mReportNum, mDetail, mCreateDt, mModifyDt, mThumbNail, mUser_ID);
+
+                TemporaryDao.temporaryChangeInput(temporaryDto);
+                temporary_Page.resetTemporaryModifyData();
+                temporary_Page.setTemporaryDataListPage(temporary_StartIndex, temporary_StartIndex + 12);
+                break;
         }
     }
 }

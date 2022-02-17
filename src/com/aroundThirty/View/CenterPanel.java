@@ -13,10 +13,10 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.aroundThirty.Resource.BR.*;
 import static com.aroundThirty.Resource.FR.*;
+
 
 public class CenterPanel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -52,6 +52,7 @@ public class CenterPanel extends JPanel {
     }
 
     public static void setDataListPanel(int mpStartIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
+
 
         for (int i = 0, dataIdx = mpStartIndex; i < SIZE_ITEM; i++, dataIdx++) {
             JPanel newPane = new JPanel(null);
@@ -92,14 +93,12 @@ public class CenterPanel extends JPanel {
                         JButton btn = (JButton) e.getSource();   // e.getsource로 받아온 객체의 속성을 btn에 담는다.
                         int postedPageNum = (pageNum * 12) + xmlCardDtoList.get(finali).getNo() + 1;
                         xmlDto = XmlDao.xmlDtoSelectOne(new XmlDto(postedPageNum));
-                        mrp.happenDtDetailLabel.setText(xmlDto.getHappenDt());
-                        mrp.happenPlaceDetailLabel.setText(xmlDto.getHappenPlace());
-                        mrp.happenKindDetailLabel.setText(xmlDto.getKindCd());
-                        mrp.ageDetailLabel.setText(xmlDto.getAge());
-                        mrp.weightDetailLabel.setText(xmlDto.getWeight());
-                        mrp.phone_NumDetailLabel.setText(xmlDto.getPhone_Num());
-                        mrp.specialMarkDetailLabel.setText(xmlDto.getSpecialMark());
-                        mrp.processDetailLabel.setText(xmlDto.getProcessState());
+                        main_Right_Panel.happenDtDetailLabel.setText(xmlDto.getHappenDt());
+                        main_Right_Panel.happenPlaceDetailLabel.setText(xmlDto.getHappenPlace());
+                        main_Right_Panel.happenKindDetailLabel.setText(xmlDto.getKindCd());
+                        main_Right_Panel.phone_NumDetailLabel.setText(xmlDto.getPhone_Num());
+                        main_Right_Panel.specialMarkDetailLabel.setText(xmlDto.getSpecialMark());
+                        main_Right_Panel.processDetailLabel.setText(xmlDto.getProcessState());
                         Image imageDetail = null;
                         try {
                             URL url = new URL(xmlDto.getThumbnail_Img());
@@ -108,17 +107,16 @@ public class CenterPanel extends JPanel {
                             ea.printStackTrace();
                         }
                         imgIcon = new ImageIcon(imageDetail); // 이미지를 담음
-                        mrp.imgLabel.setPreferredSize(new Dimension(480, 360));
-                        mrp.imgLabel.setIcon(imgIcon);
+                        main_Right_Panel.imgLabel.setPreferredSize(new Dimension(480, 360));
+                        main_Right_Panel.imgLabel.setIcon(imgIcon);
                         if (click) {
-                            mrp.setVisible(true);
+                            main_Right_Panel.setVisible(true);
 //                            click = false;
                         }
                         btn.removeActionListener(null);
                     }
                 }
             });
-
             int finalDataIdx = dataIdx;
             btnList.get(i).addMouseListener(new MouseAdapter() {
                 @Override
@@ -168,5 +166,4 @@ public class CenterPanel extends JPanel {
             }
         }
     }
-
 }

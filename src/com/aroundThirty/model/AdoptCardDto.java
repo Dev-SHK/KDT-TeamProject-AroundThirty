@@ -1,18 +1,24 @@
 package com.aroundThirty.model;
 
+
+import javax.swing.*;
+
 public class AdoptCardDto {
     private int no;
-    private String title;
-    private String image;
+    private ImageIcon defaultImg;
 
-    public AdoptCardDto() {
-        this(0, "", "");
+
+    public AdoptCardDto(ImageIcon defaultImg, int no) {
+        this.defaultImg = defaultImg;
+        this.no = no;
     }
 
-    public AdoptCardDto(int no, String title, String image) {
-        this.no = no;
-        this.title = title;
-        this.image = image;
+    public ImageIcon getDefaultImg() {
+        return defaultImg;
+    }
+
+    public void setDefaultImg(ImageIcon defaultImg) {
+        this.defaultImg = defaultImg;
     }
 
     public int getNo() {
@@ -23,24 +29,4 @@ public class AdoptCardDto {
         this.no = no;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    @Override
-    public String toString() {
-        return no + title + image;
-    }
 }

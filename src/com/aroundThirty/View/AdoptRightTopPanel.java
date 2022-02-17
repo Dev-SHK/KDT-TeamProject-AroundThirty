@@ -5,22 +5,22 @@ import java.awt.*;
 
 import static com.aroundThirty.Resource.FR.*;
 
-public class RightTopPanel extends JPanel {
+public class AdoptRightTopPanel extends JPanel {
     JPanel switchPanel;
     JPanel westPanel;
     JPanel groupPanel;
 
-    public RightTopPanel() {
+    public AdoptRightTopPanel() {
         switchPanel = new JPanel(cardLayout);
         groupPanel = new JPanel();
         westPanel = new JPanel();
-        westPanel.add(addFile);
-        addFile.setEnabled(false);
-        switchPanel.add("수정", modifyBtn);
-        switchPanel.add("완료", postBtn);
-        groupPanel.add(writeBtn);
+        westPanel.add(adopt_AddFile);
+        adopt_AddFile.setEnabled(false);
+        switchPanel.add("수정", adopt_ModifyBtn);
+        switchPanel.add("완료", adopt_PostBtn);
+        groupPanel.add(adopt_WriteBtn);
         groupPanel.add(switchPanel);
-        groupPanel.add(deleteBtn);
+        groupPanel.add(adopt_DeleteBtn);
 
         setBackground(pastelYellow);
         switchPanel.setBackground(pastelYellow);

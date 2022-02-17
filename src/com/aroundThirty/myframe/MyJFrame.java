@@ -40,13 +40,13 @@ public abstract class MyJFrame extends JFrame {
         aboutMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ip = new IntroducePage();
+                introduce_Page = new IntroducePage();
             }
         });
         sourceMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sp = new SourcePage();
+                source_Page = new SourcePage();
             }
         });
         exitMenu.addActionListener(new ActionListener() {

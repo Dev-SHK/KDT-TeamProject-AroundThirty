@@ -9,6 +9,7 @@ import java.util.List;
 public class ReportDao {
     public static final String SQL_REPORT_SELECT = "SELECT * FROM REPORT";
     public static final String SQL_REPORT_INSERT = "INSERT INTO REPORT(report_Date, report_Place, kind_Report, phone_Num, detail, post_Create_Date,thumbnail_Img, User_ID) VALUES (?,?,?,?,?,?,?,?)";
+    public static final String SQL_REPORT_CHANGE_INSERT = "INSERT INTO REPORT(report_Date, report_Place, kind_Report, phone_Num, detail, post_Create_Date, post_Modify_Date, thumbnail_Img, User_ID) VALUES (?,?,?,?,?,?,?,?,?)";
     public static final String SQL_REPORT_UPDATE = "UPDATE REPORT SET report_Date=?, report_Place=?, kind_Report=?, phone_Num=?, detail=?, post_Modify_Date=?, thumbnail_Img=? WHERE NO=?";
     public static final String SQL_REPORT_DELETE = "DELETE FROM REPORT WHERE NO=?";
     public static final String SQL_REPORT_SELECT_ONE = "SELECT * FROM REPORT WHERE NO=?";
@@ -180,5 +181,41 @@ public class ReportDao {
             }
         }
         return apdto;
+    }
+
+    public static void reportChangeInput(ReportDto reportDto) {
+        try {
+            conn = JdbcUtil.getConnection();    // JdbcUtil에 있는 getConnection메소드를 활용해 db와 연결하고 그걸 connection 변수인 conn에 담는다.
+            pstmt = conn.prepareStatement(SQL_REPORT_CHANGE_INSERT);    // preparesStatement메소드를 활용하여 쿼리문을 읽어온다.
+            pstmt.setString(1, reportDto.getReport_Date());    // 쿼리문에 순서에 맞게 Index를 선언하고  dto에 저장된 값을 가져와 입력해준다.
+            pstmt.setString(2, reportDto.getReport_Place());
+            pstmt.setString(3, reportDto.getKind_Report());
+            pstmt.setString(4, reportDto.getPhone_Num());
+            pstmt.setString(5, reportDto.getDetail());
+            pstmt.setString(6, reportDto.getPost_Create_Date());
+            pstmt.setString(7, reportDto.getPost_Modify_Date());
+            pstmt.setString(8, reportDto.getThumbnail_Img());
+            pstmt.setString(9, reportDto.getUser_ID());
+            int cnt = pstmt.executeUpdate();                        // insert가 성공할때 마다 카운트하여 cnt변수에 담아준다.
+            if (cnt == 0) {                                         // cnt가 0인 경우 쿼리문이 정상적으로 돌지 않았다는것이기에 "입력실패" 라는 텍스트를 띄워준다.
+                System.out.println(">>> 입력 실패!");
+                conn.rollback();
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception....");                // DB에 접근이 실패하는 경우 출력될 문장
+            try {
+                conn.rollback();                                    // DB접근이 실패하면 커넥션을 다시 초기화(?)하여 정상적인 상태를 유지한다.
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();                   // preparedStatement 객체를 닫아준다.
+                JdbcUtil.close(conn);                               // 커넥션을 닫아준다.
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

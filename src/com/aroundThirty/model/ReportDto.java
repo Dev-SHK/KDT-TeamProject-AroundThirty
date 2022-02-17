@@ -41,6 +41,19 @@ public class ReportDto {
         this.user_ID = user_ID;
     }
 
+    // Change Insert
+    public ReportDto(String report_Date, String report_Place, String kind_Report, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date, String thumbnail_Img, String user_ID) {
+        this.report_Date = report_Date;
+        this.report_Place = report_Place;
+        this.kind_Report = kind_Report;
+        this.phone_Num = phone_Num;
+        this.detail = detail;
+        this.post_Create_Date = post_Create_Date;
+        this.post_Modify_Date = post_Modify_Date;
+        this.thumbnail_Img = thumbnail_Img;
+        this.user_ID = user_ID;
+    }
+
     // Modify
     public ReportDto(String report_Date, String report_Place, String kind_Report, String phone_Num, String detail, String post_Modify_Date, String thumbnail_Img, int no) {
         this.report_Date = report_Date;
@@ -53,8 +66,10 @@ public class ReportDto {
         this.no = no;
     }
 
-    //delete & show
-
+    //delete & ShowOne
+    public ReportDto(int no) {
+        this.no = no;
+    }
 
     public ImageIcon getthumbnail_ImgPath() {
         return thumbnail_ImgPath;
@@ -62,10 +77,6 @@ public class ReportDto {
 
     public void setthumbnail_ImgPath(ImageIcon thumbnail_ImgPath) {
         this.thumbnail_ImgPath = thumbnail_ImgPath;
-    }
-
-    public ReportDto(int no) {
-        this.no = no;
     }
 
     public String getReport_Date() {

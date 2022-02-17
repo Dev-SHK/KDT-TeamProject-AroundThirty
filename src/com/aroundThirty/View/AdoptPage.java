@@ -1,231 +1,281 @@
 package com.aroundThirty.View;
 
-import com.aroundThirty.Controller.MainController;
+import com.aroundThirty.model.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.io.Serial;
+import java.util.ArrayList;
 
+import static com.aroundThirty.Resource.BR.*;
 import static com.aroundThirty.Resource.FR.*;
+import static com.aroundThirty.View.MainView.container;
+
 
 public class AdoptPage extends JPanel {
-    JPanel centerPan;
-    JPanel mainPanel;
-    JButton rbtn;
-    GridLayout gridLayout;
-    JScrollPane scrollPane;
+    @Serial
+    private static final long serialVersionUID = 1L;
+    public static ArrayList<JPanel> paneList = new ArrayList<>();
+    public static ArrayList<JButton> btnList = new ArrayList<>();
+    public static ArrayList<JLabel> lblList = new ArrayList<>();
+    AdoptPagingBtn adoptPagingBtn = new AdoptPagingBtn();
+    JPanel centerPanel = new JPanel(new GridLayout(SIZE_ROW, SIZE_COL));    // SIZE_ROW, SIZE_COL로 행열 지정
+    JScrollPane jScrollPane = new JScrollPane(centerPanel);
+
+    static {
+        setDataListPanel(0, 12 + SIZE_ITEM);
+    }
 
     public AdoptPage() {
-        scrollPane = new JScrollPane();
-        gridLayout = new GridLayout(2, 3);
-        mainPanel = new JPanel(gridLayout);
-        centerPan = new JPanel();
-        gridLayout.setVgap(30);
-        gridLayout.setHgap(30);
+        adoptPagingBtn.setBackground(pastelYellow);
+        add(BorderLayout.CENTER, jScrollPane);
+        jScrollPane.setPreferredSize(new Dimension(820, 650));
+        jScrollPane.setBorder(null);
+        jScrollPane.setBackground(pastelYellow);
+        centerPanel.setBackground(pastelYellow);
+        for (int i = 0; i < paneList.size(); i++) {
+            centerPanel.add(paneList.get(i));   // panel에 index를 줘서 변수를 주듯 이름을 매김
+        }
+        add(BorderLayout.SOUTH, adoptPagingBtn);
+        setBackground(pastelYellow);
+    }
 
-        String[] data1 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
-        String[] data2 = {"13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
-        String[] data3 = {"25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"};
-        String[] data4 = {"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"};
-        String[] data5 = {"49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60"};
-        String[] data6 = {"61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72"};
-        String[] data7 = {"73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84"};
-        String[] data8 = {"85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96"};
-        String[] data9 = {"97", "98", "99", "100"};
-
-        int i;
-        for (i = 0; i < data1.length; i++) {
-            mainPanel.add(rbtn = new JButton("입양동물 Page 01 " + i));
-            int finalI = i;
-            rbtn.setPreferredSize(new Dimension(200, 300));
-            rbtn.addMouseListener(new MouseAdapter() {
+    public static void setDataListPanel(int startIndex, int endIndex) { // 버튼과 라벨을 넣어준다.
+        for (int i = 0, dataIdx = startIndex; i < SIZE_ITEM; i++, dataIdx++) {
+            JPanel newPane = new JPanel(null);
+            if (adoptListAll.size() > dataIdx) {   // 데이터의 size가 dataIdx보다 큰 경우에만 통과하는 if문
+                postedPageNum = adoptListAll.get(i).no;    //
+            }
+            if (adoptListAll.size() > dataIdx) {
+                btnList.add(new JButton(imageSetSize(adoptCardDtoList.get(dataIdx).getDefaultImg(), 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+                lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + adoptListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
+            } else if (adoptListAll.size() <= dataIdx) {
+                btnList.add(new JButton(imageSetSize(defaultImg, 150, 150)));
+                lblList.add(new JLabel(""));
+            }
+            btnList.get(i).setBounds(60, 0, 150, 120);   // 위치는 따로 지정 해주지 않고 크기만 지정 해줌
+            lblList.get(i).setBounds(60, 120, 150, 20);  // 위치는 따로 지정 해주지 않고 크기만 지정 해줌
+            newPane.add(btnList.get(i));
+            newPane.add(lblList.get(i));
+            newPane.setBackground(pastelYellow);
+            paneList.add(newPane);
+            int finali = i;
+            btnList.get(i).addActionListener(new ActionListener() {
                 @Override
-                public void mouseEntered(MouseEvent e) {
-                    JButton jButton = (JButton) e.getSource();
-                    jButton.setText("마우스 오버 테스트");
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-                    JButton jButton = (JButton) e.getSource();
-                    jButton.setText("입양동물 사진 - 메인" + finalI);
-
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource() instanceof JButton) { // e.getsource로 받아온 객체가 JButton의 상속을 받으면 true 반환
+                        // instanceof : 객체타입을 확인하는 연산자로 형변환 가능 여부를 확인하며 true, false 로 반환 주로 상속관계에서 부모객체인지 자식객체인지 확인하는데 사용
+                        JButton btn = (JButton) e.getSource();   // e.getsource로 받아온 객체의 속성을 btn에 담는다.
+                        selectBtnNum = adoptCardDtoList.get(finali).getNo();   // 현재 페이지에서 선택한 게시물의 번호를 가져옴(12개 중 선택한 버튼의 idx)
+                        adopt_Posted_ListIdx = (adopt_PageNum * 12) + adoptCardDtoList.get(finali).getNo();    // ArrayList에서 데이터를 받아올 수 있도록 선택한 게시물의 인덱스를 만들어 줌
+                        int choose_PostedPage_Num = adoptListAll.get(adopt_Posted_ListIdx).no;   // 선택한 게시물에 대한 no를 담는 변수
+                        adoptDto = AdoptDao.adoptSelectOne(new AdoptDto(choose_PostedPage_Num));
+                        adopt_Right_Panel.adoptPlaceVal.setText(adoptDto.adopt_Place);
+                        adopt_Right_Panel.adoptPlaceTxt.setText(adoptDto.adopt_Place);
+                        adopt_Right_Panel.adoptKindVal.setText(adoptDto.kind_Adopt);
+                        adopt_Right_Panel.adoptKindTxt.setText(adoptDto.kind_Adopt);
+                        adopt_Right_Panel.adoptNumVal.setText(adoptDto.phone_Num);
+                        adopt_Right_Panel.adoptNumTxt.setText(adoptDto.phone_Num);
+                        adopt_Right_Panel.postDtVal.setText(adoptDto.post_Create_Date);
+                        adopt_Right_Panel.postDtTxt.setText(adoptDto.post_Create_Date);
+                        adopt_Right_Panel.modifyDtVal.setText(adoptDto.post_Modify_Date);
+                        adopt_Right_Panel.modifyDtTxt.setText(adoptDto.post_Modify_Date);
+                        adopt_Right_Panel.adoptDetail.setText(adoptDto.detail);
+                        adopt_Right_Panel.adoptDetailTxt.setText(adoptDto.detail);
+                        adopt_Right_Panel.imgPath = adoptDto.thumbnail_Img;
+                        ImageIcon imgIcon = new ImageIcon(adopt_Right_Panel.imgPath); // 이미지를 담음
+                        adopt_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+                        if (click) {
+                            adopt_Right_Panel.setVisible(true);
+                        }
+                        container.revalidate();
+                        container.repaint();
+                        btn.removeActionListener(null);
+                    }
                 }
             });
-            
         }
-        JPanel buttonPane = new JPanel();
-        JButton btn1 = new JButton("1");
-        btn1.addActionListener(new ActionListener() {
+
+        adopt_ModifyBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data1.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 01 " + i));
+                String act = e.getActionCommand();
+                if (act.equals("수정")) {
+                    cardLayout.next(adopt_Right_Top_Panel.switchPanel);
+                    cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
+                    cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
+                    adopt_AddFile.setEnabled(true);
                 }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
-
-                revalidate();
-                repaint();
             }
         });
-        buttonPane.add(btn1);
 
-
-        JButton btn2 = new JButton("2");
-        btn2.addActionListener(new ActionListener() {
+        adopt_PostBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data2.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 02 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
+                String act = e.getActionCommand();
+                if (act.equals("완료")) {
+                    int result = JOptionPane.showConfirmDialog(null, "게시글을 수정 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.CLOSED_OPTION) {
+                        adopt_AddFile.setEnabled(false);
+                    } else if (result == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        cardLayout.next(adopt_Right_Top_Panel.switchPanel);
+                        cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
 
-                revalidate();
-                repaint();
+                        String madoptPlace = adopt_Right_Panel.adoptPlaceTxt.getText();
+                        String mKind_adopt = adopt_Right_Panel.adoptKindTxt.getText();
+                        String madoptNum = adopt_Right_Panel.adoptNumTxt.getText();
+                        String mModifyDt = now.toString();
+                        String mThumbNail;
+                        String mDetail = adopt_Right_Panel.adoptDetailTxt.getText();
+
+                        if (addImgPath == null) {    // 썸네일을 새로 첨부하지 않은 경우에 대한 IF문
+                            mThumbNail = adoptDto.getThumbnail_Img();
+                        } else {
+                            mThumbNail = addImgPath;
+                        }
+
+                        adoptDto.setAdopt_Place(madoptPlace);
+                        adoptDto.setKind_Adopt(mKind_adopt);
+                        adoptDto.setPhone_Num(madoptNum);
+                        adoptDto.setPost_Modify_Date(mModifyDt);
+                        adoptDto.setThumbnail_Img(mThumbNail);
+                        adoptDto.setDetail(mDetail);
+
+                        adopt_Right_Panel.adoptPlaceVal.setText(adoptDto.adopt_Place);
+                        adopt_Right_Panel.adoptPlaceTxt.setText(adoptDto.adopt_Place);
+                        adopt_Right_Panel.adoptKindVal.setText(adoptDto.kind_Adopt);
+                        adopt_Right_Panel.adoptKindTxt.setText(adoptDto.kind_Adopt);
+                        adopt_Right_Panel.adoptNumVal.setText(adoptDto.phone_Num);
+                        adopt_Right_Panel.adoptNumTxt.setText(adoptDto.phone_Num);
+                        adopt_Right_Panel.postDtVal.setText(adoptDto.post_Create_Date);
+                        adopt_Right_Panel.postDtTxt.setText(adoptDto.post_Create_Date);
+                        adopt_Right_Panel.modifyDtVal.setText(adoptDto.post_Modify_Date);
+                        adopt_Right_Panel.modifyDtTxt.setText(adoptDto.post_Modify_Date);
+                        adopt_Right_Panel.adoptDetail.setText(adoptDto.detail);
+                        adopt_Right_Panel.adoptDetailTxt.setText(adoptDto.detail);
+                        adopt_Right_Panel.imgPath = adoptDto.thumbnail_Img;
+                        ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
+                        adopt_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
+
+                        AdoptDao.adoptModify(new AdoptDto(madoptPlace, mKind_adopt, madoptNum, mDetail, mModifyDt, mThumbNail, adoptDto.getNo()));
+
+
+                        if (click) {
+                            adopt_Right_Panel.setVisible(true);
+                        }
+
+                        resetAdoptModifyData(); // 데이터 초기화
+                        AdoptPage.setAdoptDataListPage(adopt_StartIndex, adopt_StartIndex + 12);
+                        adopt_AddFile.setEnabled(false);
+
+                    } else if (result == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        cardLayout.next(adopt_Right_Top_Panel.switchPanel);
+                        cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
+                        adopt_AddFile.setEnabled(false);
+                    }
+                }
             }
         });
-        buttonPane.add(btn2);
 
-        JButton btn3 = new JButton("3");
-        btn3.addActionListener(new ActionListener() {
+        adopt_DeleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data3.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 03 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
+                String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
+                ImageIcon defaultImg = new ImageIcon(defaultImgPath);
+                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                // 게시글 삭제 여부를 사용자에게 묻는 이벤트
+                if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
+                } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
+                    JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
+                    AdoptDao.adoptDelete(new AdoptDto(adoptDto.getNo()));
+                    adopt_Right_Panel.setVisible(false);
+                    resetAdoptDeleteData(); // 데이터 초기화
+                    AdoptPage.setAdoptDataListPage(adopt_StartIndex, adopt_StartIndex + 12);
 
-                revalidate();
-                repaint();
+                    click = true;
+                    // 삭제 쿼리 돌려야함
+                } else { //사용자가 No를 선택한 경우
+                }
             }
         });
-        buttonPane.add(btn3);
 
-        JButton btn4 = new JButton("4");
-        btn4.addActionListener(new ActionListener() {
+        adopt_WriteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data4.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 04 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
-
-                revalidate();
-                repaint();
             }
         });
-        buttonPane.add(btn4);
 
-        JButton btn5 = new JButton("5");
-        btn5.addActionListener(new ActionListener() {
+        adopt_AddFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data5.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 05 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
-
-                revalidate();
-                repaint();
+                add_File_Window = new AddFileWindow();
             }
         });
-        buttonPane.add(btn5);
+    }
 
-        JButton btn6 = new JButton("6");
-        btn6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data6.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 06 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
 
-                revalidate();
-                repaint();
+    public static void setAdoptDataListPage(int adopt_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
+        for (int i = 0, dataIdx = adopt_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
+            if (adoptListAll.size() > dataIdx) {
+                postedPageNum = adoptListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
+                btnList.get(i).setIcon(imageSetSize(adoptCardDtoList.get(dataIdx).getDefaultImg(), 150, 120));
+                lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + adoptListAll.get(dataIdx).post_Create_Date);
+            } else if (adoptListAll.size() <= dataIdx) {
+                btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+                lblList.get(i).setText("");
             }
-        });
-        buttonPane.add(btn6);
+        }
+    }
 
-        JButton btn7 = new JButton("7");
-        btn7.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data7.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 07 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
-
-                revalidate();
-                repaint();
+    public static void resetAdoptModifyData() {
+        for (int i = 0; i < SIZE_ITEM; i++) {
+            btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+            lblList.get(i).setText("");
+        }
+        adoptListAll = AdoptDao.adoptSelectAll();
+        for (AdoptDto Dto : adoptListAll) {
+            adoptDto = Dto;
+        }
+        int adoptListIdx = adoptCardDtoList.size();
+        for (int i = 0; i < adoptListIdx; i++) {
+            adoptCardDtoList.remove(0);
+        }
+        for (int i = 0; i < adoptListAll.size(); i++) {
+            ImageIcon thumbnailImg = new ImageIcon(adoptListAll.get(i).thumbnail_Img);
+            if (adoptListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+                adoptCardDto = new AdoptCardDto(defaultImg, i);
+                adoptCardDtoList.add(adoptCardDto);
+            } else {
+                adoptCardDto = new AdoptCardDto(thumbnailImg, i);
+                adoptCardDtoList.add(adoptCardDto);
             }
-        });
-        buttonPane.add(btn7);
+        }
+    }
 
-        JButton btn8 = new JButton("8");
-        btn8.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data8.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 08 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
-
-                revalidate();
-                repaint();
+    public static void resetAdoptDeleteData() {
+        for (int i = 0; i < SIZE_ITEM; i++) {
+            btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
+            lblList.get(i).setText("");
+        }
+        adoptListAll = AdoptDao.adoptSelectAll();
+        for (AdoptDto Dto : adoptListAll) {
+            adoptDto = Dto;
+        }
+        for (int i = 0; i < adoptListAll.size(); i++) {
+            ImageIcon img = new ImageIcon(adoptListAll.get(i).thumbnail_Img);
+            if (adoptListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+                adoptCardDto = new AdoptCardDto(defaultImg, i);
+                adoptCardDtoList.set(i, adoptCardDto);
+            } else {
+                adoptCardDto = new AdoptCardDto(img, i);
+                adoptCardDtoList.set(i, adoptCardDto);
             }
-        });
-        buttonPane.add(btn8);
-
-        JButton btn9 = new JButton("9");
-        btn9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainPanel.removeAll();
-                for (int i = 0; i < data9.length; i++) {
-                    mainPanel.add(rbtn = new JButton("입양동물 Page 09 " + i));
-                }
-                rbtn.setPreferredSize(new Dimension(200, 300));
-                
-
-                revalidate();
-                repaint();
-            }
-        });
-        buttonPane.add(btn9);
-
-        buttonPane.setBackground(pastelYellow);
-
-        scrollPane.add(mainPanel);
-        scrollPane.setViewportView(mainPanel);
-        scrollPane.setBorder(null);
-        scrollPane.setOpaque(false);
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-//        mainPanel.setPreferredSize(new Dimension(300, 1500));
-        mainPanel.getPreferredSize();
-        mainPanel.setBackground(pastelYellow);
-        scrollPane.getHorizontalScrollBar().setUnitIncrement(20);
-        setLayout(new BorderLayout());
-
-        add(scrollPane, BorderLayout.CENTER);
-        add(buttonPane, BorderLayout.SOUTH);
+        }
     }
 }

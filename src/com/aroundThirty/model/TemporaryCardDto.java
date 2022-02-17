@@ -2,21 +2,12 @@ package com.aroundThirty.model;
 
 import javax.swing.*;
 
-public class ReportCardDto {
+public class TemporaryCardDto {
     private int no;
     private ImageIcon defaultImg;
 
-
-    public ReportCardDto(ImageIcon defaultImg, int no) {
+    public TemporaryCardDto(ImageIcon defaultImg, int no) {
         this.defaultImg = defaultImg;
-        this.no = no;
-    }
-
-    public int getNo() {
-        return no;
-    }
-
-    public void setNo(int no) {
         this.no = no;
     }
 
@@ -27,4 +18,13 @@ public class ReportCardDto {
     public void setDefaultImg(ImageIcon defaultImg) {
         this.defaultImg = defaultImg;
     }
+
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
 }

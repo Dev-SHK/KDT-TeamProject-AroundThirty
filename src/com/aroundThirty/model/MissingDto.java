@@ -12,6 +12,19 @@ public class MissingDto {
     public String user_ID = null; // 계정 정보
     public int no = 0; // Primary Key
 
+    // Change Insert
+    public MissingDto(String missing_Date, String missing_Place, String kind_Missing, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date, String thumbnail_Img, String user_ID) {
+        this.missing_Date = missing_Date;
+        this.missing_Place = missing_Place;
+        this.kind_Missing = kind_Missing;
+        this.phone_Num = phone_Num;
+        this.detail = detail;
+        this.post_Create_Date = post_Create_Date;
+        this.post_Modify_Date = post_Modify_Date;
+        this.thumbnail_Img = thumbnail_Img;
+        this.user_ID = user_ID;
+    }
+
     // insert
     public MissingDto(String missing_Date, String missing_Place, String kind_Missing, String phone_Num, String detail, String post_Create_Date, String thumbnail_Img, String user_ID) {
         this.missing_Date = missing_Date;
@@ -39,7 +52,7 @@ public class MissingDto {
     }
 
     // modify
-    public MissingDto(String missing_Date, String missing_Place, String kind_Missing, String phone_Num, String detail, String post_Modify_Date, String thumbnail_Img) {
+    public MissingDto(String missing_Date, String missing_Place, String kind_Missing, String phone_Num, String detail, String post_Modify_Date, String thumbnail_Img, int no) {
         this.missing_Date = missing_Date;
         this.missing_Place = missing_Place;
         this.kind_Missing = kind_Missing;
@@ -47,6 +60,7 @@ public class MissingDto {
         this.detail = detail;
         this.post_Modify_Date = post_Modify_Date;
         this.thumbnail_Img = thumbnail_Img;
+        this.no = no;
     }
 
     // delete

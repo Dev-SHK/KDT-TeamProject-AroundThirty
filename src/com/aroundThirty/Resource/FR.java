@@ -1,17 +1,10 @@
 package com.aroundThirty.Resource;
 
-import com.aroundThirty.Controller.AdoptController;
-import com.aroundThirty.Controller.ReportController;
-import com.aroundThirty.Controller.SearchController;
-import com.aroundThirty.Controller.XmlController;
+import com.aroundThirty.Controller.*;
 import com.aroundThirty.View.*;
-import com.aroundThirty.model.AdoptCardDto;
-import com.aroundThirty.model.ReportCardDto;
-import com.aroundThirty.model.XmlCardDto;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -19,6 +12,8 @@ public class FR {
 
     static {
         new ReportController();
+        new MissingController();
+        new TemporaryController();
         new AdoptController();
         new XmlController();
 //        new SearchController();
@@ -86,14 +81,15 @@ public class FR {
     public static String[] dogAndCat = {"개", "고양이"};
     public static JComboBox<String> kindCombo = new JComboBox<>(dogAndCat);
 
-    public static String[] Boader = {"발견했어요", "잃어버렸어요", "보호중이에요", "새 가족을 찾아요"};
-    public static JComboBox<String> BoaderCombo = new JComboBox<>(Boader);
+    public static String[] report_Boader = {"발견했어요", "잃어버렸어요", "보호중이에요"};
+    public static JComboBox<String> report_BoaderCombo = new JComboBox<>(report_Boader);
 
-//    public static String getLocation;
-//    public static String getLocationDetail;
-//    public static String getLocationAll;
-//    public static String getKind;
-//    public static String getGender;
+    public static String[] missing_Boader = {"발견했어요", "잃어버렸어요", "보호중이에요"};
+    public static JComboBox<String> missing_BoaderCombo = new JComboBox<>(missing_Boader);
+
+    public static String[] temporary_Boader = {"발견했어요", "잃어버렸어요", "보호중이에요"};
+    public static JComboBox<String> temporary_BoaderCombo = new JComboBox<>(temporary_Boader);
+
 
     public static String getLocation;
     public static String getLocationDetail;
@@ -134,40 +130,61 @@ public class FR {
     public static final JButton catBTN = new JButton(imageSetSize(catImgIcon, 50, 50));
     public static final JButton dogBTN = new JButton(imageSetSize(dogImgIcon, 50, 50));
     public static final JButton searchBTN = new JButton(imageSetSize(searchImgIcon, 25, 25));
-    public static final JButton addFile = new JButton("파일첨부");
+    public static final JButton report_AddFile = new JButton("파일첨부");
+    public static final JButton missing_AddFile = new JButton("파일첨부");
+    public static final JButton temporary_AddFile = new JButton("파일첨부");
+    public static final JButton adopt_AddFile = new JButton("파일첨부");
+    public static final JButton report_ModifyBtn = new JButton("수정");
+    public static final JButton missing_ModifyBtn = new JButton("수정");
+    public static final JButton temporary_ModifyBtn = new JButton("수정");
+    public static final JButton adopt_ModifyBtn = new JButton("수정");
+    public static final JButton report_DeleteBtn = new JButton("삭제");
+    public static final JButton missing_DeleteBtn = new JButton("삭제");
+    public static final JButton temporary_DeleteBtn = new JButton("삭제");
+    public static final JButton adopt_DeleteBtn = new JButton("삭제");
+    public static final JButton report_WriteBtn = new JButton("새 글 작성");
+    public static final JButton missing_WriteBtn = new JButton("새 글 작성");
+    public static final JButton temporary_WriteBtn = new JButton("새 글 작성");
+    public static final JButton adopt_WriteBtn = new JButton("새 글 작성");
+    public static final JButton report_PostBtn = new JButton("완료");
+    public static final JButton missing_PostBtn = new JButton("완료");
+    public static final JButton temporary_PostBtn = new JButton("완료");
+    public static final JButton adopt_PostBtn = new JButton("완료");
     public static final JTextField idTxtFld = new JTextField(20);
     public static final JPasswordField pwTxtFld = new JPasswordField(20);
-    public static final JButton modifyBtn = new JButton("수정");
-    public static final JButton deleteBtn = new JButton("삭제");
-    public static final JButton writeBtn = new JButton("새 글 작성");
-    public static final JButton postBtn = new JButton("완료");
     public static ArrayList<JButton> btnList = new ArrayList<>();
     public static ArrayList<JLabel> lblList = new ArrayList<>();
     public static Boolean click = true;
     public static CardLayout cardLayout = new CardLayout();
     public static JPanel switchPan;
 
-    public static ReportPage rep = new ReportPage();
-    public static MissingPage mp = new MissingPage();
-    public static AdoptPage ap = new AdoptPage();
-    public static TemporaryPage tep = new TemporaryPage();
+    public static ReportPage report_Page = new ReportPage();
+    public static MissingPage missing_Page = new MissingPage();
+    public static AdoptPage adopt_Page = new AdoptPage();
+    public static TemporaryPage temporary_Page = new TemporaryPage();
     public static SearchPage searchPage = new SearchPage();
 //    public static MainView mv = new MainView();   // MainController와 중첩되는 소스로 전체적인 이벤트가 두번 실행되는 오류가 발생함
-    public static AddFileWindow afw;
+    public static AddFileWindow add_File_Window;
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
 
-    public static CenterPanel cp;
-    public static LeftPanel lp;
-    public static ReportRightPanel rp;
-    public static MainRightPanel mrp;
     public static SearchRightPanel searchRightPanel;
-    public static BottomPanel bp;
-    public static RightTopPanel rtp;
-    public static SearchData sd;
-    public static IntroducePage ip;
-    public static SourcePage sp;
-    public static JTabbedPane tabbedPane;
+    public static CenterPanel center_Panel;
+    public static LeftPanel left_Panel;
+    public static ReportRightPanel report_Right_Panel;
+    public static MissingRightPanel missing_Right_Panel;
+    public static TemporaryRightPanel temporary_Right_Panel;
+    public static AdoptRightPanel adopt_Right_Panel;
+    public static MainRightPanel main_Right_Panel;
+    public static BottomPanel bottom_Panel;
+    public static ReportRightTopPanel report_Right_Top_Panel;
+    public static MissingRightTopPanel missing_Right_Top_Panel;
+    public static TemporaryRightTopPanel temporary_Right_Top_Panel;
+    public static AdoptRightTopPanel adopt_Right_Top_Panel;
+    public static SearchData search_Data;
+    public static IntroducePage introduce_Page;
+    public static SourcePage source_Page;
+    public static JTabbedPane tabbed_Pane;
 
     public static final int SIZE_ROW = 4;
     public static final int SIZE_COL = 3;
@@ -176,6 +193,9 @@ public class FR {
     public static LocalDate now = LocalDate.now();
     public static String addImgPath;
     public static int report_StartIndex;
+    public static int missing_StartIndex;
+    public static int temporary_StartIndex;
+    public static int adopt_StartIndex;
     public static int mpStartIndex;
     public static int searchStartIndex;
 
