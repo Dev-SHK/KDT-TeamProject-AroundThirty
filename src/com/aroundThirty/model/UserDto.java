@@ -42,6 +42,10 @@ public class UserDto {
         this.no = no;
     }
 
+    public UserDto() {
+        
+    }
+
     public String getUser_ID() {
         return user_ID;
     }

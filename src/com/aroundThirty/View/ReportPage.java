@@ -220,6 +220,70 @@ public class ReportPage extends JPanel {
         report_WriteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String act = e.getActionCommand();
+                if (act.equals("새 글 작성")) {
+                    cardLayout.next(report_Right_Top_Panel.switchPanel2);
+                    cardLayout.next(report_Right_Panel.center_North_Top_Panel);
+                    cardLayout.next(report_Right_Panel.center_Center_Center_Panel_Card);
+
+                    report_Right_Panel.reportDtTxt.setText("");
+                    report_Right_Panel.reportPlaceTxt.setText("");
+                    report_Right_Panel.reportKindTxt.setText("");
+                    report_Right_Panel.reportNumTxt.setText("");
+                    report_Right_Panel.postDtTxt.setText("");
+                    report_Right_Panel.reportDetailTxt.setText("");
+                    report_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+
+                    report_AddFile.setEnabled(true);
+                    report_BoaderCombo.setEnabled(true);
+                    report_DeleteBtn.setEnabled(false);
+
+                    resetReportModifyData(); // 데이터 초기화
+                    ReportPage.setReportDataListPage(report_StartIndex, report_StartIndex + 12);
+                }
+            }
+        });
+
+        report_PostBtn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String act = e.getActionCommand();
+                if (act.equals("완료")) {
+                    int confirm = JOptionPane.showConfirmDialog(null, "저장하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "저장되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        cardLayout.next(report_Right_Top_Panel.switchPanel2);
+                        cardLayout.next(report_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(report_Right_Panel.center_Center_Center_Panel_Card);
+
+                        String nReportDt = report_Right_Panel.reportDtTxt.getText();
+                        String nReportPlace = report_Right_Panel.reportPlaceTxt.getText();
+                        String nReportKind = report_Right_Panel.reportKindTxt.getText();
+                        String nReportNum = report_Right_Panel.reportNumTxt.getText();
+                        String nReportDetail = report_Right_Panel.reportDetailTxt.getText();
+                        String nReportPost = now.toString();
+                        String nThumbnailPath;
+                        userDto = new UserDto();
+                        userDto.setUser_ID("ood1208");
+                        UserDto nID = UserDao.userSelectById(userDto);
+                        nID.getUser_ID();
+
+
+                        if (addImgPath == null) {    // 썸네일을 새로 첨부하지 않은 경우에 대한 IF문
+                            nThumbnailPath = missingDto.getThumbnail_Img();
+                        } else {
+                            nThumbnailPath = addImgPath;
+                        }
+
+                        ReportDao.reportInput(new ReportDto(nReportDt, nReportPlace, nReportKind, nReportNum, nReportDetail, nReportPost, nThumbnailPath, nID.getUser_ID()));
+
+                        report_AddFile.setEnabled(true);
+                        report_BoaderCombo.setEnabled(true);
+                        report_DeleteBtn.setEnabled(false);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "취소되었습니다", title, JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
         });
 

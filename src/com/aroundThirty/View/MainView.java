@@ -25,7 +25,7 @@ public class MainView extends MyJFrame {
         setSize(1440, 900);
         setTitle("MainPage");
         setBackground(pastelYellow);
-        setResizable(true);
+        setResizable(false);
         displayLayer();
 
     }
@@ -123,7 +123,7 @@ public class MainView extends MyJFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String id = idTxtFld.getText().trim();
-                String pw = pwTxtFld.getText().trim();
+                String pw = String.valueOf(pwTxtFld.getPassword());
 
                 if (id.equals("admin") && pw.equals("0000")) {
                     int confirm = JOptionPane.showConfirmDialog(null, "로그인 할까요?", title, JOptionPane.YES_NO_OPTION);
