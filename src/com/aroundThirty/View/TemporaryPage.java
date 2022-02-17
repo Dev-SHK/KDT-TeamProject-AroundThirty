@@ -110,13 +110,23 @@ public class TemporaryPage extends JPanel {
         temporary_ModifyBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String act = e.getActionCommand();
-                if (act.equals("수정")) {
-                    cardLayout.next(temporary_Right_Top_Panel.switchPanel);
-                    cardLayout.next(temporary_Right_Panel.center_North_Top_Panel);
-                    cardLayout.next(temporary_Right_Panel.center_Center_Center_Panel_Card);
-                    temporary_AddFile.setEnabled(true);
-                    temporary_BoaderCombo.setEnabled(true);
+                if (signNum == 1){
+                   if (userDto.getUser_ID().equals(temporaryDto.getUserID())){
+                       String act = e.getActionCommand();
+                       if (act.equals("수정")) {
+                           cardLayout.next(temporary_Right_Top_Panel.switchPanel);
+                           cardLayout.next(temporary_Right_Panel.center_North_Top_Panel);
+                           cardLayout.next(temporary_Right_Panel.center_Center_Center_Panel_Card);
+                           temporary_AddFile.setEnabled(true);
+                           temporary_BoaderCombo.setEnabled(true);
+                           temporary_DeleteBtn.setEnabled(false);
+                           temporary_WriteBtn.setEnabled(false);
+                       }
+                   } else {
+                       JOptionPane.showMessageDialog(null, "계정 정보가 일치하지 않습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                   }
+                } else if (signNum == 0){
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -196,6 +206,8 @@ public class TemporaryPage extends JPanel {
                         TemporaryPage.setTemporaryDataListPage(temporary_StartIndex, temporary_StartIndex + 12);
                         temporary_AddFile.setEnabled(false);
                         temporary_BoaderCombo.setEnabled(false);
+                        temporary_DeleteBtn.setEnabled(true);
+                        temporary_WriteBtn.setEnabled(true);
 
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
@@ -204,6 +216,8 @@ public class TemporaryPage extends JPanel {
                         cardLayout.next(temporary_Right_Panel.center_Center_Center_Panel_Card);
                         temporary_AddFile.setEnabled(false);
                         temporary_BoaderCombo.setEnabled(false);
+                        temporary_DeleteBtn.setEnabled(true);
+                        temporary_WriteBtn.setEnabled(true);
                     }
                 }
             }
@@ -212,21 +226,29 @@ public class TemporaryPage extends JPanel {
         temporary_DeleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
-                ImageIcon defaultImg = new ImageIcon(defaultImgPath);
-                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
-                // 게시글 삭제 여부를 사용자에게 묻는 이벤트
-                if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
-                } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
-                    JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
-                    TemporaryDao.temporaryDelete(new TemporaryDto(temporaryDto.getNo()));
-                    temporary_Right_Panel.setVisible(false);
-                    resetTemporaryDeleteData(); // 데이터 초기화
-                    TemporaryPage.setTemporaryDataListPage(temporary_StartIndex, temporary_StartIndex + 12);
+                if (signNum == 1){
+                    if (userDto. getUser_ID().equals(temporaryDto.getUserID())){
+                        String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
+                        ImageIcon defaultImg = new ImageIcon(defaultImgPath);
+                        int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                        // 게시글 삭제 여부를 사용자에게 묻는 이벤트
+                        if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
+                        } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
+                            JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
+                            TemporaryDao.temporaryDelete(new TemporaryDto(temporaryDto.getNo()));
+                            temporary_Right_Panel.setVisible(false);
+                            resetTemporaryDeleteData(); // 데이터 초기화
+                            TemporaryPage.setTemporaryDataListPage(temporary_StartIndex, temporary_StartIndex + 12);
 
-                    click = true;
-                    // 삭제 쿼리 돌려야함
-                } else { //사용자가 No를 선택한 경우
+                            click = true;
+                            // 삭제 쿼리 돌려야함
+                        } else { //사용자가 No를 선택한 경우
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "계정 정보가 일치하지 않습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else if (signNum == 0){
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -234,25 +256,28 @@ public class TemporaryPage extends JPanel {
         temporary_WriteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String act = e.getActionCommand();
-                if (act.equals("새 글 작성")) {
-                    cardLayout.next(temporary_Right_Top_Panel.switchPanel2);
-                    cardLayout.next(temporary_Right_Panel.center_North_Top_Panel);
-                    cardLayout.next(temporary_Right_Panel.center_Center_Center_Panel_Card);
+                if (signNum == 1){
+                    String act = e.getActionCommand();
+                    if (act.equals("새 글 작성")) {
+                        cardLayout.next(temporary_Right_Top_Panel.switchPanel2);
+                        cardLayout.next(temporary_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(temporary_Right_Panel.center_Center_Center_Panel_Card);
 
-                    temporary_Right_Panel.temporaryDtTxt.setText("");
-                    temporary_Right_Panel.temporaryPlaceTxt.setText("");
-                    temporary_Right_Panel.temporaryKindTxt.setText("");
-                    temporary_Right_Panel.temporaryNumTxt.setText("");
-                    temporary_Right_Panel.postDtTxt.setText("");
-                    temporary_Right_Panel.temporaryDetailTxt.setText("");
-                    temporary_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+                        temporary_Right_Panel.temporaryDtTxt.setText("");
+                        temporary_Right_Panel.temporaryPlaceTxt.setText("");
+                        temporary_Right_Panel.temporaryKindTxt.setText("");
+                        temporary_Right_Panel.temporaryNumTxt.setText("");
+                        temporary_Right_Panel.postDtTxt.setText("");
+                        temporary_Right_Panel.temporaryDetailTxt.setText("");
+                        temporary_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
 
-                    temporary_AddFile.setEnabled(true);
-                    temporary_BoaderCombo.setEnabled(false);
-                    temporary_DeleteBtn.setEnabled(false);
-
-
+                        temporary_AddFile.setEnabled(true);
+                        temporary_ModifyBtn.setEnabled(false);
+                        temporary_BoaderCombo.setEnabled(false);
+                        temporary_DeleteBtn.setEnabled(false);
+                    }
+                } else if (signNum == 0){
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -283,8 +308,8 @@ public class TemporaryPage extends JPanel {
                         TemporaryDao.temporaryInput(new TemporaryDto(nTemporaryDt, nTemporaryPlace, nTemporaryKind, nTemporaryNum, nTemporaryDetail, nTemporaryPost, null, nID.getUser_ID()));
 
                         temporary_AddFile.setEnabled(false);
-                        temporary_BoaderCombo.setEnabled(false);
                         temporary_DeleteBtn.setEnabled(true);
+                        temporary_ModifyBtn.setEnabled(true);
 
                         resetTemporaryModifyData(); // 데이터 초기화
                         TemporaryPage.setTemporaryDataListPage(temporary_StartIndex, temporary_StartIndex + 12);

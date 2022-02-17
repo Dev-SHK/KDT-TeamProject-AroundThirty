@@ -24,7 +24,7 @@ public class SignUpPage extends JFrame {
     JPanel phone;
     JPanel email;
 
-    public static int signNum = 0;
+
 
     public SignUpPage() {
 

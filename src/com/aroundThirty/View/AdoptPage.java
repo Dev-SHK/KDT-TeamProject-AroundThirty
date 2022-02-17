@@ -108,13 +108,24 @@ public class AdoptPage extends JPanel {
         adopt_ModifyBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String act = e.getActionCommand();
-                if (act.equals("수정")) {
-                    cardLayout.next(adopt_Right_Top_Panel.switchPanel);
-                    cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
-                    cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
-                    adopt_AddFile.setEnabled(true);
+                if (signNum == 1){
+                    if (userDto.getUser_ID().equals(adoptDto.getUser_ID())){
+                        String act = e.getActionCommand();
+                        if (act.equals("수정")) {
+                            cardLayout.next(adopt_Right_Top_Panel.switchPanel);
+                            cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
+                            cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
+                            adopt_AddFile.setEnabled(true);
+                            adopt_DeleteBtn.setEnabled(false);
+                            adopt_WriteBtn.setEnabled(false);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "계정 정보가 일치하지 않습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else if (signNum == 0){
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
+
             }
         });
 
@@ -180,6 +191,8 @@ public class AdoptPage extends JPanel {
                         resetAdoptModifyData(); // 데이터 초기화
                         AdoptPage.setAdoptDataListPage(adopt_StartIndex, adopt_StartIndex + 12);
                         adopt_AddFile.setEnabled(false);
+                        adopt_DeleteBtn.setEnabled(true);
+                        adopt_WriteBtn.setEnabled(true);
 
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
@@ -187,6 +200,8 @@ public class AdoptPage extends JPanel {
                         cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
                         cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
                         adopt_AddFile.setEnabled(false);
+                        adopt_DeleteBtn.setEnabled(true);
+                        adopt_WriteBtn.setEnabled(true);
                     }
                 }
             }
@@ -195,45 +210,57 @@ public class AdoptPage extends JPanel {
         adopt_DeleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
-                ImageIcon defaultImg = new ImageIcon(defaultImgPath);
-                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
-                // 게시글 삭제 여부를 사용자에게 묻는 이벤트
-                if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
-                } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
-                    JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
-                    AdoptDao.adoptDelete(new AdoptDto(adoptDto.getNo()));
-                    adopt_Right_Panel.setVisible(false);
-                    resetAdoptDeleteData(); // 데이터 초기화
-                    AdoptPage.setAdoptDataListPage(adopt_StartIndex, adopt_StartIndex + 12);
+                if (signNum == 1){
+                    if (userDto.getUser_ID().equals(adoptDto.getUser_ID())){
+                        String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
+                        ImageIcon defaultImg = new ImageIcon(defaultImgPath);
+                        int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                        // 게시글 삭제 여부를 사용자에게 묻는 이벤트
+                        if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
+                        } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
+                            JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
+                            AdoptDao.adoptDelete(new AdoptDto(adoptDto.getNo()));
+                            adopt_Right_Panel.setVisible(false);
+                            resetAdoptDeleteData(); // 데이터 초기화
+                            AdoptPage.setAdoptDataListPage(adopt_StartIndex, adopt_StartIndex + 12);
 
-                    click = true;
-                    // 삭제 쿼리 돌려야함
-                } else { //사용자가 No를 선택한 경우
+                            click = true;
+                            // 삭제 쿼리 돌려야함
+                        } else { //사용자가 No를 선택한 경우
+                        }
+                    } else{
+                        JOptionPane.showMessageDialog(null, "계정 정보가 일치하지 않습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else if (signNum == 0) {
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
+
             }
         });
 
         adopt_WriteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String act = e.getActionCommand();
-                if (act.equals("새 글 작성")) {
-                    cardLayout.next(adopt_Right_Top_Panel.switchPanel2);
-                    cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
-                    cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
+                if (signNum == 1){
+                    String act = e.getActionCommand();
+                    if (act.equals("새 글 작성")) {
+                        cardLayout.next(adopt_Right_Top_Panel.switchPanel2);
+                        cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
 
-                    adopt_Right_Panel.adoptPlaceTxt.setText("");
-                    adopt_Right_Panel.adoptKindTxt.setText("");
-                    adopt_Right_Panel.adoptNumTxt.setText("");
-                    adopt_Right_Panel.postDtTxt.setText("");
-                    adopt_Right_Panel.adoptDetailTxt.setText("");
-                    adopt_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+                        adopt_Right_Panel.adoptPlaceTxt.setText("");
+                        adopt_Right_Panel.adoptKindTxt.setText("");
+                        adopt_Right_Panel.adoptNumTxt.setText("");
+                        adopt_Right_Panel.postDtTxt.setText("");
+                        adopt_Right_Panel.adoptDetailTxt.setText("");
+                        adopt_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
 
-                    adopt_AddFile.setEnabled(true);
-                    adopt_DeleteBtn.setEnabled(false);
-
-
+                        adopt_AddFile.setEnabled(true);
+                        adopt_DeleteBtn.setEnabled(false);
+                        adopt_ModifyBtn.setEnabled(false);
+                    }
+                } else if (signNum == 0){
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -264,6 +291,7 @@ public class AdoptPage extends JPanel {
 
                         adopt_AddFile.setEnabled(false);
                         adopt_DeleteBtn.setEnabled(true);
+                        adopt_ModifyBtn.setEnabled(true);
 
                         resetAdoptModifyData(); // 데이터 초기화
                         AdoptPage.setAdoptDataListPage(adopt_StartIndex, adopt_StartIndex + 12);
