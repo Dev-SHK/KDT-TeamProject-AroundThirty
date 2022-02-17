@@ -22,7 +22,6 @@ public class ReportRightTopPanel extends JPanel {
         switchPanel.add("완료", report_PostBtn);
         switchPanel2.add("새 글 작성", report_WriteBtn);
         switchPanel2.add("완료", report_PostBtn2);
-//        groupPanel.add(report_WriteBtn);
         groupPanel.add(switchPanel);
         groupPanel.add(switchPanel2);
         groupPanel.add(report_DeleteBtn);

@@ -23,7 +23,7 @@ public class TemporaryController {
         }
         for (int i = 0; i < temporaryListAll.size(); i++) {
             ImageIcon img = new ImageIcon(temporaryListAll.get(i).thumbnail_Img);
-            if (temporaryListAll.get(i).thumbnail_Img.equals("(NULL)")) {
+            if (temporaryListAll.get(i).thumbnail_Img == null) {
                 temporaryCardDto = new TemporaryCardDto(defaultImg, i);
                 temporaryCardDtoList.add(temporaryCardDto);
             } else {

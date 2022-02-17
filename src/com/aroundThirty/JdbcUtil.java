@@ -8,11 +8,11 @@ public class JdbcUtil {
     public static Connection getConnection() {
         String protocol = "jdbc:mariadb://";
         String ip = "127.0.0.1";
-        String port = "3306";
-        String db = "catndog";
+        String port = "3307";
+        String db = "solstudy22";
         String url = String.format("%s%s:%s/%s", protocol, ip, port, db);
         String user = "root";
-        String password = "1231!";
+        String password = "1234";
 //        System.out.println("url => " + url);
 
         try {

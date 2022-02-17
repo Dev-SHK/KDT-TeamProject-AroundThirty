@@ -154,6 +154,9 @@ public class FR {
     public static final JButton temporary_PostBtn = new JButton("완료");
     public static final JButton adopt_PostBtn = new JButton("완료");
     public static final JButton report_PostBtn2 = new JButton("완료");
+    public static final JButton missing_PostBtn2 = new JButton("완료");
+    public static final JButton temporary_PostBtn2 = new JButton("완료");
+    public static final JButton adopt_PostBtn2 = new JButton("완료");
     public static final JTextField idTxtFld = new JTextField(20);
     public static final JPasswordField pwTxtFld = new JPasswordField(20);
     public static ArrayList<JButton> btnList = new ArrayList<>();

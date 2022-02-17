@@ -61,6 +61,9 @@ public class MissingRightPanel extends JPanel {
 
 
     public MissingRightPanel() {
+        if (missingDto.getThumbnail_Img() == null){
+            imgLabel = new JLabel(imageSetSize(defaultImg,250,250));
+        }
         missing_Right_Top_Panel = new MissingRightTopPanel();
         setPreferredSize(new Dimension(550, 0));
 

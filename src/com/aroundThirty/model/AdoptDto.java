@@ -23,6 +23,16 @@ public class AdoptDto {
         this.thumbnail_Img = thumbnail_Img;
     }
 
+    public AdoptDto(String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Date, String thumbnail_Img, String user_ID) {
+        this.adopt_Place = adopt_Place;
+        this.kind_Adopt = kind_Adopt;
+        this.phone_Num = phone_Num;
+        this.detail = detail;
+        this.post_Create_Date = post_Create_Date;
+        this.thumbnail_Img = thumbnail_Img;
+        this.user_ID = user_ID;
+    }
+
     // show
     public AdoptDto( String adopt_Place, String kind_Adopt, String phone_Num, String detail, String post_Create_Date, String post_Modify_Date, String thumbnail_Img, String user_ID, int no) {
         this.adopt_Place = adopt_Place;

@@ -7,13 +7,11 @@ import com.aroundThirty.model.XmlDto;
 import javax.swing.*;
 
 import static com.aroundThirty.Resource.BR.*;
+import static com.aroundThirty.Resource.FR.*;
 import static com.aroundThirty.Resource.SearchData.totalArr;
 
 
 public class SearchController {
-    String defaultImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/그림1.png";
-    ImageIcon defaultImg = new ImageIcon(defaultImgPath);
-
 
     public SearchController() {
         xmlDtoListAll = XmlDao.xmlSelectAll();
