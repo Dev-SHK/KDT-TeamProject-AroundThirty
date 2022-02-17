@@ -75,7 +75,7 @@ public class FR {
     public static String[] locationJeju = {"제주시", "서귀포시"};
     public static JComboBox<String> jejuCombo = new JComboBox<>(locationJeju);
 
-    public static String[] gender = {"수컷(M)", "암컷(F)"};
+    public static String[] gender = {"수컷(M)", "암컷(F)", "모름(Q)"};
     public static JComboBox<String> genderCombo = new JComboBox<>(gender);
 
     public static String[] dogAndCat = {"개", "고양이"};
@@ -153,6 +153,7 @@ public class FR {
     public static final JButton missing_PostBtn = new JButton("완료");
     public static final JButton temporary_PostBtn = new JButton("완료");
     public static final JButton adopt_PostBtn = new JButton("완료");
+    public static final JButton report_PostBtn2 = new JButton("완료");
     public static final JTextField idTxtFld = new JTextField(20);
     public static final JPasswordField pwTxtFld = new JPasswordField(20);
     public static ArrayList<JButton> btnList = new ArrayList<>();
@@ -168,7 +169,7 @@ public class FR {
     public static AdoptPage adopt_Page = new AdoptPage();
     public static TemporaryPage temporary_Page = new TemporaryPage();
     public static SearchPage searchPage = new SearchPage();
-//    public static MainView mv = new MainView();   // MainController와 중첩되는 소스로 전체적인 이벤트가 두번 실행되는 오류가 발생함
+    //    public static MainView mv = new MainView();   // MainController와 중첩되는 소스로 전체적인 이벤트가 두번 실행되는 오류가 발생함
     public static AddFileWindow add_File_Window;
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
