@@ -37,6 +37,7 @@ public class MainView extends MyJFrame {
         adopt_Right_Panel = new AdoptRightPanel();
         main_Right_Panel = new MainRightPanel();
         bottom_Panel = new BottomPanel();
+        searchRightPanel = new SearchRightPanel();
         container = getContentPane();
         switchPan = main_Right_Panel;
 

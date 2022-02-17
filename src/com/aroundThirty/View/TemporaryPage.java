@@ -74,7 +74,6 @@ public class TemporaryPage extends JPanel {
                         temporary_Posted_ListIdx = (temporary_PageNum * 12) + temporaryCardDtoList.get(finali).getNo();    // ArrayList에서 데이터를 받아올 수 있도록 선택한 게시물의 인덱스를 만들어 줌
                         int choose_PostedPage_Num = temporaryListAll.get(temporary_Posted_ListIdx).no;   // 선택한 게시물에 대한 no를 담는 변수
                         temporaryDto = TemporaryDao.temporarySelectOne(new TemporaryDto(choose_PostedPage_Num));
-                        System.out.println(temporaryDto);
                         temporary_Right_Panel.temporaryDtVal.setText(temporaryDto.tmp_Date);
                         temporary_Right_Panel.temporaryDtTxt.setText(temporaryDto.tmp_Date);
                         temporary_Right_Panel.temporaryPlaceVal.setText(temporaryDto.tmp_Place);

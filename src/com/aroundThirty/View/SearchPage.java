@@ -101,7 +101,6 @@ public class SearchPage extends JPanel {
                         searchRightPanel.phone_NumDetailLabel.setText(xmlDto.getPhone_Num());
                         searchRightPanel.specialMarkDetailLabel.setText(xmlDto.getSpecialMark());
                         searchRightPanel.processDetailLabel.setText(xmlDto.getProcessState());
-                        System.out.println(finali + "버튼 누름");
                         Image imageDetail = null;
                         try {
                             URL url = new URL(xmlDto.getThumbnail_Img());
@@ -125,9 +124,11 @@ public class SearchPage extends JPanel {
             searchBtnList.get(i).addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    mouseOverPan.setVisible(true);
-                    searchBtnList.get(finalDataIdx).revalidate();
-                    searchBtnList.get(finalDataIdx).repaint();
+                    if (totalArr.size() > finalDataIdx) {
+                        mouseOverPan.setVisible(true);
+                        searchBtnList.get(finalDataIdx).revalidate();
+                        searchBtnList.get(finalDataIdx).repaint();
+                    }
                 }
 
                 @Override
