@@ -7,7 +7,6 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.Serial;
 import java.util.ArrayList;
 
 import static com.aroundThirty.Resource.BR.*;
@@ -17,7 +16,6 @@ import static com.aroundThirty.View.MainView.container;
 
 
 public class MissingPage extends JPanel {
-    @Serial
     private static final long serialVersionUID = 1L;
     public static ArrayList<JPanel> paneList = new ArrayList<>();
     public static ArrayList<JButton> btnList = new ArrayList<>();

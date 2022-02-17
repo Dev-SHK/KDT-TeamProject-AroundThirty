@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.Serial;
 import java.util.ArrayList;
 
 import static com.aroundThirty.Resource.FR.*;
@@ -15,7 +14,6 @@ import static com.aroundThirty.Resource.FR.report_StartIndex;
 
 
 public class ReportPage extends JPanel {
-    @Serial
     private static final long serialVersionUID = 1L;
     public static ArrayList<JPanel> paneList = new ArrayList<>();
     ReportPagingBtn reportPagingBtn = new ReportPagingBtn();

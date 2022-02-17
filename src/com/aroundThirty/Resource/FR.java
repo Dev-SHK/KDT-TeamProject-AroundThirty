@@ -115,6 +115,9 @@ public class FR {
     public static String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
     public static String signbgImgPath = "src/com/aroundThirty/imgFiles/SignUpImage.png";
 
+    public static String dogSoundPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/soundFiles/dog_crying_sound.wav";
+    public static String catSoundPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/soundFiles/cat_crying_sound.wav";
+
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
     public static ImageIcon searchImgIcon = new ImageIcon(searchImgPath);
@@ -167,6 +170,7 @@ public class FR {
     public static AddFileWindow add_File_Window;
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
+    public static SoundClass soundClass;
 
     public static SearchRightPanel searchRightPanel;
     public static CenterPanel center_Panel;
