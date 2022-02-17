@@ -85,7 +85,6 @@ public class AddFileWindow extends JFrame {
             }
             // 파일 복사
             String filePath = path + "/" + name;
-            System.out.println(filePath);
 
             // 파일 읽기
             FileInputStream fis = new FileInputStream(file);

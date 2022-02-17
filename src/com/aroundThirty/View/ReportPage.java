@@ -71,7 +71,6 @@ public class ReportPage extends JPanel {
                         report_Posted_ListIdx = (report_PageNum * 12) + reportCardDtoList.get(finali).getNo();    // ArrayList에서 데이터를 받아올 수 있도록 선택한 게시물의 인덱스를 만들어 줌
                         int choose_PostedPage_Num = reportListAll.get(report_Posted_ListIdx).no;   // 선택한 게시물에 대한 no를 담는 변수
                         reportDto = ReportDao.reportSelectOne(new ReportDto(choose_PostedPage_Num));
-                        System.out.println(reportDto.getThumbnail_Img());
                         report_Right_Panel.reportDtVal.setText(reportDto.report_Date);
                         report_Right_Panel.reportDtTxt.setText(reportDto.report_Date);
                         report_Right_Panel.reportPlaceVal.setText(reportDto.report_Place);
