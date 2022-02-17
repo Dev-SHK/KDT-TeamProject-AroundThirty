@@ -199,6 +199,7 @@ public class FR {
     public static final int SIZE_COL = 3;
     public static final int SIZE_ITEM = SIZE_ROW * SIZE_COL;
 
+    public static int signNum = 0;
     public static LocalDate now = LocalDate.now();
     public static String addImgPath;
     public static int report_StartIndex;

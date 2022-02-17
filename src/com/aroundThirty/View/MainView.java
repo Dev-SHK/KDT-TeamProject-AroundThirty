@@ -125,24 +125,32 @@ public class MainView extends MyJFrame {
                 String id = idTxtFld.getText().trim();
                 String pw = String.valueOf(pwTxtFld.getPassword());
 
-                if (id.equals("admin") && pw.equals("0000")) {
-                    int confirm = JOptionPane.showConfirmDialog(null, "로그인 할까요?", title, JOptionPane.YES_NO_OPTION);
-                    if (confirm == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "로그인 되었어요 :)", title, JOptionPane.INFORMATION_MESSAGE);
-                        loginPage.dispose();
-                        bottom_Panel.groupPanRight.remove(loginMain);
-                        bottom_Panel.groupPanRight.add(logoutMain, 0);
-                        bottom_Panel.revalidate();
-                        bottom_Panel.repaint();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "취소되었어요", title, JOptionPane.INFORMATION_MESSAGE);
-                    }
-                } else if (id.length() == 0 || pw.length() == 0) {
-                    JOptionPane.showMessageDialog(null, "ID와 비밀번호를 입력 해주세요.", title, JOptionPane.ERROR_MESSAGE);
-                } else {
+                userDto = UserDao.userSelectById(new UserDto(id));
+                if (userDto == null){
+                    JOptionPane.showMessageDialog(null, "입력하신 회원정보는 존재하지 않습니다.", title, JOptionPane.ERROR_MESSAGE);
+                    idTxtFld.setText("");
+                    pwTxtFld.setText("");
+                }else{
+                    if (id.equals(userDto.getUser_ID()) && pw.equals(userDto.getUser_PW())) {
+                        int confirm = JOptionPane.showConfirmDialog(null, "로그인 할까요?", title, JOptionPane.YES_NO_OPTION);
+                        if (confirm == JOptionPane.YES_OPTION) {
+                            JOptionPane.showMessageDialog(null, "로그인 되었어요 :)", title, JOptionPane.INFORMATION_MESSAGE);
+                            loginPage.dispose();
+                            bottom_Panel.groupPanRight.remove(loginMain);
+                            bottom_Panel.groupPanRight.add(logoutMain, 0);
+                            bottom_Panel.revalidate();
+                            bottom_Panel.repaint();
+                            signNum = 1;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "취소되었어요", title, JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } else if (id.length() == 0 || pw.length() == 0) {
+                        JOptionPane.showMessageDialog(null, "ID와 비밀번호를 입력 해주세요.", title, JOptionPane.ERROR_MESSAGE);
+                    }else {
                     JOptionPane.showMessageDialog(null, "ID 또는 비밀번호가 맞지 않아요 ㅠㅠ", title, JOptionPane.ERROR_MESSAGE);
                     idTxtFld.setText("");
                     pwTxtFld.setText("");
+                    }
                 }
             }
         });
@@ -179,6 +187,7 @@ public class MainView extends MyJFrame {
                     bottom_Panel.groupPanRight.add(loginMain, 0);
                     bottom_Panel.revalidate();
                     bottom_Panel.repaint();
+                    signNum = 0;
                 } else {
                     JOptionPane.showMessageDialog(null, "취소되었어요.", title, JOptionPane.INFORMATION_MESSAGE);
                 }

@@ -47,10 +47,10 @@ public class MissingPage extends JPanel {
                 postedPageNum = missingListAll.get(i).no;    //
             }
             if (missingListAll.size() > dataIdx) {
-                if (missingListAll.get(dataIdx).getThumbnail_Img() == null){
+                if (missingListAll.get(dataIdx).getThumbnail_Img() == null) {
                     btnList.add(new JButton(imageSetSize(defaultImg, 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
                     lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + missingListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
-                }else{
+                } else {
                     btnList.add(new JButton(imageSetSize(missingCardDtoList.get(dataIdx).getDefaultImg(), 150, 120))); // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
                     lblList.add(new JLabel("[" + postedPageNum + "] " + "작성일 : " + missingListAll.get(dataIdx).post_Create_Date));  // carddatalist클래스의 이미지를 끌고와서 버튼에 넣어줌 근데 12번째 이미지 부터 넣어줌?
                 }
@@ -90,11 +90,11 @@ public class MissingPage extends JPanel {
                         missing_Right_Panel.missingDetail.setText(missingDto.detail);
                         missing_Right_Panel.missingDetailTxt.setText(missingDto.detail);
                         missing_Right_Panel.imgPath = missingDto.thumbnail_Img;
-                        if (missing_Right_Panel.imgPath == null){
-                            missing_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg,250,250));
-                        }else{
+                        if (missing_Right_Panel.imgPath == null) {
+                            missing_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+                        } else {
                             ImageIcon imgIcon = new ImageIcon(missing_Right_Panel.imgPath); // 이미지를 담음
-                            missing_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon,250,250));
+                            missing_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
                         }
                         if (click) {
                             missing_Right_Panel.setVisible(true);
@@ -108,13 +108,23 @@ public class MissingPage extends JPanel {
         missing_ModifyBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String act = e.getActionCommand();
-                if (act.equals("수정")) {
-                    cardLayout.next(missing_Right_Top_Panel.switchPanel);
-                    cardLayout.next(missing_Right_Panel.center_North_Top_Panel);
-                    cardLayout.next(missing_Right_Panel.center_Center_Center_Panel_Card);
-                    missing_AddFile.setEnabled(true);
-                    missing_BoaderCombo.setEnabled(true);
+                if (signNum == 1) {
+                    if (userDto.getUser_ID().equals(missingDto.getUser_ID())) {
+                        String act = e.getActionCommand();
+                        if (act.equals("수정")) {
+                            cardLayout.next(missing_Right_Top_Panel.switchPanel);
+                            cardLayout.next(missing_Right_Panel.center_North_Top_Panel);
+                            cardLayout.next(missing_Right_Panel.center_Center_Center_Panel_Card);
+                            missing_AddFile.setEnabled(true);
+                            missing_BoaderCombo.setEnabled(true);
+                            missing_DeleteBtn.setEnabled(false);
+                            missing_WriteBtn.setEnabled(false);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "계정 정보가 일치하지 않습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else if (signNum == 0) {
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -174,9 +184,9 @@ public class MissingPage extends JPanel {
                             missing_Right_Panel.missingDetail.setText(missingDto.detail);
                             missing_Right_Panel.missingDetailTxt.setText(missingDto.detail);
                             missing_Right_Panel.imgPath = missingDto.thumbnail_Img;
-                            if (missing_Right_Panel.imgPath == null){
+                            if (missing_Right_Panel.imgPath == null) {
                                 missing_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
-                            }else{
+                            } else {
                                 ImageIcon imgIcon = new ImageIcon(mThumbNail); // 이미지를 담음
                                 missing_Right_Panel.imgLabel.setIcon(imageSetSize(imgIcon, 250, 250));
                             }
@@ -195,6 +205,8 @@ public class MissingPage extends JPanel {
                         MissingPage.setMissingDataListPage(missing_StartIndex, missing_StartIndex + 12);
                         missing_AddFile.setEnabled(false);
                         missing_BoaderCombo.setEnabled(false);
+                        missing_DeleteBtn.setEnabled(true);
+                        missing_WriteBtn.setEnabled(true);
 
                     } else if (result == JOptionPane.NO_OPTION) {
                         JOptionPane.showMessageDialog(null, "취소되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
@@ -203,6 +215,8 @@ public class MissingPage extends JPanel {
                         cardLayout.next(missing_Right_Panel.center_Center_Center_Panel_Card);
                         missing_AddFile.setEnabled(false);
                         missing_BoaderCombo.setEnabled(false);
+                        missing_DeleteBtn.setEnabled(true);
+                        missing_WriteBtn.setEnabled(true);
                     }
                 }
             }
@@ -211,21 +225,29 @@ public class MissingPage extends JPanel {
         missing_DeleteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
-                ImageIcon defaultImg = new ImageIcon(defaultImgPath);
-                int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
-                // 게시글 삭제 여부를 사용자에게 묻는 이벤트
-                if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
-                } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
-                    JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
-                    MissingDao.missingDelete(new MissingDto(missingDto.getNo()));
-                    missing_Right_Panel.setVisible(false);
-                    resetMissingDeleteData(); // 데이터 초기화
-                    MissingPage.setMissingDataListPage(missing_StartIndex, missing_StartIndex + 12);
+                if (signNum == 1){
+                    if (userDto.getUser_ID().equals(missingDto.getUser_ID())){
+                        String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
+                        ImageIcon defaultImg = new ImageIcon(defaultImgPath);
+                        int result = JOptionPane.showConfirmDialog(null, "게시글을 삭제 하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
+                        // 게시글 삭제 여부를 사용자에게 묻는 이벤트
+                        if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
+                        } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
+                            JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
+                            MissingDao.missingDelete(new MissingDto(missingDto.getNo()));
+                            missing_Right_Panel.setVisible(false);
+                            resetMissingDeleteData(); // 데이터 초기화
+                            MissingPage.setMissingDataListPage(missing_StartIndex, missing_StartIndex + 12);
 
-                    click = true;
-                    // 삭제 쿼리 돌려야함
-                } else { //사용자가 No를 선택한 경우
+                            click = true;
+                            // 삭제 쿼리 돌려야함
+                        } else { //사용자가 No를 선택한 경우
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "계정 정보가 일치하지 않습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else if (signNum == 0){
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -233,23 +255,28 @@ public class MissingPage extends JPanel {
         missing_WriteBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String act = e.getActionCommand();
-                if (act.equals("새 글 작성")) {
-                    cardLayout.next(missing_Right_Top_Panel.switchPanel2);
-                    cardLayout.next(missing_Right_Panel.center_North_Top_Panel);
-                    cardLayout.next(missing_Right_Panel.center_Center_Center_Panel_Card);
+                if (signNum == 1) {
+                    String act = e.getActionCommand();
+                    if (act.equals("새 글 작성")) {
+                        cardLayout.next(missing_Right_Top_Panel.switchPanel2);
+                        cardLayout.next(missing_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(missing_Right_Panel.center_Center_Center_Panel_Card);
 
-                    missing_Right_Panel.missingDtTxt.setText("");
-                    missing_Right_Panel.missingPlaceTxt.setText("");
-                    missing_Right_Panel.missingKindTxt.setText("");
-                    missing_Right_Panel.missingNumTxt.setText("");
-                    missing_Right_Panel.postDtTxt.setText("");
-                    missing_Right_Panel.missingDetailTxt.setText("");
-                    missing_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
+                        missing_Right_Panel.missingDtTxt.setText("");
+                        missing_Right_Panel.missingPlaceTxt.setText("");
+                        missing_Right_Panel.missingKindTxt.setText("");
+                        missing_Right_Panel.missingNumTxt.setText("");
+                        missing_Right_Panel.postDtTxt.setText("");
+                        missing_Right_Panel.missingDetailTxt.setText("");
+                        missing_Right_Panel.imgLabel.setIcon(imageSetSize(defaultImg, 250, 250));
 
-                    report_AddFile.setEnabled(true);
-                    report_BoaderCombo.setEnabled(false);
-                    report_DeleteBtn.setEnabled(false);
+                        missing_AddFile.setEnabled(true);
+                        missing_ModifyBtn.setEnabled(false);
+                        missing_BoaderCombo.setEnabled(false);
+                        missing_DeleteBtn.setEnabled(false);
+                    }
+                } else if (signNum == 0){
+                    JOptionPane.showMessageDialog(null, "로그인이 필요합니다.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -280,8 +307,8 @@ public class MissingPage extends JPanel {
                         MissingDao.missingInput(new MissingDto(nMissingDt, nMissingPlace, nMissingKind, nMissingNum, nMissingDetail, nMissingPost, null, nID.getUser_ID()));
 
                         missing_AddFile.setEnabled(false);
-                        missing_BoaderCombo.setEnabled(false);
                         missing_DeleteBtn.setEnabled(true);
+                        missing_ModifyBtn.setEnabled(true);
 
                         resetMissingModifyData(); // 데이터 초기화
                         MissingPage.setMissingDataListPage(missing_StartIndex, missing_StartIndex + 12);
@@ -302,11 +329,10 @@ public class MissingPage extends JPanel {
     }
 
 
-
     public static void setMissingDataListPage(int missing_StartIndex, int endIndex) {  // 버튼과 라벨에 데이터를 넣어준다.
         for (int i = 0, dataIdx = missing_StartIndex; i < SIZE_ITEM; i++, dataIdx++) {
             if (missingListAll.size() > dataIdx) {
-                if (missingListAll.get(dataIdx).getThumbnail_Img() == null){
+                if (missingListAll.get(dataIdx).getThumbnail_Img() == null) {
                     postedPageNum = missingListAll.get(dataIdx).no;  // 게시물에 대한 번호를 반복문을 통해 전달함
                     btnList.get(i).setIcon(imageSetSize(defaultImg, 150, 120));
                     lblList.get(i).setText("[" + postedPageNum + "] " + "작성일 : " + missingListAll.get(dataIdx).post_Create_Date);

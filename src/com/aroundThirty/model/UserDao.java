@@ -120,9 +120,13 @@ public class UserDao {
             pstmt.setString(1, userDto.getUser_ID());
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                int no = rs.getInt(1);
-                String User_ID = rs.getString(2);
-                apdto = new UserDto(User_ID);
+                String user_ID = rs.getString(2);
+                String user_PW = rs.getString(3);
+                String user_Name = rs.getString(4);
+                String user_Num = rs.getString(6);
+                String user_Email = rs.getString(7);
+                int user_Authority = rs.getInt(8);
+                apdto = new UserDto(user_ID, user_PW, user_Name, user_Num, user_Email, user_Authority);
             }
         } catch (SQLException e) {
             e.printStackTrace();
