@@ -1,5 +1,7 @@
 package com.aroundThirty.model;
 
+import javax.swing.*;
+
 public class UserDto {
     // User_Info
     private String user_ID = null; // 계정 정보
@@ -8,30 +10,25 @@ public class UserDto {
     private String user_Gender = null; // 성별
     private String user_Num = null; // 전화번호
     private String user_Email = null; // 이메일
-    private String user_Athority = null; // 권한
+    private int user_Authority = 0; // 권한
     private int no = 0; // Primary Key
 
+    // userSelectById
     public UserDto(String user_ID) {
         this.user_ID = user_ID;
     }
 
-    public UserDto(String user_ID, String user_PW) {
-        this.user_ID = user_ID;
-        this.user_PW = user_PW;
-    }
-
-    // Insert
-    public UserDto(String user_ID, String user_PW, String user_Name, String user_Gender, String user_Num, String user_Email, String user_Athority) {
+    // userInput
+    public UserDto(String user_ID, String user_PW, String user_Name, String user_Num, String user_Email, int user_Authority) {
         this.user_ID = user_ID;
         this.user_PW = user_PW;
         this.user_Name = user_Name;
-        this.user_Gender = user_Gender;
         this.user_Num = user_Num;
         this.user_Email = user_Email;
-        this.user_Athority = user_Athority;
+        this.user_Authority = user_Authority;
     }
 
-    // Modify
+    // userModify
     public UserDto(String user_PW, String user_Name, String user_Gender, String user_Num, String user_Email) {
         this.user_PW = user_PW;
         this.user_Name = user_Name;
@@ -40,7 +37,7 @@ public class UserDto {
         this.user_Email = user_Email;
     }
 
-    // Delete
+    // userDelete
     public UserDto(int no) {
         this.no = no;
     }
@@ -93,12 +90,12 @@ public class UserDto {
         this.user_Email = user_Email;
     }
 
-    public String getUser_Athority() {
-        return user_Athority;
+    public int getUser_Authority() {
+        return user_Authority;
     }
 
-    public void setUser_Athority(String user_Athority) {
-        this.user_Athority = user_Athority;
+    public void setUser_Authority(int user_Authority) {
+        this.user_Authority = user_Authority;
     }
 
     public int getNo() {
@@ -111,6 +108,6 @@ public class UserDto {
 
     @Override
     public String toString() {
-        return user_ID + " " + user_PW + " " + user_Name + " " + user_Gender + " " + user_Num + " " + user_Email + " " + user_Athority + " " + no;
+        return user_ID + " " + user_PW + " " + user_Name + " " + user_Gender + " " + user_Num + " " + user_Email + " " + user_Authority + " " + no;
     }
 }

@@ -1,42 +1,30 @@
 package com.aroundThirty.View;
 
-
-
 import javax.swing.*;
-
-
-
 import java.lang.String;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
-
 import javax.swing.border.EmptyBorder;
-
-import static com.aroundThirty.Resource.FR.*;
-//import static com.aroundThirty.xmlDao.*;
-//import static com.aroundThirty.xnlDto.*;
-import com.aroundThirty.JdbcUtil;
 import com.aroundThirty.model.UserDao;
 import com.aroundThirty.model.UserDto;
-
+import static com.aroundThirty.Resource.FR.*;
+import static com.aroundThirty.Resource.BR.*;
 
 public class SignUpPage extends JFrame {
 
+    JPanel contentPane;
+    JPanel lblJoin;
+    JButton joinCompleteBtn;
+    JButton cancelBtn;
+    JPanel id;
+    JButton lblidcfBtn;
+    JPanel password;
+    JPanel name;
+    JPanel phone;
+    JPanel email;
 
-
-     JPanel contentPane;
-     JPanel lblJoin;
-     JButton joinCompleteBtn;
-     JButton cancelBtn;
-     JPanel id;
-     JButton lblidcfBtn;
-     JPanel password;
-     JPanel name;
-     JPanel email;
-     JPanel phone;
-
-    private boolean SignUpPage = false;
+    public static int signNum = 0;
 
     public SignUpPage() {
 
@@ -60,15 +48,14 @@ public class SignUpPage extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-
         JPanel lblJoinPan = new JPanel();
-        lblJoinPan.add(new JLabel("회원가입"));
-        Font f1 = new Font("나눔고딕체", Font.BOLD, 350);
-        lblJoinPan.setFont(f1);
-        lblJoinPan.setBounds(159, 41, 101, 20);
+        JLabel signlbl = new JLabel("회원가입");
+        lblJoinPan.add(signlbl);
+        Font f1 = new Font("돋움체", Font.BOLD, 40);
+        signlbl.setFont(f1);
+        lblJoinPan.setBounds(109, 41, 201, 50);
         lblJoinPan.setOpaque(false);
         contentPane.add(lblJoinPan);
-
 
         JPanel labelPan = new JPanel();
         labelPan.add(new JLabel("ID"));
@@ -88,7 +75,6 @@ public class SignUpPage extends JFrame {
         contentPane.add(pw);
         lblPWPan.setOpaque(false);
 
-
         JPanel lblNamePan = new JPanel();
         lblNamePan.add(new JLabel("NAME"));
         lblNamePan.setBounds(45, 210, 90, 20);
@@ -98,27 +84,26 @@ public class SignUpPage extends JFrame {
         contentPane.add(name);
         lblNamePan.setOpaque(false);
 
-
-        JPanel lblEmailPan = new JPanel();
-        lblEmailPan.add(new JLabel("E-mail"));
-        lblEmailPan.setBounds(45, 257, 90, 20);
-        contentPane.add(lblEmailPan);
-        JTextField email = new JTextField(20);
-        email.setBounds(125, 250, 180, 35);
-        contentPane.add(email);
-        lblEmailPan.setOpaque(false);
-
         JPanel lblPhonePan = new JPanel();
         lblPhonePan.add(new JLabel("PHONE"));
-        lblPhonePan.setBounds(45, 304, 90, 20);
+        lblPhonePan.setBounds(45, 257, 90, 20);
         contentPane.add(lblPhonePan);
         JTextField phone = new JTextField(15);
-        phone.setBounds(125, 297, 180, 35);
+        phone.setBounds(125, 250, 180, 35);
         contentPane.add(phone);
         lblPhonePan.setOpaque(false);
 
+        JPanel lblEmailPan = new JPanel();
+        lblEmailPan.add(new JLabel("E-mail"));
+        lblEmailPan.setBounds(45, 304, 90, 20);
+        contentPane.add(lblEmailPan);
+        JTextField email = new JTextField(20);
+        email.setBounds(125, 297, 180, 35);
+        contentPane.add(email);
+        lblEmailPan.setOpaque(false);
+
         lblidcfBtn = new JButton("ID 확인");
-        lblidcfBtn.setBounds(345,113,80,20);
+        lblidcfBtn.setBounds(345, 113, 80, 20);
         contentPane.add(lblidcfBtn);
         lblidcfBtn.setBackground(Color.ORANGE);
 
@@ -141,50 +126,57 @@ public class SignUpPage extends JFrame {
                 String label = id.getText();
                 String lblPW = new String(pw.getPassword());
                 String lblName = name.getText();
-                String lblEmail = email.getText();
                 String lblPhone = phone.getText();
+                String lblEmail = email.getText();
 
-
-                if (id.getText().trim().length() == 0 || id.getText().trim().equals("아이디")) {
-                    JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
+                if (id.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요.", title, JOptionPane.WARNING_MESSAGE);
                     id.grabFocus();
                     return;
 
-                }
-
-                if (pw.getPassword() == null) {
-                    JOptionPane.showMessageDialog(null, "비밀번호를 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
-                    password.grabFocus();
+                } else if (pw.getPassword() == null) {
+                    JOptionPane.showMessageDialog(null, "비밀번호를 입력해 주세요.", title, JOptionPane.WARNING_MESSAGE);
+                    pw.grabFocus();
                     return;
-                }
 
-                if (name.getText().trim().length() == 0 || name.getText().trim().equals("이름")) {
-                    JOptionPane.showMessageDialog(null, "이름을 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
+                } else if (name.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "이름을 입력해 주세요.", title, JOptionPane.WARNING_MESSAGE);
                     name.grabFocus();
                     return;
-                }
 
-                if (email.getText().trim().length() == 0 || email.getText().trim().equals("이메일")) {
-                    JOptionPane.showMessageDialog(null, "e-mail 을 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
+                } else if (phone.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "휴대폰 을 입력해 주세요.", title, JOptionPane.WARNING_MESSAGE);
+                    phone.grabFocus();
+                    return;
+
+                } else if (email.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "e-mail 을 입력해 주세요.", title, JOptionPane.WARNING_MESSAGE);
                     email.grabFocus();
                     return;
                 }
+                if (signNum == 1) {
 
-                if (phone.getText().trim().length() == 0 || phone.getText().trim().equals("휴대폰")) {
-                    JOptionPane.showMessageDialog(null, "휴대폰 을 입력해 주세요.", "귀엽개 앙큼하냥", JOptionPane.WARNING_MESSAGE);
-                    phone.grabFocus();
-                    return;
+                    String nId = id.getText();
+                    String nPw = String.valueOf(pw.getPassword());
+                    String nName = name.getText();
+                    String nPhone = phone.getText();
+                    String nEmail = email.getText();
+                    int nAuth = 1;
+
+                    userDto = new UserDto(nId, nPw, nName, nPhone, nEmail, nAuth);
+                    UserDao.userInput(userDto);
+
+                    JOptionPane.showMessageDialog(null, "회원가입이 완료 되었습니다!", title, JOptionPane.INFORMATION_MESSAGE);
+
+                    dispose();
+                    signNum = 0;
+                }else {
+                    JOptionPane.showMessageDialog(null,"아이디 중복 확인을 해주세요!",title,JOptionPane.WARNING_MESSAGE);
                 }
-
-
-                SignUpPage = true;
-
-                JOptionPane.showMessageDialog(null, "회원가입이 완료 되었습니다!", "귀엽개 앙킁하냥", JOptionPane.INFORMATION_MESSAGE);
-                dispose();
             }
-
-
         });
+
+
 
         lblidcfBtn.addActionListener(new ActionListener() {
             @Override
@@ -192,10 +184,17 @@ public class SignUpPage extends JFrame {
                 UserDao dao = new UserDao();
                 try {
                     if (dao.userSelectById(new UserDto(id.getText())) != null) {
-                        JOptionPane.showMessageDialog(null,"사용 할 수 없는 ID 입니다!",title,JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "사용 할 수 없는 ID 입니다!", title, JOptionPane.WARNING_MESSAGE);
                         id.setText("");
+
+                        signNum = 0;
+                        id.revalidate();
+                        id.repaint();
+
                     } else {
-                        JOptionPane.showMessageDialog(null,"사용 가능 한 ID 입니다!",title,JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "사용 가능 한 ID 입니다!", title, JOptionPane.INFORMATION_MESSAGE);
+                        signNum = 1;
+
                     }
                 } catch (HeadlessException e1) {
                     e1.printStackTrace();
@@ -208,11 +207,9 @@ public class SignUpPage extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
 
-
                 dispose();
             }
         });
-
 
 
         Dimension frameSize = getSize();
@@ -222,12 +219,8 @@ public class SignUpPage extends JFrame {
                 (windowSize.height - frameSize.height) / 2); //화면 중앙에 띄우기
 
 
-
-
         setResizable(false);
         setVisible(true);
-
     }
-
 }
 

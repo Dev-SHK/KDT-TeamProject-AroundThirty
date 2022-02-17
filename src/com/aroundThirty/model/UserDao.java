@@ -5,7 +5,7 @@ import com.aroundThirty.JdbcUtil;
 import java.sql.*;
 
 public class UserDao {
-    public static final String SQL_USER_INSERT = "INSERT INTO User_Info(User_ID, User_PW, User_Name, User_Gender, User_Num, User_Email, User_Athority) VALUES (?,?,?,?,?,?,?)";
+    public static final String SQL_USER_INSERT = "INSERT INTO User_Info(User_ID, User_PW, User_Name, User_Gender, User_Num, User_Email, User_Authority) VALUES (?,?,?,?,?,?,?)";
     public static final String SQL_USER_UPDATE = "UPDATE User_Info SET User_PW=?, User_Name=?, User_Gender=?, User_Num=?, User_Email=? WHERE NO=?";
     public static final String SQL_USER_DELETE = "DELETE FROM User_Info WHERE NO=?";
     public static final String SQL_USER_SELECT_BY_ID = "SELECT * FROM User_Info WHERE USER_ID=?";
@@ -26,7 +26,7 @@ public class UserDao {
             pstmt.setString(4, userDto.getUser_Gender());
             pstmt.setString(5, userDto.getUser_Num());
             pstmt.setString(6, userDto.getUser_Email());
-            pstmt.setString(7, userDto.getUser_Athority());
+            pstmt.setInt(7, userDto.getUser_Authority());
             int cnt = pstmt.executeUpdate();                        // insert가 성공할때 마다 카운트하여 cnt변수에 담아준다.
             if (cnt == 0) {                                         // cnt가 0인 경우 쿼리문이 정상적으로 돌지 않았다는것이기에 "입력실패" 라는 텍스트를 띄워준다.
                 System.out.println(">>> 입력 실패!");
@@ -122,8 +122,7 @@ public class UserDao {
             while (rs.next()) {
                 int no = rs.getInt(1);
                 String User_ID = rs.getString(2);
-                String User_PW = rs.getString(3);
-                apdto = new UserDto(User_ID, User_PW);
+                apdto = new UserDto(User_ID);
             }
         } catch (SQLException e) {
             e.printStackTrace();
