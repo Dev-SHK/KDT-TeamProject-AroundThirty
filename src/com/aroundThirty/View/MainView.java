@@ -39,6 +39,7 @@ public class MainView extends MyJFrame {
         bottom_Panel = new BottomPanel();
         searchRightPanel = new SearchRightPanel();
         container = getContentPane();
+        soundClass = new SoundClass();
         switchPan = main_Right_Panel;
 
         container.add(BorderLayout.SOUTH, bottom_Panel);
@@ -180,6 +181,20 @@ public class MainView extends MyJFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "취소되었어요.", title, JOptionPane.INFORMATION_MESSAGE);
                 }
+            }
+        });
+
+        dogBTN.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                soundClass.Play(dogSoundPath);
+            }
+        });
+
+        catBTN.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                soundClass.Play(catSoundPath);
             }
         });
     }
