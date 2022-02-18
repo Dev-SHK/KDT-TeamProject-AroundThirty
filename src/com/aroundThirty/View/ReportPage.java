@@ -308,12 +308,13 @@ public class ReportPage extends JPanel {
                         String nReportNum = report_Right_Panel.reportNumTxt.getText();
                         String nReportDetail = report_Right_Panel.reportDetailTxt.getText();
                         String nReportPost = now.toString();
-                        userDto = new UserDto();
-                        userDto.setUser_ID("ood1208");
-                        UserDto nID = UserDao.userSelectById(userDto);
-                        nID.getUser_ID();
+                        String nID = userDto.getUser_ID();
+                        String nImagePath = addImgPath;
 
-                        ReportDao.reportInput(new ReportDto(nReportDt, nReportPlace, nReportKind, nReportNum, nReportDetail, nReportPost, null, nID.getUser_ID()));
+                        ImageIcon nImage = new ImageIcon(nImagePath);
+                        report_Right_Panel.imgLabel.setIcon(imageSetSize(nImage, 250, 250));
+
+                        ReportDao.reportInput(new ReportDto(nReportDt, nReportPlace, nReportKind, nReportNum, nReportDetail, nReportPost, nImagePath, nID));
 
                         report_AddFile.setEnabled(false);
                         report_DeleteBtn.setEnabled(true);

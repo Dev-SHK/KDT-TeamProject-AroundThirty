@@ -310,12 +310,13 @@ public class MissingPage extends JPanel {
                         String nMissingNum = missing_Right_Panel.missingNumTxt.getText();
                         String nMissingDetail = missing_Right_Panel.missingDetailTxt.getText();
                         String nMissingPost = now.toString();
-                        userDto = new UserDto();
-                        userDto.setUser_ID("ood1208");
-                        UserDto nID = UserDao.userSelectById(userDto);
-                        nID.getUser_ID();
+                        String nID = userDto.getUser_ID();
+                        String nImagePath = addImgPath;
 
-                        MissingDao.missingInput(new MissingDto(nMissingDt, nMissingPlace, nMissingKind, nMissingNum, nMissingDetail, nMissingPost, null, nID.getUser_ID()));
+                        ImageIcon nImage = new ImageIcon(nImagePath);
+                        missing_Right_Panel.imgLabel.setIcon(imageSetSize(nImage, 250, 250));
+
+                        MissingDao.missingInput(new MissingDto(nMissingDt, nMissingPlace, nMissingKind, nMissingNum, nMissingDetail, nMissingPost, nImagePath, nID));
 
                         missing_AddFile.setEnabled(false);
                         missing_DeleteBtn.setEnabled(true);

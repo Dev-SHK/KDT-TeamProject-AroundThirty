@@ -16,7 +16,7 @@ public class MovedBoarderPage extends JFrame implements Runnable {
 //            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             contentPane = (JPanel) getContentPane();
             contentPane.setLayout(new BorderLayout());
-            setSize(new Dimension(400, 400));
+            setSize(new Dimension(295, 230));
             setTitle(title);
 
             headerLabel.setFont(fontNanum);
@@ -38,6 +38,8 @@ public class MovedBoarderPage extends JFrame implements Runnable {
     public void run() {
         try {
             Thread.sleep(2500);
+            movedBoarderPage.setVisible(false);
+            movedBoarderPage.dispose();
             JOptionPane.showMessageDialog(null, "완료되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
             dispose();
         } catch (InterruptedException e) {

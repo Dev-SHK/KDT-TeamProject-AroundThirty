@@ -7,7 +7,7 @@ import static com.aroundThirty.Resource.FR.title;
 public class ClosePage implements Runnable {
 
     public ClosePage() {
-        String gifPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/DogSimpsons.gif";
+        String gifPath = "src/com/aroundThirty/imgFiles/DogSimpsons.gif";
         Icon icon = new ImageIcon(gifPath);
         JLabel label = new JLabel(icon);
 

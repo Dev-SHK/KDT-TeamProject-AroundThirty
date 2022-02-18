@@ -24,7 +24,6 @@ public class AddFileWindow extends JFrame {
     JPanel centerPanel = new JPanel();
     JPanel southPanel = new JPanel();
     JPanel southPanel_center = new JPanel();
-    String addImgPath;
 
     public AddFileWindow() {
         setLayout(new BorderLayout());
@@ -57,18 +56,24 @@ public class AddFileWindow extends JFrame {
                     } else if (ret == jfc.APPROVE_OPTION) {
                         File file = jfc.getSelectedFile(); // 선택된 파일 가져오기
                         jTextField.setText(file.getPath());
-                        String filePath = "/Users/minsookim/Desktop/Green/Proj_1/saved_Imges";
+                        String filePath = "Saved_Image";
                         fileSave(file, filePath, file.getName());
                         addImgPath = (filePath + "/" + file.getName());
                         imageIcon = new ImageIcon(addImgPath);
+
                         imgLbl.setIcon(imageSetSize(imageIcon, 300, 300));
                         //   jlb.setText("저장 경로 : " + jfc.getSelectedFile().toString());
                     }
                 }
+
             }
-//            public void windowClosing(WindowEvent e) {
-//                System.exit(0);
-//            }
+        });
+
+        fileClose.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
         });
         Dimension frameSize = getSize();
         Dimension windowSize = Toolkit.getDefaultToolkit().getScreenSize();
