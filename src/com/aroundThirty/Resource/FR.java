@@ -176,6 +176,7 @@ public class FR {
     public static AddFileWindow add_File_Window;
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
+    public static ClosePage closePage;
 
     public static SearchRightPanel searchRightPanel;
     public static CenterPanel center_Panel;
