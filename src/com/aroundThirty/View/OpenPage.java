@@ -2,6 +2,8 @@ package com.aroundThirty.View;
 
 import javax.swing.*;
 
+import java.util.Random;
+
 import static com.aroundThirty.Resource.FR.title;
 
 public class OpenPage implements Runnable {
@@ -24,7 +26,7 @@ public class OpenPage implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(8000);
+            Thread.sleep(5000);
             f.dispose();
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -30,12 +30,24 @@ public abstract class MyJFrame extends JFrame {
 
     public void createMenu() {
         JMenuBar mb = new JMenuBar();
+
         JMenu fileMenu = new JMenu("File");
-        JMenu saveMenu = new JMenu("Save");
-        JMenu openMenu = new JMenu("Open");
-        JMenu settingMenu = new JMenu("Setting");
+        JMenuItem saveMenu = new JMenuItem("Save");
+        JMenuItem importMenu = new JMenuItem("Import");
+        JMenuItem exportMenu = new JMenuItem("Export");
+        JMenuItem openMenu = new JMenuItem("Open");
+        JMenuItem settingMenu = new JMenuItem("Setting");
+        JMenuItem exitMenu = new JMenuItem("Close");
+
+        JMenu editMenu = new JMenu("Edit");
+        JMenuItem editDetailMenu = new JMenuItem("Edit");
+        JMenu viewMenu = new JMenu("View");
+        JMenuItem viewDetailMenu = new JMenuItem("View");
+        JMenu toolMenu = new JMenu("Tool");
+        JMenuItem toolDetailMenu = new JMenuItem("Tool");
+
         JMenu helpMenu = new JMenu("Help");
-        JMenuItem exitMenu = new JMenuItem("Exit");
+        JMenuItem helpDetailMenu = new JMenuItem("Help");
         JMenuItem aboutMenu = new JMenuItem("About");
         JMenuItem sourceMenu = new JMenuItem("Source");
         aboutMenu.addActionListener(new ActionListener() {
@@ -63,14 +75,99 @@ public abstract class MyJFrame extends JFrame {
                 }
             }
         });
+
+        saveMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        openMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        importMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        exportMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        settingMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        editDetailMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        viewDetailMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        toolDetailMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        helpDetailMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "준비 중이에요 ㅠㅠ", title, JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
+        fileMenu.add(saveMenu);
+        fileMenu.addSeparator();
+        fileMenu.add(openMenu);
+        fileMenu.addSeparator();
+        fileMenu.add(importMenu);
+        fileMenu.addSeparator();
+        fileMenu.add(exportMenu);
+        fileMenu.addSeparator();
+        fileMenu.add(settingMenu);
+        fileMenu.addSeparator();
         fileMenu.add(exitMenu);
+
+        helpMenu.add(helpDetailMenu);
+        helpMenu.addSeparator();
         helpMenu.add(sourceMenu);
+        helpMenu.addSeparator();
         helpMenu.add(aboutMenu);
+
+        editMenu.add(editDetailMenu);
+        viewMenu.add(viewDetailMenu);
+        toolMenu.add(toolDetailMenu);
+
+
         mb.add(fileMenu);
-        mb.add(saveMenu);
-        mb.add(openMenu);
-        mb.add(settingMenu);
+        mb.add(editMenu);
+        mb.add(viewMenu);
+        mb.add(toolMenu);
         mb.add(helpMenu);
+
         this.setJMenuBar(mb);
         mb.setBorderPainted(false);
         mb.setBackground(pastelGreen);
