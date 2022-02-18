@@ -140,11 +140,9 @@ public abstract class MyJFrame extends JFrame {
         });
 
         fileMenu.add(saveMenu);
-        fileMenu.addSeparator();
         fileMenu.add(openMenu);
         fileMenu.addSeparator();
         fileMenu.add(importMenu);
-        fileMenu.addSeparator();
         fileMenu.add(exportMenu);
         fileMenu.addSeparator();
         fileMenu.add(settingMenu);
