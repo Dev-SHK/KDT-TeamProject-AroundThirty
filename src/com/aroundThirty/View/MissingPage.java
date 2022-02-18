@@ -314,6 +314,13 @@ public class MissingPage extends JPanel {
                         MissingPage.setMissingDataListPage(missing_StartIndex, missing_StartIndex + 12);
                     } else {
                         JOptionPane.showMessageDialog(null, "취소되었습니다", title, JOptionPane.ERROR_MESSAGE);
+                        cardLayout.next(missing_Right_Top_Panel.switchPanel2);
+                        cardLayout.next(missing_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(missing_Right_Panel.center_Center_Center_Panel_Card);
+
+                        missing_AddFile.setEnabled(false);
+                        missing_DeleteBtn.setEnabled(true);
+                        missing_ModifyBtn.setEnabled(true);
                     }
                 }
             }

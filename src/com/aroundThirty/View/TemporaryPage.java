@@ -315,6 +315,13 @@ public class TemporaryPage extends JPanel {
                         TemporaryPage.setTemporaryDataListPage(temporary_StartIndex, temporary_StartIndex + 12);
                     } else {
                         JOptionPane.showMessageDialog(null, "취소되었습니다", title, JOptionPane.ERROR_MESSAGE);
+                        cardLayout.next(temporary_Right_Top_Panel.switchPanel2);
+                        cardLayout.next(temporary_Right_Panel.center_North_Top_Panel);
+                        cardLayout.next(temporary_Right_Panel.center_Center_Center_Panel_Card);
+
+                        temporary_AddFile.setEnabled(false);
+                        temporary_DeleteBtn.setEnabled(true);
+                        temporary_ModifyBtn.setEnabled(true);
                     }
                 }
             }
