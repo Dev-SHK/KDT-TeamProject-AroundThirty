@@ -11,6 +11,7 @@ public class MovedBoarderPage extends JFrame implements Runnable {
     JLabel headerLabel = new JLabel();
 
     public MovedBoarderPage() {
+        setUndecorated(true);
         try {
 //            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             contentPane = (JPanel) getContentPane();
@@ -31,7 +32,6 @@ public class MovedBoarderPage extends JFrame implements Runnable {
         }
 
     }
-
 
 
     @Override

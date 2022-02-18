@@ -180,6 +180,7 @@ public class FR {
     public static SignUpPage signUpPage;
     public static ClosePage closePage;
     public static MovedBoarderPage movedBoarderPage;
+    public static OpenPage openPage;
 
     public static SearchRightPanel searchRightPanel;
     public static CenterPanel center_Panel;

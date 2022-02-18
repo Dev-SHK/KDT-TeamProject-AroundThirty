@@ -33,7 +33,9 @@ public class MainController {
 
 
     public static void main(String[] args) {
+        openPage = new OpenPage();
+        Thread thread = new Thread(openPage);
+        thread.start();
         new MainView().setVisible(true);
-
     }
 }
