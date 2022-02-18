@@ -4,14 +4,15 @@ import javax.swing.*;
 
 import static com.aroundThirty.Resource.FR.title;
 
-public class ClosePage implements Runnable {
+public class OpenPage implements Runnable {
+    JFrame f;
 
-    public ClosePage() {
-        String gifPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/DogSimpsons.gif";
+    public OpenPage() {
+        String gifPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/DogLisa_Loading.gif";
         Icon icon = new ImageIcon(gifPath);
         JLabel label = new JLabel(icon);
 
-        JFrame f = new JFrame(title);
+        f = new JFrame(title);
         f.setUndecorated(true);
         f.getContentPane().add(label);
         f.pack();
@@ -23,8 +24,8 @@ public class ClosePage implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(1250);
-            System.exit(0);
+            Thread.sleep(8000);
+            f.dispose();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
