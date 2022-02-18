@@ -84,10 +84,10 @@ public class FR {
     public static String[] report_Boader = {"발견했어요", "잃어버렸어요", "보호중이에요"};
     public static JComboBox<String> report_BoaderCombo = new JComboBox<>(report_Boader);
 
-    public static String[] missing_Boader = {"발견했어요", "잃어버렸어요", "보호중이에요"};
+    public static String[] missing_Boader = {"잃어버렸어요", "발견했어요", "보호중이에요"};
     public static JComboBox<String> missing_BoaderCombo = new JComboBox<>(missing_Boader);
 
-    public static String[] temporary_Boader = {"발견했어요", "잃어버렸어요", "보호중이에요"};
+    public static String[] temporary_Boader = {"보호중이에요", "발견했어요", "잃어버렸어요"};
     public static JComboBox<String> temporary_BoaderCombo = new JComboBox<>(temporary_Boader);
 
 
@@ -114,9 +114,10 @@ public class FR {
     public static String rpDetailImgPath = "src/com/aroundThirty/imgFiles/Sample.jpg";
     public static String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
     public static String signbgImgPath = "src/com/aroundThirty/imgFiles/SignUpImage.png";
+    public static String roadingGIF= "src/com/aroundThirty/imgFiles/dogson.gif";
 
-    public static String dogSoundPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/soundFiles/dog_crying_sound.wav";
-    public static String catSoundPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/soundFiles/cat_crying_sound.wav";
+    public static String dogSoundPath = "src/com/aroundThirty/soundFiles/dog_crying_sound.wav";
+    public static String catSoundPath = "src/com/aroundThirty/soundFiles/cat_crying_sound.wav";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
@@ -125,6 +126,7 @@ public class FR {
     public static ImageIcon rpDetailImg = new ImageIcon(rpDetailImgPath);
     public static ImageIcon defaultImg = new ImageIcon(defaultImgPath);
     public static ImageIcon signbgImg = new ImageIcon(signbgImgPath);
+    public static ImageIcon roadingImg = new ImageIcon(roadingGIF);
 
     public static JButton loginMain = new JButton("LOGIN");
     public static final JButton logoutMain = new JButton("LOGOUT");
@@ -177,6 +179,7 @@ public class FR {
     public static LoginPage loginPage;
     public static SignUpPage signUpPage;
     public static ClosePage closePage;
+    public static MovedBoarderPage movedBoarderPage;
 
     public static SearchRightPanel searchRightPanel;
     public static CenterPanel center_Panel;

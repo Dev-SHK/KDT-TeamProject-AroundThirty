@@ -138,7 +138,10 @@ public class AdoptPage extends JPanel {
                     if (result == JOptionPane.CLOSED_OPTION) {
                         adopt_AddFile.setEnabled(false);
                     } else if (result == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        movedBoarderPage = new MovedBoarderPage();
+                        Thread thread = new Thread(movedBoarderPage);
+                        thread.start();
+//                        JOptionPane.showMessageDialog(null, "수정되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(adopt_Right_Top_Panel.switchPanel);
                         cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
                         cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);
@@ -218,7 +221,11 @@ public class AdoptPage extends JPanel {
                         // 게시글 삭제 여부를 사용자에게 묻는 이벤트
                         if (result == JOptionPane.CLOSED_OPTION) {    // 사용자가 Yes 와 No 둘다 선택하지 않고 창을 끄는 경우
                         } else if (result == JOptionPane.YES_OPTION) { // 사용자가 게시글 삭제를 한 경우
-                            JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
+                            // 로딩 창 구현
+                            movedBoarderPage = new MovedBoarderPage();
+                            Thread thread = new Thread(movedBoarderPage);
+                            thread.start();
+//                            JOptionPane.showMessageDialog(null, "게시글이 삭제되었습니다.", title, JOptionPane.PLAIN_MESSAGE);
                             AdoptDao.adoptDelete(new AdoptDto(adoptDto.getNo()));
                             adopt_Right_Panel.setVisible(false);
                             resetAdoptDeleteData(); // 데이터 초기화
@@ -272,7 +279,11 @@ public class AdoptPage extends JPanel {
                 if (act.equals("완료")) {
                     int confirm = JOptionPane.showConfirmDialog(null, "저장하시겠습니까?", title, JOptionPane.YES_NO_OPTION);
                     if (confirm == JOptionPane.YES_OPTION) {
-                        JOptionPane.showMessageDialog(null, "저장되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
+                        // 로딩 창 구현
+                        movedBoarderPage = new MovedBoarderPage();
+                        Thread thread = new Thread(movedBoarderPage);
+                        thread.start();
+//                        JOptionPane.showMessageDialog(null, "저장되었습니다.", title, JOptionPane.INFORMATION_MESSAGE);
                         cardLayout.next(adopt_Right_Top_Panel.switchPanel2);
                         cardLayout.next(adopt_Right_Panel.center_North_Top_Panel);
                         cardLayout.next(adopt_Right_Panel.center_Center_Center_Panel_Card);

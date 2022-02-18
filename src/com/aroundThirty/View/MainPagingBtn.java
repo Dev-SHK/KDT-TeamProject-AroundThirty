@@ -3,7 +3,6 @@ package com.aroundThirty.View;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.Serial;
 import java.util.ArrayList;
 
 import static com.aroundThirty.Resource.BR.*;
@@ -11,7 +10,6 @@ import static com.aroundThirty.Resource.FR.*;
 
 
 public class MainPagingBtn extends JPanel {
-    @Serial
     private static final long serialVersionUID = 1L;
     public static ArrayList<JButton> btnList = new ArrayList<>();
     int size = 0;
