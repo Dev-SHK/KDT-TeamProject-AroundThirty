@@ -1,6 +1,5 @@
 package com.aroundThirty.model;
 
-import javax.swing.*;
 
 public class XmlDto {
     public String happenDt = null; // 발견날짜
