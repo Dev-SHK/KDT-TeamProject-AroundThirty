@@ -293,12 +293,13 @@ public class AdoptPage extends JPanel {
                         String nAdoptNum = adopt_Right_Panel.adoptNumTxt.getText();
                         String nAdoptDetail = adopt_Right_Panel.adoptDetailTxt.getText();
                         String nAdoptPost = now.toString();
-                        userDto = new UserDto();
-                        userDto.setUser_ID("ood1208");
-                        UserDto nID = UserDao.userSelectById(userDto);
-                        nID.getUser_ID();
+                        String nID = userDto.getUser_ID();
+                        String nImagePath = addImgPath;
 
-                        AdoptDao.adoptInput(new AdoptDto(nAdoptPlace, nAdoptKind, nAdoptNum, nAdoptDetail, nAdoptPost, null, nID.getUser_ID()));
+                        ImageIcon nImage = new ImageIcon(nImagePath);
+                        adopt_Right_Panel.imgLabel.setIcon(imageSetSize(nImage, 250, 250));
+
+                        AdoptDao.adoptInput(new AdoptDto(nAdoptPlace, nAdoptKind, nAdoptNum, nAdoptDetail, nAdoptPost, nImagePath, nID));
 
                         adopt_AddFile.setEnabled(false);
                         adopt_DeleteBtn.setEnabled(true);

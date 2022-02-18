@@ -10,7 +10,7 @@ public class OpenPage implements Runnable {
     JFrame f;
 
     public OpenPage() {
-        String gifPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/DogLisa_Loading.gif";
+        String gifPath = "src/com/aroundThirty/imgFiles/DogLisa_Loading.gif";
         Icon icon = new ImageIcon(gifPath);
         JLabel label = new JLabel(icon);
 

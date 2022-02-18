@@ -311,12 +311,13 @@ public class TemporaryPage extends JPanel {
                         String nTemporaryNum = temporary_Right_Panel.temporaryNumTxt.getText();
                         String nTemporaryDetail = temporary_Right_Panel.temporaryDetailTxt.getText();
                         String nTemporaryPost = now.toString();
-                        userDto = new UserDto();
-                        userDto.setUser_ID("ood1208");
-                        UserDto nID = UserDao.userSelectById(userDto);
-                        nID.getUser_ID();
+                        String nID = userDto.getUser_ID();
+                        String nImagePath = addImgPath;
 
-                        TemporaryDao.temporaryInput(new TemporaryDto(nTemporaryDt, nTemporaryPlace, nTemporaryKind, nTemporaryNum, nTemporaryDetail, nTemporaryPost, null, nID.getUser_ID()));
+                        ImageIcon nImage = new ImageIcon(nImagePath);
+                        temporary_Right_Panel.imgLabel.setIcon(imageSetSize(nImage, 250, 250));
+
+                        TemporaryDao.temporaryInput(new TemporaryDto(nTemporaryDt, nTemporaryPlace, nTemporaryKind, nTemporaryNum, nTemporaryDetail, nTemporaryPost, nImagePath, nID));
 
                         temporary_AddFile.setEnabled(false);
                         temporary_DeleteBtn.setEnabled(true);
