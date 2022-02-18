@@ -53,6 +53,7 @@ public class MainView extends MyJFrame {
                 tabPaneIdx = tabbed_Pane.getSelectedIndex();
                 switch (tabPaneIdx) {
                     case 0:
+                        tabbed_Pane.remove(searchPage);
 //                        MainView.container.add(BorderLayout.EAST, main_Right_Panel);
                         container.remove(switchPan);
                         container.add(BorderLayout.EAST, main_Right_Panel);
@@ -61,6 +62,7 @@ public class MainView extends MyJFrame {
                         repaint();
                         break;
                     case 1:
+                        tabbed_Pane.remove(searchPage);
 //                        MainView.container.add(BorderLayout.EAST, report_Right_Panel);
                         container.remove(switchPan);
                         container.add(BorderLayout.EAST, report_Right_Panel);
@@ -69,6 +71,7 @@ public class MainView extends MyJFrame {
                         repaint();
                         break;
                     case 2:
+                        tabbed_Pane.remove(searchPage);
                         container.remove(switchPan);
                         container.add(BorderLayout.EAST, missing_Right_Panel);
                         switchPan = missing_Right_Panel;
@@ -76,6 +79,7 @@ public class MainView extends MyJFrame {
                         repaint();
                         break;
                     case 3:
+                        tabbed_Pane.remove(searchPage);
                         container.remove(switchPan);
                         container.add(BorderLayout.EAST, temporary_Right_Panel);
                         switchPan = temporary_Right_Panel;
@@ -83,6 +87,7 @@ public class MainView extends MyJFrame {
                         repaint();
                         break;
                     case 4:
+                        tabbed_Pane.remove(searchPage);
                         container.remove(switchPan);
                         container.add(BorderLayout.EAST, adopt_Right_Panel);
                         switchPan = adopt_Right_Panel;
@@ -126,11 +131,11 @@ public class MainView extends MyJFrame {
                 String pw = String.valueOf(pwTxtFld.getPassword());
 
                 userDto = UserDao.userSelectById(new UserDto(id));
-                if (userDto == null){
+                if (userDto == null) {
                     JOptionPane.showMessageDialog(null, "입력하신 회원정보는 존재하지 않습니다.", title, JOptionPane.ERROR_MESSAGE);
                     idTxtFld.setText("");
                     pwTxtFld.setText("");
-                }else{
+                } else {
                     if (id.equals(userDto.getUser_ID()) && pw.equals(userDto.getUser_PW())) {
                         int confirm = JOptionPane.showConfirmDialog(null, "로그인 할까요?", title, JOptionPane.YES_NO_OPTION);
                         if (confirm == JOptionPane.YES_OPTION) {
@@ -146,10 +151,10 @@ public class MainView extends MyJFrame {
                         }
                     } else if (id.length() == 0 || pw.length() == 0) {
                         JOptionPane.showMessageDialog(null, "ID와 비밀번호를 입력 해주세요.", title, JOptionPane.ERROR_MESSAGE);
-                    }else {
-                    JOptionPane.showMessageDialog(null, "ID 또는 비밀번호가 맞지 않아요 ㅠㅠ", title, JOptionPane.ERROR_MESSAGE);
-                    idTxtFld.setText("");
-                    pwTxtFld.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "ID 또는 비밀번호가 맞지 않아요 ㅠㅠ", title, JOptionPane.ERROR_MESSAGE);
+                        idTxtFld.setText("");
+                        pwTxtFld.setText("");
                     }
                 }
             }

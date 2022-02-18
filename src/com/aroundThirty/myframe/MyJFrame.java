@@ -1,5 +1,6 @@
 package com.aroundThirty.myframe;
 
+import com.aroundThirty.View.ClosePage;
 import com.aroundThirty.View.IntroducePage;
 import com.aroundThirty.View.SourcePage;
 
@@ -52,8 +53,14 @@ public abstract class MyJFrame extends JFrame {
         exitMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                System.exit(0);
+                int confirm = JOptionPane.showConfirmDialog(null, "종료할까요?", title, JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    closePage = new ClosePage();
+                    Thread thread = new Thread(closePage);
+                    thread.start();
+                } else {
+                    JOptionPane.showMessageDialog(null, "취소되었어요.", title, JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         fileMenu.add(exitMenu);
