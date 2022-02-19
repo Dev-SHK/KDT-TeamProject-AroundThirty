@@ -116,8 +116,8 @@ public class FR {
     public static String signbgImgPath = "src/com/aroundThirty/imgFiles/SignUpImage.png";
     public static String roadingGIF= "src/com/aroundThirty/imgFiles/loading_simpson.gif";
 
-    public static String dogSoundPath = "src/com/aroundThirty/soundFiles/dog_crying_sound.wav";
-    public static String catSoundPath = "src/com/aroundThirty/soundFiles/cat_crying_sound.wav";
+    public static String dogSoundPath = "src/com/aroundThirty/soundFiles/소예_멍멍.wav";
+    public static String catSoundPath = "src/com/aroundThirty/soundFiles/윤슬_야옹.wav";
 
     public static ImageIcon catImgIcon = new ImageIcon(catImgPath);
     public static ImageIcon dogImgIcon = new ImageIcon(dogImgPath);
