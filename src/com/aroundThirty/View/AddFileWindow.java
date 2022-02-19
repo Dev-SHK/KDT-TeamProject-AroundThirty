@@ -69,6 +69,7 @@ public class AddFileWindow extends JFrame {
             }
         });
 
+
         fileClose.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
