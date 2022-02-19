@@ -23,7 +23,7 @@ public class MainView extends MyJFrame {
 
     public MainView() {
         setSize(1440, 850);
-        setUndecorated(true);
+//        setUndecorated(true);
         setTitle(title);
         setBackground(pastelYellow);
         setResizable(false);
