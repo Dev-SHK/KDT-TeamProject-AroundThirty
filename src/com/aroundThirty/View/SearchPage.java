@@ -29,7 +29,7 @@ public class SearchPage extends JPanel {
     JPanel centerPanel = new JPanel(new GridLayout(SIZE_ROW, SIZE_COL));    // SIZE_ROW, SIZE_COL로 행열 지정
     JScrollPane jScrollPane = new JScrollPane(centerPanel);
     static ImageIcon thumbnailIcon;
-    static String defaultImgPath = "/Volumes/SHK-USB-64G/KDT-SW개발자과정/Project/src/com/aroundThirty/imgFiles/그림1.png";
+    static String defaultImgPath = "src/com/aroundThirty/imgFiles/그림1.png";
     static ImageIcon defaultImg = new ImageIcon(defaultImgPath);
     static ImageIcon imgIcon;
 
